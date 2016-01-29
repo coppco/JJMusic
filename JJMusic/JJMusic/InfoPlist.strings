@@ -1,0 +1,9 @@
+/* 
+  InfoPlist.strings
+  JJMusic
+
+  Created by coco on 16/1/29.
+  Copyright © 2016年 XHJ. All rights reserved.
+*/
+
+CFBundleDisplayName = "JJ音乐";
