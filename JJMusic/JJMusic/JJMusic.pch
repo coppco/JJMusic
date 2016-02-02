@@ -11,6 +11,9 @@
 
 #import "CommonDefines.h"  //宏定义
 #import "AppDefines.h"  //App用到宏
+#import "RequestURL.h"  //请求url宏
+
 #import "HJCommonTools.h"  //通用方法
 #import "Masonry.h"  //布局
+#import "HttpHandleTool.h"  //http请求
 #endif /* JJMusic_pch */

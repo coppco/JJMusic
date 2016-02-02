@@ -23,7 +23,7 @@
     return YES;
 }
 - (void)enterApp {
-    NSLog(@"%@", userDefaultGetValue(isFirstLoad));
+    NSDDLog(@"%@", userDefaultGetValue(isFirstLoad));
     if (!userDefaultGetValue(isFirstLoad)) {
         //第一次进入,进入导航页
         GuideViewController *guideVC = [[GuideViewController alloc] init];

@@ -1061,6 +1061,41 @@ NSString *pathCachesFilePathName(NSString *subPath, NSString *name)
     //    return [NSString stringWithFormat:@"%@%@", path, name];
     return [path stringByAppendingPathComponent:name];
 }
-
+#pragma mark - Appdelegate
+AppDelegate *getApp() {
+    return [UIApplication sharedApplication].delegate;
+}
+UIWindow *getAppWindow() {
+    return [getApp() window];
+}
+#pragma mark - 快捷alloc方法
++ (UILabel *)allocLabelWithTitle:(NSString *)title frame:(CGRect)frame font:(UIFont *)font color:(UIColor *)color alignment:(NSTextAlignment)textAlignment keyWords:(NSString *)keyWords keyWordsColor:(UIColor *)keyWordsColor keyWordsFont:(UIFont *)keyWordsFont underLine:(BOOL)underLine {
+    
+    UILabel *label = [[UILabel alloc] initWithFrame:frame];
+    if (!font) {
+        font = [UIFont systemFontOfSize:17];
+    }
+    label.font = font;
+    if (!color) {
+        color = [UIColor blackColor];
+    }
+    label.textColor = color;
+    NSMutableAttributedString *titleString = title.length == 0 ? (keyWords.length == 0 ? nil : [[NSMutableAttributedString alloc] initWithString:keyWords]) : [[NSMutableAttributedString alloc] initWithString:title];
+    if (keyWords.length != 0) {
+        NSRange range = title.length == 0 ? [keyWords rangeOfString:keyWords] : [title rangeOfString:keyWords];
+        if (keyWordsFont) {
+            [titleString addAttribute:NSFontAttributeName value:keyWordsFont range:range];
+        }
+        if (keyWordsColor) {
+            [titleString addAttribute:NSForegroundColorAttributeName value:keyWordsColor range:range];
+        }
+        if (underLine) {
+            [titleString addAttribute:NSUnderlineStyleAttributeName value:@(NSUnderlineStyleSingle) range:range];
+        }
+    }
+    label.attributedText = titleString;
+    label.textAlignment = textAlignment;  //对齐方式
+    return label;
+}
 @end
 

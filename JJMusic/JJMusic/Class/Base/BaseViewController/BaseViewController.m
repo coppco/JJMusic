@@ -24,10 +24,15 @@
     _backButton.showsTouchWhenHighlighted = YES;
     _backButton = [UIButton buttonWithType:(UIButtonTypeCustom)];
     _backButton.frame = CGRectMake(0, 0, 50, 50);
+    [_backButton addTarget:self action:@selector(close:) forControlEvents:(UIControlEventTouchUpInside)];
     [_backButton setImage:IMAGE(@"back") forState:(UIControlStateNormal)];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:_backButton];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:_backButton];
 }
-
+//返回
+- (void)close:(UIButton *)button {
+    [self.navigationController popToRootViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     

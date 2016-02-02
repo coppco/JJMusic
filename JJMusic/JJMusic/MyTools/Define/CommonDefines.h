@@ -39,13 +39,11 @@
 #define HJpropertyStrong(__v__)         @property (nonatomic, strong)       __v__
 
 /*==================设备型号==================*/
-#define ISIPHONE_4 CGSizeEqualToSize([[UIScreen mainScreen] bounds].size, CGSizeMake(320, 480))
+#define ISIPHONE_3 (CGSizeEqualToSize([[UIScreen mainScreen] bounds].size, CGSizeMake(320, 480))) && ([UIScreen mainScreen].scale == 1.0)
+#define ISIPHONE_4 (CGSizeEqualToSize([[UIScreen mainScreen] bounds].size, CGSizeMake(320, 480))) && ([UIScreen mainScreen].scale == 2.0)
 #define ISIPHONE_5 CGSizeEqualToSize([[UIScreen mainScreen] bounds].size, CGSizeMake(320, 568))
 #define ISIPHONE_6 CGSizeEqualToSize([[UIScreen mainScreen] bounds].size, CGSizeMake(375, 667))
 #define ISIPHONE_6P CGSizeEqualToSize([[UIScreen mainScreen] bounds].size, CGSizeMake(414, 736))
-#define ISIPHONE_6PPlus \
-CGSizeEqualToSize([[UIScreen mainScreen] bounds].size, CGSizeMake(414, 736)) \
-
 /*==================系统版本==================*/
 #define __IOS_VERSION [[UIDevice currentDevice].systemVersion floatValue]
 #define ISIOS_5_0 ([[UIDevice currentDevice].systemVersion floatValue] >= 5.0)
@@ -66,6 +64,10 @@ CGSizeEqualToSize([[UIScreen mainScreen] bounds].size, CGSizeMake(414, 736)) \
 #define ColorFromRGBValue(rgbValue) \
 [HJCommonTools colorFromRGBValue:(rgbValue)] \
 
+/*==================UIFont对象==================*/
+#define font(x) [UIFont systemFontOfSize:x]
+#define fontWeight(x,y) [UIFont systemFontOfSize:x weight:y];
+
 /*==================UIImage对象==================*/
 //性能高于后者
 #define IMAGEFILE(A) \
@@ -83,9 +85,10 @@ CGSizeEqualToSize([[UIScreen mainScreen] bounds].size, CGSizeMake(414, 736)) \
 
 /*========================NSLog=======================*/
 #ifdef DEBUG
-#define NSLog(FORMAT, ...) fprintf(stderr,"当前时间:%s \t%s:%d　\t%s\n\n", [HJCommonTools getCurrentDate].UTF8String,[[[NSString stringWithUTF8String:__FILE__] lastPathComponent] UTF8String], __LINE__, [[NSString stringWithFormat:FORMAT, ##__VA_ARGS__] UTF8String]);
+//#define NSLog(FORMAT, ...) fprintf(stderr,"当前时间:%s \t%s:%d　\t%s\n\n", [HJCommonTools getCurrentDate].UTF8Sting,[[[NSString stringWithUTF8String:__FILE__] lastPathComponent] UTF8String], __LINE__, [[NSString stringWithFormat:FORMAT, ##__VA_ARGS__] UTF8String]);
+#define NSDDLog(FORMAT, ...) NSLog(@"%@:%d行   \n%@", [[NSString stringWithUTF8String:__FILE__] lastPathComponent], __LINE__, [NSString stringWithFormat:FORMAT, ##__VA_ARGS__])
 #else
-#define NSLog(FORMAT, ...) nil
+#define NSDDLog(FORMAT, ...) nil
 #endif
 
 #endif /* CommonDefines_h */

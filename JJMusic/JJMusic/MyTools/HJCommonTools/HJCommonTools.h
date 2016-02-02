@@ -10,6 +10,7 @@
 #import <UIKit/UIKit.h>
 #include <CommonCrypto/CommonCrypto.h>//加密用到
 #include <zlib.h>//crc32
+#import "AppDelegate.h"
 
 //常规加密的方式
 typedef NS_ENUM(NSInteger, EncryptType) {
@@ -526,6 +527,36 @@ NSString *pathCachesFileName(NSString *name);
  *  @return
  */
 NSString *pathCachesFilePathName(NSString *subPath, NSString *name);
+#pragma mark - Appdelegate
+/**
+ *  获取AppDelegate
+ *
+ *  @return
+ */
+AppDelegate *getApp();
+/**
+ *  获取window
+ *
+ *  @return
+ */
+UIWindow *getAppWindow();
+#pragma mark - 快捷alloc方法
+/**
+ *  <#Description#>
+ *
+ *  @param title         标题
+ *  @param frame         frame
+ *  @param font          正常字体大小  不写默认17
+ *  @param color         正常的颜色  不写默认是黑色
+ *  @param textAlignment 对齐方式
+ *  @param keyWords      关键字 在标题中的位置,若标题为空,
+ *  @param keyWordsColor 关键字颜色
+ *  @param keyWordsFont       关键字字体
+ *  @param underLine     是否有下划线
+ *
+ *  @return
+ */
++ (UILabel *)allocLabelWithTitle:(NSString *)title frame:(CGRect)frame font:(UIFont *)font color:(UIColor *)color alignment:(NSTextAlignment)textAlignment keyWords:(NSString *)keyWords keyWordsColor:(UIColor *)keyWordsColor keyWordsFont:(UIFont *)keyWordsFont underLine:(BOOL)underLine;
 @end
 
 
