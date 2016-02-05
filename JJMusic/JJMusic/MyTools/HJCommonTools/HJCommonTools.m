@@ -1069,6 +1069,7 @@ UIWindow *getAppWindow() {
     return [getApp() window];
 }
 #pragma mark - 快捷alloc方法
+/*    UILabel方法  */
 + (UILabel *)allocLabelWithTitle:(NSString *)title frame:(CGRect)frame font:(UIFont *)font color:(UIColor *)color alignment:(NSTextAlignment)textAlignment keyWords:(NSString *)keyWords keyWordsColor:(UIColor *)keyWordsColor keyWordsFont:(UIFont *)keyWordsFont underLine:(BOOL)underLine {
     
     UILabel *label = [[UILabel alloc] initWithFrame:frame];
@@ -1096,6 +1097,112 @@ UIWindow *getAppWindow() {
     label.attributedText = titleString;
     label.textAlignment = textAlignment;  //对齐方式
     return label;
+}
+/*    UIButton方法  */
++ (UIButton *)allocButtonWithFrame:(CGRect)frame title:(NSString *)title titleColor:(UIColor *)color font:(UIFont *)font normalImage:(UIImage *)normalImage highImage:(UIImage *)highImage normalBackImage:(UIImage *)normalBackImage highBackImage:(UIImage *)highBackImage {
+    UIButton *button = [UIButton buttonWithType:(UIButtonTypeCustom)];
+    button.frame = frame;
+    if (title.length != 0) {
+        [button setTitle:title forState:(UIControlStateNormal)];
+        [button setTitle:title forState:(UIControlStateHighlighted)];
+    }
+    if (color != nil) {
+        [button setTitleColor:color forState:(UIControlStateNormal)];
+        [button setTitleColor:color forState:(UIControlStateHighlighted)];
+    }
+    if (font != nil) {
+        button.titleLabel.font = font;
+    }
+    if (normalImage != nil) {
+        [button setImage:normalImage forState:(UIControlStateNormal)];
+    }
+    if (highImage != nil) {
+        [button setImage:highImage forState:(UIControlStateHighlighted)];
+    }
+    if (normalBackImage != nil) {
+        [button setBackgroundImage:normalBackImage forState:(UIControlStateNormal)];
+    }
+    if (highBackImage != nil) {
+        [button setBackgroundImage:highBackImage forState:(UIControlStateHighlighted)];
+    }
+    return button;
+}
+/*  UIImageView方法 */
++ (UIImageView *)allocImageViewWith:(UIImage *)image frame:(CGRect)frame contentMode:(UIViewContentMode)mode {
+    UIImageView *imageV = [[UIImageView alloc] initWithFrame:frame];
+    if (image != nil) {
+        imageV.image = image;
+    }
+    if (mode) {
+        imageV.contentMode = mode;
+    }
+    return imageV;
+}
+
+#pragma mark - 动画相关
+//抖动动画
++ (void)animationShakeForView:(UIView *)view {
+    CALayer *viewLayer = view.layer;
+    CGPoint position = viewLayer.position;
+    CGPoint left = CGPointMake(position.x - 10, position.y);
+    CGPoint right = CGPointMake(position.x + 10, position.y);
+    
+    CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"position"];
+    [animation setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
+    [animation setFromValue:[NSValue valueWithCGPoint:left]];
+    [animation setToValue:[NSValue valueWithCGPoint:right]];
+    [animation setAutoreverses:YES]; // 平滑结束
+    [animation setDuration:0.08];
+    [animation setRepeatCount:3];
+    NSDDLog(@"抖动动画");
+    [viewLayer addAnimation:animation forKey:nil];
+}
+//渐进动画
++ (void)animationGradualForView:(UIView *)view type:(AnimateType)type isRotateFow:(BOOL)rotate delegate:(id)delegate{
+    NSDDLog(@"渐进动画");
+    if (rotate) {
+        view.transform = CGAffineTransformRotate(view.transform, M_1_PI);
+    }
+    NSTimeInterval duration = 0.5;
+    //比例
+    CABasicAnimation *scaleAnimation = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
+    if (type == AnimateTypeBig) {
+        scaleAnimation.fromValue = [NSNumber numberWithFloat:1];
+        scaleAnimation.toValue = [NSNumber numberWithFloat:2];
+    } else {
+        scaleAnimation.fromValue = [NSNumber numberWithFloat:1];
+        scaleAnimation.toValue = [NSNumber numberWithFloat:0];
+    }
+    //透明度
+    CABasicAnimation *opacityAnimaton = [CABasicAnimation animationWithKeyPath:@"opacity"];
+    opacityAnimaton.fromValue = [NSNumber numberWithFloat:1];
+    opacityAnimaton.toValue = [NSNumber numberWithFloat:0];
+    
+    //组动画
+    CAAnimationGroup *group = [CAAnimationGroup animation];
+    group.animations = @[scaleAnimation, opacityAnimaton];
+    group.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    group.duration = duration;
+//    group.delegate = [HJCommonTools getControllerForView:view];
+    if (delegate != nil) {
+        group.delegate = delegate;
+    }
+    group.autoreverses = NO; // 防止最后显现
+    group.fillMode = kCAFillModeForwards;
+    group.removedOnCompletion = NO;
+    [view.layer addAnimation:group forKey:nil];
+    
+}
+
+#pragma mark - 获取view的controller
++ (UIViewController *)getControllerForView:(UIView *)view {
+    for (UIView* next = [view superview]; next; next = next.superview) {
+        UIResponder* nextResponder = [next nextResponder];
+        if ([nextResponder isKindOfClass:[UIViewController class]]) {
+            return (UIViewController*)nextResponder;
+        }
+    }
+    return nil;
 }
 @end
 

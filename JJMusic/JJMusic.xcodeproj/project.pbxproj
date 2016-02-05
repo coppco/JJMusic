@@ -12,6 +12,11 @@
 		CC30430D1C5B454B0079683D /* FMDBCreateTable.m in Sources */ = {isa = PBXBuildFile; fileRef = CC30430C1C5B454B0079683D /* FMDBCreateTable.m */; };
 		CC3043171C5B47840079683D /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC3043161C5B47840079683D /* BaseViewController.m */; };
 		CC30431D1C5B48450079683D /* BaseData.m in Sources */ = {isa = PBXBuildFile; fileRef = CC30431C1C5B48450079683D /* BaseData.m */; };
+		CC4829591C6053730098E0DD /* LockItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC4829581C6053730098E0DD /* LockItemView.m */; };
+		CC48295C1C608BF80098E0DD /* MyLockView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC48295B1C608BF80098E0DD /* MyLockView.m */; };
+		CC48295F1C60A7600098E0DD /* LockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC48295E1C60A7600098E0DD /* LockViewController.m */; };
+		CC4829621C60ADCA0098E0DD /* LockIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC4829611C60ADCA0098E0DD /* LockIndicatorView.m */; };
+		CC49C1351C61FDEB0001F5BA /* LockModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CC49C1341C61FDEB0001F5BA /* LockModel.m */; };
 		CC6189651C5B4F8600D72270 /* GuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC6189641C5B4F8600D72270 /* GuideViewController.m */; };
 		CC6189861C5B55F000D72270 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CC61896C1C5B55EF00D72270 /* Info.plist */; };
 		CC6189871C5B55F000D72270 /* MASCompositeConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = CC61896E1C5B55EF00D72270 /* MASCompositeConstraint.m */; };
@@ -95,6 +100,16 @@
 		CC3043161C5B47840079683D /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
 		CC30431B1C5B48450079683D /* BaseData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseData.h; sourceTree = "<group>"; };
 		CC30431C1C5B48450079683D /* BaseData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseData.m; sourceTree = "<group>"; };
+		CC4829571C6053730098E0DD /* LockItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LockItemView.h; sourceTree = "<group>"; };
+		CC4829581C6053730098E0DD /* LockItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LockItemView.m; sourceTree = "<group>"; };
+		CC48295A1C608BF80098E0DD /* MyLockView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyLockView.h; sourceTree = "<group>"; };
+		CC48295B1C608BF80098E0DD /* MyLockView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyLockView.m; sourceTree = "<group>"; };
+		CC48295D1C60A7600098E0DD /* LockViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LockViewController.h; sourceTree = "<group>"; };
+		CC48295E1C60A7600098E0DD /* LockViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LockViewController.m; sourceTree = "<group>"; };
+		CC4829601C60ADCA0098E0DD /* LockIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LockIndicatorView.h; sourceTree = "<group>"; };
+		CC4829611C60ADCA0098E0DD /* LockIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LockIndicatorView.m; sourceTree = "<group>"; };
+		CC49C1331C61FDEB0001F5BA /* LockModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LockModel.h; sourceTree = "<group>"; };
+		CC49C1341C61FDEB0001F5BA /* LockModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LockModel.m; sourceTree = "<group>"; };
 		CC6189631C5B4F8600D72270 /* GuideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuideViewController.h; sourceTree = "<group>"; };
 		CC6189641C5B4F8600D72270 /* GuideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuideViewController.m; sourceTree = "<group>"; };
 		CC61896C1C5B55EF00D72270 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -231,6 +246,7 @@
 		CC3043101C5B471B0079683D /* Class */ = {
 			isa = PBXGroup;
 			children = (
+				CC4829541C6053310098E0DD /* GestureLock */,
 				CC61896A1C5B55DF00D72270 /* Third */,
 				CC6189661C5B514A00D72270 /* Home */,
 				CC6189621C5B4F7800D72270 /* Guide */,
@@ -272,6 +288,47 @@
 				CC3043161C5B47840079683D /* BaseViewController.m */,
 			);
 			path = BaseViewController;
+			sourceTree = "<group>";
+		};
+		CC4829541C6053310098E0DD /* GestureLock */ = {
+			isa = PBXGroup;
+			children = (
+				CC4829551C6053590098E0DD /* Controller */,
+				CC49C1321C61FDD70001F5BA /* Model */,
+				CC4829561C6053590098E0DD /* View */,
+			);
+			path = GestureLock;
+			sourceTree = "<group>";
+		};
+		CC4829551C6053590098E0DD /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				CC48295D1C60A7600098E0DD /* LockViewController.h */,
+				CC48295E1C60A7600098E0DD /* LockViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		CC4829561C6053590098E0DD /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CC4829571C6053730098E0DD /* LockItemView.h */,
+				CC4829581C6053730098E0DD /* LockItemView.m */,
+				CC48295A1C608BF80098E0DD /* MyLockView.h */,
+				CC48295B1C608BF80098E0DD /* MyLockView.m */,
+				CC4829601C60ADCA0098E0DD /* LockIndicatorView.h */,
+				CC4829611C60ADCA0098E0DD /* LockIndicatorView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CC49C1321C61FDD70001F5BA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CC49C1331C61FDEB0001F5BA /* LockModel.h */,
+				CC49C1341C61FDEB0001F5BA /* LockModel.m */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		CC6189621C5B4F7800D72270 /* Guide */ = {
@@ -754,15 +811,20 @@
 				CC6189891C5B55F000D72270 /* MASConstraintMaker.m in Sources */,
 				CCFFF1AE1C5B1668008A5A06 /* AppDelegate.m in Sources */,
 				CC30430D1C5B454B0079683D /* FMDBCreateTable.m in Sources */,
+				CC4829591C6053730098E0DD /* LockItemView.m in Sources */,
 				CC6189901C5B55F000D72270 /* ViewController+MASAdditions.m in Sources */,
 				CCFFF20E1C5B37C8008A5A06 /* CheckNetworkStatus.m in Sources */,
 				CC30430A1C5B45410079683D /* FMDBHandle.m in Sources */,
 				CCFFF20B1C5B3752008A5A06 /* Reachability.m in Sources */,
 				CCFFF1FA1C5B33CE008A5A06 /* HJCommonTools.m in Sources */,
+				CC48295F1C60A7600098E0DD /* LockViewController.m in Sources */,
 				CC6189871C5B55F000D72270 /* MASCompositeConstraint.m in Sources */,
+				CC4829621C60ADCA0098E0DD /* LockIndicatorView.m in Sources */,
 				CC61898D1C5B55F000D72270 /* NSArray+MASAdditions.m in Sources */,
 				CCFFF1AB1C5B1668008A5A06 /* main.m in Sources */,
 				CCFFF2121C5B3AC6008A5A06 /* HttpHandleTool.m in Sources */,
+				CC48295C1C608BF80098E0DD /* MyLockView.m in Sources */,
+				CC49C1351C61FDEB0001F5BA /* LockModel.m in Sources */,
 				CC61898F1C5B55F000D72270 /* View+MASAdditions.m in Sources */,
 				CC65A7A51C5F390C00E6C2AF /* TopTitleView.m in Sources */,
 				CC61898C1C5B55F000D72270 /* MASViewConstraint.m in Sources */,

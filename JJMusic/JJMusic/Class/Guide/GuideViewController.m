@@ -21,7 +21,7 @@ HJpropertyStrong(UIButton *skipButton);  //跳过button
 
 - (void)viewDidLoad {
 //    self.navigationController.navigationBarHidden = YES;
-//    [self.navigationController setNavigationBarHidden:YES animated:YES];
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
     //设置图片
@@ -65,7 +65,7 @@ HJpropertyStrong(UIButton *skipButton);  //跳过button
     _collectionView.delegate = self;
     _collectionView.dataSource = self;
     _collectionView.showsHorizontalScrollIndicator = NO;
-//    _collectionView.backgroundColor = ColorClear;
+    _collectionView.backgroundColor = ColorClear;
     [self.view addSubview:_collectionView];
     
     _pageController = [[UIPageControl alloc] init];
@@ -117,15 +117,15 @@ HJpropertyStrong(UIButton *skipButton);  //跳过button
 - (void)imageChange:(UIPageControl *)page {
     [_collectionView setContentOffset:CGPointMake(KMainScreenWidth * page.currentPage, 0) animated:YES];
 }
-//隐藏状态栏
--(BOOL)prefersStatusBarHidden {
-    return YES;
-}
+////隐藏状态栏
+//-(BOOL)prefersStatusBarHidden {
+//    return YES;
+//}
 //进入App
 - (void)enter:(UIButton *)button {
     userDefaultSetValueKey(@YES, isFirstLoad);
     HomeViewController *homeVC = [[HomeViewController alloc] init];
-    getAppWindow().rootViewController = homeVC;
+    getAppWindow().rootViewController = [[UINavigationController alloc] initWithRootViewController:homeVC];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -40,6 +40,11 @@ typedef NS_ENUM(NSInteger, CaptureType) {
     CaptureTypeBoth,  //沙盒和相册
     CaptureTypeNone  //不保存
 };
+//动画类型
+typedef enum {
+    AnimateTypeBig,  //放大
+    AnimateTypeSmall,  //缩小
+}AnimateType;
 @interface HJCommonTools : NSObject
 #pragma mark - 不带秘钥的加密的方法
 /**
@@ -542,7 +547,7 @@ AppDelegate *getApp();
 UIWindow *getAppWindow();
 #pragma mark - 快捷alloc方法
 /**
- *  <#Description#>
+ *  UILabel方法
  *
  *  @param title         标题
  *  @param frame         frame
@@ -557,6 +562,58 @@ UIWindow *getAppWindow();
  *  @return
  */
 + (UILabel *)allocLabelWithTitle:(NSString *)title frame:(CGRect)frame font:(UIFont *)font color:(UIColor *)color alignment:(NSTextAlignment)textAlignment keyWords:(NSString *)keyWords keyWordsColor:(UIColor *)keyWordsColor keyWordsFont:(UIFont *)keyWordsFont underLine:(BOOL)underLine;
+/**
+ *  UIButton方法
+ *
+ *  @param rect            范围
+ *  @param title           标题
+ *  @param color           颜色
+ *  @param font            字体大小
+ *  @param normalImage     正常图片
+ *  @param highImage     高亮图片
+ *  @param normalBackImage 正常背景图片
+ *  @param highBackImage 高亮背景图片
+ *
+ *  @return 
+ */
++ (UIButton *)allocButtonWithFrame:(CGRect)frame title:(NSString *)title titleColor:(UIColor *)color font:(UIFont *)font normalImage:(UIImage *)normalImage highImage:(UIImage *)highImage normalBackImage:(UIImage *)normalBackImage highBackImage:(UIImage *)highBackImage;
+/**
+ *  UIImageView方法
+ *
+ *  @param image 图片
+ *  @param frame 范围
+ *  @param mode  图片填充样式
+ *
+ *  @return 
+ */
++ (UIImageView *)allocImageViewWith:(UIImage *)image frame:(CGRect)frame contentMode:(UIViewContentMode)mode;
+
+#pragma mark - 动画相关
+/**
+ *  抖动动画
+ *
+ *  @param view 哪个视图抖动
+ */
++ (void)animationShakeForView:(UIView *)view;
+/**
+ *  慢慢变大或者变小的渐进动画
+ *
+ *  @param view   哪个视图做动画
+ *  @param type   动画类型,放大或者缩小
+ *  @param rotate 是否旋转一点
+ *  @param  delegate  代理
+ */
++ (void)animationGradualForView:(UIView *)view type:(AnimateType)type isRotateFow:(BOOL)rotate delegate:(id)delegate;
+
+#pragma mark - 获取view的controller
+/**
+ *  获取view的Controller
+ *
+ *  @param view 视图
+ *
+ *  @return 
+ */
++ (UIViewController *)getControllerForView:(UIView *)view;
 @end
 
 

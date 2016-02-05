@@ -9,6 +9,8 @@
 #import "AppDelegate.h"
 #import "GuideViewController.h"
 #import "HomeViewController.h"
+#import "LockViewController.h"
+#import "LockModel.h"
 @interface AppDelegate ()
 
 @end
@@ -50,9 +52,17 @@
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
-    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    if ([LockModel getPassword].length != 0) {
+        [self showLockViewController:LockViewTypeCheck];
+    }
 }
-
+- (void)showLockViewController:(LockViewType)type {
+    if (self.window.rootViewController.presentingViewController == nil) {
+        LockViewController *lvc = [[LockViewController alloc] initWithType:type];
+        lvc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+        [self.window.rootViewController presentViewController:lvc animated:YES completion:nil];
+    }
+}
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }

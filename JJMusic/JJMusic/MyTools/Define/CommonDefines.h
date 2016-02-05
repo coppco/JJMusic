@@ -91,4 +91,6 @@
 #define NSDDLog(FORMAT, ...) nil
 #endif
 
+#define alert(msg) {UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:msg delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil]; [alert show];}
+
 #endif /* CommonDefines_h */
