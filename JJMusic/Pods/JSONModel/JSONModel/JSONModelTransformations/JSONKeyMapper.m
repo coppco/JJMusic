@@ -1,26 +1,24 @@
 //
 //  JSONKeyMapper.m
 //
-//  @version 1.2
-//  @author Marin Todorov (http://www.underplot.com) and contributors
+//  @version 1.0.2
+//  @author Marin Todorov, http://www.touch-code-magazine.com
 //
 
-// Copyright (c) 2012-2015 Marin Todorov, Underplot ltd.
+// Copyright (c) 2012-2014 Marin Todorov, Underplot ltd.
 // This code is distributed under the terms and conditions of the MIT license.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 // The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
-
+// The MIT License in plain English: http://www.touch-code-magazine.com/JSONModel/MITLicense
 
 #import "JSONKeyMapper.h"
-#import <libkern/OSAtomic.h>
 
 @interface JSONKeyMapper()
 @property (nonatomic, strong) NSMutableDictionary *toModelMap;
 @property (nonatomic, strong) NSMutableDictionary *toJSONMap;
-@property (nonatomic, assign) OSSpinLock lock;
 @end
 
 @implementation JSONKeyMapper
@@ -42,48 +40,30 @@
     self = [self init];
     
     if (self) {
-        
-        __weak JSONKeyMapper* weakSelf = self;
-        
-        _JSONToModelKeyBlock = [^NSString* (NSString* keyName) {
-            
-            __strong JSONKeyMapper* strongSelf = weakSelf;
+        __weak JSONKeyMapper *myself = self;
+        //the json to model convertion block
+        _JSONToModelKeyBlock = ^NSString*(NSString* keyName) {
 
             //try to return cached transformed key
-            if (strongSelf.toModelMap[keyName]) {
-                return strongSelf.toModelMap[keyName];
-            }
+            if (myself.toModelMap[keyName]) return myself.toModelMap[keyName];
             
             //try to convert the key, and store in the cache
             NSString* result = toModel(keyName);
-            
-            OSSpinLockLock(&strongSelf->_lock);
-            strongSelf.toModelMap[keyName] = result;
-            OSSpinLockUnlock(&strongSelf->_lock);
-            
+            myself.toModelMap[keyName] = result;
             return result;
-            
-        } copy];
+        };
         
-        _modelToJSONKeyBlock = [^NSString* (NSString* keyName) {
-            
-            __strong JSONKeyMapper *strongSelf = weakSelf;
+        _modelToJSONKeyBlock = ^NSString*(NSString* keyName) {
             
             //try to return cached transformed key
-            if (strongSelf.toJSONMap[keyName]) {
-                return strongSelf.toJSONMap[keyName];
-            }
+            if (myself.toJSONMap[keyName]) return myself.toJSONMap[keyName];
             
             //try to convert the key, and store in the cache
             NSString* result = toJSON(keyName);
-            
-            OSSpinLockLock(&strongSelf->_lock);
-            strongSelf.toJSONMap[keyName] = result;
-            OSSpinLockUnlock(&strongSelf->_lock);
-            
+            myself.toJSONMap[keyName] = result;
             return result;
             
-        } copy];
+        };
         
     }
     
@@ -201,37 +181,6 @@
     return [[self alloc] initWithJSONToModelBlock:toModel
                                  modelToJSONBlock:toJSON];
 
-}
-
-+ (instancetype)mapper:(JSONKeyMapper *)baseKeyMapper withExceptions:(NSDictionary *)exceptions
-{
-    NSArray *keys = exceptions.allKeys;
-    NSArray *values = [exceptions objectsForKeys:keys notFoundMarker:[NSNull null]];
-
-    NSDictionary *toModelMap = [NSDictionary dictionaryWithObjects:values forKeys:keys];
-    NSDictionary *toJsonMap = [NSDictionary dictionaryWithObjects:keys forKeys:values];
-
-    JSONModelKeyMapBlock toModel = ^NSString *(NSString *keyName) {
-        if (!keyName)
-            return nil;
-
-        if (toModelMap[keyName])
-            return toModelMap[keyName];
-
-        return baseKeyMapper.JSONToModelKeyBlock(keyName);
-    };
-
-    JSONModelKeyMapBlock toJson = ^NSString *(NSString *keyName) {
-        if (!keyName)
-            return nil;
-
-        if (toJsonMap[keyName])
-            return toJsonMap[keyName];
-
-        return baseKeyMapper.modelToJSONKeyBlock(keyName);
-    };
-
-    return [[self alloc] initWithJSONToModelBlock:toModel modelToJSONBlock:toJson];
 }
 
 @end

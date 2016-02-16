@@ -86,9 +86,9 @@
 /*========================NSLog=======================*/
 #ifdef DEBUG
 //#define NSLog(FORMAT, ...) fprintf(stderr,"当前时间:%s \t%s:%d　\t%s\n\n", [HJCommonTools getCurrentDate].UTF8Sting,[[[NSString stringWithUTF8String:__FILE__] lastPathComponent] UTF8String], __LINE__, [[NSString stringWithFormat:FORMAT, ##__VA_ARGS__] UTF8String]);
-#define NSDDLog(FORMAT, ...) NSLog(@"%@:%d行   \n%@", [[NSString stringWithUTF8String:__FILE__] lastPathComponent], __LINE__, [NSString stringWithFormat:FORMAT, ##__VA_ARGS__])
+#define XHJLog(FORMAT, ...) NSLog(@"%@:%d行   \n%@", [[NSString stringWithUTF8String:__FILE__] lastPathComponent], __LINE__, [NSString stringWithFormat:FORMAT, ##__VA_ARGS__])
 #else
-#define NSDDLog(FORMAT, ...) nil
+#define XHJLog(FORMAT, ...) nil
 #endif
 
 #define alert(msg) {UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:msg delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil]; [alert show];}

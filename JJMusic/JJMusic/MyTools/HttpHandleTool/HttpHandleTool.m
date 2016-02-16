@@ -10,7 +10,11 @@
 #import <AFNetworking.h>
 @implementation HttpHandleTool
 //GET、POST 请求
-+ (void)requestWithType:(HJNetworkType)networkType URLString:(NSString *)url params:(NSDictionary *)params showHUD:(BOOL)showHUD inView:(UIView *)view successBlock:(void (^)(id))successBlock failedBlock:(void (^)(NSError *))failedBlock {
++ (void)requestWithType:(HJNetworkType)networkType URLString:(NSString *)url params:(NSDictionary *)params showHUD:(BOOL)showHUD inView:(UIView *)view cache:(BOOL)cache successBlock:(void (^)(id))successBlock failedBlock:(void (^)(NSError *))failedBlock {
+    //归档地址
+    NSString *path = pathCachesFilePathName(@"networkRequest", STRFORMAT(@"%ld.xxoo", [url hash]));
+    XHJLog(@" %@", path);
+    
     if (ISIOS_7_0) {
         url = [url stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
     } else {
@@ -49,11 +53,16 @@
             [session GET:url parameters:params progress:^(NSProgress * _Nonnull downloadProgress) {
                 
             } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-                NSLog(@"请求成功:\n*** 请求接口URL: %@\n参数:\n%@\n返回数据:\n%@\n", url, [params description], responseObject);
+//                NSLog(@"请求成功:\n*** 请求接口URL: %@\n参数:\n%@\n返回数据:\n%@\n", url, [params description], responseObject);
+                NSLog(@"请求成功:\n*** 请求接口URL: %@\n参数:\n%@\n", url, [params description]);
                 if (showHUD) {
                     
                 }
                 if (successBlock) {
+                    //存在caches中
+                    if (responseObject != nil && cache) {
+                        [NSKeyedArchiver archiveRootObject:responseObject toFile:path];
+                    }
                     successBlock(responseObject);
                 }
             } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
@@ -61,9 +70,14 @@
                 if (showHUD) {
                     
                 }
-                
-                if (failedBlock) {
-                    failedBlock(error);
+                //请求失败的时候,从caches中取,取到的数据不为空
+                id data = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
+                if (data != nil && cache) {
+                    successBlock(data);
+                } else {
+                    if (failedBlock) {
+                        failedBlock(error);
+                    }
                 }
             }];
         }
@@ -78,6 +92,10 @@
                     
                 }
                 if (successBlock) {
+                    //存在caches中
+                    if (responseObject != nil && cache) {
+                        [NSKeyedArchiver archiveRootObject:responseObject toFile:path];
+                    }
                     successBlock(responseObject);
                 }
                 
@@ -86,9 +104,14 @@
                 if (showHUD) {
                     
                 }
-                
-                if (failedBlock) {
-                    failedBlock(error);
+                //请求失败的时候,从caches中取,取到的数据不为空
+                id data = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
+                if (data != nil && cache) {
+                    successBlock(data);
+                } else {
+                    if (failedBlock) {
+                        failedBlock(error);
+                    }
                 }
             }];
         }

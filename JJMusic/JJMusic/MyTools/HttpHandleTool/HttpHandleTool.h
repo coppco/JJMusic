@@ -20,10 +20,11 @@ typedef NS_ENUM(NSInteger, HJNetworkType) {
  *  @param params      网络请求参数
  *  @param showHUD     是否显示HUD
  *  @param view         需要显示HUD的view
+ *  @param cache      是否需要缓存,YES  请求成功后存在caches中,无网络下从cache中取
  *  @param finishBlock 请求成功后的后block (JSON数据)
  *  @param failedBlock 请求失败后的block (错误信息)
  */
-+ (void)requestWithType:(HJNetworkType)networkType URLString:(NSString *)url params:(NSDictionary *)params showHUD:(BOOL)showHUD inView:(UIView *)view successBlock:(void(^)(id responseObject))successBlock failedBlock:(void(^)(NSError *error))failedBlock;
++ (void)requestWithType:(HJNetworkType)networkType URLString:(NSString *)url params:(NSDictionary *)params showHUD:(BOOL)showHUD inView:(UIView *)view cache:(BOOL)cache successBlock:(void(^)(id responseObject))successBlock failedBlock:(void(^)(NSError *error))failedBlock;
 /**
  *  上传图片 POST
  *

@@ -40,11 +40,38 @@ typedef NS_ENUM(NSInteger, CaptureType) {
     CaptureTypeBoth,  //沙盒和相册
     CaptureTypeNone  //不保存
 };
-//动画类型
+// 渐进动画类型
 typedef enum {
     AnimateTypeBig,  //放大
     AnimateTypeSmall,  //缩小
 }AnimateType;
+
+//一些动画类型
+typedef NS_ENUM(NSInteger, HJAnimationType) {
+    HJAnimationTypeFade = 1,                   //淡入淡出
+    HJAnimationTypePush,                       //推挤
+    HJAnimationTypeReveal,                     //揭开
+    HJAnimationTypeMoveIn,                     //覆盖
+    HJAnimationTypeCube,                       //立方体
+    HJAnimationTypeSuckEffect,                 //吮吸
+    HJAnimationTypeOglFlip,                    //翻转
+    HJAnimationTypeRippleEffect,               //波纹
+    HJAnimationTypePageCurl,                   //翻页
+    HJAnimationTypePageUnCurl,                 //反翻页
+    HJAnimationTypeCameraIrisHollowOpen,       //开镜头
+    HJAnimationTypeCameraIrisHollowClose,      //关镜头
+    HJAnimationTypeCurlDown,                   //下翻页
+    HJAnimationTypeCurlUp,                     //上翻页
+    HJAnimationTypeFlipFromLeft,               //左翻转
+    HJAnimationTypeFlipFromRight,              //右翻转
+};
+//动画方向
+typedef NS_ENUM(NSInteger, DirectionType) {
+    DirectionTypeLeft = 1, //左
+    DirectionTypeRight, //右
+    DirectionTypeBottom,  //下
+    DirectionTypeTop,  //上
+};
 @interface HJCommonTools : NSObject
 #pragma mark - 不带秘钥的加密的方法
 /**
@@ -603,8 +630,17 @@ UIWindow *getAppWindow();
  *  @param rotate 是否旋转一点
  *  @param  delegate  代理
  */
-+ (void)animationGradualForView:(UIView *)view type:(AnimateType)type isRotateFow:(BOOL)rotate delegate:(id)delegate;
 
++ (void)animationGradualForView:(UIView *)view type:(AnimateType)type isRotateFow:(BOOL)rotate delegate:(id)delegate;
+/**
+ *    CATransition核心动画
+ *
+ *  @param view      做动画的view
+ *  @param duration  动画时间间隔
+ *  @param type      动画类型
+ *  @param direction 方向
+ */
++ (void)animationCATransitionForView:(UIView *)view duration:(NSTimeInterval)duration type:(HJAnimationType)type direction:(DirectionType)direction;
 #pragma mark - 获取view的controller
 /**
  *  获取view的Controller

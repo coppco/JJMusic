@@ -82,7 +82,7 @@ HJpropertyCopy(NSString* passwordconfirm); // 确认密码
     
     //本地保存的密码
     self.passwordSaved = [LockModel getPassword];
-    NSDDLog(@"本地密码%@", self.passwordSaved);
+    XHJLog(@"本地密码%@", self.passwordSaved);
     if (_type == LockViewTypeCreate || _type == LockViewTypeModify) {
         self.indicatorView.hidden = NO;
     } else {
@@ -138,7 +138,7 @@ HJpropertyCopy(NSString* passwordconfirm); // 确认密码
     self.lockView = [[MyLockView alloc] initWithFrame:CGRectMake(0, ViewMaxY(self.indicatorView) + 20, ViewW(self.view), ViewW(self.view) - 72)];
     WeakObject(weakSelf);  //定义weak的self
     [self.lockView setCheckPassword:^(NSString *password) {
-        NSDDLog(@"密码:%@", password);
+        XHJLog(@"密码:%@", password);
         [weakSelf lockPassword:password];
     }];
     [self.view addSubview:self.lockView];
@@ -300,7 +300,7 @@ HJpropertyCopy(NSString* passwordconfirm); // 确认密码
     }
     if (_type == LockViewTypeCheck) {
         if (buttonIndex == 0) {
-            NSDDLog(@"强制返回登录页面,置空手势密码");
+            XHJLog(@"强制返回登录页面,置空手势密码");
             [self dismissViewControllerAnimated:YES completion:nil];
             [LockModel saveLockPassword:nil];
         }

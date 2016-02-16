@@ -7,7 +7,7 @@
 //
 
 #import "FMDBHandle.h"
-static FMDatabaseQueue *my_FMDatabaseQueue=nil;
+static FMDatabaseQueue *my_FMDatabaseQueue = nil;
 static FMDatabase *DB = nil;
 @implementation FMDBHandle
 + (NSString *)getDatabaseFile {

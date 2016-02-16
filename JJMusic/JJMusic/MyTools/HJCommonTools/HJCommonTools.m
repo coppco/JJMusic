@@ -1154,12 +1154,12 @@ UIWindow *getAppWindow() {
     [animation setAutoreverses:YES]; // 平滑结束
     [animation setDuration:0.08];
     [animation setRepeatCount:3];
-    NSDDLog(@"抖动动画");
+    XHJLog(@"抖动动画");
     [viewLayer addAnimation:animation forKey:nil];
 }
 //渐进动画
 + (void)animationGradualForView:(UIView *)view type:(AnimateType)type isRotateFow:(BOOL)rotate delegate:(id)delegate{
-    NSDDLog(@"渐进动画");
+    XHJLog(@"渐进动画");
     if (rotate) {
         view.transform = CGAffineTransformRotate(view.transform, M_1_PI);
     }
@@ -1192,6 +1192,136 @@ UIWindow *getAppWindow() {
     group.removedOnCompletion = NO;
     [view.layer addAnimation:group forKey:nil];
     
+}
+//CATransition 核心动画
++ (void)animationCATransitionForView:(UIView *)view duration:(NSTimeInterval)duration type:(HJAnimationType)type direction:(DirectionType)direction {
+    if (type == 0) {
+        type = 1;
+    }
+    if (direction == 0) {
+        direction = 1;
+    }
+    if (view == nil) {
+        return;
+    }
+    if (duration <= 0) {
+        duration = 1;
+    }
+    
+    NSString *subtypeString = nil;
+    switch (direction) {
+        case DirectionTypeBottom:
+            subtypeString = kCATransitionFromBottom;
+            break;
+        case DirectionTypeLeft:
+            subtypeString = kCATransitionFromLeft;
+            break;
+        case DirectionTypeRight:
+            subtypeString = kCATransitionFromRight;
+            break;
+        case DirectionTypeTop:
+            subtypeString = kCATransitionFromTop;
+            break;
+        default:
+            break;
+    }
+    
+    switch (type) {
+        case HJAnimationTypeFade:
+            [self transitionWithType:kCATransitionFade WithSubtype:subtypeString duration:duration ForView:view];
+            break;
+            
+        case HJAnimationTypePush:
+            [self transitionWithType:kCATransitionPush WithSubtype:subtypeString duration:duration ForView:view];
+            break;
+            
+        case HJAnimationTypeReveal:
+            [self transitionWithType:kCATransitionReveal WithSubtype:subtypeString duration:duration ForView:view];
+            break;
+            
+        case HJAnimationTypeMoveIn:
+            [self transitionWithType:kCATransitionMoveIn WithSubtype:subtypeString duration:duration ForView:view];
+            break;
+            
+        case HJAnimationTypeCube:
+            [self transitionWithType:@"cube" WithSubtype:subtypeString duration:duration ForView:view];
+            break;
+            
+        case HJAnimationTypeSuckEffect:
+            [self transitionWithType:@"suckEffect" WithSubtype:subtypeString duration:duration ForView:view];
+            break;
+            
+        case HJAnimationTypeOglFlip:
+            [self transitionWithType:@"oglFlip" WithSubtype:subtypeString duration:duration ForView:view];
+            break;
+            
+        case HJAnimationTypeRippleEffect:
+            [self transitionWithType:@"rippleEffect" WithSubtype:subtypeString duration:duration ForView:view];
+            break;
+            
+        case HJAnimationTypePageCurl:
+            [self transitionWithType:@"pageCurl" WithSubtype:subtypeString duration:duration ForView:view];
+            break;
+            
+        case HJAnimationTypePageUnCurl:
+            [self transitionWithType:@"pageUnCurl" WithSubtype:subtypeString duration:duration ForView:view];
+            break;
+            
+        case HJAnimationTypeCameraIrisHollowOpen:
+            [self transitionWithType:@"cameraIrisHollowOpen" WithSubtype:subtypeString duration:duration ForView:view];
+            break;
+            
+        case HJAnimationTypeCameraIrisHollowClose:
+            [self transitionWithType:@"cameraIrisHollowClose" WithSubtype:subtypeString duration:duration ForView:view];
+            break;
+            
+        case HJAnimationTypeCurlDown:
+            [self animationWithView:view WithAnimationTransition:UIViewAnimationTransitionCurlDown duration:duration];
+            break;
+            
+        case HJAnimationTypeCurlUp:
+            [self animationWithView:view WithAnimationTransition:UIViewAnimationTransitionCurlUp duration:duration];
+            break;
+            
+        case HJAnimationTypeFlipFromLeft:
+            [self animationWithView:view WithAnimationTransition:UIViewAnimationTransitionFlipFromLeft duration:duration];
+            break;
+            
+        case HJAnimationTypeFlipFromRight:
+            [self animationWithView:view WithAnimationTransition:UIViewAnimationTransitionFlipFromRight duration:duration];
+            break;
+            
+        default:
+            break;
+    }
+    
+}
+#pragma CATransition动画实现
++ (void)transitionWithType:(NSString *) type WithSubtype:(NSString *) subtype duration:(NSTimeInterval)duration ForView : (UIView *) view {
+    //1. 创建CATransition对象
+    CATransition *animation = [CATransition animation];
+    
+    //2. 设置时间
+    animation.duration = duration;
+    
+    //设置type
+    animation.type = type;
+    if (subtype != nil) {
+        //设置子类
+        animation.subtype = subtype;
+    }
+    //设置运动速度
+    animation.timingFunction = UIViewAnimationOptionCurveEaseInOut;
+    
+    [view.layer addAnimation:animation forKey:@"animation"];
+}
+#pragma UIView实现动画
++ (void) animationWithView:(UIView *)view WithAnimationTransition: (UIViewAnimationTransition)transition duration:(NSTimeInterval)duration
+{
+    [UIView animateWithDuration:duration animations:^{
+        [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+        [UIView setAnimationTransition:transition forView:view cache:YES];
+    }];
 }
 
 #pragma mark - 获取view的controller
