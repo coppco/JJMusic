@@ -9,6 +9,7 @@
 #import "RecommendView.h"
 #import "CarouselView.h"  //轮播图
 #import "RModel.h" //model
+#import "RecommendCell.h"  //cell
 @interface RecommendView ()<UITableViewDataSource, UITableViewDelegate>
 HJpropertyStrong(CarouselView *carouselView);
 @end
@@ -27,35 +28,64 @@ HJpropertyStrong(CarouselView *carouselView);
     _tableView.dataSource = self;
     _tableView.backgroundColor = ColorClear;
     //设置边框
-    _tableView.contentInset = UIEdgeInsetsMake(200, 0, 0, 0);
+//    _tableView.contentInset = UIEdgeInsetsMake(200, 0, 0, 0);
     [self addSubview:_tableView];
     
     //轮播图
     _carouselView = [[CarouselView alloc] initWithFrame:CGRectMake(0, 0, KMainScreenWidth, 200) loop:YES picture:nil cellSelect:^(UICollectionView *view, NSIndexPath *indexPath) {
         
     }];
-    [self addSubview:_carouselView];
+//    [self addSubview:_carouselView];
+    _tableView.tableHeaderView = _carouselView;
 }
 - (void)setRecommend:(RModel *)recommend {
     _recommend = recommend;
 
-    
     //轮播图赋值
     NSMutableArray *array = [NSMutableArray array];
     for (Focus *focus in _recommend.focus) {
         [array addObject:focus.randpic_iphone6];
     }
     _carouselView.array = array;
+    
+    [_tableView reloadData];
 }
 #pragma mark - UITableViewDelegate 和 UITableViewDataSource
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.row == 1 || indexPath.row == 5 || indexPath.row == 6) {
+        return 200;
+    }
+    if (indexPath.row == 0) {
+        return 240;
+    }
+    return 370;
+}
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 1;
+    return _recommend.module.count - 1;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    static NSString *reuse = @"cell";
+    RecommendCell *cell = [tableView dequeueReusableCellWithIdentifier:reuse];
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:(UITableViewCellStyleDefault) reuseIdentifier:@"cell"];
+        cell = [[RecommendCell alloc] initWithStyle:(UITableViewCellStyleDefault) reuseIdentifier:reuse];
     }
-    return cell;
+    
+    if (indexPath.row == 0) {
+        [cell setRModel:_recommend type:RTypeSong];
+    }else if (indexPath.row == 1) {
+        [cell setRModel:_recommend type:RTypeScene];
+    }else if (indexPath.row == 2) {
+        [cell setRModel:_recommend type:RTypeList];
+    }else if (indexPath.row == 3) {
+        [cell  setRModel:_recommend type:RTypeAlbum];
+    }else if (indexPath.row == 4) {
+        [cell  setRModel:_recommend type:RTypeLeBo];
+    }else if (indexPath.row == 5) {
+        [cell  setRModel:_recommend type:RTypeOne];
+    }else if (indexPath.row == 6) {
+        [cell  setRModel:_recommend type:RTypeKing];
+    }
+    return  cell;
 }
+
 @end

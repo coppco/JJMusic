@@ -29,7 +29,6 @@ HJpropertyStrong(UIScrollView *scrollView);
     self.title = @"乐库";
     [self initNavigation];
     [self initTitleView];
-    [self loadMusicRecommendData];
 }
 - (void)initNavigation {
     UIButton *button = [UIButton buttonWithType:(UIButtonTypeCustom)];
@@ -62,6 +61,12 @@ HJpropertyStrong(UIScrollView *scrollView);
     [self.view addSubview:_scrollView];
     
     _recommendV = [[RecommendView alloc] initWithFrame:CGRectMake(0, 0, KMainScreenWidth, ViewH(_scrollView))];
+    //下拉刷新
+    _recommendV.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        [self loadMusicRecommendData];
+    }];
+    //主动进入刷新状态
+    [_recommendV.tableView.mj_header beginRefreshing];
     [_scrollView addSubview:_recommendV];
 }
 - (void)loadMusicRecommendData {
@@ -69,8 +74,12 @@ HJpropertyStrong(UIScrollView *scrollView);
         RModel *model = [[RModel alloc] initWithDictionary:responseObject error:nil];
         _recommendV.recommend = model;
         
-    } failedBlock:^(NSError *error) {
+        //结束刷新状态
+        [_recommendV.tableView.mj_header endRefreshing];
         
+    } failedBlock:^(NSError *error) {
+        //结束刷新状态
+        [_recommendV.tableView.mj_header endRefreshing];
     }];
 }
 

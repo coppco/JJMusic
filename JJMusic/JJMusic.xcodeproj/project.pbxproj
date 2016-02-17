@@ -22,6 +22,8 @@
 		CC48295F1C60A7600098E0DD /* LockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC48295E1C60A7600098E0DD /* LockViewController.m */; };
 		CC4829621C60ADCA0098E0DD /* LockIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC4829611C60ADCA0098E0DD /* LockIndicatorView.m */; };
 		CC49C1351C61FDEB0001F5BA /* LockModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CC49C1341C61FDEB0001F5BA /* LockModel.m */; };
+		CC4BFEC81C73FE2A0093F89F /* RecommendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CC4BFEC71C73FE2A0093F89F /* RecommendCell.m */; };
+		CC4BFECD1C7406F50093F89F /* HJButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CC4BFECC1C7406F50093F89F /* HJButton.m */; };
 		CC5D1F591C72CCC700E2BC2A /* RModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CC5D1F581C72CCC700E2BC2A /* RModel.m */; };
 		CC6189651C5B4F8600D72270 /* GuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC6189641C5B4F8600D72270 /* GuideViewController.m */; };
 		CC6189861C5B55F000D72270 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CC61896C1C5B55EF00D72270 /* Info.plist */; };
@@ -126,6 +128,10 @@
 		CC4829611C60ADCA0098E0DD /* LockIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LockIndicatorView.m; sourceTree = "<group>"; };
 		CC49C1331C61FDEB0001F5BA /* LockModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LockModel.h; sourceTree = "<group>"; };
 		CC49C1341C61FDEB0001F5BA /* LockModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LockModel.m; sourceTree = "<group>"; };
+		CC4BFEC61C73FE2A0093F89F /* RecommendCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecommendCell.h; sourceTree = "<group>"; };
+		CC4BFEC71C73FE2A0093F89F /* RecommendCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecommendCell.m; sourceTree = "<group>"; };
+		CC4BFECB1C7406F50093F89F /* HJButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJButton.h; sourceTree = "<group>"; };
+		CC4BFECC1C7406F50093F89F /* HJButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJButton.m; sourceTree = "<group>"; };
 		CC5D1F571C72CCC700E2BC2A /* RModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RModel.h; sourceTree = "<group>"; };
 		CC5D1F581C72CCC700E2BC2A /* RModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RModel.m; sourceTree = "<group>"; };
 		CC6189631C5B4F8600D72270 /* GuideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuideViewController.h; sourceTree = "<group>"; };
@@ -324,6 +330,8 @@
 				CC5D1F581C72CCC700E2BC2A /* RModel.m */,
 				CC36CDDE1C71BF7200505E05 /* RecommendView.h */,
 				CC36CDDF1C71BF7200505E05 /* RecommendView.m */,
+				CC4BFEC61C73FE2A0093F89F /* RecommendCell.h */,
+				CC4BFEC71C73FE2A0093F89F /* RecommendCell.m */,
 			);
 			path = Recommend;
 			sourceTree = "<group>";
@@ -404,6 +412,23 @@
 				CC49C1341C61FDEB0001F5BA /* LockModel.m */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		CC4BFEC91C7406D40093F89F /* Public */ = {
+			isa = PBXGroup;
+			children = (
+				CC4BFECA1C7406EA0093F89F /* UIButton */,
+			);
+			path = Public;
+			sourceTree = "<group>";
+		};
+		CC4BFECA1C7406EA0093F89F /* UIButton */ = {
+			isa = PBXGroup;
+			children = (
+				CC4BFECB1C7406F50093F89F /* HJButton.h */,
+				CC4BFECC1C7406F50093F89F /* HJButton.m */,
+			);
+			path = UIButton;
 			sourceTree = "<group>";
 		};
 		CC6189621C5B4F7800D72270 /* Guide */ = {
@@ -591,6 +616,7 @@
 		CCFFF1F01C5B33A4008A5A06 /* MyTools */ = {
 			isa = PBXGroup;
 			children = (
+				CC4BFEC91C7406D40093F89F /* Public */,
 				CC36CDE11C71D5DF00505E05 /* Category */,
 				CC36CDCD1C715FF400505E05 /* Carousel */,
 				CCFFF1F11C5B33A4008A5A06 /* CheckNetworkStatus */,
@@ -897,6 +923,7 @@
 				CCFFF20E1C5B37C8008A5A06 /* CheckNetworkStatus.m in Sources */,
 				CC30430A1C5B45410079683D /* FMDBHandle.m in Sources */,
 				CCFFF20B1C5B3752008A5A06 /* Reachability.m in Sources */,
+				CC4BFECD1C7406F50093F89F /* HJButton.m in Sources */,
 				CCFFF1FA1C5B33CE008A5A06 /* HJCommonTools.m in Sources */,
 				CC48295F1C60A7600098E0DD /* LockViewController.m in Sources */,
 				CC6189871C5B55F000D72270 /* MASCompositeConstraint.m in Sources */,
@@ -908,6 +935,7 @@
 				CC49C1351C61FDEB0001F5BA /* LockModel.m in Sources */,
 				CC61898F1C5B55F000D72270 /* View+MASAdditions.m in Sources */,
 				CC65A7A51C5F390C00E6C2AF /* TopTitleView.m in Sources */,
+				CC4BFEC81C73FE2A0093F89F /* RecommendCell.m in Sources */,
 				CC36CDE01C71BF7200505E05 /* RecommendView.m in Sources */,
 				CC5D1F591C72CCC700E2BC2A /* RModel.m in Sources */,
 				CC61898C1C5B55F000D72270 /* MASViewConstraint.m in Sources */,

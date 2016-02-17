@@ -94,7 +94,7 @@ HJpropertyCopy(NSString *desc);
 HJpropertyCopy(NSString *pic);
 HJpropertyCopy(NSString *type_id);
 HJpropertyCopy(NSString *type);
-HJpropertyCopy(NSString *title);
+HJpropertyCopy(NSString *title);  //标题
 HJpropertyCopy(NSString *tip_type);
 HJpropertyCopy(NSString *author);
 @end

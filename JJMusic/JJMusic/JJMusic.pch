@@ -16,4 +16,5 @@
 #import "HJCommonTools.h"  //通用方法
 #import "Masonry.h"  //布局
 #import "HttpHandleTool.h"  //http请求
+#import <MJRefresh.h>  //MJ刷新
 #endif /* JJMusic_pch */
