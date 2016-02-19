@@ -10,7 +10,7 @@
 #define AppDefines_h
 
 /*========================首次登陆=====================*/
-#define isFirstLoad  @"isFirstLoad"  //首次登陆
+#define DidLoad  @"isFirstLoad"  //首次登陆
 /*========================数据库=======================*/
 #define dbName @"JJMusic.sqlit"      //本地数据库
 #define FavouriteMusicTable    @"favouriteMusic_table"   //收藏的音乐

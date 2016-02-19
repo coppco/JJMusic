@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		9746DCC703D0B360B94D89FD /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146C9FB5452499ECF9DC6A8E /* libPods.a */; };
+		CC071EE21C76C30500494B4B /* KSong.m in Sources */ = {isa = PBXBuildFile; fileRef = CC071EE11C76C30500494B4B /* KSong.m */; };
+		CC071EE51C76C3DB00494B4B /* KPeople.m in Sources */ = {isa = PBXBuildFile; fileRef = CC071EE41C76C3DB00494B4B /* KPeople.m */; };
+		CC071EE81C76C45B00494B4B /* KSongView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC071EE71C76C45B00494B4B /* KSongView.m */; };
 		CC30430A1C5B45410079683D /* FMDBHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = CC3043091C5B45410079683D /* FMDBHandle.m */; };
 		CC30430D1C5B454B0079683D /* FMDBCreateTable.m in Sources */ = {isa = PBXBuildFile; fileRef = CC30430C1C5B454B0079683D /* FMDBCreateTable.m */; };
 		CC3043171C5B47840079683D /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC3043161C5B47840079683D /* BaseViewController.m */; };
@@ -24,7 +27,18 @@
 		CC49C1351C61FDEB0001F5BA /* LockModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CC49C1341C61FDEB0001F5BA /* LockModel.m */; };
 		CC4BFEC81C73FE2A0093F89F /* RecommendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CC4BFEC71C73FE2A0093F89F /* RecommendCell.m */; };
 		CC4BFECD1C7406F50093F89F /* HJButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CC4BFECC1C7406F50093F89F /* HJButton.m */; };
+		CC4BFED11C746B1A0093F89F /* DiyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CC4BFED01C746B1A0093F89F /* DiyModel.m */; };
+		CC4BFED41C746C080093F89F /* AllDiyView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC4BFED31C746C080093F89F /* AllDiyView.m */; };
 		CC5D1F591C72CCC700E2BC2A /* RModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CC5D1F581C72CCC700E2BC2A /* RModel.m */; };
+		CC6111561C755C3400747FD1 /* MuiscList.m in Sources */ = {isa = PBXBuildFile; fileRef = CC6111551C755C3400747FD1 /* MuiscList.m */; };
+		CC6111591C755FBB00747FD1 /* MusicListView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC6111581C755FBB00747FD1 /* MusicListView.m */; };
+		CC61115D1C758F2C00747FD1 /* SingerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CC61115C1C758F2C00747FD1 /* SingerModel.m */; };
+		CC6111601C75912C00747FD1 /* SingerView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC61115F1C75912C00747FD1 /* SingerView.m */; };
+		CC6111621C7597D700747FD1 /* singer.json in Resources */ = {isa = PBXBuildFile; fileRef = CC6111611C7597D700747FD1 /* singer.json */; };
+		CC6111651C7598BC00747FD1 /* SingerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CC6111641C7598BC00747FD1 /* SingerCell.m */; };
+		CC6111721C75BFC600747FD1 /* LeboModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CC61116F1C75BFC600747FD1 /* LeboModel.m */; };
+		CC6111731C75BFC600747FD1 /* RedRadio.m in Sources */ = {isa = PBXBuildFile; fileRef = CC6111711C75BFC600747FD1 /* RedRadio.m */; };
+		CC6111761C75BFE000747FD1 /* RadioView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC6111751C75BFE000747FD1 /* RadioView.m */; };
 		CC6189651C5B4F8600D72270 /* GuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC6189641C5B4F8600D72270 /* GuideViewController.m */; };
 		CC6189861C5B55F000D72270 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CC61896C1C5B55EF00D72270 /* Info.plist */; };
 		CC6189871C5B55F000D72270 /* MASCompositeConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = CC61896E1C5B55EF00D72270 /* MASCompositeConstraint.m */; };
@@ -99,6 +113,12 @@
 		146C9FB5452499ECF9DC6A8E /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		52A6DE65D160A8567AE7309D /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		8DA7407E49608E128A874C11 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		CC071EE01C76C30500494B4B /* KSong.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSong.h; sourceTree = "<group>"; };
+		CC071EE11C76C30500494B4B /* KSong.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSong.m; sourceTree = "<group>"; };
+		CC071EE31C76C3DB00494B4B /* KPeople.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KPeople.h; sourceTree = "<group>"; };
+		CC071EE41C76C3DB00494B4B /* KPeople.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KPeople.m; sourceTree = "<group>"; };
+		CC071EE61C76C45B00494B4B /* KSongView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSongView.h; sourceTree = "<group>"; };
+		CC071EE71C76C45B00494B4B /* KSongView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSongView.m; sourceTree = "<group>"; };
 		CC3043081C5B45410079683D /* FMDBHandle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDBHandle.h; sourceTree = "<group>"; };
 		CC3043091C5B45410079683D /* FMDBHandle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDBHandle.m; sourceTree = "<group>"; };
 		CC30430B1C5B454B0079683D /* FMDBCreateTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDBCreateTable.h; sourceTree = "<group>"; };
@@ -132,8 +152,29 @@
 		CC4BFEC71C73FE2A0093F89F /* RecommendCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecommendCell.m; sourceTree = "<group>"; };
 		CC4BFECB1C7406F50093F89F /* HJButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJButton.h; sourceTree = "<group>"; };
 		CC4BFECC1C7406F50093F89F /* HJButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJButton.m; sourceTree = "<group>"; };
+		CC4BFECF1C746B1A0093F89F /* DiyModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiyModel.h; sourceTree = "<group>"; };
+		CC4BFED01C746B1A0093F89F /* DiyModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiyModel.m; sourceTree = "<group>"; };
+		CC4BFED21C746C080093F89F /* AllDiyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllDiyView.h; sourceTree = "<group>"; };
+		CC4BFED31C746C080093F89F /* AllDiyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllDiyView.m; sourceTree = "<group>"; };
 		CC5D1F571C72CCC700E2BC2A /* RModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RModel.h; sourceTree = "<group>"; };
 		CC5D1F581C72CCC700E2BC2A /* RModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RModel.m; sourceTree = "<group>"; };
+		CC6111541C755C3400747FD1 /* MuiscList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MuiscList.h; sourceTree = "<group>"; };
+		CC6111551C755C3400747FD1 /* MuiscList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MuiscList.m; sourceTree = "<group>"; };
+		CC6111571C755FBB00747FD1 /* MusicListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MusicListView.h; sourceTree = "<group>"; };
+		CC6111581C755FBB00747FD1 /* MusicListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MusicListView.m; sourceTree = "<group>"; };
+		CC61115B1C758F2C00747FD1 /* SingerModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingerModel.h; sourceTree = "<group>"; };
+		CC61115C1C758F2C00747FD1 /* SingerModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingerModel.m; sourceTree = "<group>"; };
+		CC61115E1C75912C00747FD1 /* SingerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingerView.h; sourceTree = "<group>"; };
+		CC61115F1C75912C00747FD1 /* SingerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingerView.m; sourceTree = "<group>"; };
+		CC6111611C7597D700747FD1 /* singer.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = singer.json; sourceTree = "<group>"; };
+		CC6111631C7598BC00747FD1 /* SingerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingerCell.h; sourceTree = "<group>"; };
+		CC6111641C7598BC00747FD1 /* SingerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingerCell.m; sourceTree = "<group>"; };
+		CC61116E1C75BFC600747FD1 /* LeboModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeboModel.h; sourceTree = "<group>"; };
+		CC61116F1C75BFC600747FD1 /* LeboModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeboModel.m; sourceTree = "<group>"; };
+		CC6111701C75BFC600747FD1 /* RedRadio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RedRadio.h; sourceTree = "<group>"; };
+		CC6111711C75BFC600747FD1 /* RedRadio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RedRadio.m; sourceTree = "<group>"; };
+		CC6111741C75BFE000747FD1 /* RadioView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadioView.h; sourceTree = "<group>"; };
+		CC6111751C75BFE000747FD1 /* RadioView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadioView.m; sourceTree = "<group>"; };
 		CC6189631C5B4F8600D72270 /* GuideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuideViewController.h; sourceTree = "<group>"; };
 		CC6189641C5B4F8600D72270 /* GuideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuideViewController.m; sourceTree = "<group>"; };
 		CC61896C1C5B55EF00D72270 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -267,6 +308,19 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		CC071EDF1C76C12000494B4B /* KSong */ = {
+			isa = PBXGroup;
+			children = (
+				CC071EE01C76C30500494B4B /* KSong.h */,
+				CC071EE11C76C30500494B4B /* KSong.m */,
+				CC071EE31C76C3DB00494B4B /* KPeople.h */,
+				CC071EE41C76C3DB00494B4B /* KPeople.m */,
+				CC071EE61C76C45B00494B4B /* KSongView.h */,
+				CC071EE71C76C45B00494B4B /* KSongView.m */,
+			);
+			path = KSong;
+			sourceTree = "<group>";
+		};
 		CC3043101C5B471B0079683D /* Class */ = {
 			isa = PBXGroup;
 			children = (
@@ -328,10 +382,10 @@
 			children = (
 				CC5D1F571C72CCC700E2BC2A /* RModel.h */,
 				CC5D1F581C72CCC700E2BC2A /* RModel.m */,
-				CC36CDDE1C71BF7200505E05 /* RecommendView.h */,
-				CC36CDDF1C71BF7200505E05 /* RecommendView.m */,
 				CC4BFEC61C73FE2A0093F89F /* RecommendCell.h */,
 				CC4BFEC71C73FE2A0093F89F /* RecommendCell.m */,
+				CC36CDDE1C71BF7200505E05 /* RecommendView.h */,
+				CC36CDDF1C71BF7200505E05 /* RecommendView.m */,
 			);
 			path = Recommend;
 			sourceTree = "<group>";
@@ -431,6 +485,54 @@
 			path = UIButton;
 			sourceTree = "<group>";
 		};
+		CC4BFECE1C746AED0093F89F /* Diy */ = {
+			isa = PBXGroup;
+			children = (
+				CC4BFECF1C746B1A0093F89F /* DiyModel.h */,
+				CC4BFED01C746B1A0093F89F /* DiyModel.m */,
+				CC4BFED21C746C080093F89F /* AllDiyView.h */,
+				CC4BFED31C746C080093F89F /* AllDiyView.m */,
+			);
+			path = Diy;
+			sourceTree = "<group>";
+		};
+		CC6111531C755C1900747FD1 /* MusicList */ = {
+			isa = PBXGroup;
+			children = (
+				CC6111541C755C3400747FD1 /* MuiscList.h */,
+				CC6111551C755C3400747FD1 /* MuiscList.m */,
+				CC6111571C755FBB00747FD1 /* MusicListView.h */,
+				CC6111581C755FBB00747FD1 /* MusicListView.m */,
+			);
+			path = MusicList;
+			sourceTree = "<group>";
+		};
+		CC61115A1C758F1300747FD1 /* Singer */ = {
+			isa = PBXGroup;
+			children = (
+				CC61115B1C758F2C00747FD1 /* SingerModel.h */,
+				CC61115C1C758F2C00747FD1 /* SingerModel.m */,
+				CC6111631C7598BC00747FD1 /* SingerCell.h */,
+				CC6111641C7598BC00747FD1 /* SingerCell.m */,
+				CC61115E1C75912C00747FD1 /* SingerView.h */,
+				CC61115F1C75912C00747FD1 /* SingerView.m */,
+			);
+			path = Singer;
+			sourceTree = "<group>";
+		};
+		CC61116D1C75BFC600747FD1 /* Radio */ = {
+			isa = PBXGroup;
+			children = (
+				CC61116E1C75BFC600747FD1 /* LeboModel.h */,
+				CC61116F1C75BFC600747FD1 /* LeboModel.m */,
+				CC6111701C75BFC600747FD1 /* RedRadio.h */,
+				CC6111711C75BFC600747FD1 /* RedRadio.m */,
+				CC6111741C75BFE000747FD1 /* RadioView.h */,
+				CC6111751C75BFE000747FD1 /* RadioView.m */,
+			);
+			path = Radio;
+			sourceTree = "<group>";
+		};
 		CC6189621C5B4F7800D72270 /* Guide */ = {
 			isa = PBXGroup;
 			children = (
@@ -494,6 +596,11 @@
 		CC65A79D1C5F38DE00E6C2AF /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				CC071EDF1C76C12000494B4B /* KSong */,
+				CC61116D1C75BFC600747FD1 /* Radio */,
+				CC61115A1C758F1300747FD1 /* Singer */,
+				CC6111531C755C1900747FD1 /* MusicList */,
+				CC4BFECE1C746AED0093F89F /* Diy */,
 				CC36CDD11C7168FE00505E05 /* Recommend */,
 				CC65A79E1C5F38DE00E6C2AF /* HomeViewController.h */,
 				CC65A79F1C5F38DE00E6C2AF /* HomeViewController.m */,
@@ -589,6 +696,7 @@
 		CCFFF1A91C5B1668008A5A06 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				CC6111611C7597D700747FD1 /* singer.json */,
 				CCFFF1E91C5B31D1008A5A06 /* InfoPlist.strings */,
 				CCFFF1AA1C5B1668008A5A06 /* main.m */,
 			);
@@ -821,6 +929,7 @@
 				CCA8988B1C5B6A7D0098F58B /* 640*960-2.jpg in Resources */,
 				CCA8987F1C5B6A7D0098F58B /* 1242*2208-2.jpg in Resources */,
 				CCA898811C5B6A7D0098F58B /* 1242*2208-4.jpg in Resources */,
+				CC6111621C7597D700747FD1 /* singer.json in Resources */,
 				CCFFF1EA1C5B31D1008A5A06 /* InfoPlist.strings in Resources */,
 				CCA898871C5B6A7D0098F58B /* 640*1136-2.jpg in Resources */,
 				CCA8988D1C5B6A7D0098F58B /* 640*960-4.jpg in Resources */,
@@ -910,37 +1019,50 @@
 				CCFFF1B11C5B1668008A5A06 /* ViewController.m in Sources */,
 				CC3043171C5B47840079683D /* BaseViewController.m in Sources */,
 				CCFFF2021C5B346A008A5A06 /* RegionSearch.m in Sources */,
+				CC071EE51C76C3DB00494B4B /* KPeople.m in Sources */,
 				CC36CDF01C71D76300505E05 /* NSArray+HJUnicode.m in Sources */,
+				CC6111601C75912C00747FD1 /* SingerView.m in Sources */,
 				CC36CDED1C71D73600505E05 /* NSObject+HJUnicode.m in Sources */,
 				CC61898B1C5B55F000D72270 /* MASViewAttribute.m in Sources */,
 				CC61898A1C5B55F000D72270 /* MASLayoutConstraint.m in Sources */,
 				CC61898E1C5B55F000D72270 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 				CC6189891C5B55F000D72270 /* MASConstraintMaker.m in Sources */,
 				CCFFF1AE1C5B1668008A5A06 /* AppDelegate.m in Sources */,
+				CC6111561C755C3400747FD1 /* MuiscList.m in Sources */,
+				CC6111651C7598BC00747FD1 /* SingerCell.m in Sources */,
+				CC4BFED41C746C080093F89F /* AllDiyView.m in Sources */,
 				CC30430D1C5B454B0079683D /* FMDBCreateTable.m in Sources */,
 				CC4829591C6053730098E0DD /* LockItemView.m in Sources */,
 				CC6189901C5B55F000D72270 /* ViewController+MASAdditions.m in Sources */,
+				CC071EE21C76C30500494B4B /* KSong.m in Sources */,
 				CCFFF20E1C5B37C8008A5A06 /* CheckNetworkStatus.m in Sources */,
 				CC30430A1C5B45410079683D /* FMDBHandle.m in Sources */,
 				CCFFF20B1C5B3752008A5A06 /* Reachability.m in Sources */,
 				CC4BFECD1C7406F50093F89F /* HJButton.m in Sources */,
+				CC4BFED11C746B1A0093F89F /* DiyModel.m in Sources */,
 				CCFFF1FA1C5B33CE008A5A06 /* HJCommonTools.m in Sources */,
 				CC48295F1C60A7600098E0DD /* LockViewController.m in Sources */,
 				CC6189871C5B55F000D72270 /* MASCompositeConstraint.m in Sources */,
 				CC4829621C60ADCA0098E0DD /* LockIndicatorView.m in Sources */,
 				CC61898D1C5B55F000D72270 /* NSArray+MASAdditions.m in Sources */,
 				CCFFF1AB1C5B1668008A5A06 /* main.m in Sources */,
+				CC6111731C75BFC600747FD1 /* RedRadio.m in Sources */,
 				CCFFF2121C5B3AC6008A5A06 /* HttpHandleTool.m in Sources */,
+				CC071EE81C76C45B00494B4B /* KSongView.m in Sources */,
 				CC48295C1C608BF80098E0DD /* MyLockView.m in Sources */,
 				CC49C1351C61FDEB0001F5BA /* LockModel.m in Sources */,
 				CC61898F1C5B55F000D72270 /* View+MASAdditions.m in Sources */,
 				CC65A7A51C5F390C00E6C2AF /* TopTitleView.m in Sources */,
 				CC4BFEC81C73FE2A0093F89F /* RecommendCell.m in Sources */,
 				CC36CDE01C71BF7200505E05 /* RecommendView.m in Sources */,
+				CC6111721C75BFC600747FD1 /* LeboModel.m in Sources */,
 				CC5D1F591C72CCC700E2BC2A /* RModel.m in Sources */,
+				CC6111761C75BFE000747FD1 /* RadioView.m in Sources */,
 				CC61898C1C5B55F000D72270 /* MASViewConstraint.m in Sources */,
 				CC36CDF31C71D77700505E05 /* NSDictionary+HJUnicode.m in Sources */,
+				CC6111591C755FBB00747FD1 /* MusicListView.m in Sources */,
 				CC6189881C5B55F000D72270 /* MASConstraint.m in Sources */,
+				CC61115D1C758F2C00747FD1 /* SingerModel.m in Sources */,
 				CCFFF2011C5B346A008A5A06 /* RegionModel.m in Sources */,
 				CC65A7A21C5F38DE00E6C2AF /* HomeViewController.m in Sources */,
 			);

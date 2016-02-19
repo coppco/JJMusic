@@ -4,7 +4,7 @@
 //
 //  Created by coco on 16/1/29.
 //  Copyright © 2016年 XHJ. All rights reserved.
-//
+//   对AFNetworking  3.0.4的封装
 
 #import <Foundation/Foundation.h>
 typedef NS_ENUM(NSInteger, HJNetworkType) {

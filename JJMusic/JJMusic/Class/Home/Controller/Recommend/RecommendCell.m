@@ -65,7 +65,7 @@ HJpropertyStrong(id diy);  //歌单推荐
     self = [super initWithFrame:frame];
     if (self) {
         self.imageV = [[UIImageView alloc] initWithFrame:CGRectZero];
-        self.titleL = [HJCommonTools allocLabelWithTitle:@"" frame:CGRectZero font:font(13) color:[UIColor blackColor] alignment:0 keyWords:nil keyWordsColor:nil keyWordsFont:nil underLine:NO];
+        self.titleL = [HJCommonTools allocLabelWithTitle:@"" frame:CGRectZero font:font(12) color:[UIColor blackColor] alignment:0 keyWords:nil keyWordsColor:nil keyWordsFont:nil underLine:NO];
         [self.contentView addSubview:_imageV];
         [self.contentView addSubview:_titleL];
     }
@@ -73,8 +73,8 @@ HJpropertyStrong(id diy);  //歌单推荐
 }
 - (void)layoutSubviews {
     [super layoutSubviews];
-    _imageV.frame = CGRectMake(0, 0, ViewW(self.contentView) - 20, ViewH(self.contentView) - 20);
-    _titleL.frame = CGRectMake(0, ViewMaxY(_imageV), ViewW(self.contentView), 40);
+    _imageV.frame = CGRectMake(10, 0, ViewW(self.contentView) - 20, ViewH(self.contentView) - 20);
+    _titleL.frame = CGRectMake(10, ViewMaxY(_imageV), ViewW(_imageV), 40);
     _titleL.numberOfLines = 0;
     
 }
@@ -142,7 +142,7 @@ HJpropertyStrong(NSArray *diy);
 - (void)layoutSubviews {
     [super layoutSubviews];
     _layout.itemSize = CGSizeMake(ViewW(self) / 3 - 10, ViewW(self) / 3 - 10);
-    _layout.minimumInteritemSpacing = 3;
+    _layout.minimumInteritemSpacing = 0;
     _layout.minimumLineSpacing = 27;
     _layout.sectionInset = UIEdgeInsetsMake(0, 10, 0, 10);
     _collectionView.frame = self.bounds;
@@ -262,8 +262,9 @@ HJpropertyStrong(ListView *listView);
         {
             _sceneView.hidden = YES;
             _listView.hidden = NO;
-            _moreB.hidden = YES;
-            _listView.frame = CGRectMake(0, ViewMaxY(_titleL) + 10, ViewW(self), 270);
+            _moreB.hidden = NO;
+            _listView.frame = CGRectMake(0, ViewMaxY(_titleL) + 10, ViewW(self), 130);
+            _moreB.frame = CGRectMake((ViewW(self) - 100) / 2, ViewMaxY(_listView) + 20, 100, 25);
             _listView.diy = _model.king;
             self.titleL.text = @"百度King榜";
         }

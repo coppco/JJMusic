@@ -123,7 +123,7 @@ HJpropertyStrong(UIButton *skipButton);  //跳过button
 //}
 //进入App
 - (void)enter:(UIButton *)button {
-    userDefaultSetValueKey(@YES, isFirstLoad);
+    userDefaultSetValueKey(@YES, DidLoad);
     HomeViewController *homeVC = [[HomeViewController alloc] init];
     getAppWindow().rootViewController = [[UINavigationController alloc] initWithRootViewController:homeVC];
 }

@@ -136,7 +136,7 @@ HJpropertyCopy(NSString* passwordconfirm); // 确认密码
     [self.view addSubview:self.indicatorView];
     //手势锁
     self.lockView = [[MyLockView alloc] initWithFrame:CGRectMake(0, ViewMaxY(self.indicatorView) + 20, ViewW(self.view), ViewW(self.view) - 72)];
-    WeakObject(weakSelf);  //定义weak的self
+    WeakSelf(weakSelf);  //定义weak的self
     [self.lockView setCheckPassword:^(NSString *password) {
         XHJLog(@"密码:%@", password);
         [weakSelf lockPassword:password];

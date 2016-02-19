@@ -27,6 +27,7 @@ HJpropertyStrong(CarouselView *carouselView);
     _tableView.delegate = self;
     _tableView.dataSource = self;
     _tableView.backgroundColor = ColorClear;
+    _tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;  //分割线样式
     //设置边框
 //    _tableView.contentInset = UIEdgeInsetsMake(200, 0, 0, 0);
     [self addSubview:_tableView];
@@ -35,7 +36,6 @@ HJpropertyStrong(CarouselView *carouselView);
     _carouselView = [[CarouselView alloc] initWithFrame:CGRectMake(0, 0, KMainScreenWidth, 200) loop:YES picture:nil cellSelect:^(UICollectionView *view, NSIndexPath *indexPath) {
         
     }];
-//    [self addSubview:_carouselView];
     _tableView.tableHeaderView = _carouselView;
 }
 - (void)setRecommend:(RModel *)recommend {
@@ -52,22 +52,23 @@ HJpropertyStrong(CarouselView *carouselView);
 }
 #pragma mark - UITableViewDelegate 和 UITableViewDataSource
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.row == 1 || indexPath.row == 5 || indexPath.row == 6) {
+    if (indexPath.row == 1 || indexPath.row == 5) {
         return 200;
     }
-    if (indexPath.row == 0) {
+    if (indexPath.row == 0 || indexPath.row == 6) {
         return 240;
     }
     return 370;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return _recommend.module.count - 1;
+    return _recommend.module.count - 3;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *reuse = @"cell";
     RecommendCell *cell = [tableView dequeueReusableCellWithIdentifier:reuse];
     if (!cell) {
         cell = [[RecommendCell alloc] initWithStyle:(UITableViewCellStyleDefault) reuseIdentifier:reuse];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;  //cell不能选择
     }
     
     if (indexPath.row == 0) {

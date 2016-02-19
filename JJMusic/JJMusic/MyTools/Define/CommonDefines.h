@@ -81,7 +81,7 @@
 #define PATH_OF_DOCUMENT \
 [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0] \
 /*==================WEAK,定义weakSelf==================*/
-#define WeakObject(weakSelf)  __weak __typeof(&*self)weakSelf = self
+#define WeakSelf(weakSelf)  __weak __typeof(&*self)weakSelf = self
 
 /*========================NSLog=======================*/
 #ifdef DEBUG

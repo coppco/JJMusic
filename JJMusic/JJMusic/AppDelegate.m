@@ -25,8 +25,8 @@
     return YES;
 }
 - (void)enterApp {
-    XHJLog(@"%@", userDefaultGetValue(isFirstLoad));
-    if (!userDefaultGetValue(isFirstLoad)) {
+    XHJLog(@"%@", userDefaultGetValue(DidLoad));
+    if (!userDefaultGetValue(DidLoad)) {
         //第一次进入,进入导航页
         GuideViewController *guideVC = [[GuideViewController alloc] init];
         self.window.rootViewController = guideVC;

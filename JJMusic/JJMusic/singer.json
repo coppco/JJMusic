@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>china</key>
+	<array>
+		<string>华语男歌手</string>
+		<string>华语女歌手</string>
+		<string>华语乐队组合</string>
+		<string>百度原创音乐人</string>
+	</array>
+	<key>dusa</key>
+	<array>
+		<string>欧美男歌手</string>
+		<string>欧美女歌手</string>
+		<string>欧美乐队组合</string>
+	</array>
+	<key>han</key>
+	<array>
+		<string>韩国男歌手</string>
+		<string>韩国女歌手</string>
+		<string>韩国乐队组合</string>
+	</array>
+	<key>japan</key>
+	<array>
+		<string>日本男歌手</string>
+		<string>日本女歌手</string>
+		<string>日本乐队组合</string>
+	</array>
+	<key>other</key>
+	<array>
+		<string>其他歌手</string>
+	</array>
+</dict>
+</plist>

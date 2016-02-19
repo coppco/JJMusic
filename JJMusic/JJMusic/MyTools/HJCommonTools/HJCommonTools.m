@@ -1098,6 +1098,34 @@ UIWindow *getAppWindow() {
     label.textAlignment = textAlignment;  //对齐方式
     return label;
 }
+/* 获取NSAttributedString  */
++ (NSAttributedString *)labelAttributedText:(NSString *)title font:(UIFont *)font color:(UIColor *)color alignment:(NSTextAlignment)textAlignment keyWords:(NSString *)keyWords keyWordsColor:(UIColor *)keyWordsColor keyWordsFont:(UIFont *)keyWordsFont underLine:(BOOL)underLine {
+    NSMutableAttributedString *titleString = title.length != 0 ? [[NSMutableAttributedString alloc] initWithString:title] : (keyWords.length != 0 ? [[NSMutableAttributedString alloc] initWithString:keyWords] : nil);
+    
+    if (title.length != 0) {
+        NSRange range = NSMakeRange(0, title.length);
+        if (font) {
+            [titleString addAttribute:NSFontAttributeName value:font range:range];
+        }
+        if (color) {
+            [titleString addAttribute:NSForegroundColorAttributeName value:color range:range];
+        }
+    }
+    
+    if (keyWords.length != 0) {
+        NSRange range = title.length == 0 ? [keyWords rangeOfString:keyWords] : [title rangeOfString:keyWords];
+        if (keyWordsFont) {
+            [titleString addAttribute:NSFontAttributeName value:keyWordsFont range:range];
+        }
+        if (keyWordsColor) {
+            [titleString addAttribute:NSForegroundColorAttributeName value:keyWordsColor range:range];
+        }
+        if (underLine) {
+            [titleString addAttribute:NSUnderlineStyleAttributeName value:@(NSUnderlineStyleSingle) range:range];
+        }
+    }
+    return titleString;
+}
 /*    UIButton方法  */
 + (UIButton *)allocButtonWithFrame:(CGRect)frame title:(NSString *)title titleColor:(UIColor *)color font:(UIFont *)font normalImage:(UIImage *)normalImage highImage:(UIImage *)highImage normalBackImage:(UIImage *)normalBackImage highBackImage:(UIImage *)highBackImage {
     UIButton *button = [UIButton buttonWithType:(UIButtonTypeCustom)];

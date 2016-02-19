@@ -10,7 +10,7 @@
 
 @interface TopTitleView ()
 HJpropertyStrong(UILabel *shortLabel);  //下面的短label
-HJpropertyAssign(NSInteger selectIndex);  //选择index
+
 @end
 
 @implementation TopTitleView
@@ -29,7 +29,7 @@ HJpropertyAssign(NSInteger selectIndex);  //选择index
             button.titleLabel.font = font(15);
             button.tag = 9980 + i;
             button.exclusiveTouch = YES;  //排他
-            [button addTarget:self action:@selector(buttonClick:) forControlEvents:(UIControlEventTouchUpInside)];
+            [button addTarget:self action:@selector(buttonHasClick:) forControlEvents:(UIControlEventTouchUpInside)];
             [self addSubview:button];
         }
         UILabel *line = [HJCommonTools allocLabelWithTitle:nil frame:CGRectMake(0, frame.size.height - 1, frame.size.width, 1) font:nil color:nil alignment:0 keyWords:nil keyWordsColor:nil keyWordsFont:nil underLine:NO];
@@ -51,7 +51,7 @@ HJpropertyAssign(NSInteger selectIndex);  //选择index
     [self addSubview:self.shortLabel];
 }
 //button点击
-- (void)buttonClick:(UIButton *)button {
+- (void)buttonHasClick:(UIButton *)button {
     if (button.tag != self.selectIndex) {
         //变换颜色
         UIButton *selectButton = [self viewWithTag:self.selectIndex];
@@ -69,12 +69,5 @@ HJpropertyAssign(NSInteger selectIndex);  //选择index
         }
     }
 }
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
 
 @end

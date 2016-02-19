@@ -590,6 +590,21 @@ UIWindow *getAppWindow();
  */
 + (UILabel *)allocLabelWithTitle:(NSString *)title frame:(CGRect)frame font:(UIFont *)font color:(UIColor *)color alignment:(NSTextAlignment)textAlignment keyWords:(NSString *)keyWords keyWordsColor:(UIColor *)keyWordsColor keyWordsFont:(UIFont *)keyWordsFont underLine:(BOOL)underLine;
 /**
+ *  获取NSAttributedString
+ *
+ *  @param title         标题
+ *  @param font          整体字体
+ *  @param color         整体颜色
+ *  @param textAlignment 对齐方式
+ *  @param keyWords      关键字
+ *  @param keyWordsColor 关键字颜色
+ *  @param keyWordsFont  关键字字体
+ *  @param underLine     下划线
+ *
+ *  @return 
+ */
++ (NSAttributedString *)labelAttributedText:(NSString *)title font:(UIFont *)font color:(UIColor *)color alignment:(NSTextAlignment)textAlignment keyWords:(NSString *)keyWords keyWordsColor:(UIColor *)keyWordsColor keyWordsFont:(UIFont *)keyWordsFont underLine:(BOOL)underLine;
+/**
  *  UIButton方法
  *
  *  @param rect            范围
