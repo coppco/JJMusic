@@ -11,6 +11,7 @@
 		CC071EE21C76C30500494B4B /* KSong.m in Sources */ = {isa = PBXBuildFile; fileRef = CC071EE11C76C30500494B4B /* KSong.m */; };
 		CC071EE51C76C3DB00494B4B /* KPeople.m in Sources */ = {isa = PBXBuildFile; fileRef = CC071EE41C76C3DB00494B4B /* KPeople.m */; };
 		CC071EE81C76C45B00494B4B /* KSongView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC071EE71C76C45B00494B4B /* KSongView.m */; };
+		CC071EEB1C76EEFC00494B4B /* MyFavouriteMusicDB.m in Sources */ = {isa = PBXBuildFile; fileRef = CC071EEA1C76EEFC00494B4B /* MyFavouriteMusicDB.m */; };
 		CC30430A1C5B45410079683D /* FMDBHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = CC3043091C5B45410079683D /* FMDBHandle.m */; };
 		CC30430D1C5B454B0079683D /* FMDBCreateTable.m in Sources */ = {isa = PBXBuildFile; fileRef = CC30430C1C5B454B0079683D /* FMDBCreateTable.m */; };
 		CC3043171C5B47840079683D /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC3043161C5B47840079683D /* BaseViewController.m */; };
@@ -119,6 +120,8 @@
 		CC071EE41C76C3DB00494B4B /* KPeople.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KPeople.m; sourceTree = "<group>"; };
 		CC071EE61C76C45B00494B4B /* KSongView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSongView.h; sourceTree = "<group>"; };
 		CC071EE71C76C45B00494B4B /* KSongView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSongView.m; sourceTree = "<group>"; };
+		CC071EE91C76EEFC00494B4B /* MyFavouriteMusicDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyFavouriteMusicDB.h; sourceTree = "<group>"; };
+		CC071EEA1C76EEFC00494B4B /* MyFavouriteMusicDB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyFavouriteMusicDB.m; sourceTree = "<group>"; };
 		CC3043081C5B45410079683D /* FMDBHandle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDBHandle.h; sourceTree = "<group>"; };
 		CC3043091C5B45410079683D /* FMDBHandle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDBHandle.m; sourceTree = "<group>"; };
 		CC30430B1C5B454B0079683D /* FMDBCreateTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDBCreateTable.h; sourceTree = "<group>"; };
@@ -764,6 +767,8 @@
 				CC3043091C5B45410079683D /* FMDBHandle.m */,
 				CC30430B1C5B454B0079683D /* FMDBCreateTable.h */,
 				CC30430C1C5B454B0079683D /* FMDBCreateTable.m */,
+				CC071EE91C76EEFC00494B4B /* MyFavouriteMusicDB.h */,
+				CC071EEA1C76EEFC00494B4B /* MyFavouriteMusicDB.m */,
 			);
 			path = FMDBHandle;
 			sourceTree = "<group>";
@@ -1031,6 +1036,7 @@
 				CC6111561C755C3400747FD1 /* MuiscList.m in Sources */,
 				CC6111651C7598BC00747FD1 /* SingerCell.m in Sources */,
 				CC4BFED41C746C080093F89F /* AllDiyView.m in Sources */,
+				CC071EEB1C76EEFC00494B4B /* MyFavouriteMusicDB.m in Sources */,
 				CC30430D1C5B454B0079683D /* FMDBCreateTable.m in Sources */,
 				CC4829591C6053730098E0DD /* LockItemView.m in Sources */,
 				CC6189901C5B55F000D72270 /* ViewController+MASAdditions.m in Sources */,

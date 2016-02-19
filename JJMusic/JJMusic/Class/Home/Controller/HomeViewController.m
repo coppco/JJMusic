@@ -7,6 +7,8 @@
 //
 
 #import "HomeViewController.h"
+#import "LockViewController.h"  //手势锁
+
 #import "TopTitleView.h"
 #import "RecommendView.h"  //推荐
 #import "RModel.h"
@@ -58,7 +60,7 @@ HJpropertyStrong(UIScrollView *scrollView);
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
 }
 - (void)gotoSetting {
-//    LockViewController *LVC = [[LockViewController alloc] initWithType:(LockViewTypeModify)];
+//    LockViewController *LVC = [[LockViewController alloc] initWithType:(LockViewTypeCreate)];
 ////    [self presentViewController:LVC animated:YES completion:nil];
 //    [self.navigationController pushViewController:LVC animated:YES];
 }
