@@ -156,7 +156,9 @@ HJpropertyStrong(UIScrollView *scrollView);
         }
     }
     if (tag == 5) {
-        [weak.kSongView.tableView.mj_header beginRefreshing];
+        if (_kSongView.array.count == 0) {
+            [weak.kSongView.tableView.mj_header beginRefreshing];
+        }
     }
 }
 #pragma mark - delegate

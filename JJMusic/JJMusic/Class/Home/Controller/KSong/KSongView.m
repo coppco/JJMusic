@@ -32,6 +32,10 @@
     });
 }
 #pragma mark - delegate
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 48;
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return _array.count;
 }
@@ -45,9 +49,13 @@
         cell = [[UITableViewCell alloc] initWithStyle:(UITableViewCellStyleSubtitle) reuseIdentifier:@"cell"];
     }
     KPeople *people = _array[indexPath.row];
+    
+    //cell
+    cell.imageView.clipsToBounds = YES;
+    cell.imageView.layer.cornerRadius = 48 / 2;
     [cell.imageView sd_setImageWithURL:[NSURL URLWithString:people.picture_300_300] placeholderImage:IMAGE(@"placeHold")];
     cell.textLabel.text = STRFORMAT(@"%@-%@", people.song_title, people.artist_name);
-    cell.detailTextLabel.text = STRFORMAT(@"%@收听", people.play_num);
+    cell.detailTextLabel.text = STRFORMAT(@"%@人收听", people.play_num);
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     return cell;
 }

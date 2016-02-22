@@ -51,12 +51,15 @@ HJpropertyStrong(UILabel *listionL);  //听众
         _listionL.hidden = YES;
         [_imageV sd_setImageWithURL:[NSURL URLWithString:((LeboModel *)_model).tag_pic]];
         _titleL.text = ((LeboModel *)_model).tag_name;
-        _listionL.text = STRFORMAT(@"%@收听", ((LeboModel *)_model).name);
+        _listionL.text = STRFORMAT(@"%@人收听", ((LeboModel *)_model).name);
     } else {
         _listionL.hidden = NO;
         [_imageV sd_setImageWithURL:[NSURL URLWithString:((RedRadio *)_model).thumb]];
         _titleL.text = ((RedRadio *)_model).name;
-        _listionL.text = STRFORMAT(@"%@收听", ((RedRadio *)_model).listen_num);
+        _listionL.text = STRFORMAT(@"%@人收听", ((RedRadio *)_model).listen_num);
+        if (((RedRadio *)_model).listen_num.length == 0) {
+            _listionL.hidden = YES;
+        }
     }
 }
 @end
@@ -89,7 +92,7 @@ HJpropertyStrong(UILabel *listionL);  //听众
 }
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     if (section == 0) {
-        return _redRadioArray.count;
+        return _redRadioArray.count + 2;
     } else {
         return _leBoArray.count;
     }
@@ -99,7 +102,17 @@ HJpropertyStrong(UILabel *listionL);  //听众
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     RedLeBoCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"RedLeBoCell" forIndexPath:indexPath];
     if (indexPath.section == 0) {
-        cell.model = _redRadioArray[indexPath.item];
+        if (indexPath.row == 0) {
+            RedRadio *model = [[RedRadio alloc] init];
+            model.name = @"红心电台";
+            cell.model = model;
+        } else if (indexPath.row == 1){
+            RedRadio *model = [[RedRadio alloc] init];
+            model.name = @"私人频道";
+            cell.model = model;
+        } else {
+            cell.model = _redRadioArray[indexPath.item - 2];
+        }
     } else {
         cell.model = _leBoArray[indexPath.item];
     }
