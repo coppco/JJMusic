@@ -20,6 +20,7 @@ PODS:
   - JSONModel (1.1.2)
   - MBProgressHUD (0.9.2)
   - MJRefresh (3.1.0)
+  - RongCloudIMKit (2.4.7)
   - SDWebImage (3.7.5):
     - SDWebImage/Core (= 3.7.5)
   - SDWebImage/Core (3.7.5)
@@ -30,6 +31,7 @@ DEPENDENCIES:
   - JSONModel (~> 1.1.2)
   - MBProgressHUD (~> 0.9.2)
   - MJRefresh (~> 3.1.0)
+  - RongCloudIMKit (~> 2.4.7)
   - SDWebImage (~> 3.7.3)
 
 SPEC CHECKSUMS:
@@ -38,6 +40,7 @@ SPEC CHECKSUMS:
   JSONModel: 216584d0311b053ff714f1d6cb700dbf890847bc
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
   MJRefresh: 743e6404967d1c2c688472ea3ecfde247d872db4
+  RongCloudIMKit: d24685a8f2ea63e79aa2653a3275d7c64ea611ac
   SDWebImage: 69c6303e3348fba97e03f65d65d4fbc26740f461
 
 COCOAPODS: 0.39.0

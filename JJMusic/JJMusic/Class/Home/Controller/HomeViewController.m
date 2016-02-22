@@ -8,6 +8,7 @@
 
 #import "HomeViewController.h"
 #import "LockViewController.h"  //手势锁
+#import <RongIMKit/RongIMKit.h>  //融云
 
 #import "TopTitleView.h"
 #import "RecommendView.h"  //推荐
@@ -63,7 +64,21 @@ HJpropertyStrong(UIScrollView *scrollView);
 //    LockViewController *LVC = [[LockViewController alloc] initWithType:(LockViewTypeCreate)];
 ////    [self presentViewController:LVC animated:YES completion:nil];
 //    [self.navigationController pushViewController:LVC animated:YES];
+    
+    //启用聊天界面
+    //新建一个聊天会话View Controller对象
+    RCConversationViewController *chat = [[RCConversationViewController alloc]init];
+    //设置会话的类型，如单聊、讨论组、群聊、聊天室、客服、公众服务会话等
+    chat.conversationType = ConversationType_PRIVATE;
+    //设置会话的目标会话ID。（单聊、客服、公众服务会话为对方的ID，讨论组、群聊、聊天室为会话的ID）
+    chat.targetId = @"123456";
+    //设置聊天会话界面要显示的标题
+    chat.title = @"与城市美聊天";
+    
+    //显示聊天会话界面
+    [self.navigationController pushViewController:chat animated:YES];
 }
+
 - (void)initTitleView {
     self.titleArray = [NSMutableArray arrayWithObjects:@"推荐", @"歌单", @"榜单", @"歌手", @"电台", @"K歌", nil];
     self.topTitleView = [[TopTitleView alloc] initWithFrame:CGRectMake(0, 64, ViewW(self.view), 40) titleArray:self.titleArray];
