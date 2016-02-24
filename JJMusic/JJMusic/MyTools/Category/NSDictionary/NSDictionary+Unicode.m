@@ -1,15 +1,15 @@
 //
-//  NSDictionary+HJUnicode.m
+//  NSDictionary+Unicode.m
 //  JJMusic
 //
 //  Created by coco on 16/2/15.
 //  Copyright © 2016年 XHJ. All rights reserved.
 //
 
-#import "NSDictionary+HJUnicode.h"
+#import "NSDictionary+Unicode.h"
 #import <objc/runtime.h>
-#import "NSObject+HJUnicode.h"
-@implementation NSDictionary (HJUnicode)
+#import "NSObject+Unicode.h"
+@implementation NSDictionary (Unicode)
 + (void)load {
     method_exchangeImplementations(class_getInstanceMethod([self class], @selector(description)), class_getInstanceMethod([self class], @selector(replaceDescription)));
     method_exchangeImplementations(class_getInstanceMethod([self class], @selector(descriptionWithLocale:)), class_getInstanceMethod([self class], @selector(replaceDescriptionWithLocale:)));

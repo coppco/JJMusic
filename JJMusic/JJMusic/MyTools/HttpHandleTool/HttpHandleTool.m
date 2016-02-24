@@ -15,6 +15,8 @@
     NSString *path = pathCachesFilePathName(@"networkRequest", STRFORMAT(@"%ld.xxoo", [url hash]));
     XHJLog(@" %@", path);
     
+    //url中有汉字 需要编码
+    //对应解码方法:解码使用stringByRemovingPercentEncoding方法
     if (ISIOS_7_0) {
         url = [url stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
     } else {

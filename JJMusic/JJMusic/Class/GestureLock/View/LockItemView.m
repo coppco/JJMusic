@@ -4,7 +4,7 @@
 //
 //  Created by coco on 16/2/2.
 //  Copyright © 2016年 XHJ. All rights reserved.
-//
+//  使用Quartz 2D绘制
 
 #import "LockItemView.h"
 
@@ -32,6 +32,7 @@ HJpropertyAssign(CGFloat angle);
     }
     return self;
 }
+
 //重新绘制
 - (void)drawRect:(CGRect)rect {
     //获取上下文

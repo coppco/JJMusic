@@ -1,15 +1,15 @@
 //
-//  NSArray+HJUnicode.m
+//  NSArray+Unicode.m
 //  JJMusic
 //
 //  Created by coco on 16/2/15.
 //  Copyright © 2016年 XHJ. All rights reserved.
 //
 
-#import "NSArray+HJUnicode.h"
-#import "NSObject+HJUnicode.h"
+#import "NSArray+Unicode.h"
+#import "NSObject+Unicode.h"
 #import <objc/runtime.h>
-@implementation NSArray (HJUnicode)
+@implementation NSArray (Unicode)
 
 + (void)load {
     method_exchangeImplementations(class_getInstanceMethod([self class], @selector(description)), class_getInstanceMethod([self class], @selector(replaceDescription)));

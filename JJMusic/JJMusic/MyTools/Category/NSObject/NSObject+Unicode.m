@@ -1,14 +1,14 @@
 //
-//  NSObject+HJUnicode.m
+//  NSObject+Unicode.m
 //  JJMusic
 //
 //  Created by coco on 16/2/15.
 //  Copyright © 2016年 XHJ. All rights reserved.
 //
 
-#import "NSObject+HJUnicode.h"
+#import "NSObject+Unicode.h"
 
-@implementation NSObject (HJUnicode)
+@implementation NSObject (Unicode)
 + (NSString *)stringByReplaceUnicode:(NSString *)string
 {
     NSMutableString *convertedString = [string mutableCopy];

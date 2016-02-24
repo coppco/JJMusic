@@ -1,5 +1,5 @@
 //
-//  NSObject+HJUnicode.h
+//  NSArray+Unicode.h
 //  JJMusic
 //
 //  Created by coco on 16/2/15.
@@ -8,6 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NSObject (HJUnicode)
-+ (NSString *)stringByReplaceUnicode:(NSString *)string;
+@interface NSArray (Unicode)
+
 @end

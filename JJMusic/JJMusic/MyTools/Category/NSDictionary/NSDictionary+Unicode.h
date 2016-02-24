@@ -1,5 +1,5 @@
 //
-//  NSDictionary+HJUnicode.h
+//  NSDictionary+Unicode.h
 //  JJMusic
 //
 //  Created by coco on 16/2/15.
@@ -8,6 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NSDictionary (HJUnicode)
+@interface NSDictionary (Unicode)
 
 @end
