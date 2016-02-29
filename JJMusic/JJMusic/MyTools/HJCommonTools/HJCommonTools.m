@@ -474,9 +474,11 @@
     CGContextDrawImage(context, CGRectMake(0, 0, w, h), img.CGImage);
     CGContextDrawImage(context, CGRectMake(w-logoWidth-15, 10, logoWidth, logoHeight), [logo CGImage]);
     CGImageRef imageMasked = CGBitmapContextCreateImage(context);
+    UIImage *returnImage = [UIImage imageWithCGImage:imageMasked];
     CGContextRelease(context);
+    CGImageRelease(imageMasked);
     CGColorSpaceRelease(colorSpace);
-    return [UIImage imageWithCGImage:imageMasked];
+    return returnImage;
     // CGContextDrawImage(contextRef, CGRectMake(100, 50, 200, 80), [smallImg CGImage]);
 }
 #pragma mark - 屏幕截图的几种方式
@@ -720,10 +722,13 @@
     CGContextDrawImage(bitmapRef, extent, bitmapImage);
     // Create an image with the contents of our bitmap
     CGImageRef scaledImage = CGBitmapContextCreateImage(bitmapRef);
+    UIImage *returnImage =  [UIImage imageWithCGImage:scaledImage];
     // Cleanup
     CGContextRelease(bitmapRef);
     CGImageRelease(bitmapImage);
-    return [UIImage imageWithCGImage:scaledImage];
+    CGImageRelease(scaledImage);
+    CGColorSpaceRelease(cs);
+    return returnImage;
 }
 
 // CIImage 转换到 UIImage
@@ -744,10 +749,13 @@
     CGContextDrawImage(bitmapRef, extent, bitmapImage);
     // Create an image with the contents of our bitmap
     CGImageRef scaledImage = CGBitmapContextCreateImage(bitmapRef);
+    UIImage *returnImage = [UIImage imageWithCGImage:scaledImage];
     // Cleanup
+    CGImageRelease(scaledImage);
     CGContextRelease(bitmapRef);
     CGImageRelease(bitmapImage);
-    return [UIImage imageWithCGImage:scaledImage];
+    CGColorSpaceRelease(cs);
+    return returnImage;
 }
 // ?
 void ProviderReleaseData(void *info, const void *data, size_t size) {
@@ -1066,10 +1074,10 @@ AppDelegate *getApp() {
     return [UIApplication sharedApplication].delegate;
 }
 UIWindow *getAppWindow() {
-    return [getApp() window];
+    return [[UIApplication sharedApplication] keyWindow];
 }
 #pragma mark - 快捷alloc方法
-/*    UILabel方法  */
+/*     UILabel方法     */
 + (UILabel *)allocLabelWithTitle:(NSString *)title frame:(CGRect)frame font:(UIFont *)font color:(UIColor *)color alignment:(NSTextAlignment)textAlignment keyWords:(NSString *)keyWords keyWordsColor:(UIColor *)keyWordsColor keyWordsFont:(UIFont *)keyWordsFont underLine:(BOOL)underLine {
     
     UILabel *label = [[UILabel alloc] initWithFrame:frame];

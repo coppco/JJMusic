@@ -20,7 +20,7 @@ typedef NS_ENUM(NSInteger, HJNetworkType) {
  *  @param params      网络请求参数
  *  @param showHUD     是否显示HUD
  *  @param view         需要显示HUD的view
- *  @param cache      是否需要缓存,YES  请求成功后存在caches中,无网络下从cache中取
+ *  @param cache      是否需要缓存,所有请求都在成功后存在caches中,若为YES,无网络下从cache中取  建议纯展示内容可以设置为yes
  *  @param finishBlock 请求成功后的后block (JSON数据)
  *  @param failedBlock 请求失败后的block (错误信息)
  */

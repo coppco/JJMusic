@@ -12,6 +12,7 @@
 #import "LockViewController.h"
 #import "LockModel.h"
 #import <RongIMKit/RongIMKit.h> //融云
+
 @interface AppDelegate ()<RCIMUserInfoDataSource>
 
 @end
@@ -24,7 +25,7 @@
     self.window.backgroundColor = [UIColor whiteColor];
     [self shareThirdParty];  //三方注册
     [self enterApp];
-    return YES;
+     return YES;
 }
 - (void)enterApp {
     XHJLog(@"%@", userDefaultGetValue(DidLoad));

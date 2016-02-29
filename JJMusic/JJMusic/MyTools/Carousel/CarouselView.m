@@ -127,6 +127,7 @@ HJpropertyAssign(BOOL loop);
 -(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
     //停止时钟，停止后就不能在使用，如果要启用时钟，需要重新实例化
     [self.timer invalidate];
+    self.timer = nil;
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {

@@ -7,6 +7,7 @@
 //
 
 #import "HomeViewController.h"
+#import "ViewController.h"//测试
 #import "LockViewController.h"  //手势锁
 #import <RongIMKit/RongIMKit.h>  //融云
 
@@ -30,6 +31,7 @@
 #import "KSongView.h" //K歌
 #import "KSong.h"
 #import "KPeople.h"
+#import "HUDTool.h" //加载失败情况下
 @interface HomeViewController ()<UIScrollViewDelegate>
 HJpropertyStrong(NSMutableArray *titleArray);  //上面title数组
 HJpropertyStrong(TopTitleView *topTitleView);  //上面视图
@@ -39,6 +41,7 @@ HJpropertyStrong(MusicListView *musicListView);  //榜单
 HJpropertyStrong(SingerView *singerView);  //歌手
 HJpropertyStrong(RadioView *radioView);  //电台
 HJpropertyStrong(KSongView *kSongView);  //K歌
+HJpropertyStrong(ErrorTipsView *errorView);  //加载失败
 //滚动视图
 HJpropertyStrong(UIScrollView *scrollView);
 
@@ -65,18 +68,20 @@ HJpropertyStrong(UIScrollView *scrollView);
 ////    [self presentViewController:LVC animated:YES completion:nil];
 //    [self.navigationController pushViewController:LVC animated:YES];
     
-    //启用聊天界面
-    //新建一个聊天会话View Controller对象
-    RCConversationViewController *chat = [[RCConversationViewController alloc]init];
-    //设置会话的类型，如单聊、讨论组、群聊、聊天室、客服、公众服务会话等
-    chat.conversationType = ConversationType_PRIVATE;
-    //设置会话的目标会话ID。（单聊、客服、公众服务会话为对方的ID，讨论组、群聊、聊天室为会话的ID）
-    chat.targetId = @"123456";
-    //设置聊天会话界面要显示的标题
-    chat.title = @"与城市美聊天";
-    
-    //显示聊天会话界面
-    [self.navigationController pushViewController:chat animated:YES];
+//    //启用聊天界面
+//    //新建一个聊天会话View Controller对象
+//    RCConversationViewController *chat = [[RCConversationViewController alloc]init];
+//    //设置会话的类型，如单聊、讨论组、群聊、聊天室、客服、公众服务会话等
+//    chat.conversationType = ConversationType_PRIVATE;
+//    //设置会话的目标会话ID。（单聊、客服、公众服务会话为对方的ID，讨论组、群聊、聊天室为会话的ID）
+//    chat.targetId = @"123456";
+//    //设置聊天会话界面要显示的标题
+//    chat.title = @"与城市美聊天";
+//    
+//    //显示聊天会话界面
+//    [self.navigationController pushViewController:chat animated:YES];
+    ViewController *VC = [[ViewController alloc] init];
+    [self.navigationController pushViewController:VC animated:YES];
 }
 
 - (void)initTitleView {
@@ -103,6 +108,7 @@ HJpropertyStrong(UIScrollView *scrollView);
     [_scrollView addSubview:_recommendV];
     //下拉刷新
     _recommendV.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        [HUDTool showLoadingHUDCustomViewInView:self.view title:@"正在加载"];
         [self loadMusicRecommendData];
     }];
     //主动进入刷新状态
@@ -111,6 +117,7 @@ HJpropertyStrong(UIScrollView *scrollView);
     _allDiyView = [[AllDiyView alloc] initWithFrame:CGRectMake(KMainScreenWidth, 0, KMainScreenWidth, ViewH(_scrollView))];
     //下拉刷新
     _allDiyView.collectionView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        [HUDTool showLoadingHUDCustomViewInView:self.view title:@"正在加载"];
         [self loadListData];
     }];
     [_scrollView addSubview:_allDiyView];
@@ -118,6 +125,7 @@ HJpropertyStrong(UIScrollView *scrollView);
     _musicListView = [[MusicListView alloc] initWithFrame:CGRectMake(KMainScreenWidth * 2, 0, KMainScreenWidth, ViewH(_scrollView))];
     //下拉刷新
     _musicListView.collectionView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        [HUDTool showLoadingHUDCustomViewInView:self.view title:@"正在加载"];
         [self loadMusicListData];
     }];
     [_scrollView addSubview:_musicListView];
@@ -125,6 +133,7 @@ HJpropertyStrong(UIScrollView *scrollView);
     _singerView = [[SingerView alloc] initWithFrame:CGRectMake(KMainScreenWidth * 3, 0, KMainScreenWidth, ViewH(_scrollView))];
     //下拉刷新
     _singerView.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        [HUDTool showLoadingHUDCustomViewInView:self.view title:@"正在加载"];
         [self loadSingerData];
     }];
     [_scrollView addSubview:_singerView];
@@ -132,6 +141,7 @@ HJpropertyStrong(UIScrollView *scrollView);
     _radioView = [[RadioView alloc] initWithFrame:CGRectMake(KMainScreenWidth * 4, 0, KMainScreenWidth, ViewH(_scrollView))];
     //下拉刷新
     _radioView.collectionView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        [HUDTool showLoadingHUDCustomViewInView:self.view title:@"正在加载"];
         [self loadRadioData];
     }];
     [_scrollView addSubview:_radioView];
@@ -139,9 +149,17 @@ HJpropertyStrong(UIScrollView *scrollView);
     _kSongView = [[KSongView alloc] initWithFrame:CGRectMake(KMainScreenWidth * 5, 0, KMainScreenWidth, ViewH(_scrollView))];
     //下拉刷新
     _kSongView.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        [HUDTool showLoadingHUDCustomViewInView:self.view title:@"正在加载"];
         [self loadKSongData];
     }];
     [_scrollView addSubview:_kSongView];
+    
+    _errorView = [[ErrorTipsView alloc] initWithFrame:self.scrollView.frame title:@"你的网络似乎不好哦" subTitle:@"请检查你的网络是否正常" image:@"error_msg_t" btnTitle:@"点击重试" btnClick:^(id object) {
+        [self refreshData:_topTitleView.selectIndex - 9980];
+    }];
+    _errorView.hidden = YES;
+    [self.view addSubview:_errorView];
+    
 }
 - (void)refreshData:(NSInteger)tag {
     WeakSelf(weak);
@@ -186,55 +204,82 @@ HJpropertyStrong(UIScrollView *scrollView);
 //获取推荐页面数据
 - (void)loadMusicRecommendData {
     [HttpHandleTool requestWithType:HJNetworkTypeGET URLString:kMusicRecommend params:CUID showHUD:NO inView:nil cache:YES successBlock:^(id responseObject) {
+        _errorView.hidden = YES;
         RModel *model = [[RModel alloc] initWithDictionary:responseObject error:nil];
         _recommendV.recommend = model;
         
         //结束刷新状态
         [_recommendV.tableView.mj_header endRefreshing];
-        
+        //隐藏加载条
+        [HUDTool hideHUD];
     } failedBlock:^(NSError *error) {
         //结束刷新状态
         [_recommendV.tableView.mj_header endRefreshing];
+        //隐藏加载条
+        [HUDTool hideHUD];
+        _recommendV.recommend = nil;
+        _errorView.hidden = NO;
     }];
 }
 //获取歌单数据
 - (void)loadListData {
     [HttpHandleTool requestWithType:(HJNetworkTypeGET) URLString:kSongList params:nil showHUD:NO inView:nil cache:YES successBlock:^(id responseObject) {
+        _errorView.hidden = YES;
         NSArray *array = [DiyModel arrayOfModelsFromDictionaries:responseObject[@"content"]];
-        
         _allDiyView.array = array;
         
         //结束刷新
         [_allDiyView.collectionView.mj_header endRefreshing];
+        //隐藏加载条
+        [HUDTool hideHUD];
     } failedBlock:^(NSError *error) {
         //结束刷新
         [_allDiyView.collectionView.mj_header endRefreshing];
+        //隐藏加载条
+        [HUDTool hideHUD];
+        //
+        _allDiyView.array = nil;
+        _errorView.hidden = NO;
     }];
 }
 
 //获取榜单数据
 - (void)loadMusicListData {
     [HttpHandleTool requestWithType:(HJNetworkTypeGET) URLString:kMusicList params:nil showHUD:NO inView:nil cache:YES successBlock:^(id responseObject) {
+        _errorView.hidden = YES;
         NSArray *array = [MuiscList arrayOfModelsFromDictionaries:responseObject[@"content"]];
         _musicListView.array = array;
         //结束刷新
         [_musicListView.collectionView.mj_header endRefreshing];
+        //隐藏加载条
+        [HUDTool hideHUD];
     } failedBlock:^(NSError *error) {
         //结束刷新
         [_musicListView.collectionView.mj_header endRefreshing];
+        //隐藏加载条
+        [HUDTool hideHUD];
+        _musicListView.array = nil;
+        _errorView.hidden = NO;
     }];
 }
 
 //获取歌手信息
 - (void)loadSingerData {
     [HttpHandleTool requestWithType:(HJNetworkTypeGET) URLString:kSinger params:nil showHUD:NO inView:nil cache:YES successBlock:^(id responseObject) {
+        _errorView.hidden = YES;
         NSArray *array = [SingerModel arrayOfModelsFromDictionaries:responseObject[@"artist"]];
         _singerView.array = array;
         //结束刷新
         [_singerView.tableView.mj_header endRefreshing];
+        //隐藏加载条
+        [HUDTool hideHUD];
     } failedBlock:^(NSError *error) {
         //结束刷新
         [_singerView.tableView.mj_header endRefreshing];
+        //隐藏加载条
+        [HUDTool hideHUD];
+        _singerView.array = nil;
+        _errorView.hidden = NO;
     }];
 }
 
@@ -247,9 +292,13 @@ HJpropertyStrong(UIScrollView *scrollView);
             
             //结束刷新
             [_radioView.collectionView.mj_header endRefreshing];
+            //隐藏加载条
+            [HUDTool hideHUD];
         } failedBlock:^(NSError *error) {
             //结束刷新
             [_radioView.collectionView.mj_header endRefreshing];
+            //隐藏加载条
+            [HUDTool hideHUD];
         }];
     });
     
@@ -259,9 +308,13 @@ HJpropertyStrong(UIScrollView *scrollView);
             _radioView.leBoArray = [LeboModel arrayOfModelsFromDictionaries:responseObject[@"result"][@"taglist"]];
             //结束刷新
             [_radioView.collectionView.mj_header endRefreshing];
+            //隐藏加载条
+            [HUDTool hideHUD];
         } failedBlock:^(NSError *error) {
             //结束刷新
             [_radioView.collectionView.mj_header endRefreshing];
+            //隐藏加载条
+            [HUDTool hideHUD];
         }];
     });
 }
@@ -269,12 +322,19 @@ HJpropertyStrong(UIScrollView *scrollView);
 //获取K歌数据
 - (void)loadKSongData {
     [HttpHandleTool requestWithType:(HJNetworkTypeGET) URLString:kPeopleMusic params:nil showHUD:NO inView:nil cache:YES successBlock:^(id responseObject) {
+        _errorView.hidden = YES;
         _kSongView.array = [KPeople arrayOfModelsFromDictionaries:responseObject[@"result"][@"items"]];
         //结束刷新
         [_kSongView.tableView.mj_header endRefreshing];
+        //隐藏加载条
+        [HUDTool hideHUD];
     } failedBlock:^(NSError *error) {
         //结束刷新
         [_kSongView.tableView.mj_header endRefreshing];
+        //隐藏加载条
+        [HUDTool hideHUD];
+        _kSongView.array = nil;
+        _errorView.hidden = NO;
     }];
 }
 @end

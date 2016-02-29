@@ -7,7 +7,8 @@
 //
 
 #import "HttpHandleTool.h"
-#import <AFNetworking.h>
+#import <AFNetworking.h>  //网络请求
+#import <MBProgressHUD.h>  //菊花
 @implementation HttpHandleTool
 //GET、POST 请求
 + (void)requestWithType:(HJNetworkType)networkType URLString:(NSString *)url params:(NSDictionary *)params showHUD:(BOOL)showHUD inView:(UIView *)view cache:(BOOL)cache successBlock:(void (^)(id))successBlock failedBlock:(void (^)(NSError *))failedBlock {
@@ -33,7 +34,7 @@
     session.responseSerializer = [AFJSONResponseSerializer serializer];
     //如果报接受类型不一致请替换一致text/html , 也可以在AFURLResponseSerialization里面的init方法中设置, 一劳永逸self.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript", @"text/html", nil];
     //session.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
-    //3⃣️设置请求格式  默认JSON
+    //3⃣️设置请求格式  默认HTTP
     session.requestSerializer = [AFJSONRequestSerializer serializer];
     session.requestSerializer.timeoutInterval = 30;  //请求时间30s, 默认60s
     /*
@@ -55,14 +56,14 @@
             [session GET:url parameters:params progress:^(NSProgress * _Nonnull downloadProgress) {
                 
             } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-//                NSLog(@"请求成功:\n*** 请求接口URL: %@\n参数:\n%@\n返回数据:\n%@\n", url, [params description], responseObject);
-                NSLog(@"请求成功:\n*** 请求接口URL: %@\n参数:\n%@\n", url, [params description]);
+                NSLog(@"请求成功:\n*** 请求接口URL: %@\n参数:\n%@\n返回数据:\n%@\n", url, [params description], responseObject);
+//                NSLog(@"请求成功:\n*** 请求接口URL: %@\n参数:\n%@\n", url, [params description]);
                 if (showHUD) {
                     
                 }
                 if (successBlock) {
                     //存在caches中
-                    if (responseObject != nil && cache) {
+                    if (responseObject != nil) {
                         [NSKeyedArchiver archiveRootObject:responseObject toFile:path];
                     }
                     successBlock(responseObject);
@@ -138,7 +139,7 @@
     session.responseSerializer = [AFJSONResponseSerializer serializer];
     //如果报接受类型不一致请替换一致text/html , 也可以在AFURLResponseSerialization里面的init方法中设置, 一劳永逸self.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript", @"text/html", nil];
     //session.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
-    //3⃣️设置请求格式  默认JSON
+    //3⃣️设置请求格式  默认HTTP
     session.requestSerializer = [AFJSONRequestSerializer serializer];
     session.requestSerializer.timeoutInterval = 30;  //请求时间30s, 默认60s
     /*

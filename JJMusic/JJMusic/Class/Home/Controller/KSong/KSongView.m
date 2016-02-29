@@ -21,6 +21,7 @@
         self.tableView.delegate = self;
         self.tableView.dataSource = self;
         self.tableView.backgroundColor = ColorClear;
+        self.tableView.tableFooterView = [[UIView alloc] init];
         [self addSubview:_tableView];
     }
     return self;
@@ -33,7 +34,7 @@
 }
 #pragma mark - delegate
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 48;
+    return 88;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

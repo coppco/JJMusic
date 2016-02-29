@@ -11,9 +11,7 @@ static FMDatabaseQueue *my_FMDatabaseQueue = nil;
 static FMDatabase *DB = nil;
 @implementation FMDBHandle
 + (NSString *)getDatabaseFile {
-    NSString *documentPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
-    NSString *filePath = [documentPath stringByAppendingPathComponent:dbName];
-    NSLog(@"%@", filePath);
+    NSString *filePath = pathDocumentsFileName(dbName);
     return filePath;
 }
 + (FMDatabaseQueue *)sharedDatabaseQueue {
