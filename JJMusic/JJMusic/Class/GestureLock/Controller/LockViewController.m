@@ -41,6 +41,7 @@ HJpropertyCopy(NSString* passwordconfirm); // 确认密码
 }
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    [getAppWindow() sendSubviewToBack:getApp().playerB];
     [self getPreviousImage];
     self.reStart = [HJCommonTools allocButtonWithFrame:CGRectMake(0, 0, 40, 40) title:@"重设" titleColor:[UIColor redColor] font:font(15) normalImage:nil highImage:nil normalBackImage:nil highBackImage:nil];
     [self.reStart addTarget:self action:@selector(reStart:) forControlEvents:(UIControlEventTouchUpInside)];

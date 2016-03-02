@@ -13,7 +13,10 @@
 @end
 
 @implementation BaseViewController
-
+- (void)viewWillAppear:(BOOL)animated {
+    [getAppWindow() bringSubviewToFront:getApp().playerB];
+    [super viewWillAppear:animated];
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initNavigationBar];
@@ -26,8 +29,7 @@
 //    self.navigationController.navigationBar.translucent = NO;  //设置导航栏不透明
     //方法2⃣️  有导航栏    Y需要增加64
     self.navigationController.navigationBar.barTintColor = ColorFromString(@"#FFDEAD");
-    
-    
+//    self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
     //去掉导航条分割线
 //    self.navigationController.navigationBar.shadowImage = [[UIImage alloc] init];
     //设置导航栏标题字体和颜色
@@ -60,7 +62,6 @@
     [super didReceiveMemoryWarning];
     
 }
-
 /*
 #pragma mark - Navigation
 

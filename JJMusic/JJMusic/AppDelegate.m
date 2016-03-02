@@ -12,9 +12,9 @@
 #import "LockViewController.h"
 #import "LockModel.h"
 #import <RongIMKit/RongIMKit.h> //融云
-
+#import "HJPlayerView.h"  //播放视图
 @interface AppDelegate ()<RCIMUserInfoDataSource>
-
+HJpropertyStrong(HJPlayerView *playerView);
 @end
 
 @implementation AppDelegate
@@ -23,9 +23,48 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.backgroundColor = [UIColor whiteColor];
+    self.playerView = [[HJPlayerView alloc] initWithFrame:CGRectMake(0, ViewH(self.window), ViewW(self.window), ViewH(self.window))];
+    [self.window addSubview:self.playerView];
+    
+    _playerB = [UIButton buttonWithType:(UIButtonTypeCustom)];
+    _playerB.frame = CGRectMake(10, ViewH(self.window) - 50 - 10, 50, 50);
+    [_playerB addTarget:self action:@selector(playerViewAppear:) forControlEvents:(UIControlEventTouchUpInside)];
+    [_playerB setBackgroundImage:IMAGE(@"playerHome") forState:(UIControlStateNormal)];
+    [self.window addSubview:_playerB];
+    
+    UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(pan:)];
+    [_playerB addGestureRecognizer:pan];
     [self shareThirdParty];  //三方注册
     [self enterApp];
      return YES;
+}
+- (void)playerViewAppear:(UIButton *)button {
+    [self.window bringSubviewToFront:self.playerView];
+    [UIView animateWithDuration:0.5 animations:^{
+        _playerView.userInteractionEnabled = NO;
+        _playerView.center = self.window.center;
+    } completion:^(BOOL finished) {
+        _playerView.userInteractionEnabled = YES;
+    }];
+}
+- (void)pan:(UIPanGestureRecognizer *)pan {
+    if (UIGestureRecognizerStateChanged == pan.state) {
+        CGPoint point = [pan locationInView:self.window];
+        if (point.x >= 25 && point.x <= ViewW(self.window) - 25 && point.y >= 64 + 40 + 25 && point.y <= ViewH(self.window) - 25) {
+            //            _playerB.transform = CGAffineTransformMakeTranslation(point.x, point.y);
+            _playerB.center = point;
+        }
+    } else if (UIGestureRecognizerStateEnded == pan.state){
+        if (_playerB.center.x >= ViewW(self.window) / 2) {
+            [UIView animateWithDuration:0.3 animations:^{
+                _playerB.center = CGPointMake(ViewW(self.window) - 25, _playerB.center.y);
+            }];
+        } else {
+            [UIView animateWithDuration:0.3 animations:^{
+                _playerB.center = CGPointMake(25, _playerB.center.y);
+            }];
+        }
+    }
 }
 - (void)enterApp {
     XHJLog(@"%@", userDefaultGetValue(DidLoad));

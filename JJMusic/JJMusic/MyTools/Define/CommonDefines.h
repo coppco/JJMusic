@@ -69,10 +69,11 @@
 #define fontWeight(x,y) [UIFont systemFontOfSize:x weight:y];
 
 /*==================UIImage对象==================*/
-//性能高于后者
+//性能高于后者, 需要图片没有放在Assets中
 #define IMAGEFILE(A) \
 [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:A ofType:nil]] \
 
+//
 #define IMAGE(A) [UIImage imageNamed:A]
 
 /*==================PATH==================*/

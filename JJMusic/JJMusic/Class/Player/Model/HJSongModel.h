@@ -29,7 +29,7 @@ HJpropertyCopy(NSString *preload);// 40,
 HJpropertyCopy(NSString *file_bitrate);// 64 码率kbps
 HJpropertyCopy(NSString *file_link);// 播放地址
 HJpropertyCopy(NSString *is_udition_url);// 0,
-HJpropertyCopy(NSString *hash);// 哈希值
+HJpropertyCopy(NSString *hashString);// 哈希值  //改了键值
 @end
 
 @interface SongInfo : JSONModel
@@ -96,6 +96,6 @@ HJpropertyCopy(NSString *is_charge);// 0
 @end
 
 @interface HJSongModel : JSONModel
-HJpropertyStrong(NSArray<SongURL> *url);
+HJpropertyStrong(NSArray<SongURL> *url);  //嵌套
 HJpropertyStrong(SongInfo *songinfo);
 @end

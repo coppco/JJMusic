@@ -42,13 +42,11 @@ HJpropertyStrong(SingerView *singerView);  //歌手
 HJpropertyStrong(RadioView *radioView);  //电台
 HJpropertyStrong(KSongView *kSongView);  //K歌
 HJpropertyStrong(ErrorTipsView *errorView);  //加载失败
-//滚动视图
-HJpropertyStrong(UIScrollView *scrollView);
+HJpropertyStrong(UIScrollView *scrollView);//滚动视图
 
 @end
 
 @implementation HomeViewController
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.backButton.hidden = YES;
@@ -192,7 +190,33 @@ HJpropertyStrong(UIScrollView *scrollView);
     _errorView.hidden = YES;
     [self.view addSubview:_errorView];
     
+//    _playerB = [UIButton buttonWithType:(UIButtonTypeCustom)];
+//    _playerB.frame = CGRectMake(10, ViewH(self.view) - 50 - 10, 50, 50);
+//    [_playerB setBackgroundImage:IMAGE(@"playerHome") forState:(UIControlStateNormal)];
+//    [self.view addSubview:_playerB];
+//    
+//    UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(pan:)];
+//    [_playerB addGestureRecognizer:pan];
 }
+//- (void)pan:(UIPanGestureRecognizer *)pan {
+//    if (UIGestureRecognizerStateChanged == pan.state) {
+//        CGPoint point = [pan locationInView:self.view];
+//        if (point.x >= 25 && point.x <= ViewW(self.view) - 25 && point.y >= ViewMaxY(_topTitleView) + 25 && point.y <= ViewH(self.view) - 25) {
+////            _playerB.transform = CGAffineTransformMakeTranslation(point.x, point.y);
+//            _playerB.center = point;
+//        }
+//    } else if (UIGestureRecognizerStateEnded == pan.state){
+//        if (_playerB.center.x >= ViewW(self.view) / 2) {
+//            [UIView animateWithDuration:0.3 animations:^{
+//                _playerB.center = CGPointMake(ViewW(self.view) - 25, _playerB.center.y);
+//            }];
+//        } else {
+//            [UIView animateWithDuration:0.3 animations:^{
+//                _playerB.center = CGPointMake(25, _playerB.center.y);
+//            }];
+//        }
+//    }
+//}
 - (void)refreshData:(NSInteger)tag {
     WeakSelf(weak);
     if (tag == 0) {

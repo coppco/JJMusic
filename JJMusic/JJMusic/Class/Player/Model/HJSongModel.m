@@ -9,7 +9,9 @@
 #import "HJSongModel.h"
 
 @implementation SongURL
-
++ (JSONKeyMapper *)keyMapper {
+    return [[JSONKeyMapper alloc] initWithDictionary:@{@"hash":@"hashString"}];
+}
 @end
 
 @implementation SongInfo
