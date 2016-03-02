@@ -32,6 +32,9 @@
 		CC4BFED41C746C080093F89F /* AllDiyView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC4BFED31C746C080093F89F /* AllDiyView.m */; };
 		CC4D35D61C83ECBC0076BB85 /* error_msg_t.png in Resources */ = {isa = PBXBuildFile; fileRef = CC4D35D51C83ECBC0076BB85 /* error_msg_t.png */; };
 		CC4D35D81C83F3AF0076BB85 /* error_msg_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = CC4D35D71C83F3AF0076BB85 /* error_msg_bg.png */; };
+		CC4D35DF1C8419F40076BB85 /* HJSongModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CC4D35DE1C8419F40076BB85 /* HJSongModel.m */; };
+		CC4D35E51C8422B50076BB85 /* HJMusicTool.m in Sources */ = {isa = PBXBuildFile; fileRef = CC4D35E41C8422B50076BB85 /* HJMusicTool.m */; };
+		CC50F79E1C859D4B003322C8 /* HJPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC50F79D1C859D4B003322C8 /* HJPlayerView.m */; };
 		CC57BFF21C803B4700906326 /* MulticolorView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC57BFF11C803B4700906326 /* MulticolorView.m */; };
 		CC57BFF71C80598D00906326 /* HUDImage.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CC57BFF61C80598D00906326 /* HUDImage.bundle */; };
 		CC5D1F591C72CCC700E2BC2A /* RModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CC5D1F581C72CCC700E2BC2A /* RModel.m */; };
@@ -168,6 +171,12 @@
 		CC4BFED31C746C080093F89F /* AllDiyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllDiyView.m; sourceTree = "<group>"; };
 		CC4D35D51C83ECBC0076BB85 /* error_msg_t.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = error_msg_t.png; sourceTree = "<group>"; };
 		CC4D35D71C83F3AF0076BB85 /* error_msg_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = error_msg_bg.png; sourceTree = "<group>"; };
+		CC4D35DD1C8419F40076BB85 /* HJSongModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJSongModel.h; sourceTree = "<group>"; };
+		CC4D35DE1C8419F40076BB85 /* HJSongModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJSongModel.m; sourceTree = "<group>"; };
+		CC4D35E31C8422B50076BB85 /* HJMusicTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJMusicTool.h; sourceTree = "<group>"; };
+		CC4D35E41C8422B50076BB85 /* HJMusicTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJMusicTool.m; sourceTree = "<group>"; };
+		CC50F79C1C859D4B003322C8 /* HJPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJPlayerView.h; sourceTree = "<group>"; };
+		CC50F79D1C859D4B003322C8 /* HJPlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJPlayerView.m; sourceTree = "<group>"; };
 		CC57BFF01C803B4700906326 /* MulticolorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MulticolorView.h; sourceTree = "<group>"; };
 		CC57BFF11C803B4700906326 /* MulticolorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MulticolorView.m; sourceTree = "<group>"; };
 		CC57BFF61C80598D00906326 /* HUDImage.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = HUDImage.bundle; sourceTree = "<group>"; };
@@ -345,6 +354,7 @@
 		CC3043101C5B471B0079683D /* Class */ = {
 			isa = PBXGroup;
 			children = (
+				CC4D35D91C8419950076BB85 /* Player */,
 				CC4829541C6053310098E0DD /* GestureLock */,
 				CC61896A1C5B55DF00D72270 /* Third */,
 				CC6189661C5B514A00D72270 /* Home */,
@@ -517,6 +527,43 @@
 				CC4BFED31C746C080093F89F /* AllDiyView.m */,
 			);
 			path = Diy;
+			sourceTree = "<group>";
+		};
+		CC4D35D91C8419950076BB85 /* Player */ = {
+			isa = PBXGroup;
+			children = (
+				CC4D35DA1C8419950076BB85 /* Controller */,
+				CC4D35DB1C8419950076BB85 /* Model */,
+				CC4D35DC1C8419950076BB85 /* Veiw */,
+			);
+			path = Player;
+			sourceTree = "<group>";
+		};
+		CC4D35DA1C8419950076BB85 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		CC4D35DB1C8419950076BB85 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CC4D35E31C8422B50076BB85 /* HJMusicTool.h */,
+				CC4D35E41C8422B50076BB85 /* HJMusicTool.m */,
+				CC4D35DD1C8419F40076BB85 /* HJSongModel.h */,
+				CC4D35DE1C8419F40076BB85 /* HJSongModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CC4D35DC1C8419950076BB85 /* Veiw */ = {
+			isa = PBXGroup;
+			children = (
+				CC50F79C1C859D4B003322C8 /* HJPlayerView.h */,
+				CC50F79D1C859D4B003322C8 /* HJPlayerView.m */,
+			);
+			path = Veiw;
 			sourceTree = "<group>";
 		};
 		CC57BFEF1C803B4700906326 /* MulticolorView */ = {
@@ -1083,12 +1130,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC4D35DF1C8419F40076BB85 /* HJSongModel.m in Sources */,
 				CC30431D1C5B48450079683D /* BaseData.m in Sources */,
 				CC6189651C5B4F8600D72270 /* GuideViewController.m in Sources */,
 				CC36CDD01C71601D00505E05 /* CarouselView.m in Sources */,
 				CCFFF1B11C5B1668008A5A06 /* ViewController.m in Sources */,
 				CC3043171C5B47840079683D /* BaseViewController.m in Sources */,
 				CCFFF2021C5B346A008A5A06 /* RegionSearch.m in Sources */,
+				CC50F79E1C859D4B003322C8 /* HJPlayerView.m in Sources */,
 				CC071EE51C76C3DB00494B4B /* KPeople.m in Sources */,
 				CC36CDF01C71D76300505E05 /* NSArray+Unicode.m in Sources */,
 				CC6111601C75912C00747FD1 /* SingerView.m in Sources */,
@@ -1139,6 +1188,7 @@
 				CCBAD97A1C7EACA6003FE160 /* UIView+HJFrame.m in Sources */,
 				CC61115D1C758F2C00747FD1 /* SingerModel.m in Sources */,
 				CCFFF2011C5B346A008A5A06 /* RegionModel.m in Sources */,
+				CC4D35E51C8422B50076BB85 /* HJMusicTool.m in Sources */,
 				CC65A7A21C5F38DE00E6C2AF /* HomeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

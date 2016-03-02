@@ -157,6 +157,9 @@ HJpropertyStrong(NSArray *diy);
     cell.diy = _diy[indexPath.item];
     return cell;
 }
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath  {
+    
+}
 - (void)setDiy:(NSArray *)diy {
     _diy = diy;
     [_collectionView reloadData];

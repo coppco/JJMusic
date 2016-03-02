@@ -155,7 +155,39 @@ HJpropertyStrong(UIScrollView *scrollView);
     [_scrollView addSubview:_kSongView];
     
     _errorView = [[ErrorTipsView alloc] initWithFrame:self.scrollView.frame title:@"你的网络似乎不好哦" subTitle:@"请检查你的网络是否正常" image:@"error_msg_t" btnTitle:@"点击重试" btnClick:^(id object) {
-        [self refreshData:_topTitleView.selectIndex - 9980];
+        NSInteger tag = _topTitleView.selectIndex - 9980;
+        WeakSelf(weak);
+        if (tag == 0) {
+//            if (weak.recommendV.recommend == nil) {
+                [weak.recommendV.tableView.mj_header beginRefreshing];
+//            }
+        }
+        if (tag == 1) {
+//            if (weak.allDiyView.array.count == 0) {
+                [weak.allDiyView.collectionView.mj_header beginRefreshing];
+//            }
+        }
+        if (tag == 2) {
+//            if (weak.musicListView.array.count == 0) {
+                [weak.musicListView.collectionView.mj_header beginRefreshing];
+//            }
+        }
+        if (tag  == 3) {
+//            if (weak.singerView.array.count == 0) {
+                [weak.singerView.tableView.mj_header beginRefreshing];
+//            }
+        }
+        if (tag  == 4) {
+//            if (!_radioView.isLoad) {
+                [weak.radioView.collectionView.mj_header beginRefreshing];
+//            }
+        }
+        if (tag == 5) {
+//            if (_kSongView.array.count == 0) {
+                [weak.kSongView.tableView.mj_header beginRefreshing];
+//            }
+        }
+
     }];
     _errorView.hidden = YES;
     [self.view addSubview:_errorView];
@@ -299,6 +331,7 @@ HJpropertyStrong(UIScrollView *scrollView);
             [_radioView.collectionView.mj_header endRefreshing];
             //隐藏加载条
             [HUDTool hideHUD];
+            
         }];
     });
     
