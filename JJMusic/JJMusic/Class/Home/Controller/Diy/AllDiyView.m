@@ -9,6 +9,7 @@
 #import "AllDiyView.h"
 #import <UIImageView+WebCache.h>
 #import "DiyModel.h"  //model
+#import "HJListViewController.h"  //详情页面
 
 @interface DiyCell : UICollectionViewCell
 HJpropertyStrong(UIImageView *imageV);
@@ -79,7 +80,12 @@ HJpropertyStrong(DiyModel *model);
     cell.model = _array[indexPath.item];
     return cell;
 }
-
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    DiyModel *model = _array[indexPath.item];
+    HJListViewController *ListVC = [[HJListViewController alloc] init];
+    ListVC.model = model;
+    [self.viewController.navigationController pushViewController:ListVC animated:YES];
+}
 - (void)setArray:(NSArray *)array {
     _array = array;
     

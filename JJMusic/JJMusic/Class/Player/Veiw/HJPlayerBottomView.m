@@ -7,7 +7,7 @@
 //
 
 #import "HJPlayerBottomView.h"
-#define kwidth 30
+#define kwidth (ViewH(self) - 32) * 0.26
 @interface HJPlayerBottomView ()
 HJpropertyStrong(UILabel *currentL);//当前时间
 HJpropertyStrong(UILabel *totalL);//总时间
@@ -27,14 +27,13 @@ HJpropertyStrong(UIButton *favoriteB); //收藏
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
-        self.backgroundColor = [UIColor grayColor];
+        self.backgroundColor = [UIColor clearColor];
         [self initSubView];
     }
     return  self;
 }
 - (void)initSubView {
     self.playTypeB = [UIButton buttonWithType:(UIButtonTypeCustom)];
-
     [self.playTypeB setBackgroundImage:IMAGE(@"player_type_sx") forState:(UIControlStateNormal)];
     [self addSubview:self.playTypeB];
     
@@ -84,59 +83,60 @@ HJpropertyStrong(UIButton *favoriteB); //收藏
     //播放模式  单曲循环  下载  收藏
     [self.playTypeB mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self).with.offset(kx);
-        make.top.equalTo(self).with.offset(10);
+        make.top.equalTo(self).with.offset(8);
         make.size.mas_equalTo(CGSizeMake(kwidth, kwidth));
     }];
     [self.cycleB mas_makeConstraints:^(MASConstraintMaker *make) {
         make.size.mas_equalTo(CGSizeMake(kwidth, kwidth));
-        make.top.equalTo(self).with.offset(10);
+        make.top.equalTo(self).with.offset(8);
         make.left.equalTo(self.playTypeB.mas_right).with.offset(kx);
     }];
     [self.downloadB mas_makeConstraints:^(MASConstraintMaker *make) {
         make.size.mas_equalTo(CGSizeMake(kwidth, kwidth));
-        make.top.equalTo(self).with.offset(10);
+        make.top.equalTo(self).with.offset(8);
         make.left.equalTo(self.cycleB.mas_right).with.offset(kx);
     }];
     [self.favoriteB mas_makeConstraints:^(MASConstraintMaker *make) {
         make.size.mas_equalTo(CGSizeMake(kwidth, kwidth));
-        make.top.equalTo(self).with.offset(10);
+        make.top.equalTo(self).with.offset(8);
         make.left.equalTo(self.downloadB.mas_right).with.offset(kx);
     }];
     
     //时间  进度条和滑块
     [self.currentL mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self).offset(5);
-        make.top.equalTo(self.playTypeB.mas_bottom).offset(10);
-        make.size.mas_equalTo(CGSizeMake(ViewW(self.currentL), 30));
+        make.top.equalTo(self.playTypeB.mas_bottom).offset(8);
+        make.size.mas_equalTo(CGSizeMake(ViewW(self.currentL), kwidth));
     }];
     [self.slider mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(self.currentL);
         make.left.equalTo(self.currentL.mas_right).offset(10);
         make.right.equalTo(self.totalL.mas_left).offset(-10);
-        make.height.mas_equalTo(30);
+        make.height.mas_equalTo(kwidth);
     }];
     [self.totalL mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.size.mas_equalTo(CGSizeMake(ViewW(self.totalL), 30));
+        make.size.mas_equalTo(CGSizeMake(ViewW(self.totalL), kwidth));
         make.centerY.equalTo(self.currentL);
         make.right.equalTo(self).offset(-5);
     }];
     
     //上一首  播放  下一首
-    CGFloat widthPlay = 70;
-    CGFloat widthOther = 50;
+    CGFloat widthPlay = (ViewH(self) - 32)* 0.48;
+    CGFloat widthOther = (ViewH(self) - 32) * 0.32;
     CGFloat kxx = (ViewW(self) - widthPlay -widthOther * 2) / 4;
-    [self.previousB mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self).offset(kxx);
-        make.bottom.equalTo(self).offset(-30);
-        make.size.mas_equalTo(CGSizeMake(widthOther, widthOther));
-    }];
     [self.playB mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(self.previousB);
+        make.bottom.equalTo(self).offset(-8);
         make.size.mas_equalTo(CGSizeMake(widthPlay, widthPlay));
         make.left.equalTo(self.previousB.mas_right).offset(kxx);
     }];
+    [self.previousB mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self).offset(kxx);
+        make.centerY.equalTo(self.playB);
+        make.size.mas_equalTo(CGSizeMake(widthOther, widthOther));
+    }];
     [self.nextB mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(self.previousB);
+        make.centerY.equalTo(self.playB);
         make.size.mas_equalTo(CGSizeMake(widthOther, widthOther));
         make.right.equalTo(self).offset(-kxx);
     }];

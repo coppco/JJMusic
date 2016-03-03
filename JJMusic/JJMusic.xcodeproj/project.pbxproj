@@ -22,7 +22,9 @@
 		CC36CDF01C71D76300505E05 /* NSArray+Unicode.m in Sources */ = {isa = PBXBuildFile; fileRef = CC36CDEF1C71D76300505E05 /* NSArray+Unicode.m */; };
 		CC36CDF31C71D77700505E05 /* NSDictionary+Unicode.m in Sources */ = {isa = PBXBuildFile; fileRef = CC36CDF21C71D77700505E05 /* NSDictionary+Unicode.m */; };
 		CC43B67E1C8675280018AC8A /* HJPlayerBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC43B67D1C8675280018AC8A /* HJPlayerBottomView.m */; };
-		CC43B6801C86CE0E0018AC8A /* mp3.png in Resources */ = {isa = PBXBuildFile; fileRef = CC43B67F1C86CE0E0018AC8A /* mp3.png */; };
+		CC43B6851C86E6DA0018AC8A /* player_backgroud.png in Resources */ = {isa = PBXBuildFile; fileRef = CC43B6841C86E6DA0018AC8A /* player_backgroud.png */; };
+		CC43B6871C86E7510018AC8A /* player_record.png in Resources */ = {isa = PBXBuildFile; fileRef = CC43B6861C86E7510018AC8A /* player_record.png */; };
+		CC43B68A1C87E0AE0018AC8A /* HJListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC43B6891C87E0AE0018AC8A /* HJListViewController.m */; };
 		CC4829591C6053730098E0DD /* LockItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC4829581C6053730098E0DD /* LockItemView.m */; };
 		CC48295C1C608BF80098E0DD /* MyLockView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC48295B1C608BF80098E0DD /* MyLockView.m */; };
 		CC48295F1C60A7600098E0DD /* LockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC48295E1C60A7600098E0DD /* LockViewController.m */; };
@@ -155,7 +157,10 @@
 		CC36CDF21C71D77700505E05 /* NSDictionary+Unicode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Unicode.m"; sourceTree = "<group>"; };
 		CC43B67C1C8675280018AC8A /* HJPlayerBottomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJPlayerBottomView.h; sourceTree = "<group>"; };
 		CC43B67D1C8675280018AC8A /* HJPlayerBottomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJPlayerBottomView.m; sourceTree = "<group>"; };
-		CC43B67F1C86CE0E0018AC8A /* mp3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mp3.png; sourceTree = "<group>"; };
+		CC43B6841C86E6DA0018AC8A /* player_backgroud.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = player_backgroud.png; sourceTree = "<group>"; };
+		CC43B6861C86E7510018AC8A /* player_record.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = player_record.png; sourceTree = "<group>"; };
+		CC43B6881C87E0AE0018AC8A /* HJListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJListViewController.h; sourceTree = "<group>"; };
+		CC43B6891C87E0AE0018AC8A /* HJListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJListViewController.m; sourceTree = "<group>"; };
 		CC4829571C6053730098E0DD /* LockItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LockItemView.h; sourceTree = "<group>"; };
 		CC4829581C6053730098E0DD /* LockItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LockItemView.m; sourceTree = "<group>"; };
 		CC48295A1C608BF80098E0DD /* MyLockView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyLockView.h; sourceTree = "<group>"; };
@@ -465,6 +470,15 @@
 			path = NSObject;
 			sourceTree = "<group>";
 		};
+		CC43B6831C86E69F0018AC8A /* 播放器大图 */ = {
+			isa = PBXGroup;
+			children = (
+				CC43B6861C86E7510018AC8A /* player_record.png */,
+				CC43B6841C86E6DA0018AC8A /* player_backgroud.png */,
+			);
+			path = "播放器大图";
+			sourceTree = "<group>";
+		};
 		CC4829541C6053310098E0DD /* GestureLock */ = {
 			isa = PBXGroup;
 			children = (
@@ -537,6 +551,7 @@
 		CC4D35D91C8419950076BB85 /* Player */ = {
 			isa = PBXGroup;
 			children = (
+				CC43B6831C86E69F0018AC8A /* 播放器大图 */,
 				CC4D35DA1C8419950076BB85 /* Controller */,
 				CC4D35DB1C8419950076BB85 /* Model */,
 				CC4D35DC1C8419950076BB85 /* Veiw */,
@@ -565,7 +580,6 @@
 		CC4D35DC1C8419950076BB85 /* Veiw */ = {
 			isa = PBXGroup;
 			children = (
-				CC43B67F1C86CE0E0018AC8A /* mp3.png */,
 				CC50F79C1C859D4B003322C8 /* HJPlayerView.h */,
 				CC50F79D1C859D4B003322C8 /* HJPlayerView.m */,
 				CC43B67C1C8675280018AC8A /* HJPlayerBottomView.h */,
@@ -693,6 +707,8 @@
 				CC36CDD11C7168FE00505E05 /* Recommend */,
 				CC65A79E1C5F38DE00E6C2AF /* HomeViewController.h */,
 				CC65A79F1C5F38DE00E6C2AF /* HomeViewController.m */,
+				CC43B6881C87E0AE0018AC8A /* HJListViewController.h */,
+				CC43B6891C87E0AE0018AC8A /* HJListViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1037,7 +1053,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				CCA8988C1C5B6A7D0098F58B /* 640*960-3.jpg in Resources */,
-				CC43B6801C86CE0E0018AC8A /* mp3.png in Resources */,
 				CC4D35D81C83F3AF0076BB85 /* error_msg_bg.png in Resources */,
 				CCA898911C5B6A7D0098F58B /* 750*1334-4.jpg in Resources */,
 				CCA898801C5B6A7D0098F58B /* 1242*2208-3.jpg in Resources */,
@@ -1049,8 +1064,10 @@
 				CCA898891C5B6A7D0098F58B /* 640*1136-4.jpg in Resources */,
 				CCA898861C5B6A7D0098F58B /* 640*1136-1.jpg in Resources */,
 				CC6189861C5B55F000D72270 /* Info.plist in Resources */,
+				CC43B6851C86E6DA0018AC8A /* player_backgroud.png in Resources */,
 				CCA8988A1C5B6A7D0098F58B /* 640*960-1.jpg in Resources */,
 				CCA898851C5B6A7D0098F58B /* 320*480-4.jpg in Resources */,
+				CC43B6871C86E7510018AC8A /* player_record.png in Resources */,
 				CCA8988B1C5B6A7D0098F58B /* 640*960-2.jpg in Resources */,
 				CCA8987F1C5B6A7D0098F58B /* 1242*2208-2.jpg in Resources */,
 				CCA898811C5B6A7D0098F58B /* 1242*2208-4.jpg in Resources */,
@@ -1179,6 +1196,7 @@
 				CC6111731C75BFC600747FD1 /* RedRadio.m in Sources */,
 				CCFFF2121C5B3AC6008A5A06 /* HttpHandleTool.m in Sources */,
 				CC071EE81C76C45B00494B4B /* KSongView.m in Sources */,
+				CC43B68A1C87E0AE0018AC8A /* HJListViewController.m in Sources */,
 				CC57BFF21C803B4700906326 /* MulticolorView.m in Sources */,
 				CC48295C1C608BF80098E0DD /* MyLockView.m in Sources */,
 				CC49C1351C61FDEB0001F5BA /* LockModel.m in Sources */,

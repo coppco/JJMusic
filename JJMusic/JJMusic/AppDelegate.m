@@ -12,9 +12,9 @@
 #import "LockViewController.h"
 #import "LockModel.h"
 #import <RongIMKit/RongIMKit.h> //融云
-#import "HJPlayerView.h"  //播放视图
+
 @interface AppDelegate ()<RCIMUserInfoDataSource>
-HJpropertyStrong(HJPlayerView *playerView);
+
 @end
 
 @implementation AppDelegate
@@ -23,7 +23,7 @@ HJpropertyStrong(HJPlayerView *playerView);
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.backgroundColor = [UIColor whiteColor];
-    self.playerView = [[HJPlayerView alloc] initWithFrame:CGRectMake(0, ViewH(self.window), ViewW(self.window), ViewH(self.window))];
+    _playerView = [[HJPlayerView alloc] initWithFrame:CGRectMake(0, ViewH(self.window), ViewW(self.window), ViewH(self.window))];
     [self.window addSubview:self.playerView];
     
     _playerB = [UIButton buttonWithType:(UIButtonTypeCustom)];
@@ -41,16 +41,18 @@ HJpropertyStrong(HJPlayerView *playerView);
 - (void)playerViewAppear:(UIButton *)button {
     [self.window bringSubviewToFront:self.playerView];
     [UIView animateWithDuration:0.5 animations:^{
+        button.userInteractionEnabled = NO;
         _playerView.userInteractionEnabled = NO;
         _playerView.center = self.window.center;
     } completion:^(BOOL finished) {
+        button.userInteractionEnabled = YES;
         _playerView.userInteractionEnabled = YES;
     }];
 }
 - (void)pan:(UIPanGestureRecognizer *)pan {
     if (UIGestureRecognizerStateChanged == pan.state) {
         CGPoint point = [pan locationInView:self.window];
-        if (point.x >= 25 && point.x <= ViewW(self.window) - 25 && point.y >= 64 + 40 + 25 && point.y <= ViewH(self.window) - 25) {
+        if (point.x >= 25 && point.x <= ViewW(self.window) - 25 && point.y >= 25 && point.y <= ViewH(self.window) - 25) {
             //            _playerB.transform = CGAffineTransformMakeTranslation(point.x, point.y);
             _playerB.center = point;
         }
@@ -67,7 +69,6 @@ HJpropertyStrong(HJPlayerView *playerView);
     }
 }
 - (void)enterApp {
-    XHJLog(@"%@", userDefaultGetValue(DidLoad));
     if (!userDefaultGetValue(DidLoad)) {
         //第一次进入,进入导航页
         GuideViewController *guideVC = [[GuideViewController alloc] init];
@@ -84,14 +85,14 @@ HJpropertyStrong(HJPlayerView *playerView);
     [RCIM sharedRCIM].userInfoDataSource = self;
     [RCIM sharedRCIM].currentUserInfo =[[RCUserInfo alloc] initWithUserId:@"654321" name:@"MSN" portrait:@"http://musicdata.baidu.com/data2/pic/115286282/115286282.jpg"];
     [[RCIM sharedRCIM] connectWithToken:kToken2 success:^(NSString *userId) {
-        NSLog(@"登陆成功。当前登录的用户ID：%@", userId);
+        XHJLog(@"登陆成功。当前登录的用户ID：%@", userId);
     } error:^(RCConnectErrorCode status) {
-        NSLog(@"登陆的错误码为:%ld", (long)status);
+        XHJLog(@"登陆的错误码为:%ld", (long)status);
     } tokenIncorrect:^{
         //token过期或者不正确。
         //如果设置了token有效期并且token过期，请重新请求您的服务器获取新的token
         //如果没有设置token有效期却提示token错误，请检查您客户端和服务器的appkey是否匹配，还有检查您获取token的流程。
-        NSLog(@"token错误");
+        XHJLog(@"token错误");
     }];
 }
 - (void)getUserInfoWithUserId:(NSString *)userId completion:(void (^)(RCUserInfo *))completion {
@@ -126,7 +127,7 @@ HJpropertyStrong(HJPlayerView *playerView);
     if (self.window.rootViewController.presentingViewController == nil) {
         LockViewController *lvc = [[LockViewController alloc] initWithType:type];
         lvc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-        [self.window.rootViewController presentViewController:lvc animated:YES completion:nil];
+        [self.window.rootViewController  presentViewController:lvc animated:YES completion:nil];
     }
 }
 - (void)applicationWillTerminate:(UIApplication *)application {

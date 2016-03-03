@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class HJSongModel;
 @interface HJPlayerView : UIView
-
+- (void)playMusicWith:(HJSongModel *)model;
 @end

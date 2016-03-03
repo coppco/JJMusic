@@ -28,8 +28,8 @@
 //        [self.navigationController.navigationBar setBackgroundImage:[HJCommonTools imageFromUIColor:ColorFromString(@"#FFDEAD")] forBarMetrics:(UIBarMetricsDefault)];
 //    self.navigationController.navigationBar.translucent = NO;  //设置导航栏不透明
     //方法2⃣️  有导航栏    Y需要增加64
-    self.navigationController.navigationBar.barTintColor = ColorFromString(@"#FFDEAD");
-//    self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
+    self.navigationController.navigationBar.barTintColor = ColorFromString(@"##FF0080");
+    self.navigationController.navigationBar.barStyle = UIBarStyleBlack;  //使用系统的导航栏,barstyle为black或者  navigationBarhidden=yes后  viewcontroller的performbarstatusstyle 可以走
     //去掉导航条分割线
 //    self.navigationController.navigationBar.shadowImage = [[UIImage alloc] init];
     //设置导航栏标题字体和颜色

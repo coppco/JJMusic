@@ -29,4 +29,8 @@
 #define kSongMusic @"http://tingapi.ting.baidu.com/v1/restserver/ting?method=baidu.ting.learn.category&from=ios&version=5.5.4&from=ios&channel=appstore&operator=0"
 //大家
 #define kPeopleMusic @"http://tingapi.ting.baidu.com/v1/restserver/ting?method=baidu.ting.learn.now&from=ios&version=5.5.4&from=ios&channel=appstore&operator=0"
+
+//歌单内容
+#define kMusicListDetail(ListID) \
+STRFORMAT(@"http://tingapi.ting.baidu.com/v1/restserver/ting?method=baidu.ting.diy.gedanInfo&from=ios&listid=%@&version=5.5.5&from=ios&channel=appstore&operator=0", ListID)
 #endif /* RequestURL_h */

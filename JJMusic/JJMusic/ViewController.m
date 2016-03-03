@@ -43,7 +43,6 @@
     [self performSelector:@selector(hhhhhh) withObject:nil afterDelay:4];
 }
 - (void)hehe {
-    NSLog(@"1");
     [HUDTool showCustomSmileViewWithTitle:@"微笑" delay:2];
 }
 - (void)hhhhhh {

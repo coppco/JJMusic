@@ -9,7 +9,8 @@
 #import "RecommendCell.h"
 #import <UIButton+WebCache.h>
 #import <UIImageView+WebCache.h>
-#import "RModel.h"
+#import "RModel.h"  //推荐model
+#import "HJListViewController.h"  //详情页面
 //场景电台
 @interface SceneView : UIView
 HJpropertyStrong(AllScene *allScene);
@@ -158,7 +159,12 @@ HJpropertyStrong(NSArray *diy);
     return cell;
 }
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath  {
-    
+    if ([_diy[indexPath.item] isKindOfClass:[Diy class]]) {
+        //歌单
+        HJListViewController *ListVC = [[HJListViewController alloc] init];
+        ListVC.model = _diy[indexPath.item];
+        [self.viewController.navigationController pushViewController:ListVC animated:YES];
+    }
 }
 - (void)setDiy:(NSArray *)diy {
     _diy = diy;

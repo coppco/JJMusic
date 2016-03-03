@@ -14,7 +14,6 @@
 + (void)requestWithType:(HJNetworkType)networkType URLString:(NSString *)url params:(NSDictionary *)params showHUD:(BOOL)showHUD inView:(UIView *)view cache:(BOOL)cache successBlock:(void (^)(id))successBlock failedBlock:(void (^)(NSError *))failedBlock {
     //归档地址
     NSString *path = pathCachesFilePathName(@"networkRequest", STRFORMAT(@"%ld.xxoo", [url hash]));
-    XHJLog(@" %@", path);
     
     //url中有汉字 需要编码
     //对应解码方法:解码使用stringByRemovingPercentEncoding方法
@@ -56,7 +55,7 @@
             [session GET:url parameters:params progress:^(NSProgress * _Nonnull downloadProgress) {
                 
             } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-                NSLog(@"请求成功:\n*** 请求接口URL: %@\n参数:\n%@\n返回数据:\n%@\n", url, [params description], responseObject);
+//                NSLog(@"请求成功:\n*** 请求接口URL: %@\n参数:\n%@\n返回数据:\n%@\n", url, [params description], responseObject);
 //                NSLog(@"请求成功:\n*** 请求接口URL: %@\n参数:\n%@\n", url, [params description]);
                 if (showHUD) {
                     
@@ -69,7 +68,7 @@
                     successBlock(responseObject);
                 }
             } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-                NSLog(@"请求失败:\n*** 请求接口URL: %@\n参数:\n%@\nERROR:%@\n返回数据:\n%@\n", url, [params description], error, task.taskDescription);
+//                NSLog(@"请求失败:\n*** 请求接口URL: %@\n参数:\n%@\nERROR:%@\n返回数据:\n%@\n", url, [params description], error, task.taskDescription);
                 if (showHUD) {
                     
                 }
@@ -90,7 +89,7 @@
             [session POST:url parameters:params progress:^(NSProgress * _Nonnull uploadProgress) {
                 
             } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-                NSLog(@"当前请求成功:\n*** 请求接口URL: %@\n参数:\n%@\n返回数据:\n%@\n", url, [params description], responseObject);
+//                NSLog(@"当前请求成功:\n*** 请求接口URL: %@\n参数:\n%@\n返回数据:\n%@\n", url, [params description], responseObject);
                 if (showHUD) {
                     
                 }
@@ -178,7 +177,7 @@
     } progress:^(NSProgress * _Nonnull uploadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        NSLog(@"返回数据:\n%@\n图片上传成功: %@\n", task.taskDescription, responseObject);
+//        NSLog(@"返回数据:\n%@\n图片上传成功: %@\n", task.taskDescription, responseObject);
         if (showHUD) {
             
         }
@@ -186,7 +185,7 @@
             successBlock(responseObject);
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        NSLog(@"返回数据:\n%@\n图片上传失败: %@\n", task.taskDescription, error);
+//        NSLog(@"返回数据:\n%@\n图片上传失败: %@\n", task.taskDescription, error);
         if (showHUD) {
             
         }

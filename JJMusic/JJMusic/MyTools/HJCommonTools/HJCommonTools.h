@@ -242,13 +242,21 @@ typedef NS_ENUM(NSInteger, DirectionType) {
  */
 + (UIColor *)colorFromRGBValue:(NSInteger)rgbValue;
 /**
- *  从图片生成UIColor
+ *  从图片生成UIColor, 完全生成图片
  *
  *  @param image 图片
  *
  *  @return
  */
 + (UIColor *)colorFromImage:(UIImage *)image;
+/**
+ *  从一张图片中获取主要的颜色色调
+ *
+ *  @param image 图片
+ *
+ *  @return 返回一个颜色
+ */
++ (UIColor *)colorPrimaryFromImage:(UIImage *)image;
 #pragma mark - 获取当前时间
 /**
  *  获取当前时间, 默认2016年01月01日 00时00分00秒0000毫秒

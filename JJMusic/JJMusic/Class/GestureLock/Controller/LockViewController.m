@@ -83,7 +83,6 @@ HJpropertyCopy(NSString* passwordconfirm); // 确认密码
     
     //本地保存的密码
     self.passwordSaved = [LockModel getPassword];
-    XHJLog(@"本地密码%@", self.passwordSaved);
     if (_type == LockViewTypeCreate || _type == LockViewTypeModify) {
         self.indicatorView.hidden = NO;
     } else {
