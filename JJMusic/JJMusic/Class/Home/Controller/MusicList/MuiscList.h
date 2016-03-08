@@ -13,8 +13,8 @@
 @end
 
 @interface ListContent : JSONModel
-HJpropertyCopy(NSString *title);// 给我一点温度,
-HJpropertyCopy(NSString *author);// 梁博,
+HJpropertyCopy(NSString <Optional>*title);// 给我一点温度,
+HJpropertyCopy(NSString <Optional>*author);// 梁博,
 HJpropertyCopy(NSString *song_id);// 262435353,
 HJpropertyCopy(NSString *album_id);// 262435356,
 HJpropertyCopy(NSString *album_title);// 给我一点温度,

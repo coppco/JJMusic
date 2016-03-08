@@ -7,7 +7,35 @@
 //
 
 #import <UIKit/UIKit.h>
-@class HJSongModel;
+#import "HJListDetailModel.h"
+#import "HJSongModel.h"  //model
+
 @interface HJPlayerView : UIView
-- (void)playMusicWith:(HJSongModel *)model;
+HJpropertyStrong(HJSongModel *model);
+/**
+ *  更换songID  实现播放
+ */
+HJpropertyCopy(NSString *songID);
+/**
+ *  存放歌曲ID的数组
+ */
+HJpropertyStrong(NSArray <ListSongModel> *content);
+/**
+ *  下一首
+ */
+- (void)nextSong;
+/**
+ *  上一首
+ */
+- (void)previousSong;
+
+/**
+ *  开始定时器
+ */
+- (void)updateTimer;
+/**
+ *  停止定时器
+ */
+- (void)stopTimer;
+
 @end

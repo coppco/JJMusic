@@ -1,14 +1,18 @@
 //
-//  NSObject+Unicode.m
-//  JJMusic
+//  NSObject+ZXPUnicode.m
+//  House
 //
-//  Created by coco on 16/2/15.
-//  Copyright © 2016年 XHJ. All rights reserved.
+//  blog : http://blog.csdn.net/biggercoffee
+//  github : https://github.com/biggercoffee/ZXPUnicode
+
+//  Created by coffee on 15/9/28.
+//  Copyright © 2015年 cylkj. All rights reserved.
 //
 
-#import "NSObject+Unicode.h"
+#import "NSObject+ZXPUnicode.h"
 
-@implementation NSObject (Unicode)
+@implementation NSObject (ZXPUnicode)
+
 + (NSString *)stringByReplaceUnicode:(NSString *)string
 {
     NSMutableString *convertedString = [string mutableCopy];
@@ -17,4 +21,5 @@
     CFStringTransform((__bridge CFMutableStringRef)convertedString, NULL, transform, YES);
     return convertedString;
 }
+
 @end

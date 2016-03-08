@@ -18,6 +18,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
+    UIProgressView *view = [[UIProgressView alloc] initWithFrame:CGRectMake(0, 100, ViewW(self.view), 2)];
+    [self.view addSubview:view];
+    
+    
 //    UIButton *button1 = [UIButton buttonWithType:(UIButtonTypeCustom)];
 //    button1.frame = CGRectMake(50, 250, 50, 50);
 //    [button1 setTitle:@"测试" forState:(UIControlStateNormal)];

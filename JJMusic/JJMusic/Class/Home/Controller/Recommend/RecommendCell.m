@@ -30,18 +30,16 @@ HJpropertyStrong(UILabel *label);
     _allScene = allScene;
     CGFloat KH = 25;
     CGFloat width = (ViewW(self) - 2 * begin_X  - 3 * KH) / 4;
-    NSInteger i = 0;
-    NSArray *array = [NSArray arrayWithObjects:allScene.action, allScene.emotion, allScene.operation, allScene.other, nil];
     for (UIView *view in self.subviews) {
         if ([view isKindOfClass:[UIButton class]] || [view isKindOfClass:[UILabel class]]) {
             [view removeFromSuperview];
         }
     }
-    for (NSArray *array1 in array) {
+    for (int i = 0; i <= allScene.action.count - 1;i++) {
         CGFloat x = begin_X + (KH + width) * i;
         UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(x, 0, width, width)];
         button.layer.cornerRadius = 20;
-        Scene *scene = array1[0];
+        Scene *scene = allScene.action[i];
         [button sd_setImageWithURL:[NSURL URLWithString:scene.icon_ios] forState:(UIControlStateNormal)];
         [button setBackgroundColor:[UIColor redColor]];
         button.tag = i;
@@ -50,7 +48,6 @@ HJpropertyStrong(UILabel *label);
         UILabel *label = [HJCommonTools allocLabelWithTitle:scene.scene_name frame:CGRectMake(x, ViewMaxY(button) + 5, width, 20) font:font(15) color:[UIColor blackColor] alignment:1 keyWords:nil keyWordsColor:nil keyWordsFont:nil underLine:NO];
         label.adjustsFontSizeToFitWidth = YES; //字体大小适应宽度
         [self addSubview:label];
-        i++;
     }
 }
 @end

@@ -20,7 +20,7 @@
     BOOL success = NO;
     if (![db tableExists:FavouriteMusicTable]) {
         //除了查询其他都用update
-        success = [db executeUpdate:[NSString stringWithFormat:@"create table if not exists %@ (dbId integer primary key autoincrement not null,musicId text, musicName text,musicUrl text, musicImage blob)", FavouriteMusicTable]];
+        success = [db executeUpdate:[NSString stringWithFormat:@"create table if not exists %@ (dbId integer primary key autoincrement not null,songID text, songName text,songAuthor text, songData blob)", FavouriteMusicTable]];
     }
     return success;
 }

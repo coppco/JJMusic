@@ -13,5 +13,6 @@
 @property (strong, nonatomic) UIWindow *window;
 @property (nonatomic, strong, readonly)UIButton *playerB;  //  home键
 @property (nonatomic, strong, readonly)HJPlayerView *playerView;  //播放界面
+- (void)playerViewAppear:(UIButton *)button;   //点击button方法
 @end
 

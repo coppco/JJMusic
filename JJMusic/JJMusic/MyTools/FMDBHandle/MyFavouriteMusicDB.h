@@ -7,16 +7,32 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "HJSongModel.h"  //model
 @interface MyFavouriteMusicDB : NSObject
 //获取收藏的音乐
 +(NSArray *)getAllMusic;
 //添加一条数据
-+ (BOOL)addOneMusic:(id)object;
++ (BOOL)addOneMusic:(HJSongModel *)object;
 //删除一条数据
-+ (BOOL)deleteOneMusic:(id)object;
++ (BOOL)deleteOneMusic:(HJSongModel *)object;
 //更新一条数据
-+ (BOOL)updateOneMusic:(id)object;
++ (BOOL)updateOneMusic:(HJSongModel *)object;
 //删除表
 + (BOOL)dropTableData;
+/**
+ *  判断是否收藏过某首歌曲
+ *
+ *  @param songID 歌曲ID
+ *
+ *  @return 
+ */
++ (BOOL)isFavoourited:(NSString *)songID;
+/**
+ *  查找SongModel
+ *
+ *  @param songID 歌曲ID
+ *
+ *  @return 
+ */
++ (HJSongModel *)selectSongModelForSongID:(NSString *)songID;
 @end

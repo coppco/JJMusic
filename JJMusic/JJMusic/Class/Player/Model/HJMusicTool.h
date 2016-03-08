@@ -17,7 +17,7 @@
  */
 - (void)AVPlayerCanPlay:(AVPlayerItem *)playerItem;
 /**
- *  player正在播放的时候,更新进度条
+ *  player正在播放的时候,更新滑块和当前时间
  *
  *  @param playerItem
  */
@@ -26,6 +26,10 @@
  *  playerItem的缓冲进度,更新缓冲条
  */
 - (void)AVPlayerLoading:(AVPlayerItem *)playerItem;
+/**
+ *  player结束播放
+ */
+- (void)AVPlayerDidEnd;
 @end
 
 @interface HJMusicTool : NSObject
@@ -50,4 +54,14 @@ HJpropertyStrong(id delegate);  //代理
  *  停止
  */
 - (void)stop;
+/**
+ *  暂停
+ */
+- (void)pause;
+/**
+ *  播放器快进
+ *
+ *  @param second 秒数
+ */
+- (void)seekToTime:(CGFloat)second;
 @end

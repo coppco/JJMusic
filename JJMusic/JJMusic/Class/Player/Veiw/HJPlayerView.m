@@ -9,8 +9,9 @@
 #import "HJPlayerView.h"
 #import "HJPlayerBottomView.h"
 #import "HJMusicTool.h"  //播放器
-#import "HJSongModel.h"  //model
-@interface HJPlayerView ()<UIScrollViewDelegate>
+
+#import <UIImageView+WebCache.h>
+@interface HJPlayerView ()<UIScrollViewDelegate, HJMusicToolDelegate>
 HJpropertyStrong(UIButton *backButton);  //隐藏按钮
 HJpropertyStrong(UIImageView *backImageV);  //背景图片
 HJpropertyStrong(UILabel *titleL);  //标题
@@ -19,10 +20,13 @@ HJpropertyStrong(UIButton *changeB);  //切换音质
 HJpropertyStrong(UIScrollView *scrollView);  //滚动视图
 HJpropertyStrong(UIPageControl *pageControll);//分页控制
 HJpropertyStrong(HJPlayerBottomView *)bottomView;  //按钮滑块等
-HJpropertyStrong(HJSongModel *model);
+
 
 //scrollView添加的内容
 HJpropertyStrong(UIImageView *imageV);  //第一页
+HJpropertyAssign(CGPoint imageVCenter);  //中心点
+HJpropertyStrong(NSTimer *timer); //定时器
+
 HJpropertyStrong(UIView *lyricV);  //只有两行的
 HJpropertyStrong(UIView *lyricVs);  //第三个歌词  填满scrollview
 HJpropertyStrong(UIView *listView);//
@@ -37,8 +41,10 @@ HJpropertyStrong(UIView *listView);//
     return self;
 }
 - (void)initSubView {
+    [HJMusicTool sharedMusicPlayer].delegate = self;
     self.backImageV = [[UIImageView alloc] initWithFrame:self.bounds];
     self.backImageV.image = [UIImage imageNamed:@"player_backgroud"];
+    self.backImageV.contentMode = UIViewContentModeScaleAspectFill;
     [self addSubview:self.backImageV];
     
     //返回按钮
@@ -117,6 +123,17 @@ HJpropertyStrong(UIView *listView);//
         make.left.right.equalTo(self).insets(UIEdgeInsetsMake(0, 0, 0, 0));
         make.bottom.equalTo(self.pageControll.mas_top);
     }];
+    //设置scrollview的范围
+    self.scrollView.contentSize = CGSizeMake(ViewW(self) * 4, 0);
+    
+    //第一页图片
+    UIView *view = [[UIView alloc] init];
+    view.tag = 111;
+    [_scrollView addSubview:view];
+    
+    self.imageV = [[UIImageView alloc] initWithImage:IMAGE(@"player_record")];
+    [view addSubview:self.imageV];
+    
 }
 //page方法
 - (void)page:(UIPageControl *)page {
@@ -129,32 +146,196 @@ HJpropertyStrong(UIView *listView);//
 }
 - (void)layoutSubviews {
     [super layoutSubviews];
-    //第一页图片
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ViewW(_scrollView), ViewH(_scrollView))];
-    [_scrollView addSubview:view];
-    
-    self.imageV = [[UIImageView alloc] initWithImage:IMAGE(@"player_record")];
-    self.imageV.backgroundColor = [UIColor redColor];
-    self.imageV.frame = CGRectMake(ViewW(view) / 2 - ViewW(view) * 0.35, ViewH(view) /2 - ViewW(view) * 0.35, ViewW(view) * 0.7, ViewW(view) * 0.7);
+    UIView *view = [_scrollView viewWithTag:111];
+    view.frame = CGRectMake(0, 0, ViewW(_scrollView), ViewH(_scrollView));
+    self.imageV.transform = CGAffineTransformIdentity;  //取消形变,不然会变形
+    self.imageV.frame = CGRectMake(ViewW(view) / 2 - ViewW(view) * 0.35, ViewW(view) /2 - ViewW(view) * 0.35, ViewW(view) * 0.7, ViewW(view) * 0.7);
+    self.imageVCenter = self.imageV.center;
     self.imageV.layer.cornerRadius = ViewW(_imageV) / 2;
     self.imageV.layer.borderWidth = 2;
     self.imageV.layer.borderColor = [[UIColor redColor] colorWithAlphaComponent:1].CGColor;
-    [view addSubview:self.imageV];
-    
-    //设置scrollview的范围
-    self.scrollView.contentSize = CGSizeMake(ViewW(self) * 4, 0);
+    self.imageV.layer.masksToBounds = YES;
 }
 - (void)down:(UIButton *)button {
     [UIView animateWithDuration:0.4 animations:^{
         self.userInteractionEnabled = NO;
-        self.center = CGPointMake(ViewW(self) / 2, ViewH(self) / 2 * 3);
+        self.Y = ViewH(self);
     } completion:^(BOOL finished) {
         self.userInteractionEnabled = YES;
     }];
 }
+- (void)stopTimer {
+    [self.timer invalidate];
+    self.timer = nil;
+}
+- (void)updateTimer {
+    [self.timer invalidate];
+    self.timer = nil;
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:0.02 target:self selector:@selector(timer:) userInfo:nil repeats:YES];
+}
+- (void)timer:(NSTimer *)timer {
+    //让转盘开始转动
+    self.imageV.transform = CGAffineTransformRotate(self.imageV.transform, 0.003);
+}
+#pragma mark - HJMusicPlayerDelegate
+/**
+ *  playerItem的状态为可以播放的时候, 更新音乐的最大时间
+ *
+ *  @param playerItem
+ */
+- (void)AVPlayerCanPlay:(AVPlayerItem *)playerItem {
+    CGFloat duration = playerItem.duration.value / playerItem.duration.timescale;  //总时间
+    //更改总时间label和slider的值
+    [self.bottomView updateTotalWith:duration];
+    
+    [self updateTimer];
+}
+/**
+ *  player正在播放的时候,更新进度条
+ *
+ *  @param playerItem
+ */
+- (void)AVPlayerIsPlaying:(AVPlayerItem *)playerItem {
+    //更新时间
+    CGFloat current = playerItem.currentTime.value/playerItem.currentTime.timescale;
+    [self.bottomView updateCurrentWith:current];
+    
+    //由于前面给playerItem添加的观察者方法是1秒一次的,所以这个方法1秒执行一次, 间隔太长   转动不自然,还是加个定时器
+}
+/**
+ *  playerItem的缓冲进度,更新缓冲条
+ */
+- (void)AVPlayerLoading:(AVPlayerItem *)playerItem {
+    NSArray *loadedTimeRanges = [playerItem loadedTimeRanges];
+    CMTimeRange timeRange = [loadedTimeRanges.firstObject CMTimeRangeValue];// 获取缓冲区域
+    float startSeconds = CMTimeGetSeconds(timeRange.start);
+    float durationSeconds = CMTimeGetSeconds(timeRange.duration);
+    NSTimeInterval timeInterval = startSeconds + durationSeconds;// 计算缓冲总进度
+    CMTime duration = playerItem.duration;
+    CGFloat totalDuration = CMTimeGetSeconds(duration);
+    CGFloat progress = timeInterval / totalDuration;
+    XHJLog(@"缓冲进度:%f", progress);
+    [self.bottomView updateProgressWith:progress];
+}
+/**
+ *  AVPlayer结束播放
+ *
+ */
+- (void)AVPlayerDidEnd {
+    [self nextSong];
+}
+#pragma mark - 上一首下一首
+/**
+ *  下一首 
+ */
+- (void)nextSong {
+    //单曲循环
+    if ([userDefaultGetValue(PlayerCycle) boolValue]) {
+        //合理使用这个方法,实现循环播放
+        [[HJMusicTool sharedMusicPlayer] seekToTime:0];
+        return;
+    }
+    if ([userDefaultGetValue(PlayerType) boolValue]) {
+        //随机
+        NSInteger i = arc4random() % self.content.count;
+        self.songID = [self.content[i] song_id];
+    } else {
+        //顺序
+        [self.content enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            if ([[obj song_id] isEqualToString:self.songID]) {
+                if (idx < self.content.count -1) {
+                    self.songID = [self.content[idx+1] song_id];
+                } else {
+                    self.songID = [self.content[0] song_id];
+                }
+                *stop = YES;
+            }
+        }];
+    };
+}
+///**
+// *  上一首
+// */
+- (void)previousSong {
+    //单曲循环
+    if ([userDefaultGetValue(PlayerCycle) boolValue]) {
+        //合理使用这个方法,实现循环播放
+        [[HJMusicTool sharedMusicPlayer] seekToTime:0];
+        return;
+    }
+    if ([userDefaultGetValue(PlayerType) boolValue]) {
+        //随机
+        NSInteger i = arc4random() % self.content.count;
+        self.songID = [self.content[i] song_id];
+    } else {
+        //顺序
+        [self.content enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            if ([[obj song_id] isEqualToString:self.songID]) {
+                if (idx == 0) {
+                    self.songID = [[self.content lastObject] song_id];
+                } else {
+                    self.songID = [self.content[idx - 1] song_id];
+                }
+                *stop = YES;
+            }
+        }];
+    };
+}
+
+//setter方法
+- (void)setSongID:(NSString *)songID {
+    //不相等才播放
+    if (![_songID isEqualToString:songID]) {
+        _songID = songID;
+        [self loadSongInfoWithSongID:songID];
+    }
+}
+
+//获取model
+- (void)loadSongInfoWithSongID:(NSString *)songid {
+    [HttpHandleTool requestWithType:(HJNetworkTypeGET) URLString:kMusicDetail(songid) params:nil showHUD:NO inView:nil cache:YES successBlock:^(id responseObject) {
+        self.model = [[HJSongModel alloc] initWithDictionary:responseObject error:nil];
+        if (_model) {
+            [self playMusicWith:self.model];
+        }
+    } failedBlock:^(NSError *error) {
+        XHJLog(@"网络请求失败");
+    }];
+}
 #pragma mark - 播放方法
 - (void)playMusicWith:(HJSongModel *)model {
-    _model = model;
+    //停止
+    [[HJMusicTool sharedMusicPlayer] stop];
+    //播放
     [[HJMusicTool sharedMusicPlayer] playWithURL:((SongURL *)model.url[0]).file_link];
+    //更改背景图片
+    [self.backImageV sd_setImageWithURL:[NSURL URLWithString:model.songinfo.pic_huge.length != 0 ? model.songinfo.pic_huge : model.songinfo.pic_big.length == 0 ? model.songinfo.artist_640_1136 :model.songinfo.pic_big] placeholderImage:IMAGE(@"player_backgroud")];
+    //标题和歌手
+    self.titleL.text = model.songinfo.title;
+    self.autherL.text = model.songinfo.author;
+    //圆图
+    [self imageVanimation];
 }
+
+- (void)imageVanimation {
+    [UIView animateWithDuration:0.3 animations:^{
+        self.imageV.transform = CGAffineTransformMakeScale(0.8, 0.8);
+    }completion:^(BOOL finished) {
+        [UIView animateWithDuration:0.4 animations:^{
+            self.imageV.center = CGPointMake(self.imageV.center.x, -300);
+        }completion:^(BOOL finished) {
+            //让第一个出来以后,下次先把位置放到下面等下出来的位置,在紧接着做动画出来
+            self.imageV.center = CGPointMake(self.imageV.center.x, 500);
+            [UIView animateWithDuration:0.2 animations:^{
+                //回到原位
+                self.imageV.center = self.imageVCenter;
+            }];
+            //回复缩放
+            self.imageV.transform = CGAffineTransformMakeScale(1, 1);
+            //圆图
+            [self.imageV sd_setImageWithURL:[NSURL URLWithString:_model.songinfo.artist_1000_1000.length != 0 ? _model.songinfo.artist_1000_1000 : _model.songinfo.artist_500_500] placeholderImage:IMAGE(@"player_record")];
+        }];
+    }];
+}
+
 @end

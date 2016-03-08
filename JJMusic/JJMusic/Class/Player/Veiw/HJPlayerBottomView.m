@@ -7,6 +7,8 @@
 //
 
 #import "HJPlayerBottomView.h"
+#import "HJMusicTool.h"
+#import "MyFavouriteMusicDB.h"  //数据库
 #define kwidth (ViewH(self) - 32) * 0.26
 @interface HJPlayerBottomView ()
 HJpropertyStrong(UILabel *currentL);//当前时间
@@ -27,7 +29,7 @@ HJpropertyStrong(UIButton *favoriteB); //收藏
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
-        self.backgroundColor = [UIColor clearColor];
+        self.backgroundColor = [[UIColor grayColor] colorWithAlphaComponent:0.4];
         [self initSubView];
     }
     return  self;
@@ -35,48 +37,147 @@ HJpropertyStrong(UIButton *favoriteB); //收藏
 - (void)initSubView {
     self.playTypeB = [UIButton buttonWithType:(UIButtonTypeCustom)];
     [self.playTypeB setBackgroundImage:IMAGE(@"player_type_sx") forState:(UIControlStateNormal)];
+    [self.playTypeB setBackgroundImage:IMAGE(@"player_type_sj") forState:(UIControlStateSelected)];
+    if ([userDefaultGetValue(PlayerType) boolValue]) {
+        self.playTypeB.selected = YES;
+    }
+    
+    [self.playTypeB addTarget:self action:@selector(playerClick:) forControlEvents:(UIControlEventTouchUpInside)];
     [self addSubview:self.playTypeB];
     
     self.cycleB = [UIButton buttonWithType:(UIButtonTypeCustom)];
     [self.cycleB setBackgroundImage:IMAGE(@"player_cycle_cancel") forState:(UIControlStateNormal)];
+    [self.cycleB setBackgroundImage:IMAGE(@"player_cycle") forState:(UIControlStateSelected)];
+    if ([userDefaultGetValue(PlayerCycle) boolValue]) {
+        self.cycleB.selected = YES;
+    }
+    
+    [self.cycleB addTarget:self action:@selector(playerClick:) forControlEvents:(UIControlEventTouchUpInside)];
     [self addSubview:self.cycleB];
     
     self.downloadB = [UIButton buttonWithType:(UIButtonTypeCustom)];
     [self.downloadB setBackgroundImage:IMAGE(@"player_download_cancel") forState:(UIControlStateNormal)];
+    [self.downloadB addTarget:self action:@selector(playerClick:) forControlEvents:(UIControlEventTouchUpInside)];
     [self addSubview:self.downloadB];
     
     self.favoriteB = [UIButton buttonWithType:(UIButtonTypeCustom)];
     [self.favoriteB setBackgroundImage:IMAGE(@"player_favorite_cancel") forState:(UIControlStateNormal)];
+    [self.favoriteB setBackgroundImage:IMAGE(@"player_favorite") forState:(UIControlStateSelected)];
+    
+    [self.favoriteB addTarget:self action:@selector(playerClick:) forControlEvents:(UIControlEventTouchUpInside)];
     [self addSubview:self.favoriteB];
     
     self.currentL = [[UILabel alloc] init];
     self.currentL.font = font(13);
-    self.currentL.text = @"01:43";
-    [self.currentL sizeToFit];
+    self.currentL.textColor = [UIColor whiteColor];
+    self.currentL.textAlignment = NSTextAlignmentLeft;
     [self addSubview:self.currentL];
     
     self.totalL = [[UILabel alloc] init];
     self.totalL.font = font(13);
-    self.totalL.text = @"04:52";
+    self.totalL.textColor = [UIColor whiteColor];
+    self.totalL.textAlignment = NSTextAlignmentRight;
     [self addSubview:self.totalL];
-    [self.totalL sizeToFit];
+    
+    self.progressView = [[UIProgressView alloc] initWithProgressViewStyle:UIProgressViewStyleBar];
+    self.progressView.progressTintColor = [UIColor grayColor];  //填充部分颜色
+//    self.progressView.trackTintColor = [[UIColor blackColor] colorWithAlphaComponent:0.1];   // 未填充部分颜色
+//    self.progressView.transform = CGAffineTransformMakeScale(2.5, 1);
+    [self addSubview:self.progressView];
+    
     self.slider = [[UISlider alloc] init];
+    [self.slider setThumbImage:IMAGE(@"player_slider") forState:(UIControlStateNormal)];
+    self.slider.minimumTrackTintColor = ColorClear;
+    self.slider.maximumTrackTintColor = ColorClear;
+    [self.slider setMinimumTrackTintColor:[UIColor greenColor]];
+//    [self.slider setMaximumTrackTintColor:[[UIColor clearColor] colorWithAlphaComponent:0.3]];
+    //添加事件
+    [self.slider addTarget:self action:@selector(sliderChange:) forControlEvents:(UIControlEventValueChanged)];  //拖动滑竿
+    [self.slider addTarget:self action:@selector(sliderChangeEnd:) forControlEvents:(UIControlEventTouchUpInside)]; //松手之后
+    [self.slider addTarget:self action:@selector(sliderChangeEnd:) forControlEvents:UIControlEventTouchUpOutside];
+    [self.slider addTarget:self action:@selector(sliderChangeEnd:) forControlEvents:UIControlEventTouchCancel];
     [self addSubview:self.slider];
-
-//    self.progressView = [[UIProgressView alloc] init];
-//    [self addSubview:self.progressView];
     
     self.previousB = [UIButton buttonWithType:(UIButtonTypeCustom)];
     [self.previousB setBackgroundImage:IMAGE(@"player_previous") forState:(UIControlStateNormal)];
+     [self.previousB addTarget:self action:@selector(playerClick:) forControlEvents:(UIControlEventTouchUpInside)];
     [self addSubview:self.previousB];
     
     self.playB = [UIButton buttonWithType:(UIButtonTypeCustom)];
-     [self.playB setBackgroundImage:IMAGE(@"player_play") forState:(UIControlStateNormal)];
+     [self.playB setBackgroundImage:IMAGE(@"player_pause") forState:(UIControlStateNormal)];
+    [self.playB setBackgroundImage:IMAGE(@"player_play") forState:(UIControlStateSelected)];
+    [self.playB addTarget:self action:@selector(playerClick:) forControlEvents:(UIControlEventTouchUpInside)];
     [self addSubview:self.playB];
     
     self.nextB = [UIButton buttonWithType:(UIButtonTypeCustom)];
      [self.nextB setBackgroundImage:IMAGE(@"player_next") forState:(UIControlStateNormal)];
+     [self.nextB addTarget:self action:@selector(playerClick:) forControlEvents:(UIControlEventTouchUpInside)];
     [self addSubview:self.nextB];
+}
+#pragma mark - button方法
+- (void)playerClick:(UIButton *)button {
+    if (button == self.playB) {
+        //播放和暂停
+        button.selected = !button.selected;
+        [[HJMusicTool sharedMusicPlayer] playOrPause];
+        //圆盘
+        if (button.selected) {
+            [getApp().playerView stopTimer];
+        } else {
+            [getApp().playerView updateTimer];
+        }
+        return;
+    }
+    //下一曲
+    if (button == self.nextB) {
+        [getApp().playerView nextSong];
+        return;
+    }
+    //上一曲
+    if (button == self.previousB) {
+        [getApp().playerView previousSong];
+        return;
+    }
+    
+    //播放模式
+    if (button == self.playTypeB) {
+        button.selected = !button.selected;
+        userDefaultSetValueKey(@(button.selected), PlayerType);
+    }
+    
+    //是否单曲循环
+    if (button == self.cycleB) {
+        button.selected = !button.selected;
+        userDefaultSetValueKey(@(button.selected), PlayerCycle);
+    }
+    
+    //下载按钮
+    if (button == self.downloadB) {
+        
+    }
+    
+    //收藏按钮
+    if (button == self.favoriteB) {
+        button.selected = !button.selected;
+        if (![MyFavouriteMusicDB isFavoourited:getApp().playerView.songID]) {
+            [HUDTool showTextTipsHUDWithTitle:@"收藏成功" delay:0.5];
+             [MyFavouriteMusicDB addOneMusic:getApp().playerView.model];
+        } else {
+            [HUDTool showTextTipsHUDWithTitle:@"取消收藏" delay:0.5];
+            [MyFavouriteMusicDB deleteOneMusic:getApp().playerView.model];
+        }
+    }
+}
+#pragma mark - slider方法
+//拖动的时候
+- (void)sliderChange:(UISlider *)slider {
+    [[HJMusicTool sharedMusicPlayer] pause];
+    [self updateCurrentWith:slider.value];
+}
+//拖动结束的时候开始播放
+- (void)sliderChangeEnd:(UISlider *)slider {
+    [self updateCurrentWith:slider.value];
+    [[HJMusicTool sharedMusicPlayer] seekToTime:slider.value];
 }
 - (void)layoutSubviews {
     CGFloat kx = (ViewW(self) - 4 * kwidth) / 5;
@@ -106,7 +207,7 @@ HJpropertyStrong(UIButton *favoriteB); //收藏
     [self.currentL mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self).offset(5);
         make.top.equalTo(self.playTypeB.mas_bottom).offset(8);
-        make.size.mas_equalTo(CGSizeMake(ViewW(self.currentL), kwidth));
+        make.size.mas_equalTo(CGSizeMake(ViewW(self) * 0.12, kwidth));
     }];
     [self.slider mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(self.currentL);
@@ -114,8 +215,15 @@ HJpropertyStrong(UIButton *favoriteB); //收藏
         make.right.equalTo(self.totalL.mas_left).offset(-10);
         make.height.mas_equalTo(kwidth);
     }];
+    
+    [self.progressView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.center.equalTo(self.slider);
+        make.left.equalTo(self.currentL.mas_right).offset(10);
+        make.right.equalTo(self.totalL.mas_left).offset(-10);
+        make.height.mas_equalTo(2);
+    }];
     [self.totalL mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.size.mas_equalTo(CGSizeMake(ViewW(self.totalL), kwidth));
+        make.size.mas_equalTo(CGSizeMake(ViewW(self) * 0.12, kwidth));
         make.centerY.equalTo(self.currentL);
         make.right.equalTo(self).offset(-5);
     }];
@@ -141,4 +249,44 @@ HJpropertyStrong(UIButton *favoriteB); //收藏
         make.right.equalTo(self).offset(-kxx);
     }];
 }
+- (void)updateTotalWith:(CGFloat)duraction {
+    self.slider.minimumValue = 0.0;
+    self.slider.maximumValue = duraction;
+    long videoLenth = ceil(duraction);
+    NSString *strtotal = nil;
+    if (videoLenth < 3600) {
+        strtotal =  [NSString stringWithFormat:@"%02li:%02li",lround(floor(videoLenth/60.f)),lround(floor(videoLenth/1.f))%60];
+    } else {
+        strtotal =  [NSString stringWithFormat:@"%02li:%02li:%02li",lround(floor(videoLenth/3600.f)),lround(floor(videoLenth%3600)/60.f),lround(floor(videoLenth/1.f))%60];
+    }
+    self.currentL.text = @"0:00";
+    self.totalL.text = strtotal;
+    
+    //重置播放暂停图标等
+    self.playB.selected = NO;  //播放按钮图标
+    [self.progressView setProgress:0.0 animated:NO]; //进度条
+    //收藏图标
+    XHJLog(@"收藏音乐数:%lu", (unsigned long)[MyFavouriteMusicDB getAllMusic].count);
+    if ([MyFavouriteMusicDB isFavoourited:getApp().playerView.songID]) {
+        self.favoriteB.selected = YES;
+    } else  {
+        self.favoriteB.selected = NO;
+    }
+    
+}
+- (void)updateCurrentWith:(CGFloat)current {
+    long videoLenth = ceil(current);
+    NSString *strtotal = nil;
+    if (videoLenth < 3600) {
+        strtotal =  [NSString stringWithFormat:@"%02li:%02li",lround(floor(videoLenth/60.f)),lround(floor(videoLenth/1.f))%60];
+    } else {
+        strtotal =  [NSString stringWithFormat:@"%02li:%02li:%02li",lround(floor(videoLenth/3600.f)),lround(floor(videoLenth%3600)/60.f),lround(floor(videoLenth/1.f))%60];
+    }
+    self.currentL.text = strtotal;
+    [self.slider setValue:current animated:YES];
+}
+- (void)updateProgressWith:(CGFloat)progress {
+    [self.progressView setProgress:progress animated:YES];
+}
+
 @end

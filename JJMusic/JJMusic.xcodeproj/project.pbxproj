@@ -18,13 +18,14 @@
 		CC30431D1C5B48450079683D /* BaseData.m in Sources */ = {isa = PBXBuildFile; fileRef = CC30431C1C5B48450079683D /* BaseData.m */; };
 		CC36CDD01C71601D00505E05 /* CarouselView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC36CDCF1C71601D00505E05 /* CarouselView.m */; };
 		CC36CDE01C71BF7200505E05 /* RecommendView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC36CDDF1C71BF7200505E05 /* RecommendView.m */; };
-		CC36CDED1C71D73600505E05 /* NSObject+Unicode.m in Sources */ = {isa = PBXBuildFile; fileRef = CC36CDEC1C71D73600505E05 /* NSObject+Unicode.m */; };
-		CC36CDF01C71D76300505E05 /* NSArray+Unicode.m in Sources */ = {isa = PBXBuildFile; fileRef = CC36CDEF1C71D76300505E05 /* NSArray+Unicode.m */; };
-		CC36CDF31C71D77700505E05 /* NSDictionary+Unicode.m in Sources */ = {isa = PBXBuildFile; fileRef = CC36CDF21C71D77700505E05 /* NSDictionary+Unicode.m */; };
 		CC43B67E1C8675280018AC8A /* HJPlayerBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC43B67D1C8675280018AC8A /* HJPlayerBottomView.m */; };
 		CC43B6851C86E6DA0018AC8A /* player_backgroud.png in Resources */ = {isa = PBXBuildFile; fileRef = CC43B6841C86E6DA0018AC8A /* player_backgroud.png */; };
 		CC43B6871C86E7510018AC8A /* player_record.png in Resources */ = {isa = PBXBuildFile; fileRef = CC43B6861C86E7510018AC8A /* player_record.png */; };
-		CC43B68A1C87E0AE0018AC8A /* HJListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC43B6891C87E0AE0018AC8A /* HJListViewController.m */; };
+		CC43B68E1C89225E0018AC8A /* HJListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC43B68D1C89225E0018AC8A /* HJListViewController.m */; };
+		CC43B6911C8923860018AC8A /* HJListDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CC43B6901C8923860018AC8A /* HJListDetailModel.m */; };
+		CC43B6941C896B2E0018AC8A /* NSObject+ZXPUnicode.m in Sources */ = {isa = PBXBuildFile; fileRef = CC43B6931C896B2E0018AC8A /* NSObject+ZXPUnicode.m */; };
+		CC43B6971C896B370018AC8A /* NSDictionary+ZXPUnicode.m in Sources */ = {isa = PBXBuildFile; fileRef = CC43B6961C896B370018AC8A /* NSDictionary+ZXPUnicode.m */; };
+		CC43B69A1C896B400018AC8A /* NSArray+ ZXPUnicode.m in Sources */ = {isa = PBXBuildFile; fileRef = CC43B6981C896B400018AC8A /* NSArray+ ZXPUnicode.m */; };
 		CC4829591C6053730098E0DD /* LockItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC4829581C6053730098E0DD /* LockItemView.m */; };
 		CC48295C1C608BF80098E0DD /* MyLockView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC48295B1C608BF80098E0DD /* MyLockView.m */; };
 		CC48295F1C60A7600098E0DD /* LockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC48295E1C60A7600098E0DD /* LockViewController.m */; };
@@ -149,18 +150,20 @@
 		CC36CDCF1C71601D00505E05 /* CarouselView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarouselView.m; sourceTree = "<group>"; };
 		CC36CDDE1C71BF7200505E05 /* RecommendView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecommendView.h; sourceTree = "<group>"; };
 		CC36CDDF1C71BF7200505E05 /* RecommendView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecommendView.m; sourceTree = "<group>"; };
-		CC36CDEB1C71D73600505E05 /* NSObject+Unicode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Unicode.h"; sourceTree = "<group>"; };
-		CC36CDEC1C71D73600505E05 /* NSObject+Unicode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Unicode.m"; sourceTree = "<group>"; };
-		CC36CDEE1C71D76300505E05 /* NSArray+Unicode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Unicode.h"; sourceTree = "<group>"; };
-		CC36CDEF1C71D76300505E05 /* NSArray+Unicode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Unicode.m"; sourceTree = "<group>"; };
-		CC36CDF11C71D77700505E05 /* NSDictionary+Unicode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Unicode.h"; sourceTree = "<group>"; };
-		CC36CDF21C71D77700505E05 /* NSDictionary+Unicode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Unicode.m"; sourceTree = "<group>"; };
 		CC43B67C1C8675280018AC8A /* HJPlayerBottomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJPlayerBottomView.h; sourceTree = "<group>"; };
 		CC43B67D1C8675280018AC8A /* HJPlayerBottomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJPlayerBottomView.m; sourceTree = "<group>"; };
 		CC43B6841C86E6DA0018AC8A /* player_backgroud.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = player_backgroud.png; sourceTree = "<group>"; };
 		CC43B6861C86E7510018AC8A /* player_record.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = player_record.png; sourceTree = "<group>"; };
-		CC43B6881C87E0AE0018AC8A /* HJListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJListViewController.h; sourceTree = "<group>"; };
-		CC43B6891C87E0AE0018AC8A /* HJListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJListViewController.m; sourceTree = "<group>"; };
+		CC43B68C1C89225E0018AC8A /* HJListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJListViewController.h; sourceTree = "<group>"; };
+		CC43B68D1C89225E0018AC8A /* HJListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJListViewController.m; sourceTree = "<group>"; };
+		CC43B68F1C8923860018AC8A /* HJListDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJListDetailModel.h; sourceTree = "<group>"; };
+		CC43B6901C8923860018AC8A /* HJListDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJListDetailModel.m; sourceTree = "<group>"; };
+		CC43B6921C896B2E0018AC8A /* NSObject+ZXPUnicode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+ZXPUnicode.h"; sourceTree = "<group>"; };
+		CC43B6931C896B2E0018AC8A /* NSObject+ZXPUnicode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+ZXPUnicode.m"; sourceTree = "<group>"; };
+		CC43B6951C896B370018AC8A /* NSDictionary+ZXPUnicode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+ZXPUnicode.h"; sourceTree = "<group>"; };
+		CC43B6961C896B370018AC8A /* NSDictionary+ZXPUnicode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+ZXPUnicode.m"; sourceTree = "<group>"; };
+		CC43B6981C896B400018AC8A /* NSArray+ ZXPUnicode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+ ZXPUnicode.m"; sourceTree = "<group>"; };
+		CC43B6991C896B400018AC8A /* NSArray+ZXPUnicode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+ZXPUnicode.h"; sourceTree = "<group>"; };
 		CC4829571C6053730098E0DD /* LockItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LockItemView.h; sourceTree = "<group>"; };
 		CC4829581C6053730098E0DD /* LockItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LockItemView.m; sourceTree = "<group>"; };
 		CC48295A1C608BF80098E0DD /* MyLockView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyLockView.h; sourceTree = "<group>"; };
@@ -446,8 +449,8 @@
 		CC36CDE21C71D5DF00505E05 /* NSArray */ = {
 			isa = PBXGroup;
 			children = (
-				CC36CDEE1C71D76300505E05 /* NSArray+Unicode.h */,
-				CC36CDEF1C71D76300505E05 /* NSArray+Unicode.m */,
+				CC43B6991C896B400018AC8A /* NSArray+ZXPUnicode.h */,
+				CC43B6981C896B400018AC8A /* NSArray+ ZXPUnicode.m */,
 			);
 			path = NSArray;
 			sourceTree = "<group>";
@@ -455,8 +458,8 @@
 		CC36CDE31C71D5DF00505E05 /* NSDictionary */ = {
 			isa = PBXGroup;
 			children = (
-				CC36CDF11C71D77700505E05 /* NSDictionary+Unicode.h */,
-				CC36CDF21C71D77700505E05 /* NSDictionary+Unicode.m */,
+				CC43B6951C896B370018AC8A /* NSDictionary+ZXPUnicode.h */,
+				CC43B6961C896B370018AC8A /* NSDictionary+ZXPUnicode.m */,
 			);
 			path = NSDictionary;
 			sourceTree = "<group>";
@@ -464,8 +467,8 @@
 		CC36CDE41C71D5DF00505E05 /* NSObject */ = {
 			isa = PBXGroup;
 			children = (
-				CC36CDEB1C71D73600505E05 /* NSObject+Unicode.h */,
-				CC36CDEC1C71D73600505E05 /* NSObject+Unicode.m */,
+				CC43B6921C896B2E0018AC8A /* NSObject+ZXPUnicode.h */,
+				CC43B6931C896B2E0018AC8A /* NSObject+ZXPUnicode.m */,
 			);
 			path = NSObject;
 			sourceTree = "<group>";
@@ -477,6 +480,17 @@
 				CC43B6841C86E6DA0018AC8A /* player_backgroud.png */,
 			);
 			path = "播放器大图";
+			sourceTree = "<group>";
+		};
+		CC43B68B1C89225E0018AC8A /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				CC43B68C1C89225E0018AC8A /* HJListViewController.h */,
+				CC43B68D1C89225E0018AC8A /* HJListViewController.m */,
+				CC43B68F1C8923860018AC8A /* HJListDetailModel.h */,
+				CC43B6901C8923860018AC8A /* HJListDetailModel.m */,
+			);
+			path = Detail;
 			sourceTree = "<group>";
 		};
 		CC4829541C6053310098E0DD /* GestureLock */ = {
@@ -707,8 +721,7 @@
 				CC36CDD11C7168FE00505E05 /* Recommend */,
 				CC65A79E1C5F38DE00E6C2AF /* HomeViewController.h */,
 				CC65A79F1C5F38DE00E6C2AF /* HomeViewController.m */,
-				CC43B6881C87E0AE0018AC8A /* HJListViewController.h */,
-				CC43B6891C87E0AE0018AC8A /* HJListViewController.m */,
+				CC43B68B1C89225E0018AC8A /* Detail */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1161,13 +1174,12 @@
 				CC6189651C5B4F8600D72270 /* GuideViewController.m in Sources */,
 				CC36CDD01C71601D00505E05 /* CarouselView.m in Sources */,
 				CCFFF1B11C5B1668008A5A06 /* ViewController.m in Sources */,
+				CC43B69A1C896B400018AC8A /* NSArray+ ZXPUnicode.m in Sources */,
 				CC3043171C5B47840079683D /* BaseViewController.m in Sources */,
 				CCFFF2021C5B346A008A5A06 /* RegionSearch.m in Sources */,
 				CC50F79E1C859D4B003322C8 /* HJPlayerView.m in Sources */,
 				CC071EE51C76C3DB00494B4B /* KPeople.m in Sources */,
-				CC36CDF01C71D76300505E05 /* NSArray+Unicode.m in Sources */,
 				CC6111601C75912C00747FD1 /* SingerView.m in Sources */,
-				CC36CDED1C71D73600505E05 /* NSObject+Unicode.m in Sources */,
 				CC61898B1C5B55F000D72270 /* MASViewAttribute.m in Sources */,
 				CC61898A1C5B55F000D72270 /* MASLayoutConstraint.m in Sources */,
 				CC61898E1C5B55F000D72270 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
@@ -1196,26 +1208,28 @@
 				CC6111731C75BFC600747FD1 /* RedRadio.m in Sources */,
 				CCFFF2121C5B3AC6008A5A06 /* HttpHandleTool.m in Sources */,
 				CC071EE81C76C45B00494B4B /* KSongView.m in Sources */,
-				CC43B68A1C87E0AE0018AC8A /* HJListViewController.m in Sources */,
+				CC43B68E1C89225E0018AC8A /* HJListViewController.m in Sources */,
 				CC57BFF21C803B4700906326 /* MulticolorView.m in Sources */,
 				CC48295C1C608BF80098E0DD /* MyLockView.m in Sources */,
 				CC49C1351C61FDEB0001F5BA /* LockModel.m in Sources */,
 				CC61898F1C5B55F000D72270 /* View+MASAdditions.m in Sources */,
+				CC43B6911C8923860018AC8A /* HJListDetailModel.m in Sources */,
 				CC75CE111C7DA13E007F7685 /* NSTimer+Block.m in Sources */,
 				CC65A7A51C5F390C00E6C2AF /* TopTitleView.m in Sources */,
 				CC4BFEC81C73FE2A0093F89F /* RecommendCell.m in Sources */,
 				CC36CDE01C71BF7200505E05 /* RecommendView.m in Sources */,
 				CC6111721C75BFC600747FD1 /* LeboModel.m in Sources */,
+				CC43B6941C896B2E0018AC8A /* NSObject+ZXPUnicode.m in Sources */,
 				CC43B67E1C8675280018AC8A /* HJPlayerBottomView.m in Sources */,
 				CC5D1F591C72CCC700E2BC2A /* RModel.m in Sources */,
 				CC6111761C75BFE000747FD1 /* RadioView.m in Sources */,
 				CC61898C1C5B55F000D72270 /* MASViewConstraint.m in Sources */,
-				CC36CDF31C71D77700505E05 /* NSDictionary+Unicode.m in Sources */,
 				CC6111591C755FBB00747FD1 /* MusicListView.m in Sources */,
 				CC6189881C5B55F000D72270 /* MASConstraint.m in Sources */,
 				CCBAD97A1C7EACA6003FE160 /* UIView+HJFrame.m in Sources */,
 				CC61115D1C758F2C00747FD1 /* SingerModel.m in Sources */,
 				CCFFF2011C5B346A008A5A06 /* RegionModel.m in Sources */,
+				CC43B6971C896B370018AC8A /* NSDictionary+ZXPUnicode.m in Sources */,
 				CC4D35E51C8422B50076BB85 /* HJMusicTool.m in Sources */,
 				CC65A7A21C5F38DE00E6C2AF /* HomeViewController.m in Sources */,
 			);

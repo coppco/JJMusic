@@ -44,7 +44,14 @@ static HJMusicTool *musicTool = nil;
     //添加观察者
     [self.playerItem addObserver:self forKeyPath:@"status" options:NSKeyValueObservingOptionNew context:nil];
     [self.playerItem addObserver:self forKeyPath:@"loadedTimeRanges" options:NSKeyValueObservingOptionNew context:nil];
-
+    
+    //添加通知  播放完成
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(endOfPlay:) name:AVPlayerItemDidPlayToEndTimeNotification object:nil];
+}
+- (void)endOfPlay:(NSNotification *)action {
+    if (_delegate && [_delegate respondsToSelector:@selector(AVPlayerDidEnd)]) {
+        [_delegate AVPlayerDidEnd];
+    }
 }
 //清空播放器监听属性
 - (void)cleanPlayer {
@@ -71,7 +78,6 @@ static HJMusicTool *musicTool = nil;
         }
         
     } else if ([keyPath isEqualToString:@"loadedTimeRanges"]) {  //监听播放器的下载进度
-//        [self calculateDownloadProgress:playerItem];
         if (_delegate && [_delegate respondsToSelector:@selector(AVPlayerLoading:)]) {
             [_delegate AVPlayerLoading:playerItem];
         }
@@ -94,7 +100,7 @@ static HJMusicTool *musicTool = nil;
  *  暂停或者播放
  */
 - (void)playOrPause {
-    if (_playerItem) {
+    if (!_playerItem) {
         return;
     }
     if (self.isPause && !self.isPlaying) {
@@ -110,15 +116,31 @@ static HJMusicTool *musicTool = nil;
     [_player pause];
     [self cleanPlayer];
 }
+/**
+ *  暂停
+ */
+- (void)pause {
+    [_player pause];
+}
+/**播放器快进*/
+- (void)seekToTime:(CGFloat)second {
+    if (!_playerItem) {
+        return;
+    }
+    [_player pause];
+    [_player seekToTime:CMTimeMakeWithSeconds(second, NSEC_PER_SEC) completionHandler:^(BOOL finished) {
+        [_player play];
+    }];
+}
 #pragma mark - getter方法
 //rate ==1.0，表示正在播放；rate == 0.0，暂停；rate == -1.0，播放失败为了严谨，可以这样判断播放器状态
-- (BOOL)isIsPause {
+- (BOOL)isPause {
     if (_player.rate == 0.0 && _player.error == nil) {
         return YES;
     }
     return NO;
 }
-- (BOOL)isIsPlaying {
+- (BOOL)isPlaying {
     if (_player.rate == 1.0 && _player.error == nil) {
         return YES;
     }

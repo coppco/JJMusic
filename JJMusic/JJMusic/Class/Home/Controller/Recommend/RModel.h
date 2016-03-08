@@ -74,10 +74,10 @@ HJpropertyCopy(NSString *scene_id);
 @end
 
 @interface AllScene : JSONModel 
-HJpropertyStrong(NSArray<Scene> *action);
-HJpropertyStrong(NSArray<Scene> *emotion);
-HJpropertyStrong(NSArray<Scene> *operation);
-HJpropertyStrong(NSArray<Scene> *other);
+HJpropertyStrong(NSArray <Scene>*action);
+HJpropertyStrong(NSArray <Scene>*emotion);
+HJpropertyStrong(NSArray <Optional>*operation);
+HJpropertyStrong(NSArray <Scene>*other);
 @end
 
 //今日推荐歌曲

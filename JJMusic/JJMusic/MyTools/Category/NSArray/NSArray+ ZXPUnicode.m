@@ -1,15 +1,17 @@
 //
-//  NSDictionary+Unicode.m
-//  JJMusic
+//  NSArray+ZXPUnicode.m
+//  House
 //
-//  Created by coco on 16/2/15.
-//  Copyright © 2016年 XHJ. All rights reserved.
+//  Created by coffee on 15/9/28.
+//  Copyright © 2015年 cylkj. All rights reserved.
 //
 
-#import "NSDictionary+Unicode.h"
+#import "NSArray+ZXPUnicode.h"
+#import "NSObject+ZXPUnicode.h"
+
 #import <objc/runtime.h>
-#import "NSObject+Unicode.h"
-@implementation NSDictionary (Unicode)
+@implementation NSArray (ZXPUnicode)
+
 + (void)load {
     method_exchangeImplementations(class_getInstanceMethod([self class], @selector(description)), class_getInstanceMethod([self class], @selector(replaceDescription)));
     method_exchangeImplementations(class_getInstanceMethod([self class], @selector(descriptionWithLocale:)), class_getInstanceMethod([self class], @selector(replaceDescriptionWithLocale:)));
@@ -27,4 +29,7 @@
 - (NSString *)replaceDescriptionWithLocale:(nullable id)locale indent:(NSUInteger)level {
     return [NSObject stringByReplaceUnicode:[self replaceDescriptionWithLocale:locale indent:level]];
 }
+
+
+
 @end

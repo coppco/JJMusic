@@ -33,4 +33,10 @@
 //歌单内容
 #define kMusicListDetail(ListID) \
 STRFORMAT(@"http://tingapi.ting.baidu.com/v1/restserver/ting?method=baidu.ting.diy.gedanInfo&from=ios&listid=%@&version=5.5.5&from=ios&channel=appstore&operator=0", ListID)
+
+//歌曲信息
+#define kMusicDetail(songID) \
+STRFORMAT(@"http://tingapi.ting.baidu.com/v1/restserver/ting?method=baidu.ting.song.getInfos&ts=%@&songid=%@&nw=2&l2p=209.9&lpb=128000&ext=MP3&format=json&from=ios&usup=1&lebo=0&aac=0&ucf=4&vid=&res=1&e=%@&version=5.5.5&from=ios&channel=appstore&operator=0", [HJCommonTools getTimestampWithType:(TimestampTpyeSecond)], songID, @"%2FeISuiA6HFC3uTDn7Vp%2FTnmLK8Ut6xD2TukXuJI%2F48s%3D")
+
+
 #endif /* RequestURL_h */

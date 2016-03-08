@@ -43,7 +43,7 @@
     [UIView animateWithDuration:0.5 animations:^{
         button.userInteractionEnabled = NO;
         _playerView.userInteractionEnabled = NO;
-        _playerView.center = self.window.center;
+        _playerView.Y = 0;
     } completion:^(BOOL finished) {
         button.userInteractionEnabled = YES;
         _playerView.userInteractionEnabled = YES;

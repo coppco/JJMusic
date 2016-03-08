@@ -17,11 +17,11 @@
     
     //url中有汉字 需要编码
     //对应解码方法:解码使用stringByRemovingPercentEncoding方法
-    if (ISIOS_7_0) {
-        url = [url stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
-    } else {
-        url = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    }
+//    if (ISIOS_7_0) {
+//        url = [url stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+//    } else {
+//        url = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+//    }
     
     if (showHUD) {
         

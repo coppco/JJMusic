@@ -8,7 +8,9 @@
 
 #ifndef AppDefines_h
 #define AppDefines_h
-
+/*===================AVPlayer相关===================*/
+#define PlayerType @"AVPlayerType"  //播放模式  随机和顺序
+#define PlayerCycle @"AVPlayerCycle"   //是否单曲循环
 /*========================首次登陆=====================*/
 #define DidLoad  @"isFirstLoad"  //首次登陆
 /*========================数据库=======================*/
