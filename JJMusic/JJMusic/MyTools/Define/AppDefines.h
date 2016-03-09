@@ -11,11 +11,15 @@
 /*===================AVPlayer相关===================*/
 #define PlayerType @"AVPlayerType"  //播放模式  随机和顺序
 #define PlayerCycle @"AVPlayerCycle"   //是否单曲循环
+//保存最后试听信息
+#define PlayerLastSongID @"AVPlayerSongID"  //最后歌曲ID
+#define PlayerLastSongContent @"AVPlayerSongContent"  //最后歌单信息
 /*========================首次登陆=====================*/
 #define DidLoad  @"isFirstLoad"  //首次登陆
 /*========================数据库=======================*/
 #define dbName @"JJMusic.sqlit"      //本地数据库
 #define FavouriteMusicTable    @"favouriteMusic_table"   //收藏的音乐
+#define LastMusicTable  @"lastMusic_table"   //最后试听音乐和歌单等
 /*========================坐标=======================*/
 #define begin_X 15
 /*========================融云=======================*/

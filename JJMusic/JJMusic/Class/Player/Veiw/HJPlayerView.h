@@ -11,7 +11,7 @@
 #import "HJSongModel.h"  //model
 
 @interface HJPlayerView : UIView
-HJpropertyStrong(HJSongModel *model);
+@property (nonatomic, strong, readonly)HJSongModel *model;
 /**
  *  更换songID  实现播放
  */
@@ -20,6 +20,12 @@ HJpropertyCopy(NSString *songID);
  *  存放歌曲ID的数组
  */
 HJpropertyStrong(NSArray <ListSongModel> *content);
+/**
+ *  视图向下隐藏
+ *
+ *  @param button 
+ */
+- (void)selfDown:(UIButton *)button;
 /**
  *  下一首
  */

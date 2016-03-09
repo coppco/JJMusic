@@ -4,7 +4,7 @@
 //
 //  Created by coco on 16/2/19.
 //  Copyright © 2016年 XHJ. All rights reserved.
-//
+//  我的收藏数据库
 
 #import <Foundation/Foundation.h>
 #import "HJSongModel.h"  //model
@@ -14,7 +14,7 @@
 //添加一条数据
 + (BOOL)addOneMusic:(HJSongModel *)object;
 //删除一条数据
-+ (BOOL)deleteOneMusic:(HJSongModel *)object;
++ (BOOL)deleteOneMusic:(NSString *)songID;
 //更新一条数据
 + (BOOL)updateOneMusic:(HJSongModel *)object;
 //删除表

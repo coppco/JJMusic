@@ -59,7 +59,7 @@
     return success;
 }
 //删除一条数据
-+ (BOOL)deleteOneMusic:(HJSongModel *)object {
++ (BOOL)deleteOneMusic:(NSString *)songID {
     __block BOOL success = NO;
     FMDatabaseQueue *queue = [FMDBHandle sharedDatabaseQueue];
     [queue inDatabase:^(FMDatabase *db) {
@@ -70,7 +70,7 @@
         if (![db tableExists:FavouriteMusicTable]) {
             [FMDBCreateTable createFavouriteMusicTable];
         }
-        success = [db executeUpdate:STRFORMAT(@"delete from %@ where songID = %@", FavouriteMusicTable, object.songinfo.song_id)];
+        success = [db executeUpdate:STRFORMAT(@"delete from %@ where songID = %@", FavouriteMusicTable, songID)];
         [db close];
     }];
     return success;
@@ -133,7 +133,6 @@
         while ([resultSet next]) {
             NSData *musicI = [resultSet dataForColumn:@"songData"];
             model = [[HJSongModel alloc] initWithData:musicI error:nil];
-             XHJLog(@"%@", model.songinfo.song_id);
         }
         [resultSet close];
         [db close];

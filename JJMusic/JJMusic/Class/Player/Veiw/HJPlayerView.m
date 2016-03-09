@@ -9,7 +9,8 @@
 #import "HJPlayerView.h"
 #import "HJPlayerBottomView.h"
 #import "HJMusicTool.h"  //播放器
-
+#import <MediaPlayer/MediaPlayer.h>  //锁屏
+#import "HJLastMusicDB.h"  //数据库
 #import <UIImageView+WebCache.h>
 @interface HJPlayerView ()<UIScrollViewDelegate, HJMusicToolDelegate>
 HJpropertyStrong(UIButton *backButton);  //隐藏按钮
@@ -33,6 +34,7 @@ HJpropertyStrong(UIView *listView);//
 @end
 
 @implementation HJPlayerView
+
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
@@ -50,7 +52,7 @@ HJpropertyStrong(UIView *listView);//
     //返回按钮
     self.backButton = [UIButton buttonWithType:(UIButtonTypeCustom)];
     [self.backButton setBackgroundImage:IMAGE(@"player_down") forState:(UIControlStateNormal)];
-    [self.backButton addTarget:self action:@selector(down:) forControlEvents:(UIControlEventTouchUpInside)];
+    [self.backButton addTarget:self action:@selector(selfDown:) forControlEvents:(UIControlEventTouchUpInside)];
     [self addSubview:self.backButton];
     [self.backButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.size.mas_equalTo(CGSizeMake(40, 40));
@@ -59,8 +61,8 @@ HJpropertyStrong(UIView *listView);//
     //标题
     self.titleL = [[UILabel alloc] init];
     self.titleL.textColor = [UIColor whiteColor];
-    self.titleL.text = @"爱你的365天";
-    [self.titleL sizeToFit];
+//    self.titleL.text = @"爱你的365天";
+//    [self.titleL sizeToFit];
     [self addSubview:self.titleL];
     [self.titleL mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(self.backButton);
@@ -83,9 +85,9 @@ HJpropertyStrong(UIView *listView);//
     }];
     //歌手
     self.autherL = [[UILabel alloc] init];
-    self.autherL.text = @"Hans Zimmer";
     self.autherL.textColor = [UIColor whiteColor];
-    [self.autherL sizeToFit];
+//    self.autherL.text = @"Hans Zimmer";
+//    [self.autherL sizeToFit];
     [self addSubview:_autherL];
     [self.autherL mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(self.changeB);
@@ -156,7 +158,7 @@ HJpropertyStrong(UIView *listView);//
     self.imageV.layer.borderColor = [[UIColor redColor] colorWithAlphaComponent:1].CGColor;
     self.imageV.layer.masksToBounds = YES;
 }
-- (void)down:(UIButton *)button {
+- (void)selfDown:(UIButton *)button {
     [UIView animateWithDuration:0.4 animations:^{
         self.userInteractionEnabled = NO;
         self.Y = ViewH(self);
@@ -187,8 +189,24 @@ HJpropertyStrong(UIView *listView);//
     CGFloat duration = playerItem.duration.value / playerItem.duration.timescale;  //总时间
     //更改总时间label和slider的值
     [self.bottomView updateTotalWith:duration];
-    
     [self updateTimer];
+    
+    //锁屏赋值
+    NSMutableDictionary *Dic = [NSMutableDictionary dictionaryWithDictionary:[MPNowPlayingInfoCenter defaultCenter].nowPlayingInfo];
+    //当前时间
+    [Dic setObject:[NSNumber numberWithFloat:CMTimeGetSeconds(playerItem.currentTime)] forKey:MPNowPlayingInfoPropertyElapsedPlaybackTime];
+    //总时间
+    [Dic setObject:[NSNumber numberWithDouble:CMTimeGetSeconds(playerItem.duration)] forKey:MPMediaItemPropertyPlaybackDuration];
+    [Dic setObject:_model.songinfo.title forKey:MPMediaItemPropertyTitle];
+    //设置艺术家
+    [Dic setObject:_model.songinfo.author forKey:MPMediaItemPropertyArtist];
+//    if (_model.songinfo.artist_1000_1000.length != 0) {
+        //设置图片
+        MPMediaItemArtwork *mpMediaItemAreWork = [[MPMediaItemArtwork alloc] initWithImage:IMAGE(@"player_record")];
+        [Dic setObject:mpMediaItemAreWork forKey:MPMediaItemPropertyArtwork];
+//    }
+    [[MPNowPlayingInfoCenter defaultCenter] setNowPlayingInfo:Dic];
+    XHJLog(@"%@", Dic);
 }
 /**
  *  player正在播放的时候,更新进度条
@@ -237,6 +255,9 @@ HJpropertyStrong(UIView *listView);//
     }
     if ([userDefaultGetValue(PlayerType) boolValue]) {
         //随机
+        if (self.content.count <= 0) {
+            return;
+        }
         NSInteger i = arc4random() % self.content.count;
         self.songID = [self.content[i] song_id];
     } else {
@@ -265,6 +286,9 @@ HJpropertyStrong(UIView *listView);//
     }
     if ([userDefaultGetValue(PlayerType) boolValue]) {
         //随机
+        if (self.content.count <= 0) {
+            return;
+        }
         NSInteger i = arc4random() % self.content.count;
         self.songID = [self.content[i] song_id];
     } else {
@@ -283,18 +307,32 @@ HJpropertyStrong(UIView *listView);//
 }
 
 //setter方法
+- (void)setContent:(NSArray<ListSongModel> *)content {
+    if (_content != content) {
+        _content = content;
+        
+        NSArray *array = [ListSongModel arrayOfDictionariesFromModels:content];
+        NSData *data = [NSKeyedArchiver archivedDataWithRootObject:array];
+        if (data) {
+            //写到数据库
+            [HJLastMusicDB updateContent:data];
+        }
+    }
+}
 - (void)setSongID:(NSString *)songID {
     //不相等才播放
     if (![_songID isEqualToString:songID]) {
         _songID = songID;
         [self loadSongInfoWithSongID:songID];
+        //写到数据库
+        [HJLastMusicDB updateSongID:songID];
     }
 }
 
 //获取model
 - (void)loadSongInfoWithSongID:(NSString *)songid {
     [HttpHandleTool requestWithType:(HJNetworkTypeGET) URLString:kMusicDetail(songid) params:nil showHUD:NO inView:nil cache:YES successBlock:^(id responseObject) {
-        self.model = [[HJSongModel alloc] initWithDictionary:responseObject error:nil];
+        _model = [[HJSongModel alloc] initWithDictionary:responseObject error:nil];
         if (_model) {
             [self playMusicWith:self.model];
         }
@@ -319,7 +357,7 @@ HJpropertyStrong(UIView *listView);//
 
 - (void)imageVanimation {
     [UIView animateWithDuration:0.3 animations:^{
-        self.imageV.transform = CGAffineTransformMakeScale(0.8, 0.8);
+        self.imageV.transform = CGAffineTransformMakeScale(0.6, 0.6);
     }completion:^(BOOL finished) {
         [UIView animateWithDuration:0.4 animations:^{
             self.imageV.center = CGPointMake(self.imageV.center.x, -300);

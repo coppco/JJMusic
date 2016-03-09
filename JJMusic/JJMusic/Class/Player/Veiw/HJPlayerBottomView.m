@@ -143,12 +143,23 @@ HJpropertyStrong(UIButton *favoriteB); //收藏
     if (button == self.playTypeB) {
         button.selected = !button.selected;
         userDefaultSetValueKey(@(button.selected), PlayerType);
+        if (button.selected) {
+            [HUDTool showTextTipsHUDWithTitle:@"随机播放模式" delay:0.8];
+        } else {
+            [HUDTool showTextTipsHUDWithTitle:@"顺序播放模式" delay:0.8];
+        }
+
     }
     
     //是否单曲循环
     if (button == self.cycleB) {
         button.selected = !button.selected;
         userDefaultSetValueKey(@(button.selected), PlayerCycle);
+        if (button.selected) {
+            [HUDTool showTextTipsHUDWithTitle:@"单曲循环" delay:0.8];
+        } else {
+            [HUDTool showTextTipsHUDWithTitle:@"取消单曲循环" delay:0.8];
+        }
     }
     
     //下载按钮
@@ -158,14 +169,19 @@ HJpropertyStrong(UIButton *favoriteB); //收藏
     
     //收藏按钮
     if (button == self.favoriteB) {
-        button.selected = !button.selected;
         if (![MyFavouriteMusicDB isFavoourited:getApp().playerView.songID]) {
-            [HUDTool showTextTipsHUDWithTitle:@"收藏成功" delay:0.5];
-             [MyFavouriteMusicDB addOneMusic:getApp().playerView.model];
+            if (getApp().playerView.songID.length == 0) {
+                [HUDTool showTextTipsHUDWithTitle:@"没有歌曲,收藏失败" delay:0.8];
+                return;
+            } else {
+                [HUDTool showTextTipsHUDWithTitle:@"收藏成功" delay:0.8];
+                [MyFavouriteMusicDB addOneMusic:getApp().playerView.model];
+            }
         } else {
-            [HUDTool showTextTipsHUDWithTitle:@"取消收藏" delay:0.5];
-            [MyFavouriteMusicDB deleteOneMusic:getApp().playerView.model];
+            [HUDTool showTextTipsHUDWithTitle:@"取消收藏" delay:0.8];
+            [MyFavouriteMusicDB deleteOneMusic:getApp().playerView.songID];
         }
+        button.selected = !button.selected;
     }
 }
 #pragma mark - slider方法
@@ -266,7 +282,6 @@ HJpropertyStrong(UIButton *favoriteB); //收藏
     self.playB.selected = NO;  //播放按钮图标
     [self.progressView setProgress:0.0 animated:NO]; //进度条
     //收藏图标
-    XHJLog(@"收藏音乐数:%lu", (unsigned long)[MyFavouriteMusicDB getAllMusic].count);
     if ([MyFavouriteMusicDB isFavoourited:getApp().playerView.songID]) {
         self.favoriteB.selected = YES;
     } else  {

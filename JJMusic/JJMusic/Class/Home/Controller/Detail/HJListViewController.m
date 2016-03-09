@@ -196,7 +196,7 @@ HJpropertyStrong(HJListDetailModel * detailModel);
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [getApp() playerViewAppear:nil];
-    getApp().playerView.content = self.detailModel.content;
     getApp().playerView.songID = [self.detailModel.content[indexPath.row] song_id];
+    getApp().playerView.content = self.detailModel.content;
 }
 @end

@@ -18,8 +18,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
-    UIProgressView *view = [[UIProgressView alloc] initWithFrame:CGRectMake(0, 100, ViewW(self.view), 2)];
-    [self.view addSubview:view];
+
     
     
 //    UIButton *button1 = [UIButton buttonWithType:(UIButtonTypeCustom)];

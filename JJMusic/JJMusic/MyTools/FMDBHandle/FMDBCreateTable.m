@@ -24,4 +24,19 @@
     }
     return success;
 }
++ (BOOL)createLastMusicTable {
+    FMDatabase *db = [FMDBHandle sharedFMDatabase];
+    if (![db open]) {
+        return NO;
+    }
+    //设置缓存
+    [db setShouldCacheStatements:YES];
+    BOOL success = NO;
+    success = [db executeUpdate:STRFORMAT(@"create table if not exists %@ (dbId integer primary key autoincrement not null, songID text, contentData blob)", LastMusicTable)];
+    if (success) {
+        //插入空数据
+        [db executeUpdate:STRFORMAT(@"insert into %@ (songID, contentData) values(?,?)", LastMusicTable), nil, nil];
+    }
+    return success;
+}
 @end

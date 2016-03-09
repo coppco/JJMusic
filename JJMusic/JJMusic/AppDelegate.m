@@ -12,7 +12,9 @@
 #import "LockViewController.h"
 #import "LockModel.h"
 #import <RongIMKit/RongIMKit.h> //融云
-
+#import <AVFoundation/AVFoundation.h>
+#import "HJLastMusicDB.h"  //数据库
+#import "HJListDetailModel.h" //model
 @interface AppDelegate ()<RCIMUserInfoDataSource>
 
 @end
@@ -34,6 +36,11 @@
     
     UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(pan:)];
     [_playerB addGestureRecognizer:pan];
+    //后台播放
+    AVAudioSession *Session = [AVAudioSession sharedInstance];
+    [Session setActive:YES error:nil];
+    [Session setCategory:AVAudioSessionCategoryPlayback error:nil];
+    
     [self shareThirdParty];  //三方注册
     [self enterApp];
      return YES;
@@ -47,7 +54,27 @@
     } completion:^(BOOL finished) {
         button.userInteractionEnabled = YES;
         _playerView.userInteractionEnabled = YES;
+        if (_playerView.songID.length == 0) {
+            //从数据库里面取
+            NSArray *array = [HJLastMusicDB getLastMusic];
+            if (array.count == 2) {
+                _playerView.songID = array[0];
+                NSArray *array1 = [NSKeyedUnarchiver unarchiveObjectWithData:array[1]];
+                _playerView.content = [ListSongModel arrayOfModelsFromDictionaries:array1].mutableCopy;
+            } else {
+                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"你还没有选择歌曲,是否试听推荐歌曲?" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+                [alertView show];
+            }
+        }
     }];
+}
+//推荐歌曲
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex  {
+    if (buttonIndex == 0) {
+        [_playerView selfDown:nil];
+    } else {
+        _playerView.songID = @"1261400";
+    }
 }
 - (void)pan:(UIPanGestureRecognizer *)pan {
     if (UIGestureRecognizerStateChanged == pan.state) {
