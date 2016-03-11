@@ -25,6 +25,7 @@
  *  更新下载进度条
  *
  *  @param progress 进度条
+ *  @param animated  是否动画
  */
-- (void)updateProgressWith:(CGFloat)progress;
+- (void)updateProgressWith:(CGFloat)progress animated:(BOOL)animated;
 @end

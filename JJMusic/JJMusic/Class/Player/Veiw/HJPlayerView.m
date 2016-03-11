@@ -49,25 +49,33 @@ HJpropertyStrong(UIView *listView);//
     self.backImageV.contentMode = UIViewContentModeScaleAspectFill;
     [self addSubview:self.backImageV];
     
+    UIView *topView = [[UIView alloc] init];
+    topView.backgroundColor = [ColorFromString(@"##FF0080") colorWithAlphaComponent:0.2];
+    [self addSubview:topView];
+    [topView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.top.equalTo(self).insets(UIEdgeInsetsMake(0, 0, 0, 0));
+        make.height.mas_equalTo(self.height * 0.1);
+    }];
     //返回按钮
     self.backButton = [UIButton buttonWithType:(UIButtonTypeCustom)];
     [self.backButton setBackgroundImage:IMAGE(@"player_down") forState:(UIControlStateNormal)];
     [self.backButton addTarget:self action:@selector(selfDown:) forControlEvents:(UIControlEventTouchUpInside)];
-    [self addSubview:self.backButton];
+    [topView addSubview:self.backButton];
     [self.backButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.size.mas_equalTo(CGSizeMake(40, 40));
-        make.top.left.equalTo(self).insets(UIEdgeInsetsMake(15, 30, 0, 0));
+        make.top.left.equalTo(topView).insets(UIEdgeInsetsMake(15, 30, 0, 0));
     }];
     //标题
     self.titleL = [[UILabel alloc] init];
     self.titleL.textColor = [UIColor whiteColor];
 //    self.titleL.text = @"爱你的365天";
 //    [self.titleL sizeToFit];
-    [self addSubview:self.titleL];
+    [topView addSubview:self.titleL];
     [self.titleL mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(self.backButton);
+        make.centerY.equalTo(self.backButton).offset(-3);
         make.left.equalTo(self.backButton.mas_right).offset(10);
-        make.size.mas_equalTo(CGSizeMake(200, 20));
+        make.right.equalTo(topView).offset(-10);
+        make.height.mas_equalTo(20);
     }];
     //切换音质
     self.changeB = [UIButton buttonWithType:(UIButtonTypeCustom)];
@@ -77,7 +85,7 @@ HJpropertyStrong(UIView *listView);//
     [self.changeB setTitle:@"超高" forState:(UIControlStateNormal)];
     self.changeB.titleLabel.font = font(11);
     [self.changeB setImage:IMAGE(@"player_change") forState:(UIControlStateNormal)];
-    [self addSubview:self.changeB];
+    [topView addSubview:self.changeB];
     [self.changeB mas_makeConstraints:^(MASConstraintMaker *make) {
         make.size.mas_equalTo(CGSizeMake(50, 20));
         make.left.equalTo(self.titleL.mas_left);
@@ -88,7 +96,7 @@ HJpropertyStrong(UIView *listView);//
     self.autherL.textColor = [UIColor whiteColor];
 //    self.autherL.text = @"Hans Zimmer";
 //    [self.autherL sizeToFit];
-    [self addSubview:_autherL];
+    [topView addSubview:_autherL];
     [self.autherL mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(self.changeB);
         make.size.mas_equalTo(CGSizeMake(200, 20));
@@ -121,7 +129,7 @@ HJpropertyStrong(UIView *listView);//
     self.scrollView.showsHorizontalScrollIndicator = NO;
     [self addSubview:self.scrollView];
     [self.scrollView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.autherL.mas_bottom).offset(3);
+        make.top.equalTo(topView.mas_bottom).offset(3);
         make.left.right.equalTo(self).insets(UIEdgeInsetsMake(0, 0, 0, 0));
         make.bottom.equalTo(self.pageControll.mas_top);
     }];
@@ -232,7 +240,7 @@ HJpropertyStrong(UIView *listView);//
     CGFloat totalDuration = CMTimeGetSeconds(duration);
     CGFloat progress = timeInterval / totalDuration;
 //    XHJLog(@"缓冲进度:%f", progress);
-    [self.bottomView updateProgressWith:progress];
+    [self.bottomView updateProgressWith:progress animated:YES];
 }
 /**
  *  AVPlayer结束播放
@@ -322,6 +330,7 @@ HJpropertyStrong(UIView *listView);//
     //不相等才播放
     if (![_songID isEqualToString:songID]) {
         _songID = songID;
+        [self.bottomView updateProgressWith:0 animated:NO];
         [self loadSongInfoWithSongID:songID];
         //写到数据库
         [HJLastMusicDB updateSongID:songID];

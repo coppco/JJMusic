@@ -9,7 +9,7 @@
 #import "MusicListView.h"
 #import "MuiscList.h"
 #import <UIImageView+WebCache.h>
-
+#import "HJListViewController.h"
 #define k_x 15
 #define k_h 20
 #define k_v 4
@@ -110,6 +110,10 @@ HJpropertyStrong(UILabel *fourthL);
     return cell;
 }
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-
+    MuiscList *model = _array[indexPath.item];
+    HJListViewController *ListVC = [[HJListViewController alloc] init];
+    ListVC.model = model;
+    [self.viewController.navigationController pushViewController:ListVC animated:YES];
 }
+
 @end

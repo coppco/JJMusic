@@ -102,6 +102,7 @@ HJpropertyStrong(UIScrollView *scrollView);//滚动视图
     _scrollView.contentSize = CGSizeMake(_titleArray.count * KMainScreenWidth, ViewW(_scrollView));
     [self.view addSubview:_scrollView];
     
+    //推荐
     _recommendV = [[RecommendView alloc] initWithFrame:CGRectMake(0, 0, KMainScreenWidth, ViewH(_scrollView))];
     [_scrollView addSubview:_recommendV];
     //下拉刷新
@@ -112,14 +113,19 @@ HJpropertyStrong(UIScrollView *scrollView);//滚动视图
     //主动进入刷新状态
     [_recommendV.tableView.mj_header beginRefreshing];
     
+    //歌单
     _allDiyView = [[AllDiyView alloc] initWithFrame:CGRectMake(KMainScreenWidth, 0, KMainScreenWidth, ViewH(_scrollView))];
     //下拉刷新
     _allDiyView.collectionView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         [HUDTool showLoadingHUDCustomViewInView:self.view title:@"正在加载"];
         [self loadListData];
     }];
+    _allDiyView.collectionView.mj_footer = [MJRefreshAutoGifFooter footerWithRefreshingBlock:^{
+        
+    }];
     [_scrollView addSubview:_allDiyView];
     
+    //榜单
     _musicListView = [[MusicListView alloc] initWithFrame:CGRectMake(KMainScreenWidth * 2, 0, KMainScreenWidth, ViewH(_scrollView))];
     //下拉刷新
     _musicListView.collectionView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
@@ -128,6 +134,7 @@ HJpropertyStrong(UIScrollView *scrollView);//滚动视图
     }];
     [_scrollView addSubview:_musicListView];
     
+    //歌手
     _singerView = [[SingerView alloc] initWithFrame:CGRectMake(KMainScreenWidth * 3, 0, KMainScreenWidth, ViewH(_scrollView))];
     //下拉刷新
     _singerView.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
@@ -136,6 +143,7 @@ HJpropertyStrong(UIScrollView *scrollView);//滚动视图
     }];
     [_scrollView addSubview:_singerView];
     
+    //电台
     _radioView = [[RadioView alloc] initWithFrame:CGRectMake(KMainScreenWidth * 4, 0, KMainScreenWidth, ViewH(_scrollView))];
     //下拉刷新
     _radioView.collectionView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
@@ -144,6 +152,7 @@ HJpropertyStrong(UIScrollView *scrollView);//滚动视图
     }];
     [_scrollView addSubview:_radioView];
     
+    //K歌
     _kSongView = [[KSongView alloc] initWithFrame:CGRectMake(KMainScreenWidth * 5, 0, KMainScreenWidth, ViewH(_scrollView))];
     //下拉刷新
     _kSongView.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
@@ -152,6 +161,7 @@ HJpropertyStrong(UIScrollView *scrollView);//滚动视图
     }];
     [_scrollView addSubview:_kSongView];
     
+    //错误信息
     _errorView = [[ErrorTipsView alloc] initWithFrame:self.scrollView.frame title:@"你的网络似乎不好哦" subTitle:@"请检查你的网络是否正常" image:@"error_msg_t" btnTitle:@"点击重试" btnClick:^(id object) {
         NSInteger tag = _topTitleView.selectIndex - 9980;
         WeakSelf(weak);

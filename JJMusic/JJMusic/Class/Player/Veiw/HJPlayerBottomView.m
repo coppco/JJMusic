@@ -300,8 +300,8 @@ HJpropertyStrong(UIButton *favoriteB); //收藏
     self.currentL.text = strtotal;
     [self.slider setValue:current animated:YES];
 }
-- (void)updateProgressWith:(CGFloat)progress {
-    [self.progressView setProgress:progress animated:YES];
+- (void)updateProgressWith:(CGFloat)progress animated:(BOOL)animated {
+    [self.progressView setProgress:progress animated:animated];
 }
 
 @end

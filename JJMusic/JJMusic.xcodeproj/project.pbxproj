@@ -15,6 +15,7 @@
 		CC2E7AE11C8FB92300C787D3 /* HJLastMusicDB.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2E7AE01C8FB92300C787D3 /* HJLastMusicDB.m */; };
 		CC2E7AF31C915CDB00C787D3 /* TBloaderURLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2E7AF01C915CDB00C787D3 /* TBloaderURLConnection.m */; };
 		CC2E7AF41C915CDB00C787D3 /* TBVideoRequestTask.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2E7AF21C915CDB00C787D3 /* TBVideoRequestTask.m */; };
+		CC2E7AFB1C92625C00C787D3 /* HJHotListDetailMoel.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2E7AFA1C92625C00C787D3 /* HJHotListDetailMoel.m */; };
 		CC30430A1C5B45410079683D /* FMDBHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = CC3043091C5B45410079683D /* FMDBHandle.m */; };
 		CC30430D1C5B454B0079683D /* FMDBCreateTable.m in Sources */ = {isa = PBXBuildFile; fileRef = CC30430C1C5B454B0079683D /* FMDBCreateTable.m */; };
 		CC3043171C5B47840079683D /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC3043161C5B47840079683D /* BaseViewController.m */; };
@@ -146,6 +147,8 @@
 		CC2E7AF01C915CDB00C787D3 /* TBloaderURLConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBloaderURLConnection.m; sourceTree = "<group>"; };
 		CC2E7AF11C915CDB00C787D3 /* TBVideoRequestTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBVideoRequestTask.h; sourceTree = "<group>"; };
 		CC2E7AF21C915CDB00C787D3 /* TBVideoRequestTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBVideoRequestTask.m; sourceTree = "<group>"; };
+		CC2E7AF91C92625C00C787D3 /* HJHotListDetailMoel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJHotListDetailMoel.h; sourceTree = "<group>"; };
+		CC2E7AFA1C92625C00C787D3 /* HJHotListDetailMoel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJHotListDetailMoel.m; sourceTree = "<group>"; };
 		CC3043081C5B45410079683D /* FMDBHandle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDBHandle.h; sourceTree = "<group>"; };
 		CC3043091C5B45410079683D /* FMDBHandle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDBHandle.m; sourceTree = "<group>"; };
 		CC30430B1C5B454B0079683D /* FMDBCreateTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDBCreateTable.h; sourceTree = "<group>"; };
@@ -509,6 +512,8 @@
 				CC43B68D1C89225E0018AC8A /* HJListViewController.m */,
 				CC43B68F1C8923860018AC8A /* HJListDetailModel.h */,
 				CC43B6901C8923860018AC8A /* HJListDetailModel.m */,
+				CC2E7AF91C92625C00C787D3 /* HJHotListDetailMoel.h */,
+				CC2E7AFA1C92625C00C787D3 /* HJHotListDetailMoel.m */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -1256,6 +1261,7 @@
 				CC6111761C75BFE000747FD1 /* RadioView.m in Sources */,
 				CC61898C1C5B55F000D72270 /* MASViewConstraint.m in Sources */,
 				CC6111591C755FBB00747FD1 /* MusicListView.m in Sources */,
+				CC2E7AFB1C92625C00C787D3 /* HJHotListDetailMoel.m in Sources */,
 				CC6189881C5B55F000D72270 /* MASConstraint.m in Sources */,
 				CCBAD97A1C7EACA6003FE160 /* UIView+HJFrame.m in Sources */,
 				CC61115D1C758F2C00747FD1 /* SingerModel.m in Sources */,
