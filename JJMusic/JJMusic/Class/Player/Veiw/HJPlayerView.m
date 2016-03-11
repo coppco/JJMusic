@@ -206,7 +206,6 @@ HJpropertyStrong(UIView *listView);//
         [Dic setObject:mpMediaItemAreWork forKey:MPMediaItemPropertyArtwork];
 //    }
     [[MPNowPlayingInfoCenter defaultCenter] setNowPlayingInfo:Dic];
-    XHJLog(@"%@", Dic);
 }
 /**
  *  player正在播放的时候,更新进度条
@@ -232,7 +231,7 @@ HJpropertyStrong(UIView *listView);//
     CMTime duration = playerItem.duration;
     CGFloat totalDuration = CMTimeGetSeconds(duration);
     CGFloat progress = timeInterval / totalDuration;
-    XHJLog(@"缓冲进度:%f", progress);
+//    XHJLog(@"缓冲进度:%f", progress);
     [self.bottomView updateProgressWith:progress];
 }
 /**
@@ -345,7 +344,8 @@ HJpropertyStrong(UIView *listView);//
     //停止
     [[HJMusicTool sharedMusicPlayer] stop];
     //播放
-    [[HJMusicTool sharedMusicPlayer] playWithURL:((SongURL *)model.url[0]).file_link];
+    
+    [[HJMusicTool sharedMusicPlayer] playWithURL:((SongURL *)model.url[0]).file_link model:model];
     //更改背景图片
     [self.backImageV sd_setImageWithURL:[NSURL URLWithString:model.songinfo.pic_huge.length != 0 ? model.songinfo.pic_huge : model.songinfo.pic_big.length == 0 ? model.songinfo.artist_640_1136 :model.songinfo.pic_big] placeholderImage:IMAGE(@"player_backgroud")];
     //标题和歌手

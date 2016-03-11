@@ -7,14 +7,16 @@
 //
 
 #import "HJMusicTool.h"
+#import "TBloaderURLConnection.h"  //下载类
 
 @interface HJMusicTool ()
 HJpropertyStrong(AVPlayer *player);  //播放器
 HJpropertyStrong(AVPlayerItem *playerItem);
-HJpropertyStrong(AVAsset *asset);
+HJpropertyStrong(AVURLAsset *musicAsset);
 HJpropertyStrong(id playbackTimeObserver);
 HJpropertyAssign(BOOL isPause); //暂停
 HJpropertyAssign(BOOL isPlaying);   //是否正在播放
+HJpropertyStrong(TBloaderURLConnection *downloader);
 @end
 
 @implementation HJMusicTool
@@ -29,18 +31,40 @@ static HJMusicTool *musicTool = nil;
     });
     return musicTool;
 }
-- (void)playWithURL:(NSString *)url {
+- (void)playWithURL:(NSString *)url model:(id)model{
+    _model = model;
+    XHJLog(@"%@", model);
     [self.player pause]; //暂停
     [self cleanPlayer];  //清空播放器监听属性
     self.isPause = NO;
     self.isPlaying = NO;
-    self.asset = [AVURLAsset URLAssetWithURL:[NSURL URLWithString:url] options:nil];
-    self.playerItem = [AVPlayerItem playerItemWithAsset:_asset];
-    if (!self.player) {
-        self.player = [AVPlayer playerWithPlayerItem:self.playerItem];
+    
+    //本地文件或者iOS7.0前直接播放
+    if (__IOS_VERSION < 7.0 || ![url hasPrefix:@"http"]) {
+        self.musicAsset = [AVURLAsset URLAssetWithURL:[NSURL URLWithString:url] options:nil];
+        self.playerItem = [AVPlayerItem playerItemWithAsset:_musicAsset];
     } else {
-        [self.player replaceCurrentItemWithPlayerItem:self.playerItem];
+        //ios7以上采用resourceLoader给播放器补充数据,需要把http换成streaming(流)
+        
+        self.downloader = [[TBloaderURLConnection alloc] init];
+        NSURL *playURL = [self.downloader getSchemeWithURL:[NSURL URLWithString:url] scheme:@"streaming"];
+
+            self.musicAsset = [AVURLAsset URLAssetWithURL:playURL options:nil];
+            //这里设置多线程
+            [self.musicAsset.resourceLoader setDelegate:self.downloader queue:dispatch_get_global_queue(0, 0)];
+//        }
+//        if (self.playerItem == nil) {
+            self.playerItem = [AVPlayerItem playerItemWithAsset:_musicAsset];
+//        }
     }
+//    if (!self.player) {
+        self.player = [AVPlayer playerWithPlayerItem:self.playerItem];
+//    } else {
+//        //在主线程替换
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            [self.player replaceCurrentItemWithPlayerItem:self.playerItem];
+//        });
+//    }
     //添加观察者
     [self.playerItem addObserver:self forKeyPath:@"status" options:NSKeyValueObservingOptionNew context:nil];
     [self.playerItem addObserver:self forKeyPath:@"loadedTimeRanges" options:NSKeyValueObservingOptionNew context:nil];
@@ -58,6 +82,7 @@ static HJMusicTool *musicTool = nil;
     if (!self.playerItem) {
         return;
     }
+   
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     [self.playerItem removeObserver:self forKeyPath:@"status"];//预播放状态
     [self.playerItem removeObserver:self forKeyPath:@"loadedTimeRanges"];//缓冲进度
@@ -65,6 +90,7 @@ static HJMusicTool *musicTool = nil;
         [self.player removeTimeObserver:self.playbackTimeObserver];
         self.playbackTimeObserver = nil;
     }
+
     self.playerItem = nil;
 }
 //观察者方法
@@ -146,4 +172,6 @@ static HJMusicTool *musicTool = nil;
     }
     return NO;
 }
+
+
 @end

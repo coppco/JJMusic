@@ -40,8 +40,8 @@
     AVAudioSession *Session = [AVAudioSession sharedInstance];
     [Session setActive:YES error:nil];
     [Session setCategory:AVAudioSessionCategoryPlayback error:nil];
-    
-    [self shareThirdParty];  //三方注册
+    XHJLog(@"%@", pathDocuments());
+//    [self shareThirdParty];  //三方注册
     [self enterApp];
      return YES;
 }
@@ -112,9 +112,9 @@
     [RCIM sharedRCIM].userInfoDataSource = self;
     [RCIM sharedRCIM].currentUserInfo =[[RCUserInfo alloc] initWithUserId:@"654321" name:@"MSN" portrait:@"http://musicdata.baidu.com/data2/pic/115286282/115286282.jpg"];
     [[RCIM sharedRCIM] connectWithToken:kToken2 success:^(NSString *userId) {
-        XHJLog(@"登陆成功。当前登录的用户ID：%@", userId);
+//        XHJLog(@"登陆成功。当前登录的用户ID：%@", userId);
     } error:^(RCConnectErrorCode status) {
-        XHJLog(@"登陆的错误码为:%ld", (long)status);
+//        XHJLog(@"登陆的错误码为:%ld", (long)status);
     } tokenIncorrect:^{
         //token过期或者不正确。
         //如果设置了token有效期并且token过期，请重新请求您的服务器获取新的token

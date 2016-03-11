@@ -7,6 +7,7 @@
 //   播放器单例类
 
 #import <Foundation/Foundation.h>
+
 #import <AVFoundation/AVFoundation.h>
 @protocol HJMusicToolDelegate <NSObject>
 @required
@@ -33,7 +34,8 @@
 @end
 
 @interface HJMusicTool : NSObject
-HJpropertyStrong(id delegate);  //代理
+@property (nonatomic, strong, readonly)id model;
+HJpropertyStrong(id <HJMusicToolDelegate>delegate);  //代理
 /**
  *  获取播放器,单例类
  *
@@ -45,7 +47,7 @@ HJpropertyStrong(id delegate);  //代理
  *
  *  @param url 音乐地址
  */
-- (void)playWithURL:(NSString *)url;
+- (void)playWithURL:(NSString *)url model:(id)model;
 /**
  *  暂停或者播放
  */

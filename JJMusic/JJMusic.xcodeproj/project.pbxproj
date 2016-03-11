@@ -13,6 +13,8 @@
 		CC071EE81C76C45B00494B4B /* KSongView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC071EE71C76C45B00494B4B /* KSongView.m */; };
 		CC071EEB1C76EEFC00494B4B /* MyFavouriteMusicDB.m in Sources */ = {isa = PBXBuildFile; fileRef = CC071EEA1C76EEFC00494B4B /* MyFavouriteMusicDB.m */; };
 		CC2E7AE11C8FB92300C787D3 /* HJLastMusicDB.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2E7AE01C8FB92300C787D3 /* HJLastMusicDB.m */; };
+		CC2E7AF31C915CDB00C787D3 /* TBloaderURLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2E7AF01C915CDB00C787D3 /* TBloaderURLConnection.m */; };
+		CC2E7AF41C915CDB00C787D3 /* TBVideoRequestTask.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2E7AF21C915CDB00C787D3 /* TBVideoRequestTask.m */; };
 		CC30430A1C5B45410079683D /* FMDBHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = CC3043091C5B45410079683D /* FMDBHandle.m */; };
 		CC30430D1C5B454B0079683D /* FMDBCreateTable.m in Sources */ = {isa = PBXBuildFile; fileRef = CC30430C1C5B454B0079683D /* FMDBCreateTable.m */; };
 		CC3043171C5B47840079683D /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC3043161C5B47840079683D /* BaseViewController.m */; };
@@ -140,6 +142,10 @@
 		CC071EEA1C76EEFC00494B4B /* MyFavouriteMusicDB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyFavouriteMusicDB.m; sourceTree = "<group>"; };
 		CC2E7ADF1C8FB92300C787D3 /* HJLastMusicDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJLastMusicDB.h; sourceTree = "<group>"; };
 		CC2E7AE01C8FB92300C787D3 /* HJLastMusicDB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJLastMusicDB.m; sourceTree = "<group>"; };
+		CC2E7AEF1C915CDB00C787D3 /* TBloaderURLConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBloaderURLConnection.h; sourceTree = "<group>"; };
+		CC2E7AF01C915CDB00C787D3 /* TBloaderURLConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBloaderURLConnection.m; sourceTree = "<group>"; };
+		CC2E7AF11C915CDB00C787D3 /* TBVideoRequestTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBVideoRequestTask.h; sourceTree = "<group>"; };
+		CC2E7AF21C915CDB00C787D3 /* TBVideoRequestTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBVideoRequestTask.m; sourceTree = "<group>"; };
 		CC3043081C5B45410079683D /* FMDBHandle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDBHandle.h; sourceTree = "<group>"; };
 		CC3043091C5B45410079683D /* FMDBHandle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDBHandle.m; sourceTree = "<group>"; };
 		CC30430B1C5B454B0079683D /* FMDBCreateTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDBCreateTable.h; sourceTree = "<group>"; };
@@ -367,6 +373,17 @@
 			path = KSong;
 			sourceTree = "<group>";
 		};
+		CC2E7AE21C8FF94C00C787D3 /* HJMusicDownloader */ = {
+			isa = PBXGroup;
+			children = (
+				CC2E7AEF1C915CDB00C787D3 /* TBloaderURLConnection.h */,
+				CC2E7AF01C915CDB00C787D3 /* TBloaderURLConnection.m */,
+				CC2E7AF11C915CDB00C787D3 /* TBVideoRequestTask.h */,
+				CC2E7AF21C915CDB00C787D3 /* TBVideoRequestTask.m */,
+			);
+			path = HJMusicDownloader;
+			sourceTree = "<group>";
+		};
 		CC3043101C5B471B0079683D /* Class */ = {
 			isa = PBXGroup;
 			children = (
@@ -568,6 +585,7 @@
 		CC4D35D91C8419950076BB85 /* Player */ = {
 			isa = PBXGroup;
 			children = (
+				CC2E7AE21C8FF94C00C787D3 /* HJMusicDownloader */,
 				CC43B6831C86E69F0018AC8A /* 播放器大图 */,
 				CC4D35DA1C8419950076BB85 /* Controller */,
 				CC4D35DB1C8419950076BB85 /* Model */,
@@ -1201,9 +1219,11 @@
 				CC071EEB1C76EEFC00494B4B /* MyFavouriteMusicDB.m in Sources */,
 				CC30430D1C5B454B0079683D /* FMDBCreateTable.m in Sources */,
 				CC4829591C6053730098E0DD /* LockItemView.m in Sources */,
+				CC2E7AF41C915CDB00C787D3 /* TBVideoRequestTask.m in Sources */,
 				CCBAD9731C7E9962003FE160 /* HUDTool.m in Sources */,
 				CC2E7AE11C8FB92300C787D3 /* HJLastMusicDB.m in Sources */,
 				CC6189901C5B55F000D72270 /* ViewController+MASAdditions.m in Sources */,
+				CC2E7AF31C915CDB00C787D3 /* TBloaderURLConnection.m in Sources */,
 				CC071EE21C76C30500494B4B /* KSong.m in Sources */,
 				CCFFF20E1C5B37C8008A5A06 /* CheckNetworkStatus.m in Sources */,
 				CC30430A1C5B45410079683D /* FMDBHandle.m in Sources */,
