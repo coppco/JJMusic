@@ -9,7 +9,9 @@
 #import "SingerCell.h"
 #import <UIImageView+WebCache.h>
 #import "SingerModel.h"
+#import "HJSingerController.h"
 
+#define kkkkkH 0
 @interface ImageLabel : UICollectionViewCell
 HJpropertyStrong(UIImageView *imageV);
 HJpropertyStrong(UILabel *titleL);
@@ -90,13 +92,13 @@ HJpropertyStrong(UIPageControl *pageControl);
 - (void)layoutSubviews {
     [super layoutSubviews];
     _titleL.frame = CGRectMake(0, 10, ViewW(self.contentView), 30);
-    _layout.itemSize = CGSizeMake((ViewW(self.contentView) - 50) / 4, (ViewW(self.contentView) - 50) / 4 + 20);
+    _layout.itemSize = CGSizeMake((ViewW(self.contentView) - kkkkkH) / 4, (ViewW(self.contentView) - kkkkkH) / 4 + 20);
     
-    _layout.minimumLineSpacing = 10;
-    _layout.minimumInteritemSpacing = 10;
-    _layout.sectionInset = UIEdgeInsetsMake(0, 10, 0, 10);
+    _layout.minimumLineSpacing = 0;
+    _layout.minimumInteritemSpacing = 0;
+//    _layout.sectionInset = UIEdgeInsetsMake(0, 10, 0, 10);
     
-    _collectionView.frame = CGRectMake(0, ViewMaxY(_titleL) + 10, ViewW(self.contentView), 2 * ((ViewW(self.contentView) - 50) / 4 + 20) + 10);
+    _collectionView.frame = CGRectMake(0, ViewMaxY(_titleL) + 10, ViewW(self.contentView), 2 * ((ViewW(self.contentView) - kkkkkH) / 4 + 20) + 10);
     _pageControl.frame = CGRectMake(0, ViewMaxY(_collectionView) + 10, ViewW(self.contentView), 20);
 }
 
@@ -119,7 +121,11 @@ HJpropertyStrong(UIPageControl *pageControl);
 - (void)awakeFromNib {
     
 }
-
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    HJSingerController *singerVC = [[HJSingerController alloc] init];
+    singerVC.singer = _array[indexPath.item];
+    [self.viewController.navigationController pushViewController:singerVC animated:YES];
+}
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 
@@ -129,4 +135,5 @@ HJpropertyStrong(UIPageControl *pageControl);
     NSInteger page = scrollView.contentOffset.x / ViewW(_collectionView);
     _pageControl.currentPage = page;
 }
+
 @end

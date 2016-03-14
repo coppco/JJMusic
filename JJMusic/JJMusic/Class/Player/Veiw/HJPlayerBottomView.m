@@ -175,7 +175,7 @@ HJpropertyStrong(UIButton *favoriteB); //收藏
                 return;
             } else {
                 [HUDTool showTextTipsHUDWithTitle:@"收藏成功" delay:0.8];
-                [MyFavouriteMusicDB addOneMusic:getApp().playerView.model];
+                [MyFavouriteMusicDB addOneMusic:getApp().playerView.songModel];
             }
         } else {
             [HUDTool showTextTipsHUDWithTitle:@"取消收藏" delay:0.8];
@@ -282,7 +282,7 @@ HJpropertyStrong(UIButton *favoriteB); //收藏
     self.playB.selected = NO;  //播放按钮图标
     [self.progressView setProgress:0.0 animated:NO]; //进度条
     //收藏图标
-    if ([MyFavouriteMusicDB isFavoourited:getApp().playerView.songID]) {
+    if ([MyFavouriteMusicDB isFavoourited:getApp().playerView.songModel.songinfo.song_id]) {
         self.favoriteB.selected = YES;
     } else  {
         self.favoriteB.selected = NO;

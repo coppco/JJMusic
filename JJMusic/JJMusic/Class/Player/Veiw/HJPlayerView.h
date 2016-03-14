@@ -9,9 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "HJListDetailModel.h"
 #import "HJSongModel.h"  //model
-
+#import "HJHotListDetailMoel.h"
 @interface HJPlayerView : UIView
-@property (nonatomic, strong, readonly)HJSongModel *model;
+@property (nonatomic, strong)HJSongModel *songModel;
+HJpropertyAssign(BOOL isFavoritePlayer);  //是否在播放收藏音乐
 /**
  *  更换songID  实现播放
  */
@@ -19,7 +20,7 @@ HJpropertyCopy(NSString *songID);
 /**
  *  存放歌曲ID的数组
  */
-HJpropertyStrong(NSArray <ListSongModel> *content);
+HJpropertyStrong(NSArray *content);
 /**
  *  视图向下隐藏
  *

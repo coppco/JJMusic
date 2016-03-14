@@ -39,4 +39,14 @@
     }
     return success;
 }
++ (BOOL)createFavouriteListTable {
+    BOOL success = NO;
+    FMDatabase *db = [FMDBHandle sharedFMDatabase];
+    if (![db open]) {
+        return NO;
+    }
+    [db setShouldCacheStatements:YES];
+    success = [db executeUpdate:STRFORMAT(@"create table if not exists %@ (dbId integer primary key autoincrement not null, list_id text, list_data blob)", FavouriteListTable)];
+    return success;
+}
 @end

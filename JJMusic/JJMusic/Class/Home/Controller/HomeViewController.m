@@ -7,7 +7,8 @@
 //
 
 #import "HomeViewController.h"
-#import "ViewController.h"//测试
+//#import "ViewController.h"//测试
+#import "HJFavoriteController.h" //收藏
 #import "LockViewController.h"  //手势锁
 #import <RongIMKit/RongIMKit.h>  //融云
 
@@ -57,11 +58,13 @@ HJpropertyStrong(UIScrollView *scrollView);//滚动视图
 - (void)initNavigation {
     UIButton *button = [UIButton buttonWithType:(UIButtonTypeCustom)];
     button.frame = CGRectMake(0, 0, 40, 40);
-    [button setTitle:@"设置" forState:(UIControlStateNormal)];
+    [button setTitle:@"收藏" forState:(UIControlStateNormal)];
     [button addTarget:self action:@selector(gotoSetting) forControlEvents:(UIControlEventTouchUpInside)];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
 }
 - (void)gotoSetting {
+    HJFavoriteController *favoriteVC = [[HJFavoriteController alloc] init];
+    [self.navigationController pushViewController:favoriteVC animated:YES];
 //    LockViewController *LVC = [[LockViewController alloc] initWithType:(LockViewTypeCreate)];
 ////    [self presentViewController:LVC animated:YES completion:nil];
 //    [self.navigationController pushViewController:LVC animated:YES];
@@ -78,8 +81,8 @@ HJpropertyStrong(UIScrollView *scrollView);//滚动视图
 //    
 //    //显示聊天会话界面
 //    [self.navigationController pushViewController:chat animated:YES];
-    ViewController *VC = [[ViewController alloc] init];
-    [self.navigationController pushViewController:VC animated:YES];
+//    ViewController *VC = [[ViewController alloc] init];
+//    [self.navigationController pushViewController:VC animated:YES];
 }
 
 - (void)initTitleView {

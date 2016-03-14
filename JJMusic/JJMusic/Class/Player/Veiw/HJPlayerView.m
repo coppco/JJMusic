@@ -205,9 +205,9 @@ HJpropertyStrong(UIView *listView);//
     [Dic setObject:[NSNumber numberWithFloat:CMTimeGetSeconds(playerItem.currentTime)] forKey:MPNowPlayingInfoPropertyElapsedPlaybackTime];
     //总时间
     [Dic setObject:[NSNumber numberWithDouble:CMTimeGetSeconds(playerItem.duration)] forKey:MPMediaItemPropertyPlaybackDuration];
-    [Dic setObject:_model.songinfo.title forKey:MPMediaItemPropertyTitle];
+    [Dic setObject:_songModel.songinfo.title forKey:MPMediaItemPropertyTitle];
     //设置艺术家
-    [Dic setObject:_model.songinfo.author forKey:MPMediaItemPropertyArtist];
+    [Dic setObject:_songModel.songinfo.author forKey:MPMediaItemPropertyArtist];
 //    if (_model.songinfo.artist_1000_1000.length != 0) {
         //设置图片
         MPMediaItemArtwork *mpMediaItemAreWork = [[MPMediaItemArtwork alloc] initWithImage:IMAGE(@"player_record")];
@@ -266,15 +266,27 @@ HJpropertyStrong(UIView *listView);//
             return;
         }
         NSInteger i = arc4random() % self.content.count;
-        self.songID = [self.content[i] song_id];
+        if (self.isFavoritePlayer) {
+            self.songModel = self.content[i];
+        }else {
+            self.songID = [self.content[i] song_id];
+        }
     } else {
         //顺序
         [self.content enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             if ([[obj song_id] isEqualToString:self.songID]) {
                 if (idx < self.content.count -1) {
-                    self.songID = [self.content[idx+1] song_id];
+                    if (self.isFavoritePlayer) {
+                        self.songModel = self.content[idx + 1];
+                    } else {
+                        self.songID = [self.content[idx+1] song_id];
+                    }
                 } else {
-                    self.songID = [self.content[0] song_id];
+                    if (self.isFavoritePlayer) {
+                        self.songModel = self.content[0];
+                    }else {
+                        self.songID = [self.content[0] song_id];
+                    }
                 }
                 *stop = YES;
             }
@@ -291,21 +303,34 @@ HJpropertyStrong(UIView *listView);//
         [[HJMusicTool sharedMusicPlayer] seekToTime:0];
         return;
     }
+
     if ([userDefaultGetValue(PlayerType) boolValue]) {
         //随机
         if (self.content.count <= 0) {
             return;
         }
         NSInteger i = arc4random() % self.content.count;
-        self.songID = [self.content[i] song_id];
+        if (self.isFavoritePlayer) {
+            self.songModel = self.content[i];
+        } else {
+            self.songID = [self.content[i] song_id];
+        }
     } else {
         //顺序
         [self.content enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             if ([[obj song_id] isEqualToString:self.songID]) {
                 if (idx == 0) {
-                    self.songID = [[self.content lastObject] song_id];
+                    if (self.isFavoritePlayer) {
+                        self.songModel = [self.content lastObject];
+                    } else {
+                        self.songID = [[self.content lastObject] song_id];
+                    }
                 } else {
-                    self.songID = [self.content[idx - 1] song_id];
+                    if (self.isFavoritePlayer) {
+                        self.songModel = self.content [idx - 1];
+                    } else {
+                        self.songID = [self.content[idx - 1] song_id];
+                    }
                 }
                 *stop = YES;
             }
@@ -314,11 +339,19 @@ HJpropertyStrong(UIView *listView);//
 }
 
 //setter方法
-- (void)setContent:(NSArray<ListSongModel> *)content {
+- (void)setContent:(NSArray *)content {
     if (_content != content) {
         _content = content;
+        //区分类型
+        NSArray *array;
+        if ([content[0] isKindOfClass:[ListSongModel class]]) {
+            array = [ListSongModel arrayOfDictionariesFromModels:content];
+        } else if ([content[0] isKindOfClass:[HotListModel class]]  ){
+            array = [HotListModel arrayOfDictionariesFromModels:content];
+        } else if ([content[0] isKindOfClass:[HJSongModel class]]) {
+            array = [HJSongModel arrayOfDictionariesFromModels:content];
+        }
         
-        NSArray *array = [ListSongModel arrayOfDictionariesFromModels:content];
         NSData *data = [NSKeyedArchiver archivedDataWithRootObject:array];
         if (data) {
             //写到数据库
@@ -332,17 +365,23 @@ HJpropertyStrong(UIView *listView);//
         _songID = songID;
         [self.bottomView updateProgressWith:0 animated:NO];
         [self loadSongInfoWithSongID:songID];
-        //写到数据库
-        [HJLastMusicDB updateSongID:songID];
     }
 }
-
+- (void)setSongModel:(HJSongModel *)songModel {
+    if (![_songModel.songinfo.song_id isEqualToString:songModel.songinfo.song_id]) {
+        _songModel = songModel;
+        //写到数据库
+        [HJLastMusicDB updateSongID:songModel.songinfo.song_id];
+        
+        [self playMusicWith:self.songModel];
+    }
+}
 //获取model
 - (void)loadSongInfoWithSongID:(NSString *)songid {
     [HttpHandleTool requestWithType:(HJNetworkTypeGET) URLString:kMusicDetail(songid) params:nil showHUD:NO inView:nil cache:YES successBlock:^(id responseObject) {
-        _model = [[HJSongModel alloc] initWithDictionary:responseObject error:nil];
-        if (_model) {
-            [self playMusicWith:self.model];
+        HJSongModel *model = [[HJSongModel alloc] initWithDictionary:responseObject error:nil];
+        if (model) {
+            self.songModel = model;
         }
     } failedBlock:^(NSError *error) {
         XHJLog(@"网络请求失败");
@@ -380,7 +419,7 @@ HJpropertyStrong(UIView *listView);//
             //回复缩放
             self.imageV.transform = CGAffineTransformMakeScale(1, 1);
             //圆图
-            [self.imageV sd_setImageWithURL:[NSURL URLWithString:_model.songinfo.artist_1000_1000.length != 0 ? _model.songinfo.artist_1000_1000 : _model.songinfo.artist_500_500] placeholderImage:IMAGE(@"player_record")];
+            [self.imageV sd_setImageWithURL:[NSURL URLWithString:_songModel.songinfo.artist_1000_1000.length != 0 ? _songModel.songinfo.artist_1000_1000 : _songModel.songinfo.artist_500_500] placeholderImage:IMAGE(@"player_record")];
         }];
     }];
 }

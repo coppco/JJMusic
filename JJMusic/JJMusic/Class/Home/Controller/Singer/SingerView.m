@@ -30,9 +30,10 @@ HJpropertyStrong(NSMutableArray *keyArray);
     return self;
 }
 #pragma mark - delegate
+#define kkkkkH 0
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
-        return 2 * ((ViewW(self) - 50) / 4 + 20) + 10 + 90;
+        return 2 * ((ViewW(self) - kkkkkH) / 4 + 20) + 10 + 90;
     } else {
         return 40;
     }
@@ -72,6 +73,7 @@ HJpropertyStrong(NSMutableArray *keyArray);
         return cell;
     }
 }
+
 - (void)setArray:(NSArray *)array {
     _array = array;
     

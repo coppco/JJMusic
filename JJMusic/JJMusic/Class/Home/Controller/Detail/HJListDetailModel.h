@@ -18,15 +18,15 @@ HJpropertyCopy(NSString *author);// 胡夏,
 HJpropertyCopy(NSString *album_id);// 262872037,
 HJpropertyCopy(NSString *album_title);// 他比我更适合,
 HJpropertyCopy(NSString *relate_status);// 0,
-HJpropertyCopy(NSString *is_charge);// 0,
+HJpropertyCopy(NSString <Optional>*is_charge);// 0,
 HJpropertyCopy(NSString *all_rate);// 64,128,256,320,flac,
-HJpropertyCopy(NSString *high_rate);// 320,
+HJpropertyCopy(NSString <Optional>*high_rate);// 320,
 HJpropertyCopy(NSString *all_artist_id);// 1999,
 //HJpropertyCopy(NSString *copy_type);// 1,
 HJpropertyCopy(NSString *has_mv);// 0,
 HJpropertyCopy(NSString *toneid);// 0,
 HJpropertyCopy(NSString *resource_type);// 0,
-HJpropertyCopy(NSString *is_ksong);// 0,
+HJpropertyCopy(NSString <Optional>*is_ksong);// 0,
 HJpropertyCopy(NSString *has_mv_mobile);// 0,
 HJpropertyCopy(NSString *ting_uid);// 10622,
 HJpropertyCopy(NSString *is_first_publish);// 0,
@@ -38,7 +38,7 @@ HJpropertyCopy(NSString *piao_id);// 0,
 HJpropertyCopy(NSString *korean_bb_song);// 0,
 HJpropertyCopy(NSString *resource_type_ext);// 0,
 HJpropertyCopy(NSString *mv_provider);// 0000000000,
-HJpropertyCopy(NSString *share);//
+HJpropertyCopy(NSString <Optional>*share);//
 @end
 
 @interface HJListDetailModel : JSONModel

@@ -38,5 +38,18 @@ STRFORMAT(@"http://tingapi.ting.baidu.com/v1/restserver/ting?method=baidu.ting.d
 #define kMusicDetail(songID) \
 STRFORMAT(@"http://tingapi.ting.baidu.com/v1/restserver/ting?method=baidu.ting.song.getInfos&ts=%@&songid=%@&nw=2&l2p=209.9&lpb=128000&ext=MP3&format=json&from=ios&usup=1&lebo=0&aac=0&ucf=4&vid=&res=1&e=%@&version=5.5.5&from=ios&channel=appstore&operator=0", [HJCommonTools getTimestampWithType:(TimestampTpyeSecond)], songID, @"%2FeISuiA6HFC3uTDn7Vp%2FTnmLK8Ut6xD2TukXuJI%2F48s%3D")
 
+//榜单内容
+#define kMusicHotDetail(type) \
+STRFORMAT(@"http://tingapi.ting.baidu.com/v1/restserver/ting?method=baidu.ting.billboard.billList&type=%@&format=json&offset=0&size=100&from=ios&fields=title,song_id,author,resource_type,havehigh,is_new,has_mv_mobile,album_title,ting_uid,album_id,charge,all_rate,mv_provider&version=5.5.5&from=ios&channel=appstore&operator=0", type)
 
+//歌手详情
+//单曲
+#define kSingerSingleDetail(artist_id) \
+STRFORMAT(@"http://tingapi.ting.baidu.com/v1/restserver/ting?method=baidu.ting.artist.getSongList&format=json&tinguid=%@&artistid=(null)&limits=50&order=2&offset=0&version=5.5.5&from=ios&channel=appstore&operator=0", artist_id)
+//专辑
+#define kSingerAlbumDetail(artist_id) \
+STRFORMAT(@"http://tingapi.ting.baidu.com/v1/restserver/ting?method=baidu.ting.artist.getAlbumList&format=json&tinguid=%@&artistid=(null)&order=1&limits=30&offset=0&version=5.5.5&from=ios&channel=appstore&operator=0", artist_id)
+//MV
+#define kSingerMVDetail(artist_id) \
+STRFORMAT(@"http://tingapi.ting.baidu.com/v1/restserver/ting?method=baidu.ting.artist.getArtistMVList&id=%@&page=0&size=30&usetinguid=1&version=5.5.5&from=ios&channel=appstore&operator=0", artist_id)
 #endif /* RequestURL_h */

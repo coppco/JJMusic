@@ -33,7 +33,7 @@ static HJMusicTool *musicTool = nil;
 }
 - (void)playWithURL:(NSString *)url model:(id)model{
     _model = model;
-    XHJLog(@"%@", [model songinfo]);
+
     [self.player pause]; //暂停
     [self cleanPlayer];  //清空播放器监听属性
     self.isPause = NO;

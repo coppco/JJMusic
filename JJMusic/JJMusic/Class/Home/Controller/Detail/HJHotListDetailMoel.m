@@ -8,6 +8,14 @@
 
 #import "HJHotListDetailMoel.h"
 
+@implementation HotListModel
+
+@end
+
+@implementation BillBoard
+
+@end
+
 @implementation HJHotListDetailMoel
 
 @end

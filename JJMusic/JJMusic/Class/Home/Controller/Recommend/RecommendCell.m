@@ -159,7 +159,7 @@ HJpropertyStrong(NSArray *diy);
     if ([_diy[indexPath.item] isKindOfClass:[Diy class]]) {
         //歌单
         HJListViewController *ListVC = [[HJListViewController alloc] init];
-        ListVC.model = _diy[indexPath.item];
+        ListVC.list_id = [_diy[indexPath.item] listid];
         [self.viewController.navigationController pushViewController:ListVC animated:YES];
     }
 }

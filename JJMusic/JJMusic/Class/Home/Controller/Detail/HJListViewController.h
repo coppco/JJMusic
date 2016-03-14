@@ -6,8 +6,9 @@
 //  Copyright © 2016年 XHJ. All rights reserved.
 //   歌单等
 
-#import "BaseViewController.h"
+#import "HJBaseListController.h"
 
-@interface HJListViewController : BaseViewController
-HJpropertyStrong(id model);
+@interface HJListViewController : HJBaseListController
+HJpropertyCopy(NSString *list_id);  //歌单id
+HJpropertyStrong(HJListDetailModel * detailModel);
 @end

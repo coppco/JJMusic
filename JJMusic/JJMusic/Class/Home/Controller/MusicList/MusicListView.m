@@ -9,7 +9,7 @@
 #import "MusicListView.h"
 #import "MuiscList.h"
 #import <UIImageView+WebCache.h>
-#import "HJListViewController.h"
+#import "HJHotListController.h"
 #define k_x 15
 #define k_h 20
 #define k_v 4
@@ -52,7 +52,6 @@ HJpropertyStrong(UILabel *fourthL);
 }
 - (void)setModel:(MuiscList *)model {
     _model = model;
-    
     [_imageV sd_setImageWithURL:[NSURL URLWithString:model.pic_s192]];
     if (model.musicList.count > 0) {
         _firstL.attributedText = [HJCommonTools labelAttributedText:STRFORMAT(@"1  %@-%@", ((ListContent *)model.musicList[0]).title, ((ListContent *)model.musicList[0]).author) font:font(12) color:[UIColor blackColor] alignment:1 keyWords:@"1" keyWordsColor:[UIColor redColor] keyWordsFont:[UIFont fontWithName:@"SnellRoundhand-Black" size:13] underLine:NO];
@@ -110,9 +109,9 @@ HJpropertyStrong(UILabel *fourthL);
     return cell;
 }
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    MuiscList *model = _array[indexPath.item];
-    HJListViewController *ListVC = [[HJListViewController alloc] init];
-    ListVC.model = model;
+
+    HJHotListController *ListVC = [[HJHotListController alloc] init];
+    ListVC.type = [(MuiscList *)(_array[indexPath.row]) type];
     [self.viewController.navigationController pushViewController:ListVC animated:YES];
 }
 

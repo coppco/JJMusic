@@ -72,6 +72,7 @@ HJpropertyStrong(UILabel *listionL);  //听众
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
+        self.backgroundColor = [UIColor whiteColor];
         UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
         layout.itemSize = CGSizeMake((ViewW(self) - 40) / 3, (ViewW(self) - 40) / 3 + 40);
         layout.minimumInteritemSpacing = 0;

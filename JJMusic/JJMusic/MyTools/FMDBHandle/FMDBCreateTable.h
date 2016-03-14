@@ -22,4 +22,10 @@
  *  @return 返回成功与否
  */
 + (BOOL)createLastMusicTable;
+/**
+ *  创建收藏的歌单数据库
+ *
+ *  @return 返回成功与否
+ */
++ (BOOL)createFavouriteListTable;
 @end

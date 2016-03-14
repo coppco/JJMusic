@@ -16,6 +16,12 @@
 		CC2E7AF31C915CDB00C787D3 /* TBloaderURLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2E7AF01C915CDB00C787D3 /* TBloaderURLConnection.m */; };
 		CC2E7AF41C915CDB00C787D3 /* TBVideoRequestTask.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2E7AF21C915CDB00C787D3 /* TBVideoRequestTask.m */; };
 		CC2E7AFB1C92625C00C787D3 /* HJHotListDetailMoel.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2E7AFA1C92625C00C787D3 /* HJHotListDetailMoel.m */; };
+		CC2E7AFE1C9268B500C787D3 /* HJBaseListController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2E7AFD1C9268B500C787D3 /* HJBaseListController.m */; };
+		CC2E7B011C926A7200C787D3 /* HJHotListController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2E7B001C926A7200C787D3 /* HJHotListController.m */; };
+		CC2E7B041C92A8AE00C787D3 /* HJSingerController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2E7B031C92A8AE00C787D3 /* HJSingerController.m */; };
+		CC2E7B071C92B03400C787D3 /* HJSingleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2E7B061C92B03400C787D3 /* HJSingleModel.m */; };
+		CC2E7B091C92B65F00C787D3 /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC2E7B081C92B65F00C787D3 /* HeaderView.xib */; };
+		CC2E7B0C1C92BE7500C787D3 /* HeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2E7B0B1C92BE7500C787D3 /* HeaderView.m */; };
 		CC30430A1C5B45410079683D /* FMDBHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = CC3043091C5B45410079683D /* FMDBHandle.m */; };
 		CC30430D1C5B454B0079683D /* FMDBCreateTable.m in Sources */ = {isa = PBXBuildFile; fileRef = CC30430C1C5B454B0079683D /* FMDBCreateTable.m */; };
 		CC3043171C5B47840079683D /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC3043161C5B47840079683D /* BaseViewController.m */; };
@@ -43,6 +49,10 @@
 		CC4D35D81C83F3AF0076BB85 /* error_msg_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = CC4D35D71C83F3AF0076BB85 /* error_msg_bg.png */; };
 		CC4D35DF1C8419F40076BB85 /* HJSongModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CC4D35DE1C8419F40076BB85 /* HJSongModel.m */; };
 		CC4D35E51C8422B50076BB85 /* HJMusicTool.m in Sources */ = {isa = PBXBuildFile; fileRef = CC4D35E41C8422B50076BB85 /* HJMusicTool.m */; };
+		CC4EC6871C9651BB00698936 /* HJFavoriteController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC4EC6861C9651BB00698936 /* HJFavoriteController.m */; };
+		CC4EC68A1C96602200698936 /* HJMySongController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC4EC6891C96602200698936 /* HJMySongController.m */; };
+		CC4EC68D1C96603400698936 /* HJMyListController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC4EC68C1C96603400698936 /* HJMyListController.m */; };
+		CC4EC6901C968D6D00698936 /* HJFavoriteListDB.m in Sources */ = {isa = PBXBuildFile; fileRef = CC4EC68F1C968D6D00698936 /* HJFavoriteListDB.m */; };
 		CC50F79E1C859D4B003322C8 /* HJPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC50F79D1C859D4B003322C8 /* HJPlayerView.m */; };
 		CC57BFF21C803B4700906326 /* MulticolorView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC57BFF11C803B4700906326 /* MulticolorView.m */; };
 		CC57BFF71C80598D00906326 /* HUDImage.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CC57BFF61C80598D00906326 /* HUDImage.bundle */; };
@@ -149,6 +159,17 @@
 		CC2E7AF21C915CDB00C787D3 /* TBVideoRequestTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBVideoRequestTask.m; sourceTree = "<group>"; };
 		CC2E7AF91C92625C00C787D3 /* HJHotListDetailMoel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJHotListDetailMoel.h; sourceTree = "<group>"; };
 		CC2E7AFA1C92625C00C787D3 /* HJHotListDetailMoel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJHotListDetailMoel.m; sourceTree = "<group>"; };
+		CC2E7AFC1C9268B500C787D3 /* HJBaseListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJBaseListController.h; sourceTree = "<group>"; };
+		CC2E7AFD1C9268B500C787D3 /* HJBaseListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJBaseListController.m; sourceTree = "<group>"; };
+		CC2E7AFF1C926A7200C787D3 /* HJHotListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJHotListController.h; sourceTree = "<group>"; };
+		CC2E7B001C926A7200C787D3 /* HJHotListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJHotListController.m; sourceTree = "<group>"; };
+		CC2E7B021C92A8AE00C787D3 /* HJSingerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJSingerController.h; sourceTree = "<group>"; };
+		CC2E7B031C92A8AE00C787D3 /* HJSingerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJSingerController.m; sourceTree = "<group>"; };
+		CC2E7B051C92B03400C787D3 /* HJSingleModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJSingleModel.h; sourceTree = "<group>"; };
+		CC2E7B061C92B03400C787D3 /* HJSingleModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJSingleModel.m; sourceTree = "<group>"; };
+		CC2E7B081C92B65F00C787D3 /* HeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeaderView.xib; sourceTree = "<group>"; };
+		CC2E7B0A1C92BE7500C787D3 /* HeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeaderView.h; sourceTree = "<group>"; };
+		CC2E7B0B1C92BE7500C787D3 /* HeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeaderView.m; sourceTree = "<group>"; };
 		CC3043081C5B45410079683D /* FMDBHandle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDBHandle.h; sourceTree = "<group>"; };
 		CC3043091C5B45410079683D /* FMDBHandle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDBHandle.m; sourceTree = "<group>"; };
 		CC30430B1C5B454B0079683D /* FMDBCreateTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDBCreateTable.h; sourceTree = "<group>"; };
@@ -200,6 +221,14 @@
 		CC4D35DE1C8419F40076BB85 /* HJSongModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJSongModel.m; sourceTree = "<group>"; };
 		CC4D35E31C8422B50076BB85 /* HJMusicTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJMusicTool.h; sourceTree = "<group>"; };
 		CC4D35E41C8422B50076BB85 /* HJMusicTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJMusicTool.m; sourceTree = "<group>"; };
+		CC4EC6851C9651BB00698936 /* HJFavoriteController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJFavoriteController.h; sourceTree = "<group>"; };
+		CC4EC6861C9651BB00698936 /* HJFavoriteController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJFavoriteController.m; sourceTree = "<group>"; };
+		CC4EC6881C96602200698936 /* HJMySongController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJMySongController.h; sourceTree = "<group>"; };
+		CC4EC6891C96602200698936 /* HJMySongController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJMySongController.m; sourceTree = "<group>"; };
+		CC4EC68B1C96603400698936 /* HJMyListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJMyListController.h; sourceTree = "<group>"; };
+		CC4EC68C1C96603400698936 /* HJMyListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJMyListController.m; sourceTree = "<group>"; };
+		CC4EC68E1C968D6D00698936 /* HJFavoriteListDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJFavoriteListDB.h; sourceTree = "<group>"; };
+		CC4EC68F1C968D6D00698936 /* HJFavoriteListDB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJFavoriteListDB.m; sourceTree = "<group>"; };
 		CC50F79C1C859D4B003322C8 /* HJPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJPlayerView.h; sourceTree = "<group>"; };
 		CC50F79D1C859D4B003322C8 /* HJPlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJPlayerView.m; sourceTree = "<group>"; };
 		CC57BFF01C803B4700906326 /* MulticolorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MulticolorView.h; sourceTree = "<group>"; };
@@ -508,12 +537,23 @@
 		CC43B68B1C89225E0018AC8A /* Detail */ = {
 			isa = PBXGroup;
 			children = (
-				CC43B68C1C89225E0018AC8A /* HJListViewController.h */,
-				CC43B68D1C89225E0018AC8A /* HJListViewController.m */,
+				CC2E7AFC1C9268B500C787D3 /* HJBaseListController.h */,
+				CC2E7AFD1C9268B500C787D3 /* HJBaseListController.m */,
 				CC43B68F1C8923860018AC8A /* HJListDetailModel.h */,
 				CC43B6901C8923860018AC8A /* HJListDetailModel.m */,
+				CC43B68C1C89225E0018AC8A /* HJListViewController.h */,
+				CC43B68D1C89225E0018AC8A /* HJListViewController.m */,
 				CC2E7AF91C92625C00C787D3 /* HJHotListDetailMoel.h */,
 				CC2E7AFA1C92625C00C787D3 /* HJHotListDetailMoel.m */,
+				CC2E7AFF1C926A7200C787D3 /* HJHotListController.h */,
+				CC2E7B001C926A7200C787D3 /* HJHotListController.m */,
+				CC2E7B051C92B03400C787D3 /* HJSingleModel.h */,
+				CC2E7B061C92B03400C787D3 /* HJSingleModel.m */,
+				CC2E7B0A1C92BE7500C787D3 /* HeaderView.h */,
+				CC2E7B0B1C92BE7500C787D3 /* HeaderView.m */,
+				CC2E7B081C92B65F00C787D3 /* HeaderView.xib */,
+				CC2E7B021C92A8AE00C787D3 /* HJSingerController.h */,
+				CC2E7B031C92A8AE00C787D3 /* HJSingerController.m */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -628,6 +668,19 @@
 			path = Veiw;
 			sourceTree = "<group>";
 		};
+		CC4EC6841C96519200698936 /* Favorite */ = {
+			isa = PBXGroup;
+			children = (
+				CC4EC6851C9651BB00698936 /* HJFavoriteController.h */,
+				CC4EC6861C9651BB00698936 /* HJFavoriteController.m */,
+				CC4EC6881C96602200698936 /* HJMySongController.h */,
+				CC4EC6891C96602200698936 /* HJMySongController.m */,
+				CC4EC68B1C96603400698936 /* HJMyListController.h */,
+				CC4EC68C1C96603400698936 /* HJMyListController.m */,
+			);
+			path = Favorite;
+			sourceTree = "<group>";
+		};
 		CC57BFEF1C803B4700906326 /* MulticolorView */ = {
 			isa = PBXGroup;
 			children = (
@@ -739,6 +792,7 @@
 		CC65A79D1C5F38DE00E6C2AF /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				CC4EC6841C96519200698936 /* Favorite */,
 				CC071EDF1C76C12000494B4B /* KSong */,
 				CC61116D1C75BFC600747FD1 /* Radio */,
 				CC61115A1C758F1300747FD1 /* Singer */,
@@ -942,6 +996,8 @@
 				CC071EEA1C76EEFC00494B4B /* MyFavouriteMusicDB.m */,
 				CC2E7ADF1C8FB92300C787D3 /* HJLastMusicDB.h */,
 				CC2E7AE01C8FB92300C787D3 /* HJLastMusicDB.m */,
+				CC4EC68E1C968D6D00698936 /* HJFavoriteListDB.h */,
+				CC4EC68F1C968D6D00698936 /* HJFavoriteListDB.m */,
 			);
 			path = FMDBHandle;
 			sourceTree = "<group>";
@@ -1101,6 +1157,7 @@
 				CCA8988C1C5B6A7D0098F58B /* 640*960-3.jpg in Resources */,
 				CC4D35D81C83F3AF0076BB85 /* error_msg_bg.png in Resources */,
 				CCA898911C5B6A7D0098F58B /* 750*1334-4.jpg in Resources */,
+				CC2E7B091C92B65F00C787D3 /* HeaderView.xib in Resources */,
 				CCA898801C5B6A7D0098F58B /* 1242*2208-3.jpg in Resources */,
 				CC57BFF71C80598D00906326 /* HUDImage.bundle in Resources */,
 				CCFFF2001C5B346A008A5A06 /* region.db in Resources */,
@@ -1215,14 +1272,19 @@
 				CC6111601C75912C00747FD1 /* SingerView.m in Sources */,
 				CC61898B1C5B55F000D72270 /* MASViewAttribute.m in Sources */,
 				CC61898A1C5B55F000D72270 /* MASLayoutConstraint.m in Sources */,
+				CC2E7B071C92B03400C787D3 /* HJSingleModel.m in Sources */,
 				CC61898E1C5B55F000D72270 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 				CC6189891C5B55F000D72270 /* MASConstraintMaker.m in Sources */,
 				CCFFF1AE1C5B1668008A5A06 /* AppDelegate.m in Sources */,
 				CC6111561C755C3400747FD1 /* MuiscList.m in Sources */,
+				CC4EC68D1C96603400698936 /* HJMyListController.m in Sources */,
 				CC6111651C7598BC00747FD1 /* SingerCell.m in Sources */,
+				CC2E7B0C1C92BE7500C787D3 /* HeaderView.m in Sources */,
+				CC4EC6901C968D6D00698936 /* HJFavoriteListDB.m in Sources */,
 				CC4BFED41C746C080093F89F /* AllDiyView.m in Sources */,
 				CC071EEB1C76EEFC00494B4B /* MyFavouriteMusicDB.m in Sources */,
 				CC30430D1C5B454B0079683D /* FMDBCreateTable.m in Sources */,
+				CC4EC6871C9651BB00698936 /* HJFavoriteController.m in Sources */,
 				CC4829591C6053730098E0DD /* LockItemView.m in Sources */,
 				CC2E7AF41C915CDB00C787D3 /* TBVideoRequestTask.m in Sources */,
 				CCBAD9731C7E9962003FE160 /* HUDTool.m in Sources */,
@@ -1230,10 +1292,13 @@
 				CC6189901C5B55F000D72270 /* ViewController+MASAdditions.m in Sources */,
 				CC2E7AF31C915CDB00C787D3 /* TBloaderURLConnection.m in Sources */,
 				CC071EE21C76C30500494B4B /* KSong.m in Sources */,
+				CC2E7B011C926A7200C787D3 /* HJHotListController.m in Sources */,
+				CC4EC68A1C96602200698936 /* HJMySongController.m in Sources */,
 				CCFFF20E1C5B37C8008A5A06 /* CheckNetworkStatus.m in Sources */,
 				CC30430A1C5B45410079683D /* FMDBHandle.m in Sources */,
 				CCFFF20B1C5B3752008A5A06 /* Reachability.m in Sources */,
 				CC4BFECD1C7406F50093F89F /* HJButton.m in Sources */,
+				CC2E7B041C92A8AE00C787D3 /* HJSingerController.m in Sources */,
 				CC4BFED11C746B1A0093F89F /* DiyModel.m in Sources */,
 				CCFFF1FA1C5B33CE008A5A06 /* HJCommonTools.m in Sources */,
 				CC48295F1C60A7600098E0DD /* LockViewController.m in Sources */,
@@ -1268,6 +1333,7 @@
 				CCFFF2011C5B346A008A5A06 /* RegionModel.m in Sources */,
 				CC43B6971C896B370018AC8A /* NSDictionary+ZXPUnicode.m in Sources */,
 				CC4D35E51C8422B50076BB85 /* HJMusicTool.m in Sources */,
+				CC2E7AFE1C9268B500C787D3 /* HJBaseListController.m in Sources */,
 				CC65A7A21C5F38DE00E6C2AF /* HomeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

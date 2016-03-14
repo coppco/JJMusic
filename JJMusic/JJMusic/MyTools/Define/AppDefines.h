@@ -19,6 +19,7 @@
 /*========================数据库=======================*/
 #define dbName @"JJMusic.sqlit"      //本地数据库
 #define FavouriteMusicTable    @"favouriteMusic_table"   //收藏的音乐
+#define FavouriteListTable    @"favouriteList_table"   //收藏的歌单
 #define LastMusicTable  @"lastMusic_table"   //最后试听音乐和歌单等
 /*========================坐标=======================*/
 #define begin_X 15

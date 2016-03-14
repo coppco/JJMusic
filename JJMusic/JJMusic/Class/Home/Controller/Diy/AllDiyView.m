@@ -55,6 +55,7 @@ HJpropertyStrong(DiyModel *model);
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
+        self.backgroundColor = [UIColor whiteColor];
         UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
         layout.itemSize = CGSizeMake(ViewW(self) / 3 - 10, ViewW(self) / 3 - 10);
         layout.minimumInteritemSpacing = 3;
@@ -83,7 +84,7 @@ HJpropertyStrong(DiyModel *model);
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     DiyModel *model = _array[indexPath.item];
     HJListViewController *ListVC = [[HJListViewController alloc] init];
-    ListVC.model = model;
+    ListVC.list_id = model.listid;
     [self.viewController.navigationController pushViewController:ListVC animated:YES];
 }
 - (void)setArray:(NSArray *)array {
