@@ -53,6 +53,7 @@
 		CC4EC68A1C96602200698936 /* HJMySongController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC4EC6891C96602200698936 /* HJMySongController.m */; };
 		CC4EC68D1C96603400698936 /* HJMyListController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC4EC68C1C96603400698936 /* HJMyListController.m */; };
 		CC4EC6901C968D6D00698936 /* HJFavoriteListDB.m in Sources */ = {isa = PBXBuildFile; fileRef = CC4EC68F1C968D6D00698936 /* HJFavoriteListDB.m */; };
+		CC4EC6931C96B97300698936 /* HJMusicDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = CC4EC6921C96B97300698936 /* HJMusicDownloader.m */; };
 		CC50F79E1C859D4B003322C8 /* HJPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC50F79D1C859D4B003322C8 /* HJPlayerView.m */; };
 		CC57BFF21C803B4700906326 /* MulticolorView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC57BFF11C803B4700906326 /* MulticolorView.m */; };
 		CC57BFF71C80598D00906326 /* HUDImage.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CC57BFF61C80598D00906326 /* HUDImage.bundle */; };
@@ -229,6 +230,8 @@
 		CC4EC68C1C96603400698936 /* HJMyListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJMyListController.m; sourceTree = "<group>"; };
 		CC4EC68E1C968D6D00698936 /* HJFavoriteListDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJFavoriteListDB.h; sourceTree = "<group>"; };
 		CC4EC68F1C968D6D00698936 /* HJFavoriteListDB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJFavoriteListDB.m; sourceTree = "<group>"; };
+		CC4EC6911C96B97300698936 /* HJMusicDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJMusicDownloader.h; sourceTree = "<group>"; };
+		CC4EC6921C96B97300698936 /* HJMusicDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJMusicDownloader.m; sourceTree = "<group>"; };
 		CC50F79C1C859D4B003322C8 /* HJPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJPlayerView.h; sourceTree = "<group>"; };
 		CC50F79D1C859D4B003322C8 /* HJPlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJPlayerView.m; sourceTree = "<group>"; };
 		CC57BFF01C803B4700906326 /* MulticolorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MulticolorView.h; sourceTree = "<group>"; };
@@ -412,6 +415,8 @@
 				CC2E7AF01C915CDB00C787D3 /* TBloaderURLConnection.m */,
 				CC2E7AF11C915CDB00C787D3 /* TBVideoRequestTask.h */,
 				CC2E7AF21C915CDB00C787D3 /* TBVideoRequestTask.m */,
+				CC4EC6911C96B97300698936 /* HJMusicDownloader.h */,
+				CC4EC6921C96B97300698936 /* HJMusicDownloader.m */,
 			);
 			path = HJMusicDownloader;
 			sourceTree = "<group>";
@@ -1298,6 +1303,7 @@
 				CC30430A1C5B45410079683D /* FMDBHandle.m in Sources */,
 				CCFFF20B1C5B3752008A5A06 /* Reachability.m in Sources */,
 				CC4BFECD1C7406F50093F89F /* HJButton.m in Sources */,
+				CC4EC6931C96B97300698936 /* HJMusicDownloader.m in Sources */,
 				CC2E7B041C92A8AE00C787D3 /* HJSingerController.m in Sources */,
 				CC4BFED11C746B1A0093F89F /* DiyModel.m in Sources */,
 				CCFFF1FA1C5B33CE008A5A06 /* HJCommonTools.m in Sources */,

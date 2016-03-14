@@ -49,13 +49,10 @@ static HJMusicTool *musicTool = nil;
         self.downloader = [[TBloaderURLConnection alloc] init];
         NSURL *playURL = [self.downloader getSchemeWithURL:[NSURL URLWithString:url] scheme:@"streaming"];
 
-            self.musicAsset = [AVURLAsset URLAssetWithURL:playURL options:nil];
-            //这里设置多线程
-            [self.musicAsset.resourceLoader setDelegate:self.downloader queue:dispatch_get_global_queue(0, 0)];
-//        }
-//        if (self.playerItem == nil) {
-            self.playerItem = [AVPlayerItem playerItemWithAsset:_musicAsset];
-//        }
+        self.musicAsset = [AVURLAsset URLAssetWithURL:playURL options:nil];
+        //这里设置多线程
+        [self.musicAsset.resourceLoader setDelegate:self.downloader queue:dispatch_get_global_queue(0, 0)];
+        self.playerItem = [AVPlayerItem playerItemWithAsset:_musicAsset];
     }
 //    if (!self.player) {
         self.player = [AVPlayer playerWithPlayerItem:self.playerItem];
