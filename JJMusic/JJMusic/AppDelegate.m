@@ -63,7 +63,7 @@
                 
                 if ([array1[0] respondsToSelector:NSSelectorFromString(@"del_status")]) {
                     _playerView.content = [HotListModel arrayOfModelsFromDictionaries:array1].mutableCopy;
-                } else if ([array1[0] respondsToSelector:NSSelectorFromString(@"url")]){
+                } else if ([array1[0] respondsToSelector:NSSelectorFromString(@"songinfo")]){
                     _playerView.content = [HJSongModel arrayOfModelsFromDictionaries:array1].mutableCopy;
                 } else {
                     _playerView.content = [ListSongModel arrayOfModelsFromDictionaries:array1].mutableCopy;

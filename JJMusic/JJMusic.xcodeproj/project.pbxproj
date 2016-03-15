@@ -54,6 +54,7 @@
 		CC4EC68D1C96603400698936 /* HJMyListController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC4EC68C1C96603400698936 /* HJMyListController.m */; };
 		CC4EC6901C968D6D00698936 /* HJFavoriteListDB.m in Sources */ = {isa = PBXBuildFile; fileRef = CC4EC68F1C968D6D00698936 /* HJFavoriteListDB.m */; };
 		CC4EC6931C96B97300698936 /* HJMusicDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = CC4EC6921C96B97300698936 /* HJMusicDownloader.m */; };
+		CC4EC6961C980FC600698936 /* HJDownloadDB.m in Sources */ = {isa = PBXBuildFile; fileRef = CC4EC6951C980FC600698936 /* HJDownloadDB.m */; };
 		CC50F79E1C859D4B003322C8 /* HJPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC50F79D1C859D4B003322C8 /* HJPlayerView.m */; };
 		CC57BFF21C803B4700906326 /* MulticolorView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC57BFF11C803B4700906326 /* MulticolorView.m */; };
 		CC57BFF71C80598D00906326 /* HUDImage.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CC57BFF61C80598D00906326 /* HUDImage.bundle */; };
@@ -232,6 +233,8 @@
 		CC4EC68F1C968D6D00698936 /* HJFavoriteListDB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJFavoriteListDB.m; sourceTree = "<group>"; };
 		CC4EC6911C96B97300698936 /* HJMusicDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJMusicDownloader.h; sourceTree = "<group>"; };
 		CC4EC6921C96B97300698936 /* HJMusicDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJMusicDownloader.m; sourceTree = "<group>"; };
+		CC4EC6941C980FC600698936 /* HJDownloadDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJDownloadDB.h; sourceTree = "<group>"; };
+		CC4EC6951C980FC600698936 /* HJDownloadDB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJDownloadDB.m; sourceTree = "<group>"; };
 		CC50F79C1C859D4B003322C8 /* HJPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJPlayerView.h; sourceTree = "<group>"; };
 		CC50F79D1C859D4B003322C8 /* HJPlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJPlayerView.m; sourceTree = "<group>"; };
 		CC57BFF01C803B4700906326 /* MulticolorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MulticolorView.h; sourceTree = "<group>"; };
@@ -1003,6 +1006,8 @@
 				CC2E7AE01C8FB92300C787D3 /* HJLastMusicDB.m */,
 				CC4EC68E1C968D6D00698936 /* HJFavoriteListDB.h */,
 				CC4EC68F1C968D6D00698936 /* HJFavoriteListDB.m */,
+				CC4EC6941C980FC600698936 /* HJDownloadDB.h */,
+				CC4EC6951C980FC600698936 /* HJDownloadDB.m */,
 			);
 			path = FMDBHandle;
 			sourceTree = "<group>";
@@ -1117,7 +1122,7 @@
 				TargetAttributes = {
 					CCFFF1A51C5B1668008A5A06 = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = 3Y92XXLNT8;
+						DevelopmentTeam = 26Z24GRL48;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -1341,6 +1346,7 @@
 				CC4D35E51C8422B50076BB85 /* HJMusicTool.m in Sources */,
 				CC2E7AFE1C9268B500C787D3 /* HJBaseListController.m in Sources */,
 				CC65A7A21C5F38DE00E6C2AF /* HomeViewController.m in Sources */,
+				CC4EC6961C980FC600698936 /* HJDownloadDB.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1487,7 +1493,7 @@
 				INFOPLIST_FILE = JJMusic/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.coppco.JJMusic1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.coppco.JJMusic11;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -1502,7 +1508,7 @@
 				INFOPLIST_FILE = JJMusic/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.coppco.JJMusic1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.coppco.JJMusic11;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

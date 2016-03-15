@@ -49,4 +49,18 @@
     success = [db executeUpdate:STRFORMAT(@"create table if not exists %@ (dbId integer primary key autoincrement not null, list_id text, list_data blob)", FavouriteListTable)];
     return success;
 }
++ (BOOL)createDownloadTable {
+    BOOL success = NO;
+    FMDatabase *db = [FMDBHandle sharedFMDatabase];
+    if (![db open]) {
+        return NO;
+    }
+    [db setShouldCacheStatements:YES];
+    if ([db tableExists:DownloadTable]) {
+        success = YES;
+    } else {
+        success = [db executeQuery:STRFORMAT(@"create table if not exists %@ (dbId integer primary key autoincrement not null, song_title text, song_id text, song_path text)", DownloadTable)];
+    }
+    return success;
+}
 @end

@@ -28,4 +28,10 @@
  *  @return 返回成功与否
  */
 + (BOOL)createFavouriteListTable;
+/**
+ *  创建下载的音乐数据库
+ *
+ *  @return 返回成功与否
+ */
++ (BOOL)createDownloadTable;
 @end
