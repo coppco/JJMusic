@@ -35,42 +35,13 @@ HJpropertyStrong(NSFileHandle *fileHandle);  //写数据
 - (void)dealWithLoadingRequest:(AVAssetResourceLoadingRequest *)loadingRequest {
     NSURL *url = [loadingRequest.request URL];
     NSURL *newURL = [self getSchemeWithURL:url scheme:@"http"];
-    
-//    //添加信息
-//    NSString *mimeType = @"audio/mpeg";
-//    CFStringRef contentType = UTTypeCreatePreferredIdentifierForTag(kUTTagClassMIMEType, (__bridge CFStringRef)(mimeType), NULL);
-//    AVAssetResourceLoadingContentInformationRequest *contentInformationRequest = loadingRequest.contentInformationRequest;
-//    contentInformationRequest.byteRangeAccessSupported = YES;
-//    contentInformationRequest.contentType = CFBridgingRelease(contentType);
-//    contentInformationRequest.contentLength = (unsigned long long)1555041;
 
     [self downloadMusicWithURLString:[newURL absoluteString] successBlock:^(id responseObject, NSURLSessionDataTask * _Nonnull task) {
-        //每次请求完成都执行方法
-        NSLog(@"成功:数据长度%ld", [responseObject length]);
-        
-        NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse*)(task.response);
-        
-        NSDictionary *dic = (NSDictionary *)[httpResponse allHeaderFields] ;
-        
-        NSString *content = [dic valueForKey:@"Content-Range"];
-        NSArray *array = [content componentsSeparatedByString:@"/"];
-        NSString *length = array.lastObject;
-        
-        NSUInteger videoLength;
-        
-        if ([length integerValue] == 0) {
-            videoLength = (NSUInteger)httpResponse.expectedContentLength;
-        } else {
-            videoLength = [length integerValue];
-        }
-        
-        NSString *mimeType = dic[@"Content-Type"];
-        CFStringRef contentType = UTTypeCreatePreferredIdentifierForTag(kUTTagClassMIMEType, (__bridge CFStringRef)(mimeType), NULL);
-        AVAssetResourceLoadingContentInformationRequest *contentInformationRequest = loadingRequest.contentInformationRequest;
-        contentInformationRequest.byteRangeAccessSupported = YES;
-        contentInformationRequest.contentType = CFBridgingRelease(contentType);
-        contentInformationRequest.contentLength = (unsigned long long)videoLength;
-        
+        //设置属性
+        loadingRequest.contentInformationRequest.contentType = @"audio/mpeg";
+        loadingRequest.contentInformationRequest.contentLength = [responseObject length];
+        loadingRequest.contentInformationRequest.byteRangeAccessSupported = YES;
+   
         [self processPendingRequests:responseObject loadingRequest:loadingRequest];
     } failedBlock:^(NSError *error) {
         NSLog(@"失败");
@@ -83,13 +54,12 @@ HJpropertyStrong(NSFileHandle *fileHandle);  //写数据
     [_fileHandle seekToEndOfFile];
     [_fileHandle writeData:responseObject];
 
-    //给request提供数据
-
-    
-    NSData *filedata = [NSData dataWithContentsOfURL:[NSURL fileURLWithPath:_tempPath] options:NSDataReadingMappedIfSafe error:nil];
-    XHJLog(@"%ld", filedata.length);
-    [dataRequest respondWithData:[responseObject subdataWithRange:NSMakeRange(20, 2300)]];
-    [loadingRequest finishLoading];
+    //给request提供数据,从返回的数据取
+    //回主线程
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [dataRequest respondWithData:[responseObject subdataWithRange:NSMakeRange(dataRequest.requestedOffset, dataRequest.requestedLength)]];
+        [loadingRequest finishLoading];
+    });
     
 }
 #pragma mark - AVAssetResourceLoaderDelegate方法 步骤1⃣️
@@ -101,7 +71,18 @@ HJpropertyStrong(NSFileHandle *fileHandle);  //写数据
  *
  */
 - (BOOL)resourceLoader:(AVAssetResourceLoader *)resourceLoader shouldWaitForLoadingOfRequestedResource:(AVAssetResourceLoadingRequest *)loadingRequest {
-     [self dealWithLoadingRequest:loadingRequest];  //处理数据
+    //这里会调用多次,因为使用的block,所以只在第一次的时候请求网络,
+    if (!loadingRequest.dataRequest.requestsAllDataToEndOfResource) {
+        [self dealWithLoadingRequest:loadingRequest];  //处理数据
+    } else {
+        //给request提供数据,从文件中取
+            NSData *filedata = [NSData dataWithContentsOfURL:[NSURL fileURLWithPath:_tempPath] options:NSDataReadingMappedIfSafe error:nil];
+        //回主线程
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [loadingRequest.dataRequest respondWithData:filedata];
+            [loadingRequest finishLoading];
+        });
+    }
     return YES;
 }
 - (void)resourceLoader:(AVAssetResourceLoader *)resourceLoader didCancelLoadingRequest:(AVAssetResourceLoadingRequest *)loadingRequest {

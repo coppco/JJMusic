@@ -277,10 +277,11 @@ HJpropertyStrong(UIButton *favoriteB); //收藏
     }
     self.currentL.text = @"0:00";
     self.totalL.text = strtotal;
-    
+}
+- (void)resetPlayerStatus {
     //重置播放暂停图标等
     self.playB.selected = NO;  //播放按钮图标
-    [self.progressView setProgress:0.0 animated:NO]; //进度条
+        [self.progressView setProgress:0.0 animated:NO]; //进度条
     //收藏图标
     if ([MyFavouriteMusicDB isFavoourited:getApp().playerView.songModel.songinfo.song_id]) {
         self.favoriteB.selected = YES;
@@ -288,6 +289,10 @@ HJpropertyStrong(UIButton *favoriteB); //收藏
         self.favoriteB.selected = NO;
     }
     
+    //时间
+    self.currentL.text = @"00:00";
+    self.totalL.text = @"∞:∞";
+    self.slider.value  = 0;
 }
 - (void)updateCurrentWith:(CGFloat)current {
     long videoLenth = ceil(current);

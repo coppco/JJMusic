@@ -197,7 +197,7 @@ HJpropertyStrong(ListView *listView);
         [self.contentView addSubview:_moreB];
         
         _sceneView = [[SceneView alloc] initWithFrame:CGRectZero];
-        _listView = [[ListView alloc] initWithFrame:CGRectZero];
+        _listView = [[ListView alloc] initWithFrame:CGRectMake(0, 0, 100, 0)];
         [self.contentView addSubview:_sceneView];
         [self.contentView addSubview:_listView];
         _listView.hidden = YES;

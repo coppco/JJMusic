@@ -28,4 +28,8 @@
  *  @param animated  是否动画
  */
 - (void)updateProgressWith:(CGFloat)progress animated:(BOOL)animated;
+/**
+ *  重置播放器状态
+ */
+- (void)resetPlayerStatus;
 @end

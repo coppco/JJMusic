@@ -260,6 +260,7 @@ HJpropertyStrong(UIView *listView);//
         [[HJMusicTool sharedMusicPlayer] seekToTime:0];
         return;
     }
+    [[HJMusicTool sharedMusicPlayer] stop];
     if ([userDefaultGetValue(PlayerType) boolValue]) {
         //随机
         if (self.content.count <= 0) {
@@ -303,7 +304,7 @@ HJpropertyStrong(UIView *listView);//
         [[HJMusicTool sharedMusicPlayer] seekToTime:0];
         return;
     }
-
+    [[HJMusicTool sharedMusicPlayer] stop];
     if ([userDefaultGetValue(PlayerType) boolValue]) {
         //随机
         if (self.content.count <= 0) {
@@ -391,8 +392,9 @@ HJpropertyStrong(UIView *listView);//
 - (void)playMusicWith:(HJSongModel *)model {
     //停止
     [[HJMusicTool sharedMusicPlayer] stop];
+    //重置下面的状态
+    [self.bottomView resetPlayerStatus];
     //播放
-    
     [[HJMusicTool sharedMusicPlayer] playWithURL:((SongURL *)model.url[0]).file_link model:model];
     //更改背景图片
     [self.backImageV sd_setImageWithURL:[NSURL URLWithString:model.songinfo.pic_huge.length != 0 ? model.songinfo.pic_huge : model.songinfo.pic_big.length == 0 ? model.songinfo.artist_640_1136 :model.songinfo.pic_big] placeholderImage:IMAGE(@"player_backgroud")];

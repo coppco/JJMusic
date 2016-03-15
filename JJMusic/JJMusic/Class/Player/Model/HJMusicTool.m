@@ -8,6 +8,8 @@
 
 #import "HJMusicTool.h"
 #import "TBloaderURLConnection.h"  //下载类
+#import "HJMusicDownloader.h"
+
 
 @interface HJMusicTool ()
 HJpropertyStrong(AVPlayer *player);  //播放器
@@ -17,6 +19,7 @@ HJpropertyStrong(id playbackTimeObserver);
 HJpropertyAssign(BOOL isPause); //暂停
 HJpropertyAssign(BOOL isPlaying);   //是否正在播放
 HJpropertyStrong(TBloaderURLConnection *downloader);
+HJpropertyStrong(HJMusicLoader *loader);
 @end
 
 @implementation HJMusicTool
@@ -46,12 +49,15 @@ static HJMusicTool *musicTool = nil;
     } else {
         //ios7以上采用resourceLoader给播放器补充数据,需要把http换成streaming(流)
         
-        self.downloader = [[TBloaderURLConnection alloc] init];
-        NSURL *playURL = [self.downloader getSchemeWithURL:[NSURL URLWithString:url] scheme:@"streaming"];
+//        self.downloader = [[TBloaderURLConnection alloc] init];
+//        NSURL *playURL = [self.downloader getSchemeWithURL:[NSURL URLWithString:url] scheme:@"streaming"];
 
+        self.loader = [[HJMusicLoader alloc] init];
+        NSURL *playURL = [self.loader getSchemeWithURL:[NSURL URLWithString:url] scheme:@"streaming"];
+        
         self.musicAsset = [AVURLAsset URLAssetWithURL:playURL options:nil];
         //这里设置多线程
-        [self.musicAsset.resourceLoader setDelegate:self.downloader queue:dispatch_get_global_queue(0, 0)];
+        [self.musicAsset.resourceLoader setDelegate:self.loader queue:dispatch_get_global_queue(0, 0)];
         self.playerItem = [AVPlayerItem playerItemWithAsset:_musicAsset];
     }
 //    if (!self.player) {
