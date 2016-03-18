@@ -110,6 +110,8 @@
 		CCA898911C5B6A7D0098F58B /* 750*1334-4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CCA8987D1C5B6A7D0098F58B /* 750*1334-4.jpg */; };
 		CCBAD9731C7E9962003FE160 /* HUDTool.m in Sources */ = {isa = PBXBuildFile; fileRef = CCBAD9721C7E9962003FE160 /* HUDTool.m */; };
 		CCBAD97A1C7EACA6003FE160 /* UIView+HJFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = CCBAD9791C7EACA6003FE160 /* UIView+HJFrame.m */; };
+		CCBE531B1C9BA93A0060D082 /* KxMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = CCBE531A1C9BA93A0060D082 /* KxMenu.m */; };
+		CCBE531F1C9BBECD0060D082 /* HJPickView.m in Sources */ = {isa = PBXBuildFile; fileRef = CCBE531E1C9BBECD0060D082 /* HJPickView.m */; };
 		CCFFF1AB1C5B1668008A5A06 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CCFFF1AA1C5B1668008A5A06 /* main.m */; };
 		CCFFF1AE1C5B1668008A5A06 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CCFFF1AD1C5B1668008A5A06 /* AppDelegate.m */; };
 		CCFFF1B11C5B1668008A5A06 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CCFFF1B01C5B1668008A5A06 /* ViewController.m */; };
@@ -332,6 +334,10 @@
 		CCBAD9721C7E9962003FE160 /* HUDTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUDTool.m; sourceTree = "<group>"; };
 		CCBAD9781C7EACA6003FE160 /* UIView+HJFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+HJFrame.h"; sourceTree = "<group>"; };
 		CCBAD9791C7EACA6003FE160 /* UIView+HJFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+HJFrame.m"; sourceTree = "<group>"; };
+		CCBE53191C9BA93A0060D082 /* KxMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KxMenu.h; sourceTree = "<group>"; };
+		CCBE531A1C9BA93A0060D082 /* KxMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KxMenu.m; sourceTree = "<group>"; };
+		CCBE531D1C9BBECD0060D082 /* HJPickView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJPickView.h; sourceTree = "<group>"; };
+		CCBE531E1C9BBECD0060D082 /* HJPickView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJPickView.m; sourceTree = "<group>"; };
 		CCFFF1A61C5B1668008A5A06 /* JJMusic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JJMusic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCFFF1AA1C5B1668008A5A06 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CCFFF1AC1C5B1668008A5A06 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -940,6 +946,32 @@
 			path = UIView;
 			sourceTree = "<group>";
 		};
+		CCBE53171C9BA9120060D082 /* ThirdParty */ = {
+			isa = PBXGroup;
+			children = (
+				CCBE53181C9BA93A0060D082 /* KxMenu */,
+			);
+			path = ThirdParty;
+			sourceTree = "<group>";
+		};
+		CCBE53181C9BA93A0060D082 /* KxMenu */ = {
+			isa = PBXGroup;
+			children = (
+				CCBE53191C9BA93A0060D082 /* KxMenu.h */,
+				CCBE531A1C9BA93A0060D082 /* KxMenu.m */,
+			);
+			path = KxMenu;
+			sourceTree = "<group>";
+		};
+		CCBE531C1C9BBE8E0060D082 /* UIPickView */ = {
+			isa = PBXGroup;
+			children = (
+				CCBE531D1C9BBECD0060D082 /* HJPickView.h */,
+				CCBE531E1C9BBECD0060D082 /* HJPickView.m */,
+			);
+			path = UIPickView;
+			sourceTree = "<group>";
+		};
 		CCFFF19D1C5B1668008A5A06 = {
 			isa = PBXGroup;
 			children = (
@@ -1014,6 +1046,8 @@
 		CCFFF1F01C5B33A4008A5A06 /* MyTools */ = {
 			isa = PBXGroup;
 			children = (
+				CCBE531C1C9BBE8E0060D082 /* UIPickView */,
+				CCBE53171C9BA9120060D082 /* ThirdParty */,
 				CCBAD9701C7E9940003FE160 /* HUD */,
 				CC4BFEC91C7406D40093F89F /* Public */,
 				CC36CDE11C71D5DF00505E05 /* Category */,
@@ -1380,8 +1414,10 @@
 				CC581E011C9A50AC00E97360 /* HeaderView.m in Sources */,
 				CC57BFF21C803B4700906326 /* MulticolorView.m in Sources */,
 				CC581E001C9A50AC00E97360 /* HJListViewController.m in Sources */,
+				CCBE531F1C9BBECD0060D082 /* HJPickView.m in Sources */,
 				CC48295C1C608BF80098E0DD /* MyLockView.m in Sources */,
 				CC49C1351C61FDEB0001F5BA /* LockModel.m in Sources */,
+				CCBE531B1C9BA93A0060D082 /* KxMenu.m in Sources */,
 				CC61898F1C5B55F000D72270 /* View+MASAdditions.m in Sources */,
 				CC75CE111C7DA13E007F7685 /* NSTimer+Block.m in Sources */,
 				CC65A7A51C5F390C00E6C2AF /* TopTitleView.m in Sources */,

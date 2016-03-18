@@ -45,12 +45,14 @@ HJpropertyStrong(KSongView *kSongView);  //K歌
 HJpropertyStrong(ErrorTipsView *errorView);  //加载失败
 HJpropertyStrong(UIScrollView *scrollView);//滚动视图
 HJpropertyAssign(int currentPage);  //歌单当前页码
+HJpropertyCopy(NSString *listTitle);  //歌单标题
 @end
 
 @implementation HomeViewController
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.currentPage = 1;
+    self.listTitle = @"全部";
     self.backButton.hidden = YES;
     self.title = @"乐库";
     [self initNavigation];
@@ -87,9 +89,9 @@ HJpropertyAssign(int currentPage);  //歌单当前页码
 }
 
 - (void)initTitleView {
+    WeakSelf(weak);
     self.titleArray = [NSMutableArray arrayWithObjects:@"推荐", @"歌单", @"榜单", @"歌手", @"电台", @"K歌", nil];
     self.topTitleView = [[TopTitleView alloc] initWithFrame:CGRectMake(0, 64, ViewW(self.view), 40) titleArray:self.titleArray];
-    WeakSelf(weak);
     [self.topTitleView setButtonClick:^(NSInteger tag) {
         [weak.scrollView setContentOffset:CGPointMake((tag - 9980) * weak.scrollView.frame.size.width, 0) animated:YES];
         [weak refreshData:tag - 9980];
@@ -111,7 +113,6 @@ HJpropertyAssign(int currentPage);  //歌单当前页码
     [_scrollView addSubview:_recommendV];
     //下拉刷新
     _recommendV.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        [HUDTool showLoadingHUDCustomViewInView:self.view title:@"正在加载"];
         [self loadMusicRecommendData];
     }];
     //主动进入刷新状态
@@ -119,16 +120,46 @@ HJpropertyAssign(int currentPage);  //歌单当前页码
     
     //歌单
     _allDiyView = [[AllDiyView alloc] initWithFrame:CGRectMake(KMainScreenWidth, 0, KMainScreenWidth, ViewH(_scrollView))];
+    //点击全部歌单block
+    [_allDiyView setHeaderClick:^(NSString *title) {
+        weak.currentPage = 1;
+        weak.allDiyView.array = [NSMutableArray array];
+        weak.listTitle = title;
+        NSString *str;
+        if ([title isEqualToString:@"全部"]) {
+            str = kSongList(self.currentPage);
+        } else if ([title isEqualToString:@"音乐专题"]) {
+            str = kSongListSpecial;
+        } else {
+            str = kSongListParameter(self.currentPage, title);
+        }
+        [weak loadListDataWith:str];
+    }];
     //下拉刷新
     _allDiyView.collectionView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        [HUDTool showLoadingHUDCustomViewInView:self.view title:@"正在加载"];
         self.currentPage = 1;
         self.allDiyView.array = [NSMutableArray array];
-        [self loadListData];
+        NSString *str;
+        if ([self.listTitle isEqualToString:@"全部"]) {
+            str = kSongList(self.currentPage);
+        } else if ([self.listTitle isEqualToString:@"音乐专题"]) {
+            str = kSongListSpecial;
+        } else {
+            str = kSongListParameter(self.currentPage, self.listTitle);
+        }
+        [weak loadListDataWith:str];
     }];
     _allDiyView.collectionView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
         self.currentPage++;
-        [self loadListData];
+        NSString *str;
+        if ([self.listTitle isEqualToString:@"全部"]) {
+            str = kSongList(self.currentPage);
+        } else if ([self.listTitle isEqualToString:@"音乐专题"]) {
+            str = kSongListSpecial;
+        } else {
+            str = kSongListParameter(self.currentPage, self.listTitle);
+        }
+        [weak loadListDataWith:str];
     }];
     [_scrollView addSubview:_allDiyView];
     
@@ -136,7 +167,6 @@ HJpropertyAssign(int currentPage);  //歌单当前页码
     _musicListView = [[MusicListView alloc] initWithFrame:CGRectMake(KMainScreenWidth * 2, 0, KMainScreenWidth, ViewH(_scrollView))];
     //下拉刷新
     _musicListView.collectionView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        [HUDTool showLoadingHUDCustomViewInView:self.view title:@"正在加载"];
         [self loadMusicListData];
     }];
     [_scrollView addSubview:_musicListView];
@@ -145,7 +175,6 @@ HJpropertyAssign(int currentPage);  //歌单当前页码
     _singerView = [[SingerView alloc] initWithFrame:CGRectMake(KMainScreenWidth * 3, 0, KMainScreenWidth, ViewH(_scrollView))];
     //下拉刷新
     _singerView.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        [HUDTool showLoadingHUDCustomViewInView:self.view title:@"正在加载"];
         [self loadSingerData];
     }];
     [_scrollView addSubview:_singerView];
@@ -154,7 +183,6 @@ HJpropertyAssign(int currentPage);  //歌单当前页码
     _radioView = [[RadioView alloc] initWithFrame:CGRectMake(KMainScreenWidth * 4, 0, KMainScreenWidth, ViewH(_scrollView))];
     //下拉刷新
     _radioView.collectionView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        [HUDTool showLoadingHUDCustomViewInView:self.view title:@"正在加载"];
         [self loadRadioData];
     }];
     [_scrollView addSubview:_radioView];
@@ -163,7 +191,6 @@ HJpropertyAssign(int currentPage);  //歌单当前页码
     _kSongView = [[KSongView alloc] initWithFrame:CGRectMake(KMainScreenWidth * 5, 0, KMainScreenWidth, ViewH(_scrollView))];
     //下拉刷新
     _kSongView.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        [HUDTool showLoadingHUDCustomViewInView:self.view title:@"正在加载"];
         [self loadKSongData];
     }];
     [_scrollView addSubview:_kSongView];
@@ -171,7 +198,7 @@ HJpropertyAssign(int currentPage);  //歌单当前页码
     //错误信息
     _errorView = [[ErrorTipsView alloc] initWithFrame:self.scrollView.frame title:@"你的网络似乎不好哦" subTitle:@"请检查你的网络是否正常" image:@"error_msg_t" btnTitle:@"点击重试" btnClick:^(id object) {
         NSInteger tag = _topTitleView.selectIndex - 9980;
-        WeakSelf(weak);
+        
         if (tag == 0) {
 //            if (weak.recommendV.recommend == nil) {
                 [weak.recommendV.tableView.mj_header beginRefreshing];
@@ -276,6 +303,7 @@ HJpropertyAssign(int currentPage);  //歌单当前页码
 }
 //获取推荐页面数据
 - (void)loadMusicRecommendData {
+    [HUDTool showLoadingHUDCustomViewInView:self.view title:@"正在加载"];
     [HttpHandleTool requestWithType:HJNetworkTypeGET URLString:kMusicRecommend params:CUID showHUD:NO inView:nil cache:YES successBlock:^(id responseObject) {
         _errorView.hidden = YES;
         RModel *model = [[RModel alloc] initWithDictionary:responseObject error:nil];
@@ -295,8 +323,9 @@ HJpropertyAssign(int currentPage);  //歌单当前页码
     }];
 }
 //获取歌单数据
-- (void)loadListData {
-    [HttpHandleTool requestWithType:(HJNetworkTypeGET) URLString:kSongList(self.currentPage) params:nil showHUD:NO inView:nil cache:YES successBlock:^(id responseObject) {
+- (void)loadListDataWith:(NSString *)URLString {
+    [HUDTool showLoadingHUDCustomViewInView:self.view title:@"正在加载"];
+    [HttpHandleTool requestWithType:(HJNetworkTypeGET) URLString:URLString params:nil showHUD:NO inView:nil cache:YES successBlock:^(id responseObject) {
         _errorView.hidden = YES;
         NSArray *array = [DiyModel arrayOfModelsFromDictionaries:responseObject[@"content"]];
         [_allDiyView.array addObjectsFromArray:array];
@@ -318,6 +347,7 @@ HJpropertyAssign(int currentPage);  //歌单当前页码
 
 //获取榜单数据
 - (void)loadMusicListData {
+    [HUDTool showLoadingHUDCustomViewInView:self.view title:@"正在加载"];
     [HttpHandleTool requestWithType:(HJNetworkTypeGET) URLString:kMusicList params:nil showHUD:NO inView:nil cache:YES successBlock:^(id responseObject) {
         _errorView.hidden = YES;
         NSArray *array = [MuiscList arrayOfModelsFromDictionaries:responseObject[@"content"]];
@@ -338,6 +368,7 @@ HJpropertyAssign(int currentPage);  //歌单当前页码
 
 //获取歌手信息
 - (void)loadSingerData {
+    [HUDTool showLoadingHUDCustomViewInView:self.view title:@"正在加载"];
     [HttpHandleTool requestWithType:(HJNetworkTypeGET) URLString:kSinger params:nil showHUD:NO inView:nil cache:YES successBlock:^(id responseObject) {
         _errorView.hidden = YES;
         NSArray *array = [SingerModel arrayOfModelsFromDictionaries:responseObject[@"artist"]];
@@ -358,6 +389,7 @@ HJpropertyAssign(int currentPage);  //歌单当前页码
 
 //获取电台数据
 - (void)loadRadioData {
+    [HUDTool showLoadingHUDCustomViewInView:self.view title:@"正在加载"];
     dispatch_async(dispatch_get_main_queue(), ^{
         [HttpHandleTool requestWithType:(HJNetworkTypeGET) URLString:kRedRadio params:nil showHUD:NO inView:nil cache:YES successBlock:^(id responseObject) {
             _radioView.isLoad = YES;
@@ -395,6 +427,7 @@ HJpropertyAssign(int currentPage);  //歌单当前页码
 
 //获取K歌数据
 - (void)loadKSongData {
+    [HUDTool showLoadingHUDCustomViewInView:self.view title:@"正在加载"];
     [HttpHandleTool requestWithType:(HJNetworkTypeGET) URLString:kPeopleMusic params:nil showHUD:NO inView:nil cache:YES successBlock:^(id responseObject) {
         _errorView.hidden = YES;
         _kSongView.array = [KPeople arrayOfModelsFromDictionaries:responseObject[@"result"][@"items"]];

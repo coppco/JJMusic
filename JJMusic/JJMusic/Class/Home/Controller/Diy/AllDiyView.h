@@ -12,4 +12,9 @@
 HJpropertyStrong(UICollectionView *collectionView);  //集合视图
 
 HJpropertyStrong(NSMutableArray *array);
+
+/**
+ *  点击集合视图的头部方法
+ */
+HJpropertyCopy(void (^headerClick)(NSString *title));
 @end

@@ -12,9 +12,16 @@
 #define kMusicRecommend @"http://tingapi.ting.baidu.com/v1/restserver/ting?method=baidu.ting.plaza.index&version=5.5.5&from=ios&channel=appstore&operator=0"
 #define CUID @{@"cuid":@"0e939898c11ad3b9b52e6fb5d50e009ad930a65b"}
 
-//歌单接口
+//歌单接口 获取全部订单
 #define kSongList(currentPage) \
 STRFORMAT(@"http://tingapi.ting.baidu.com/v1/restserver/ting?method=baidu.ting.diy.gedan&page_no=%d&page_size=30&from=ios&version=5.5.4&from=ios&channel=appstore&operator=0", currentPage)
+//音乐专题
+#define kSongListSpecial \
+@"http://tingapi.ting.baidu.com/v1/restserver/ting?method=baidu.ting.diy.getOfficialDiyList&format=json&ver=2&type=2&pn=0&rn=30&version=5.5.5&from=ios&channel=appstore&operator=0"
+
+//其他带参数接口
+#define kSongListParameter(currentPage, parameter) \
+STRFORMAT(@"http://tingapi.ting.baidu.com/v1/restserver/ting?method=baidu.ting.diy.search&page_no=%d&page_size=30&query=%@&from=ios&version=5.5.5&from=ios&channel=appstore&operator=0", currentPage, parameter)
 
 //榜单接口
 #define kMusicList @"http://tingapi.ting.baidu.com/v1/restserver/ting?method=baidu.ting.billboard.billCategory&format=json&from=ios&kflag=1&version=5.5.4&from=ios&channel=appstore&operator=0"

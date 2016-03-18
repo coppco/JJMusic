@@ -277,7 +277,7 @@ HJpropertyStrong(UIView *listView);//
     } else {
         //顺序
         [self.content enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            if ([[obj song_id] isEqualToString:self.songID]) {
+//            if ([[obj song_id] isEqualToString:self.songID]) {
                 if (idx < self.content.count -1) {
                     if (self.isFavoritePlayer) {
                         self.songModel = self.content[idx + 1];
@@ -292,7 +292,7 @@ HJpropertyStrong(UIView *listView);//
                     }
                 }
                 *stop = YES;
-            }
+//            }
         }];
     };
 }
@@ -321,7 +321,7 @@ HJpropertyStrong(UIView *listView);//
     } else {
         //顺序
         [self.content enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            if ([[obj song_id] isEqualToString:self.songID]) {
+//            if ([[obj song_id] isEqualToString:self.songID]) {
                 if (idx == 0) {
                     if (self.isFavoritePlayer) {
                         self.songModel = [self.content lastObject];
@@ -336,7 +336,7 @@ HJpropertyStrong(UIView *listView);//
                     }
                 }
                 *stop = YES;
-            }
+//            }
         }];
     };
 }
@@ -381,6 +381,12 @@ HJpropertyStrong(UIView *listView);//
 }
 //获取model
 - (void)loadSongInfoWithSongID:(NSString *)songid {
+    //这里添加先从数据库取 没取到才网络请求
+    HJSongModel *model = [[HJDownloadDB getDownloadSongWithSong_id:songid] valueForKey:@"song_data"];
+    if (model) {
+        self.songModel = model;
+        return;
+    }
     [HttpHandleTool requestWithType:(HJNetworkTypeGET) URLString:kMusicDetail(songid) params:nil showHUD:NO inView:nil cache:YES successBlock:^(id responseObject) {
         HJSongModel *model = [[HJSongModel alloc] initWithDictionary:responseObject error:nil];
         if (model) {
@@ -402,16 +408,20 @@ HJpropertyStrong(UIView *listView);//
     if (dict != nil) {
         //下载过
         NSString *url = dict[@"song_path"];
-        if ([[NSFileManager defaultManager] fileExistsAtPath:url] && [[NSFileManager defaultManager] attributesOfItemAtPath:url error:nil].fileSize >= 2000) {
+        XHJLog(@"%@", url);
+        if ([[NSFileManager defaultManager] fileExistsAtPath:url]) {
+            XHJLog(@"播放本地");
             
             [[HJMusicTool sharedMusicPlayer] playWithURL:dict[@"song_path"] model:model];
         } else {
-            //没有或者不完整从数据库删除 从本地删除
-            [HJDownloadDB deleteOneDownloadSongWithSong_id:model.songinfo.song_id];
-            [[NSFileManager defaultManager] removeItemAtPath:url error:nil];
+            XHJLog(@"播放网络1");
+//            //没有或者不完整从数据库删除 从本地删除
+//            [HJDownloadDB deleteOneDownloadSongWithSong_id:model.songinfo.song_id];
+//            [[NSFileManager defaultManager] removeItemAtPath:url error:nil];
             [[HJMusicTool sharedMusicPlayer] playWithURL:((SongURL *)model.url[0]).file_link model:model];
         }
     } else {
+        XHJLog(@"播放网络2");
         //没有下载
         [[HJMusicTool sharedMusicPlayer] playWithURL:((SongURL *)model.url[0]).file_link model:model];
     }
