@@ -148,7 +148,7 @@ HJpropertyStrong(UIButton *favoriteB); //收藏
         } else {
             [HUDTool showTextTipsHUDWithTitle:@"顺序播放模式" delay:0.8];
         }
-
+        return;
     }
     
     //是否单曲循环

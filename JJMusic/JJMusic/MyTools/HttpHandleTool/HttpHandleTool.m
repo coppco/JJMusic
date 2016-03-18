@@ -12,16 +12,23 @@
 @implementation HttpHandleTool
 //GET、POST 请求
 + (void)requestWithType:(HJNetworkType)networkType URLString:(NSString *)url params:(NSDictionary *)params showHUD:(BOOL)showHUD inView:(UIView *)view cache:(BOOL)cache successBlock:(void (^)(id))successBlock failedBlock:(void (^)(NSError *))failedBlock {
-    //归档地址
-    NSString *path = pathCachesFilePathName(@"networkRequest", STRFORMAT(@"%ld.xxoo", [url hash]));
+    //归档地址  使用hash  地址太长有可能hash值一样
+    NSString *path = pathCachesFilePathName(@"networkRequest", STRFORMAT(@"%@.xxoo", [HJCommonTools returnAStringWithEncryptType:(EncryptTypeMD5) forString:url]));
+    id data = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
     
+    if (cache && data != nil) {
+        successBlock(data);
+        return;
+    }
     //url中有汉字 需要编码
     //对应解码方法:解码使用stringByRemovingPercentEncoding方法
-//    if (ISIOS_7_0) {
-//        url = [url stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
-//    } else {
-//        url = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-//    }
+    if ([HJCommonTools checkStringIsContainerChineseCharacter:url]) {
+        if (ISIOS_7_0) {
+            url = [url stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+        } else {
+            url = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        }
+    }
     
     if (showHUD) {
         
@@ -60,11 +67,11 @@
                 if (showHUD) {
                     
                 }
+                //存在caches中
+                if (responseObject != nil) {
+                    [NSKeyedArchiver archiveRootObject:responseObject toFile:path];
+                }
                 if (successBlock) {
-                    //存在caches中
-                    if (responseObject != nil) {
-                        [NSKeyedArchiver archiveRootObject:responseObject toFile:path];
-                    }
                     successBlock(responseObject);
                 }
             } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
@@ -73,7 +80,6 @@
                     
                 }
                 //请求失败的时候,从caches中取,取到的数据不为空
-                id data = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
                 if (data != nil && cache) {
                     successBlock(data);
                 } else {
@@ -93,11 +99,11 @@
                 if (showHUD) {
                     
                 }
+                //存在caches中
+                if (responseObject != nil && cache) {
+                    [NSKeyedArchiver archiveRootObject:responseObject toFile:path];
+                }
                 if (successBlock) {
-                    //存在caches中
-                    if (responseObject != nil && cache) {
-                        [NSKeyedArchiver archiveRootObject:responseObject toFile:path];
-                    }
                     successBlock(responseObject);
                 }
                 

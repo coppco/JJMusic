@@ -56,6 +56,7 @@ HJpropertyStrong(DiyModel *model);
     self = [super initWithFrame:frame];
     if (self) {
         self.backgroundColor = [UIColor whiteColor];
+        self.array = [NSMutableArray array];
         UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
         layout.itemSize = CGSizeMake(ViewW(self) / 3 - 10, ViewW(self) / 3 - 10);
         layout.minimumInteritemSpacing = 3;
@@ -87,9 +88,9 @@ HJpropertyStrong(DiyModel *model);
     ListVC.list_id = model.listid;
     [self.viewController.navigationController pushViewController:ListVC animated:YES];
 }
-- (void)setArray:(NSArray *)array {
-    _array = array;
-    
-    [_collectionView reloadData];
-}
+//- (void)setArray:(NSMutableArray *)array {
+//    _array = array;
+//    
+//    [_collectionView reloadData];
+//}
 @end

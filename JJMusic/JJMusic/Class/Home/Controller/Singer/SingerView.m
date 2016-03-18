@@ -8,7 +8,7 @@
 
 #import "SingerView.h"
 #import "SingerCell.h"
-
+#import "HJSearchSingerController.h" //查找歌手
 @interface SingerView ()<UITableViewDataSource, UITableViewDelegate>
 HJpropertyStrong(NSDictionary *titleDic);
 HJpropertyStrong(NSMutableArray *keyArray);
@@ -73,7 +73,14 @@ HJpropertyStrong(NSMutableArray *keyArray);
         return cell;
     }
 }
-
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (0 != indexPath.section) {
+        HJSearchSingerController *searchVC = [[HJSearchSingerController alloc] init];
+        searchVC.indexPath = indexPath;
+        searchVC.title = _titleDic[_keyArray[indexPath.section - 1]][indexPath.row];
+        [self.viewController.navigationController pushViewController:searchVC animated:YES];
+    }
+}
 - (void)setArray:(NSArray *)array {
     _array = array;
     

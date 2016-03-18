@@ -154,8 +154,8 @@ static MBProgressHUD *sharedHud = nil;
     _errorImg = [[UIImageView alloc] init];
     UIImage *image = [UIImage imageNamed:_imageName];
     _errorImg.image = image;
-    _errorImg.frame = CGRectMake(self.frame.size.width/2-image.size.width/2, y, image.size.width, image.size.height);
-    
+//    _errorImg.frame = CGRectMake(self.frame.size.width/2-image.size.width/2, y, image.size.width, image.size.height);
+    _errorImg.frame = CGRectMake((self.width - 150) / 2, y, 150, 150);
 //        _errorImg.frame = CGRectMake(self.frame.size.width/2-102.5/2, y, 102.5, 137/2);
     [self addSubview:_errorImg];
     

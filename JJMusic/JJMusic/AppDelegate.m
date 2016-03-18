@@ -60,12 +60,15 @@
             if (array.count == 2) {
                 _playerView.songID = array[0];
                 NSArray *array1 = [NSKeyedUnarchiver unarchiveObjectWithData:array[1]];
+                //获取最后播放的音乐
                 
+                //排行榜
                 if ([array1[0] respondsToSelector:NSSelectorFromString(@"del_status")]) {
                     _playerView.content = [HotListModel arrayOfModelsFromDictionaries:array1].mutableCopy;
                 } else if ([array1[0] respondsToSelector:NSSelectorFromString(@"songinfo")]){
+                    //歌单
                     _playerView.content = [HJSongModel arrayOfModelsFromDictionaries:array1].mutableCopy;
-                } else {
+                } else if ([array1[0] respondsToSelector:NSSelectorFromString(@"songinfo")]) {
                     _playerView.content = [ListSongModel arrayOfModelsFromDictionaries:array1].mutableCopy;
                 }
             } else {

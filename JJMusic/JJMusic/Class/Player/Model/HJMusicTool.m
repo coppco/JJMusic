@@ -36,15 +36,16 @@ static HJMusicTool *musicTool = nil;
 }
 - (void)playWithURL:(NSString *)url model:(id)model{
     _model = model;
-
     [self.player pause]; //暂停
     [self cleanPlayer];  //清空播放器监听属性
     self.isPause = NO;
     self.isPlaying = NO;
     
+    
+    
     //本地文件或者iOS7.0前直接播放
     if (__IOS_VERSION < 7.0 || ![url hasPrefix:@"http"]) {
-        self.musicAsset = [AVURLAsset URLAssetWithURL:[NSURL URLWithString:url] options:nil];
+        self.musicAsset = [AVURLAsset URLAssetWithURL:[NSURL fileURLWithPath:url] options:nil];
         self.playerItem = [AVPlayerItem playerItemWithAsset:_musicAsset];
     } else {
         //ios7以上采用resourceLoader给播放器补充数据,需要把http换成streaming(流)

@@ -151,10 +151,12 @@ HJpropertyStrong(UIButton *skipButton);  //跳过button
         if (indexPath.row == 3) {
             _enterButton.hidden = NO;
             [imageV addSubview:_enterButton];
-        }
-        if (indexPath.row == 1) {
+        } else {
             _enterButton.hidden = YES;
         }
+//        if (indexPath.row == 1) {
+//            _enterButton.hidden = YES;
+//        }
         imageV.image = IMAGEFILE(_imageArray[indexPath.row]);
     }
     return cell;

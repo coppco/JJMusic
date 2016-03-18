@@ -45,6 +45,8 @@ HJpropertyStrong(ErrorTipsView *errorView);  //显示提示视图
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.tableFooterView = [[UIView alloc] init];
     [self.view addSubview:self.tableView];
+    self.editButtonItem.title = @"编辑";
+    self.editButtonItem.tintColor = [UIColor whiteColor];
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated {

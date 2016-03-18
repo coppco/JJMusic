@@ -50,17 +50,14 @@
     return success;
 }
 + (BOOL)createDownloadTable {
-    BOOL success = NO;
     FMDatabase *db = [FMDBHandle sharedFMDatabase];
     if (![db open]) {
         return NO;
     }
+    //设置缓存,提高效率
     [db setShouldCacheStatements:YES];
-    if ([db tableExists:DownloadTable]) {
-        success = YES;
-    } else {
-        success = [db executeQuery:STRFORMAT(@"create table if not exists %@ (dbId integer primary key autoincrement not null, song_title text, song_id text, song_path text)", DownloadTable)];
-    }
+    BOOL success = NO;
+    success = [db executeUpdate:STRFORMAT(@"create table if not exists %@ (dbId integer primary key autoincrement not null, song_title text, song_id text, song_author text, song_data blob, song_path text)", DownloadTable)];
     return success;
 }
 @end

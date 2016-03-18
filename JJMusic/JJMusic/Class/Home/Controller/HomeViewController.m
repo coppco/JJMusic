@@ -44,12 +44,13 @@ HJpropertyStrong(RadioView *radioView);  //电台
 HJpropertyStrong(KSongView *kSongView);  //K歌
 HJpropertyStrong(ErrorTipsView *errorView);  //加载失败
 HJpropertyStrong(UIScrollView *scrollView);//滚动视图
-
+HJpropertyAssign(int currentPage);  //歌单当前页码
 @end
 
 @implementation HomeViewController
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.currentPage = 1;
     self.backButton.hidden = YES;
     self.title = @"乐库";
     [self initNavigation];
@@ -57,12 +58,12 @@ HJpropertyStrong(UIScrollView *scrollView);//滚动视图
 }
 - (void)initNavigation {
     UIButton *button = [UIButton buttonWithType:(UIButtonTypeCustom)];
-    button.frame = CGRectMake(0, 0, 40, 40);
-    [button setTitle:@"收藏" forState:(UIControlStateNormal)];
-    [button addTarget:self action:@selector(gotoSetting) forControlEvents:(UIControlEventTouchUpInside)];
+    button.size = CGSizeMake(30, 30);
+    [button addTarget:self action:@selector(gotoMy) forControlEvents:(UIControlEventTouchUpInside)];
+    [button setBackgroundImage:IMAGE(@"favorite_my") forState:(UIControlStateNormal)];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
 }
-- (void)gotoSetting {
+- (void)gotoMy {
     HJFavoriteController *favoriteVC = [[HJFavoriteController alloc] init];
     [self.navigationController pushViewController:favoriteVC animated:YES];
 //    LockViewController *LVC = [[LockViewController alloc] initWithType:(LockViewTypeCreate)];
@@ -121,10 +122,13 @@ HJpropertyStrong(UIScrollView *scrollView);//滚动视图
     //下拉刷新
     _allDiyView.collectionView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         [HUDTool showLoadingHUDCustomViewInView:self.view title:@"正在加载"];
+        self.currentPage = 1;
+        self.allDiyView.array = [NSMutableArray array];
         [self loadListData];
     }];
-    _allDiyView.collectionView.mj_footer = [MJRefreshAutoGifFooter footerWithRefreshingBlock:^{
-        
+    _allDiyView.collectionView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+        self.currentPage++;
+        [self loadListData];
     }];
     [_scrollView addSubview:_allDiyView];
     
@@ -292,11 +296,11 @@ HJpropertyStrong(UIScrollView *scrollView);//滚动视图
 }
 //获取歌单数据
 - (void)loadListData {
-    [HttpHandleTool requestWithType:(HJNetworkTypeGET) URLString:kSongList params:nil showHUD:NO inView:nil cache:YES successBlock:^(id responseObject) {
+    [HttpHandleTool requestWithType:(HJNetworkTypeGET) URLString:kSongList(self.currentPage) params:nil showHUD:NO inView:nil cache:YES successBlock:^(id responseObject) {
         _errorView.hidden = YES;
         NSArray *array = [DiyModel arrayOfModelsFromDictionaries:responseObject[@"content"]];
-        _allDiyView.array = array;
-        
+        [_allDiyView.array addObjectsFromArray:array];
+        [_allDiyView.collectionView reloadData];
         //结束刷新
         [_allDiyView.collectionView.mj_header endRefreshing];
         //隐藏加载条
@@ -354,7 +358,7 @@ HJpropertyStrong(UIScrollView *scrollView);//滚动视图
 
 //获取电台数据
 - (void)loadRadioData {
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+    dispatch_async(dispatch_get_main_queue(), ^{
         [HttpHandleTool requestWithType:(HJNetworkTypeGET) URLString:kRedRadio params:nil showHUD:NO inView:nil cache:YES successBlock:^(id responseObject) {
             _radioView.isLoad = YES;
             _radioView.redRadioArray = [RedRadio arrayOfModelsFromDictionaries:responseObject[@"result"][@"list"]];
@@ -372,7 +376,7 @@ HJpropertyStrong(UIScrollView *scrollView);//滚动视图
         }];
     });
     
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+    dispatch_async(dispatch_get_main_queue(), ^{
         [HttpHandleTool requestWithType:(HJNetworkTypeGET) URLString:kLeBo params:nil showHUD:NO inView:nil cache:YES successBlock:^(id responseObject) {
             _radioView.isLoad = YES;
             _radioView.leBoArray = [LeboModel arrayOfModelsFromDictionaries:responseObject[@"result"][@"taglist"]];

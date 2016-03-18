@@ -34,4 +34,5 @@
  *  @return 返回成功与否
  */
 + (BOOL)createDownloadTable;
+
 @end

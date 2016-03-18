@@ -11,5 +11,5 @@
 @interface AllDiyView : UIView
 HJpropertyStrong(UICollectionView *collectionView);  //集合视图
 
-HJpropertyStrong(NSArray *array);
+HJpropertyStrong(NSMutableArray *array);
 @end

@@ -8,6 +8,9 @@
 
 #import <JSONModel/JSONModel.h>
 
+@protocol SingerModel
+@end
+
 @interface SingerModel : JSONModel
 HJpropertyStrong(NSString *ting_uid);// 81381913,
 HJpropertyStrong(NSString *name);// TFBOYS,

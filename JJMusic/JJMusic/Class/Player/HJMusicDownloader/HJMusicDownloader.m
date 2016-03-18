@@ -9,6 +9,7 @@
 #import "HJMusicDownloader.h"
 #import <AFNetworking.h>
 #import "HJMusicTool.h"
+#import "HJDownloadDB.h"  //数据库
 
 @interface HJMusicLoader () <AVAssetResourceLoaderDelegate>
 HJpropertyCopy(NSString *tempPath);  //音乐本地地址
@@ -19,7 +20,7 @@ HJpropertyStrong(NSFileHandle *fileHandle);  //写数据
 - (instancetype)init {
     self = [super init];
     if (self) {
-        _tempPath = pathCachesFilePathName(@"音乐", STRFORMAT(@"%@_%@.mp3", [[[HJMusicTool sharedMusicPlayer].model songinfo] title], [[[HJMusicTool sharedMusicPlayer].model songinfo] song_id]));
+        _tempPath = pathCachesFilePathName(@"music", STRFORMAT(@"%@_%@.mp3", [[[HJMusicTool sharedMusicPlayer].model songinfo] title], [[[HJMusicTool sharedMusicPlayer].model songinfo] song_id]));
         if ([[NSFileManager defaultManager] fileExistsAtPath:_tempPath]) {
             [[NSFileManager defaultManager] removeItemAtPath:_tempPath error:nil];
             [[NSFileManager defaultManager] createFileAtPath:_tempPath contents:nil attributes:nil];
@@ -53,11 +54,12 @@ HJpropertyStrong(NSFileHandle *fileHandle);  //写数据
     //写到文件
     [_fileHandle seekToEndOfFile];
     [_fileHandle writeData:responseObject];
-
+    //写入数据库
+    [HJDownloadDB addOneDownloadSongWithTitle:getApp().playerView.songModel.songinfo.title song_id:getApp().playerView.songModel.songinfo.song_id author:getApp().playerView.songModel.songinfo.author songModel:getApp().playerView.songModel path:_tempPath];
     //给request提供数据,从返回的数据取
     //回主线程
     dispatch_async(dispatch_get_main_queue(), ^{
-        [dataRequest respondWithData:[responseObject subdataWithRange:NSMakeRange(dataRequest.requestedOffset, dataRequest.requestedLength)]];
+        [dataRequest respondWithData:[responseObject subdataWithRange:NSMakeRange((NSUInteger)(dataRequest.requestedOffset), (NSUInteger)dataRequest.requestedLength)]];
         [loadingRequest finishLoading];
     });
     

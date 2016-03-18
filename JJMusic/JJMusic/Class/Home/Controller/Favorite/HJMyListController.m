@@ -32,7 +32,7 @@ HJpropertyStrong(UITableView *tableView);
     }
 }
 - (void)initErrorView {
-    self.errorView = [[ErrorTipsView alloc] initWithFrame:self.view.bounds title:@"提示" subTitle:@"你还没有收藏的音乐!" image:@"noFavoriteData" btnTitle:@"点击去添加" btnClick:^(id object) {
+    self.errorView = [[ErrorTipsView alloc] initWithFrame:self.view.bounds title:@"提示" subTitle:@"你还没有收藏的歌单!" image:@"noFavoriteData" btnTitle:@"点击去添加" btnClick:^(id object) {
         
     }];
     [self.view addSubview:self.errorView];
@@ -45,6 +45,8 @@ HJpropertyStrong(UITableView *tableView);
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.tableFooterView = [[UIView alloc] init];
     [self.view addSubview:self.tableView];
+    self.editButtonItem.title = @"编辑";
+    self.editButtonItem.tintColor = [UIColor whiteColor];
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated {

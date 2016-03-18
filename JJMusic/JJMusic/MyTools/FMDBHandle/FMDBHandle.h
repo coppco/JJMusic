@@ -21,4 +21,10 @@
  *  @return 
  */
 + (FMDatabase *)sharedFMDatabase;
+/**
+ *  删除数据库
+ *
+ *  @return 
+ */
++ (BOOL)deleteFMDatabase;
 @end

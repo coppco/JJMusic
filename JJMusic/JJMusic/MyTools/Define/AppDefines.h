@@ -21,7 +21,7 @@
 #define FavouriteMusicTable    @"favouriteMusic_table"   //收藏的音乐
 #define FavouriteListTable    @"favouriteList_table"   //收藏的歌单
 #define LastMusicTable  @"lastMusic_table"   //最后试听音乐和歌单等
-#define DownloadTable @"Download_table"   //下载过的歌曲
+#define DownloadTable @"download_table"   //下载过的歌曲
 /*========================坐标=======================*/
 #define begin_X 15
 /*========================融云=======================*/

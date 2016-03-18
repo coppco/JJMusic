@@ -1424,7 +1424,6 @@ UIWindow *getAppWindow() {
     
     //2. 设置时间
     animation.duration = duration;
-    
     //设置type
     animation.type = type;
     if (subtype != nil) {

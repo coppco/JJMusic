@@ -9,7 +9,7 @@
 #import <JSONModel/JSONModel.h>
 #import "HJHotListDetailMoel.h"  //
 @interface HJSingleModel : JSONModel
-HJpropertyCopy(NSArray <HotListModel>*songlist);
+HJpropertyCopy(NSMutableArray <HotListModel>*songlist);
 HJpropertyCopy(NSString *songnums);
 HJpropertyCopy(NSString *havemore);
 HJpropertyCopy(NSString *error_code);

@@ -8,8 +8,10 @@
 
 #import "HJFavoriteController.h"
 
-#import "HJMySongController.h"
-#import "HJMyListController.h"
+#import "HJMySongController.h"  //歌曲
+#import "HJMyListController.h"  //列表
+#import "HJDwonloadController.h"  //下载
+#import "HJSettingController.h"  //设置
 @interface HJFavoriteController ()
 
 @end
@@ -21,6 +23,19 @@
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"player_backgroud"]];
     self.title = @"我的收藏";
     [self initSubView];
+    [self initRightButton];
+}
+- (void)initRightButton {
+    UIButton *button = [UIButton buttonWithType:(UIButtonTypeCustom)];
+    button.size = CGSizeMake(30, 30);
+    [button addTarget:self action:@selector(gotoSetting) forControlEvents:(UIControlEventTouchUpInside)];
+    [button setBackgroundImage:IMAGE(@"favorite_setting") forState:(UIControlStateNormal)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
+}
+- (void)gotoSetting {
+    HJSettingController *settingVC = [[HJSettingController alloc] init];
+    settingVC.title = @"设置";
+    [self.navigationController pushViewController:settingVC animated:YES];
 }
 - (void)initSubView {
     UIImageView *topV = [[UIImageView alloc] initWithFrame:CGRectMake(0, 64, self.view.width, self.view.height * 0.3)];
@@ -46,16 +61,28 @@
     [list setBackgroundImage:IMAGE(@"favorite_list") forState:(UIControlStateNormal)];
     [self.view addSubview:list];
     
+    UIButton *down = [UIButton buttonWithType:(UIButtonTypeCustom)];
+    down.tag = 2048;
+    [down addTarget:self action:@selector(myFavorite:) forControlEvents:(UIControlEventTouchUpInside)];
+    [down setBackgroundImage:IMAGE(@"favorite_download") forState:(UIControlStateNormal)];
+    [self.view addSubview:down];
+    
     [song mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(topL.mas_bottom).offset(40);
         make.size.mas_equalTo(CGSizeMake(60, 60));
-        make.left.equalTo(self.view).offset(80);
+        make.left.equalTo(self.view).offset((self.view.width - 180) / 4);
     }];
     
     [list mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(topL.mas_bottom).offset(40);
         make.size.mas_equalTo(CGSizeMake(60, 60));
-        make.right.equalTo(self.view).offset(-80);
+        make.left.equalTo(song.mas_right).offset((self.view.width - 180) / 4);
+    }];
+    
+    [down mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(topL.mas_bottom).offset(40);
+        make.size.mas_equalTo(CGSizeMake(60, 60));
+        make.left.equalTo(list.mas_right).offset((self.view.width - 180) / 4);
     }];
     
     //文字
@@ -67,6 +94,10 @@
     listL.font = font(13);
     listL.text = @"我的歌单";
     [self.view addSubview:listL];
+    UILabel *downL = [[UILabel alloc] init];
+    downL.font = font(13);
+    downL.text = @"我的下载";
+    [self.view addSubview:downL];
     
     [songL mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.equalTo(song).insets(UIEdgeInsetsMake(0, 0, 0, 0));
@@ -76,6 +107,11 @@
     [listL mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.equalTo(list).insets(UIEdgeInsetsMake(0, 0, 0, 0));
         make.top.equalTo(list.mas_bottom).offset(10);
+        make.height.mas_equalTo(30);
+    }];
+    [downL mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.equalTo(down).insets(UIEdgeInsetsMake(0, 0, 0, 0));
+        make.top.equalTo(down.mas_bottom).offset(10);
         make.height.mas_equalTo(30);
     }];
     
@@ -101,6 +137,10 @@
         //收藏的歌单
         HJMyListController *VC = [[HJMyListController alloc] init];
         [self.navigationController pushViewController:VC animated:YES];
+    } else if (button.tag == 2048) {
+        //下载的歌曲
+        HJDwonloadController *downVC = [[HJDwonloadController alloc] init];
+        [self.navigationController pushViewController:downVC animated:YES];
     }
 }
 

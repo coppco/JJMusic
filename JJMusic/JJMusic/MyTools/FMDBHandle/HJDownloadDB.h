@@ -14,7 +14,7 @@
  *
  *  @return 返回数组,可能为nil
  */
-+ (NSArray *)getAllDownloadSong;
++ (NSArray * _Nullable)getAllDownloadSong;
 /**
  *  添加一条下载歌曲的记录
  *
@@ -24,7 +24,7 @@
  *
  *  @return 返回成功与否
  */
-+ (BOOL)addOneDownloadSongWithTitle:(NSString *)title song_id:(NSString *)song_id path:(NSString *)path;
++ (BOOL)addOneDownloadSongWithTitle:(NSString * _Nonnull)title song_id:(NSString * _Nonnull)songid author:(NSString *_Nonnull)author songModel:(HJSongModel * _Nonnull)model path:(NSString * _Nonnull)path;
 /**
  *  删除一条下载的歌曲
  *
@@ -32,7 +32,7 @@
  *
  *  @return 返回成功与否
  */
-+ (BOOL)deleteOneDownloadSongWithSong_id:(NSString *)song_id;
++ (BOOL)deleteOneDownloadSongWithSong_id:(NSString * _Nonnull)song_id;
 /**
  *  根据歌曲id获取一条下载过的歌曲的信息
  *
@@ -40,5 +40,13 @@
  *
  *  @return 返回成功与否
  */
-+ (NSDictionary *)getDownloadSongWithSong_id:(NSString *)song_id;
++ (NSDictionary * _Nullable)getDownloadSongWithSong_id:(NSString * _Nonnull)song_id;
+/**
+ *  某个歌曲id是否下载过
+ *
+ *  @param song_id 歌曲id
+ *
+ *  @return 返回歌曲id
+ */
++ (BOOL)isDownloadedWithSong_id:(NSString * _Nonnull)song_id;
 @end

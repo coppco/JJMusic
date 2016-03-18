@@ -13,7 +13,8 @@
 #define CUID @{@"cuid":@"0e939898c11ad3b9b52e6fb5d50e009ad930a65b"}
 
 //歌单接口
-#define kSongList @"http://tingapi.ting.baidu.com/v1/restserver/ting?method=baidu.ting.diy.gedan&page_no=1&page_size=30&from=ios&version=5.5.4&from=ios&channel=appstore&operator=0"
+#define kSongList(currentPage) \
+STRFORMAT(@"http://tingapi.ting.baidu.com/v1/restserver/ting?method=baidu.ting.diy.gedan&page_no=%d&page_size=30&from=ios&version=5.5.4&from=ios&channel=appstore&operator=0", currentPage)
 
 //榜单接口
 #define kMusicList @"http://tingapi.ting.baidu.com/v1/restserver/ting?method=baidu.ting.billboard.billCategory&format=json&from=ios&kflag=1&version=5.5.4&from=ios&channel=appstore&operator=0"
@@ -44,12 +45,16 @@ STRFORMAT(@"http://tingapi.ting.baidu.com/v1/restserver/ting?method=baidu.ting.b
 
 //歌手详情
 //单曲
-#define kSingerSingleDetail(artist_id) \
-STRFORMAT(@"http://tingapi.ting.baidu.com/v1/restserver/ting?method=baidu.ting.artist.getSongList&format=json&tinguid=%@&artistid=(null)&limits=50&order=2&offset=0&version=5.5.5&from=ios&channel=appstore&operator=0", artist_id)
+#define kSingerSingleDetail(artist_id,count) \
+STRFORMAT(@"http://tingapi.ting.baidu.com/v1/restserver/ting?method=baidu.ting.artist.getSongList&format=json&tinguid=%@&artistid=(null)&limits=50&order=2&offset=%@&version=5.5.5&from=ios&channel=appstore&operator=0", artist_id, count)
 //专辑
 #define kSingerAlbumDetail(artist_id) \
 STRFORMAT(@"http://tingapi.ting.baidu.com/v1/restserver/ting?method=baidu.ting.artist.getAlbumList&format=json&tinguid=%@&artistid=(null)&order=1&limits=30&offset=0&version=5.5.5&from=ios&channel=appstore&operator=0", artist_id)
 //MV
 #define kSingerMVDetail(artist_id) \
 STRFORMAT(@"http://tingapi.ting.baidu.com/v1/restserver/ting?method=baidu.ting.artist.getArtistMVList&id=%@&page=0&size=30&usetinguid=1&version=5.5.5&from=ios&channel=appstore&operator=0", artist_id)
+
+//查找歌手
+#define kSingerSearch(count, area, sex, abc) \
+STRFORMAT(@"http://tingapi.ting.baidu.com/v1/restserver/ting?method=baidu.ting.artist.getList&format=json&order=1&limit=50&offset=%@&area=%@&sex=%@&abc=%@&from=ios&version=5.5.5&from=ios&channel=appstore&operator=0", count, area, sex, abc)
 #endif /* RequestURL_h */

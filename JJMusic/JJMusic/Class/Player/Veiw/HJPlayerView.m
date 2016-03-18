@@ -12,6 +12,8 @@
 #import <MediaPlayer/MediaPlayer.h>  //锁屏
 #import "HJLastMusicDB.h"  //数据库
 #import <UIImageView+WebCache.h>
+#import "HJDownloadDB.h" //下载数据库
+
 @interface HJPlayerView ()<UIScrollViewDelegate, HJMusicToolDelegate>
 HJpropertyStrong(UIButton *backButton);  //隐藏按钮
 HJpropertyStrong(UIImageView *backImageV);  //背景图片
@@ -395,7 +397,25 @@ HJpropertyStrong(UIView *listView);//
     //重置下面的状态
     [self.bottomView resetPlayerStatus];
     //播放
-    [[HJMusicTool sharedMusicPlayer] playWithURL:((SongURL *)model.url[0]).file_link model:model];
+    //判断 是否下载过
+    NSDictionary *dict = [HJDownloadDB getDownloadSongWithSong_id:model.songinfo.song_id];
+    if (dict != nil) {
+        //下载过
+        NSString *url = dict[@"song_path"];
+        if ([[NSFileManager defaultManager] fileExistsAtPath:url] && [[NSFileManager defaultManager] attributesOfItemAtPath:url error:nil].fileSize >= 2000) {
+            
+            [[HJMusicTool sharedMusicPlayer] playWithURL:dict[@"song_path"] model:model];
+        } else {
+            //没有或者不完整从数据库删除 从本地删除
+            [HJDownloadDB deleteOneDownloadSongWithSong_id:model.songinfo.song_id];
+            [[NSFileManager defaultManager] removeItemAtPath:url error:nil];
+            [[HJMusicTool sharedMusicPlayer] playWithURL:((SongURL *)model.url[0]).file_link model:model];
+        }
+    } else {
+        //没有下载
+        [[HJMusicTool sharedMusicPlayer] playWithURL:((SongURL *)model.url[0]).file_link model:model];
+    }
+    
     //更改背景图片
     [self.backImageV sd_setImageWithURL:[NSURL URLWithString:model.songinfo.pic_huge.length != 0 ? model.songinfo.pic_huge : model.songinfo.pic_big.length == 0 ? model.songinfo.artist_640_1136 :model.songinfo.pic_big] placeholderImage:IMAGE(@"player_backgroud")];
     //标题和歌手

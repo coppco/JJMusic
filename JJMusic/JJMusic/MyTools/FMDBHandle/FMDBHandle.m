@@ -32,4 +32,17 @@ static FMDatabase *DB = nil;
     });
     return DB;
 }
++ (BOOL)deleteFMDatabase {
+    BOOL success = NO;
+    NSFileManager *file = [NSFileManager defaultManager];
+    if ([file fileExistsAtPath:[self getDatabaseFile]]) {
+        [DB close];
+        NSError *error = nil;
+        success = [file removeItemAtPath:[self getDatabaseFile] error:&error];
+        if (!success) {
+            NSAssert1(0, @"Failed to delete old database file with message '%@'.", [error localizedDescription]);
+        }
+    }
+    return success;
+}
 @end
