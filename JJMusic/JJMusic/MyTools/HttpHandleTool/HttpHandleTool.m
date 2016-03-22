@@ -12,7 +12,7 @@
 @implementation HttpHandleTool
 //GET、POST 请求
 + (void)requestWithType:(HJNetworkType)networkType URLString:(NSString *)url params:(NSDictionary *)params showHUD:(BOOL)showHUD inView:(UIView *)view cache:(BOOL)cache successBlock:(void (^)(id))successBlock failedBlock:(void (^)(NSError *))failedBlock {
-    //归档地址  使用hash  地址太长有可能hash值一样
+    //归档地址  使用hash  地址太长有可能hash值一样,所以使用的是md5
     NSString *path = pathCachesFilePathName(@"networkRequest", STRFORMAT(@"%@.xxoo", [HJCommonTools returnAStringWithEncryptType:(EncryptTypeMD5) forString:url]));
     id data = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
     
@@ -20,6 +20,9 @@
         successBlock(data);
         return;
     }
+    //去除url中的空格
+    url = [url stringByReplacingOccurrencesOfString:@" " withString:@""];
+    url = [url stringByReplacingOccurrencesOfString:@"\\" withString:@""];
     //url中有汉字 需要编码
     //对应解码方法:解码使用stringByRemovingPercentEncoding方法
     if ([HJCommonTools checkStringIsContainerChineseCharacter:url]) {
@@ -29,7 +32,6 @@
             url = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         }
     }
-    
     if (showHUD) {
         
     }

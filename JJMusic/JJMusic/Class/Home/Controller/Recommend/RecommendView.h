@@ -11,4 +11,5 @@
 @interface RecommendView : UIView
 HJpropertyStrong(UITableView *tableView);  //表视图
 HJpropertyStrong(RModel *recommend);
+@property (nonatomic, copy)void (^moreBlock)(NSIndexPath *indexPath);
 @end

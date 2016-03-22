@@ -60,4 +60,14 @@
     success = [db executeUpdate:STRFORMAT(@"create table if not exists %@ (dbId integer primary key autoincrement not null, song_title text, song_id text, song_author text, song_data blob, song_path text)", DownloadTable)];
     return success;
 }
++ (BOOL)createHostorySearchTable {
+    FMDatabase *db = [FMDBHandle sharedFMDatabase];
+    if (![db open]) {
+        return NO;
+    }
+    [db setShouldCacheStatements:YES];
+    BOOL success = NO;
+    success = [db executeUpdate:STRFORMAT(@"create table if not exists %@ (dbId integer primary key autoincrement not null, title text, time text)", HostorySearchTable)];
+    return success;
+}
 @end

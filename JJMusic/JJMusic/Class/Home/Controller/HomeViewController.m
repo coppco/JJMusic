@@ -33,6 +33,7 @@
 #import "KSong.h"
 #import "KPeople.h"
 #import "HUDTool.h" //加载失败情况下
+#import "HJSearchController.h"  //搜索
 @interface HomeViewController ()<UIScrollViewDelegate>
 HJpropertyStrong(NSMutableArray *titleArray);  //上面title数组
 HJpropertyStrong(TopTitleView *topTitleView);  //上面视图
@@ -63,7 +64,18 @@ HJpropertyCopy(NSString *listTitle);  //歌单标题
     button.size = CGSizeMake(30, 30);
     [button addTarget:self action:@selector(gotoMy) forControlEvents:(UIControlEventTouchUpInside)];
     [button setBackgroundImage:IMAGE(@"favorite_my") forState:(UIControlStateNormal)];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
+    
+    
+    UIButton *button1 = [UIButton buttonWithType:(UIButtonTypeCustom)];
+    button1.size = CGSizeMake(30, 30);
+    [button1 addTarget:self action:@selector(search) forControlEvents:(UIControlEventTouchUpInside)];
+    [button1 setBackgroundImage:IMAGE(@"favorite_search") forState:(UIControlStateNormal)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button1];
+}
+- (void)search {
+    HJSearchController *searchVC = [[HJSearchController alloc] init];
+    [self.navigationController pushViewController:searchVC animated:YES];
 }
 - (void)gotoMy {
     HJFavoriteController *favoriteVC = [[HJFavoriteController alloc] init];
@@ -111,6 +123,19 @@ HJpropertyCopy(NSString *listTitle);  //歌单标题
     //推荐
     _recommendV = [[RecommendView alloc] initWithFrame:CGRectMake(0, 0, KMainScreenWidth, ViewH(_scrollView))];
     [_scrollView addSubview:_recommendV];
+    [_recommendV setMoreBlock:^(NSIndexPath *indexPath) {
+        if (2 == indexPath.row) {
+            [weak.scrollView setContentOffset:CGPointMake(weak.scrollView.width, 0) animated:YES];
+            UIButton *button = [weak.topTitleView viewWithTag:9981];
+            [weak.topTitleView buttonHasClick:button];
+        }
+        if (4 == indexPath.row) {
+            [weak.scrollView setContentOffset:CGPointMake(weak.scrollView.width * 4, 0) animated:YES];
+            UIButton *button = [weak.topTitleView viewWithTag:9984];
+            [weak.topTitleView buttonHasClick:button];
+        }
+
+    }];
     //下拉刷新
     _recommendV.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         [self loadMusicRecommendData];

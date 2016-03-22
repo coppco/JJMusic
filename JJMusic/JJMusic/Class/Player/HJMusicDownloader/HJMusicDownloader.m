@@ -52,8 +52,10 @@ HJpropertyStrong(NSFileHandle *fileHandle);  //写数据
 - (void)processPendingRequests:(id)responseObject loadingRequest:(AVAssetResourceLoadingRequest *)loadingRequest{
     AVAssetResourceLoadingDataRequest *dataRequest = loadingRequest.dataRequest;
     //写到文件
+    XHJLog(@"写文件");
     [_fileHandle seekToEndOfFile];
     [_fileHandle writeData:responseObject];
+    [_fileHandle closeFile];
     //写入数据库
     [HJDownloadDB addOneDownloadSongWithTitle:getApp().playerView.songModel.songinfo.title song_id:getApp().playerView.songModel.songinfo.song_id author:getApp().playerView.songModel.songinfo.author songModel:getApp().playerView.songModel path:_tempPath];
     //给request提供数据,从返回的数据取

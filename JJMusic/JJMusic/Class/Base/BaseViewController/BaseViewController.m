@@ -38,7 +38,7 @@
 
     _backButton.showsTouchWhenHighlighted = YES;
     _backButton = [UIButton buttonWithType:(UIButtonTypeCustom)];
-    _backButton.frame = CGRectMake(0, 0, 50, 50);
+    _backButton.frame = CGRectMake(0, 0, 30, 30);
     [_backButton addTarget:self action:@selector(close:) forControlEvents:(UIControlEventTouchUpInside)];
     [_backButton setImage:IMAGE(@"back") forState:(UIControlStateNormal)];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:_backButton];

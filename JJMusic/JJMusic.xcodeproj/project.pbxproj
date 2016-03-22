@@ -33,6 +33,9 @@
 		CC48295F1C60A7600098E0DD /* LockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC48295E1C60A7600098E0DD /* LockViewController.m */; };
 		CC4829621C60ADCA0098E0DD /* LockIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC4829611C60ADCA0098E0DD /* LockIndicatorView.m */; };
 		CC49C1351C61FDEB0001F5BA /* LockModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CC49C1341C61FDEB0001F5BA /* LockModel.m */; };
+		CC4B81E51CA0D133008E383A /* HJSearchDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CC4B81E41CA0D133008E383A /* HJSearchDetailModel.m */; };
+		CC4B81E91CA0DFBB008E383A /* HJSearchHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC4B81E81CA0DFBB008E383A /* HJSearchHeaderView.xib */; };
+		CC4B81EC1CA0E113008E383A /* HJSearchHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC4B81EB1CA0E113008E383A /* HJSearchHeaderView.m */; };
 		CC4BFEC81C73FE2A0093F89F /* RecommendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CC4BFEC71C73FE2A0093F89F /* RecommendCell.m */; };
 		CC4BFECD1C7406F50093F89F /* HJButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CC4BFECC1C7406F50093F89F /* HJButton.m */; };
 		CC4BFED11C746B1A0093F89F /* DiyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CC4BFED01C746B1A0093F89F /* DiyModel.m */; };
@@ -112,6 +115,11 @@
 		CCBAD97A1C7EACA6003FE160 /* UIView+HJFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = CCBAD9791C7EACA6003FE160 /* UIView+HJFrame.m */; };
 		CCBE531B1C9BA93A0060D082 /* KxMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = CCBE531A1C9BA93A0060D082 /* KxMenu.m */; };
 		CCBE531F1C9BBECD0060D082 /* HJPickView.m in Sources */ = {isa = PBXBuildFile; fileRef = CCBE531E1C9BBECD0060D082 /* HJPickView.m */; };
+		CCFD44B61C9F8AA70030DF9D /* HJIndexButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CCFD44B51C9F8AA70030DF9D /* HJIndexButton.m */; };
+		CCFD44BA1C9F98270030DF9D /* HJSearchController.m in Sources */ = {isa = PBXBuildFile; fileRef = CCFD44B91C9F98270030DF9D /* HJSearchController.m */; };
+		CCFD44C11C9FC4130030DF9D /* HJHostorySearchDB.m in Sources */ = {isa = PBXBuildFile; fileRef = CCFD44C01C9FC4130030DF9D /* HJHostorySearchDB.m */; };
+		CCFD44C81C9FCE4D0030DF9D /* HJSearchModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CCFD44C71C9FCE4D0030DF9D /* HJSearchModel.m */; };
+		CCFD44CB1C9FFAA10030DF9D /* HJSearchDetaillController.m in Sources */ = {isa = PBXBuildFile; fileRef = CCFD44CA1C9FFAA10030DF9D /* HJSearchDetaillController.m */; };
 		CCFFF1AB1C5B1668008A5A06 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CCFFF1AA1C5B1668008A5A06 /* main.m */; };
 		CCFFF1AE1C5B1668008A5A06 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CCFFF1AD1C5B1668008A5A06 /* AppDelegate.m */; };
 		CCFFF1B11C5B1668008A5A06 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CCFFF1B01C5B1668008A5A06 /* ViewController.m */; };
@@ -201,6 +209,11 @@
 		CC4829611C60ADCA0098E0DD /* LockIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LockIndicatorView.m; sourceTree = "<group>"; };
 		CC49C1331C61FDEB0001F5BA /* LockModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LockModel.h; sourceTree = "<group>"; };
 		CC49C1341C61FDEB0001F5BA /* LockModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LockModel.m; sourceTree = "<group>"; };
+		CC4B81E31CA0D133008E383A /* HJSearchDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJSearchDetailModel.h; sourceTree = "<group>"; };
+		CC4B81E41CA0D133008E383A /* HJSearchDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJSearchDetailModel.m; sourceTree = "<group>"; };
+		CC4B81E81CA0DFBB008E383A /* HJSearchHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HJSearchHeaderView.xib; sourceTree = "<group>"; };
+		CC4B81EA1CA0E113008E383A /* HJSearchHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJSearchHeaderView.h; sourceTree = "<group>"; };
+		CC4B81EB1CA0E113008E383A /* HJSearchHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJSearchHeaderView.m; sourceTree = "<group>"; };
 		CC4BFEC61C73FE2A0093F89F /* RecommendCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecommendCell.h; sourceTree = "<group>"; };
 		CC4BFEC71C73FE2A0093F89F /* RecommendCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecommendCell.m; sourceTree = "<group>"; };
 		CC4BFECB1C7406F50093F89F /* HJButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJButton.h; sourceTree = "<group>"; };
@@ -338,6 +351,16 @@
 		CCBE531A1C9BA93A0060D082 /* KxMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KxMenu.m; sourceTree = "<group>"; };
 		CCBE531D1C9BBECD0060D082 /* HJPickView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJPickView.h; sourceTree = "<group>"; };
 		CCBE531E1C9BBECD0060D082 /* HJPickView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJPickView.m; sourceTree = "<group>"; };
+		CCFD44B41C9F8AA70030DF9D /* HJIndexButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJIndexButton.h; sourceTree = "<group>"; };
+		CCFD44B51C9F8AA70030DF9D /* HJIndexButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJIndexButton.m; sourceTree = "<group>"; };
+		CCFD44B81C9F98270030DF9D /* HJSearchController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJSearchController.h; sourceTree = "<group>"; };
+		CCFD44B91C9F98270030DF9D /* HJSearchController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJSearchController.m; sourceTree = "<group>"; };
+		CCFD44BF1C9FC4130030DF9D /* HJHostorySearchDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJHostorySearchDB.h; sourceTree = "<group>"; };
+		CCFD44C01C9FC4130030DF9D /* HJHostorySearchDB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJHostorySearchDB.m; sourceTree = "<group>"; };
+		CCFD44C61C9FCE4D0030DF9D /* HJSearchModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJSearchModel.h; sourceTree = "<group>"; };
+		CCFD44C71C9FCE4D0030DF9D /* HJSearchModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJSearchModel.m; sourceTree = "<group>"; };
+		CCFD44C91C9FFAA10030DF9D /* HJSearchDetaillController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJSearchDetaillController.h; sourceTree = "<group>"; };
+		CCFD44CA1C9FFAA10030DF9D /* HJSearchDetaillController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJSearchDetaillController.m; sourceTree = "<group>"; };
 		CCFFF1A61C5B1668008A5A06 /* JJMusic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JJMusic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCFFF1AA1C5B1668008A5A06 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CCFFF1AC1C5B1668008A5A06 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -506,6 +529,8 @@
 			children = (
 				CC5D1F571C72CCC700E2BC2A /* RModel.h */,
 				CC5D1F581C72CCC700E2BC2A /* RModel.m */,
+				CCFD44B41C9F8AA70030DF9D /* HJIndexButton.h */,
+				CCFD44B51C9F8AA70030DF9D /* HJIndexButton.m */,
 				CC4BFEC61C73FE2A0093F89F /* RecommendCell.h */,
 				CC4BFEC71C73FE2A0093F89F /* RecommendCell.m */,
 				CC36CDDE1C71BF7200505E05 /* RecommendView.h */,
@@ -859,6 +884,8 @@
 		CC65A79D1C5F38DE00E6C2AF /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				CCFD44C51C9FCE4D0030DF9D /* Model */,
+				CCFD44B71C9F97FD0030DF9D /* Search */,
 				CC581E591C9AAF9500E97360 /* Setting */,
 				CC4EC6841C96519200698936 /* Favorite */,
 				CC071EDF1C76C12000494B4B /* KSong */,
@@ -970,6 +997,32 @@
 				CCBE531E1C9BBECD0060D082 /* HJPickView.m */,
 			);
 			path = UIPickView;
+			sourceTree = "<group>";
+		};
+		CCFD44B71C9F97FD0030DF9D /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				CCFD44B81C9F98270030DF9D /* HJSearchController.h */,
+				CCFD44B91C9F98270030DF9D /* HJSearchController.m */,
+				CCFD44C91C9FFAA10030DF9D /* HJSearchDetaillController.h */,
+				CCFD44CA1C9FFAA10030DF9D /* HJSearchDetaillController.m */,
+				CC4B81EA1CA0E113008E383A /* HJSearchHeaderView.h */,
+				CC4B81EB1CA0E113008E383A /* HJSearchHeaderView.m */,
+				CC4B81E81CA0DFBB008E383A /* HJSearchHeaderView.xib */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		CCFD44C51C9FCE4D0030DF9D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CCFD44C61C9FCE4D0030DF9D /* HJSearchModel.h */,
+				CCFD44C71C9FCE4D0030DF9D /* HJSearchModel.m */,
+				CC4B81E31CA0D133008E383A /* HJSearchDetailModel.h */,
+				CC4B81E41CA0D133008E383A /* HJSearchDetailModel.m */,
+			);
+			name = Model;
+			path = Search/Model;
 			sourceTree = "<group>";
 		};
 		CCFFF19D1C5B1668008A5A06 = {
@@ -1097,6 +1150,8 @@
 				CC4EC68F1C968D6D00698936 /* HJFavoriteListDB.m */,
 				CC4EC6941C980FC600698936 /* HJDownloadDB.h */,
 				CC4EC6951C980FC600698936 /* HJDownloadDB.m */,
+				CCFD44BF1C9FC4130030DF9D /* HJHostorySearchDB.h */,
+				CCFD44C01C9FC4130030DF9D /* HJHostorySearchDB.m */,
 			);
 			path = FMDBHandle;
 			sourceTree = "<group>";
@@ -1266,6 +1321,7 @@
 				CCA8987E1C5B6A7D0098F58B /* 1242*2208-1.jpg in Resources */,
 				CCA898891C5B6A7D0098F58B /* 640*1136-4.jpg in Resources */,
 				CCA898861C5B6A7D0098F58B /* 640*1136-1.jpg in Resources */,
+				CC4B81E91CA0DFBB008E383A /* HJSearchHeaderView.xib in Resources */,
 				CC6189861C5B55F000D72270 /* Info.plist in Resources */,
 				CC43B6851C86E6DA0018AC8A /* player_backgroud.png in Resources */,
 				CCA8988A1C5B6A7D0098F58B /* 640*960-1.jpg in Resources */,
@@ -1375,6 +1431,7 @@
 				CC61898A1C5B55F000D72270 /* MASLayoutConstraint.m in Sources */,
 				CC61898E1C5B55F000D72270 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 				CC6189891C5B55F000D72270 /* MASConstraintMaker.m in Sources */,
+				CCFD44C11C9FC4130030DF9D /* HJHostorySearchDB.m in Sources */,
 				CC581DFD1C9A50AC00E97360 /* HJHotListController.m in Sources */,
 				CCFFF1AE1C5B1668008A5A06 /* AppDelegate.m in Sources */,
 				CC6111561C755C3400747FD1 /* MuiscList.m in Sources */,
@@ -1382,6 +1439,7 @@
 				CC6111651C7598BC00747FD1 /* SingerCell.m in Sources */,
 				CC4EC6901C968D6D00698936 /* HJFavoriteListDB.m in Sources */,
 				CC581E031C9A50AC00E97360 /* HJSearchSingerController.m in Sources */,
+				CC4B81EC1CA0E113008E383A /* HJSearchHeaderView.m in Sources */,
 				CC4BFED41C746C080093F89F /* AllDiyView.m in Sources */,
 				CC071EEB1C76EEFC00494B4B /* MyFavouriteMusicDB.m in Sources */,
 				CC30430D1C5B454B0079683D /* FMDBCreateTable.m in Sources */,
@@ -1391,12 +1449,14 @@
 				CCBAD9731C7E9962003FE160 /* HUDTool.m in Sources */,
 				CC2E7AE11C8FB92300C787D3 /* HJLastMusicDB.m in Sources */,
 				CC6189901C5B55F000D72270 /* ViewController+MASAdditions.m in Sources */,
+				CCFD44C81C9FCE4D0030DF9D /* HJSearchModel.m in Sources */,
 				CC2E7AF31C915CDB00C787D3 /* TBloaderURLConnection.m in Sources */,
 				CC071EE21C76C30500494B4B /* KSong.m in Sources */,
 				CC4EC68A1C96602200698936 /* HJMySongController.m in Sources */,
 				CC581DFF1C9A50AC00E97360 /* HJListDetailModel.m in Sources */,
 				CCFFF20E1C5B37C8008A5A06 /* CheckNetworkStatus.m in Sources */,
 				CC30430A1C5B45410079683D /* FMDBHandle.m in Sources */,
+				CC4B81E51CA0D133008E383A /* HJSearchDetailModel.m in Sources */,
 				CCFFF20B1C5B3752008A5A06 /* Reachability.m in Sources */,
 				CC4BFECD1C7406F50093F89F /* HJButton.m in Sources */,
 				CC4EC6931C96B97300698936 /* HJMusicDownloader.m in Sources */,
@@ -1404,6 +1464,7 @@
 				CCFFF1FA1C5B33CE008A5A06 /* HJCommonTools.m in Sources */,
 				CC48295F1C60A7600098E0DD /* LockViewController.m in Sources */,
 				CC6189871C5B55F000D72270 /* MASCompositeConstraint.m in Sources */,
+				CCFD44B61C9F8AA70030DF9D /* HJIndexButton.m in Sources */,
 				CC4829621C60ADCA0098E0DD /* LockIndicatorView.m in Sources */,
 				CC61898D1C5B55F000D72270 /* NSArray+MASAdditions.m in Sources */,
 				CC581E051C9A50AC00E97360 /* HJSingleModel.m in Sources */,
@@ -1417,10 +1478,12 @@
 				CCBE531F1C9BBECD0060D082 /* HJPickView.m in Sources */,
 				CC48295C1C608BF80098E0DD /* MyLockView.m in Sources */,
 				CC49C1351C61FDEB0001F5BA /* LockModel.m in Sources */,
+				CCFD44BA1C9F98270030DF9D /* HJSearchController.m in Sources */,
 				CCBE531B1C9BA93A0060D082 /* KxMenu.m in Sources */,
 				CC61898F1C5B55F000D72270 /* View+MASAdditions.m in Sources */,
 				CC75CE111C7DA13E007F7685 /* NSTimer+Block.m in Sources */,
 				CC65A7A51C5F390C00E6C2AF /* TopTitleView.m in Sources */,
+				CCFD44CB1C9FFAA10030DF9D /* HJSearchDetaillController.m in Sources */,
 				CC4BFEC81C73FE2A0093F89F /* RecommendCell.m in Sources */,
 				CC36CDE01C71BF7200505E05 /* RecommendView.m in Sources */,
 				CC581DE51C99436600E97360 /* HJDwonloadController.m in Sources */,

@@ -669,9 +669,9 @@ static JSONKeyMapper* globalKeyMapper = nil;
             }
 
             NSString *nsPropertyName = @(propertyName);
-            if([[self class] propertyIsOptional:nsPropertyName]){
+//            if([[self class] propertyIsOptional:nsPropertyName]){
                 p.isOptional = YES;
-            }
+//            }
             
             if([[self class] propertyIsIgnored:nsPropertyName]){
                 p = nil;

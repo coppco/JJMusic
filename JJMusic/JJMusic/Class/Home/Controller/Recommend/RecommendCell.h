@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 @class RModel;
+@class HJIndexButton;
 typedef NS_ENUM(NSInteger, RType) {
     RTypeScene,  //场景
     RTypeList,  //歌单
@@ -19,5 +20,6 @@ typedef NS_ENUM(NSInteger, RType) {
 };
 
 @interface RecommendCell : UITableViewCell
+@property (nonatomic, strong, readonly)HJIndexButton *moreB;
 - (void)setRModel:(RModel *)RModel type:(RType)type;
 @end

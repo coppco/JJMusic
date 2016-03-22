@@ -330,7 +330,8 @@
 //判断字符串时候包含汉字
 + (BOOL)checkStringIsContainerChineseCharacter:(NSString *)string {
     for (int i = 0; i < string.length; i++) {
-        if ([string characterAtIndex:i] > 0x4e00 && [string characterAtIndex:i] < 0x9fff) {
+        int a = [string characterAtIndex:i];
+        if (a >= 0x4e00 && a <= 0x9fff) {
             return YES;
         }
     }

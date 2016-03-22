@@ -64,4 +64,15 @@ STRFORMAT(@"http://tingapi.ting.baidu.com/v1/restserver/ting?method=baidu.ting.a
 //查找歌手
 #define kSingerSearch(count, area, sex, abc) \
 STRFORMAT(@"http://tingapi.ting.baidu.com/v1/restserver/ting?method=baidu.ting.artist.getList&format=json&order=1&limit=50&offset=%@&area=%@&sex=%@&abc=%@&from=ios&version=5.5.5&from=ios&channel=appstore&operator=0", count, area, sex, abc)
+
+//搜索 大致搜索
+#define kSearch(key) \
+STRFORMAT(@"http://tingapi.ting.baidu.com/v1/restserver/ting?method=baidu.ting.search.catalogSug&query=%@&format=json&from=ios&version=5.5.5&from=ios&channel=appstore&operator=0",key)
+
+//具体搜索
+#define kSearchDetail(key) \
+STRFORMAT(@"http://tingapi.ting.baidu.com/v1/restserver/ting?method=baidu.ting.search.merge&query=%@&page_size=50&page_no=1&type=-1&format=json&from=ios&version=5.5.5&from=ios&channel=appstore&operator=0",key)
+//搜索推荐关键字
+#define kSearchRecommand \
+@"http://tingapi.ting.baidu.com/v1/restserver/ting?&songid=877578&method=baidu.ting.search.hot&page_num=20&version=5.5.5&from=ios&channel=appstore&operator=0"
 #endif /* RequestURL_h */

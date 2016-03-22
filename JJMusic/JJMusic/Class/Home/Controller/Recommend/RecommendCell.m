@@ -11,6 +11,7 @@
 #import <UIImageView+WebCache.h>
 #import "RModel.h"  //推荐model
 #import "HJListViewController.h"  //详情页面
+#import "HJIndexButton.h"
 //场景电台
 @interface SceneView : UIView
 HJpropertyStrong(AllScene *allScene);
@@ -175,7 +176,7 @@ HJpropertyStrong(RModel *)model;
 
 //都有
 HJpropertyStrong(UILabel *titleL); //标题
-HJpropertyStrong(UIButton *moreB);  //更多
+
 
 //场景
 HJpropertyStrong(SceneView *sceneView);
@@ -191,7 +192,10 @@ HJpropertyStrong(ListView *listView);
         _titleL = [HJCommonTools allocLabelWithTitle:@"" frame:CGRectZero font:font(15) color:[UIColor blackColor] alignment:1 keyWords:nil keyWordsColor:nil keyWordsFont:nil underLine:NO];
         [self.contentView addSubview:_titleL];
         
-        _moreB = [HJCommonTools allocButtonWithFrame:CGRectZero title:@"more" titleColor:[UIColor blackColor] font:font(15) normalImage:nil highImage:nil normalBackImage:nil highBackImage:nil];
+        _moreB = [[HJIndexButton alloc] init];
+        [_moreB setTitle:@"more" forState:(UIControlStateNormal)];
+        [_moreB setTitleColor:[UIColor blackColor] forState:(UIControlStateNormal)];
+        _moreB.titleLabel.font = font(15);
         _moreB.layer.borderColor = [UIColor blackColor].CGColor;
         _moreB.layer.borderWidth = 0.5;
         [self.contentView addSubview:_moreB];
@@ -206,6 +210,7 @@ HJpropertyStrong(ListView *listView);
     }
     return self;
 }
+
 - (void)layoutSubviews {
     [super layoutSubviews];
     _titleL.frame = CGRectMake((ViewW(self) - 180) / 2, 10, 180, 25);

@@ -34,5 +34,10 @@
  *  @return 返回成功与否
  */
 + (BOOL)createDownloadTable;
-
+/**
+ *  创建搜索历史数据库
+ *
+ *  @return 返回成功与否
+ */
++ (BOOL)createHostorySearchTable;
 @end

@@ -10,6 +10,7 @@
 #import "CarouselView.h"  //轮播图
 #import "RModel.h" //model
 #import "RecommendCell.h"  //cell
+#import "HJIndexButton.h"
 @interface RecommendView ()<UITableViewDataSource, UITableViewDelegate>
 HJpropertyStrong(CarouselView *carouselView);
 @end
@@ -69,8 +70,9 @@ HJpropertyStrong(CarouselView *carouselView);
     if (!cell) {
         cell = [[RecommendCell alloc] initWithStyle:(UITableViewCellStyleDefault) reuseIdentifier:reuse];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;  //cell不能选择
+        [cell.moreB addTarget:self action:@selector(more:) forControlEvents:(UIControlEventTouchUpInside)];
     }
-    
+    cell.moreB.indexPath = indexPath;
     if (indexPath.row == 0) {
         [cell setRModel:_recommend type:RTypeSong];
     }else if (indexPath.row == 1) {
@@ -88,5 +90,9 @@ HJpropertyStrong(CarouselView *carouselView);
     }
     return  cell;
 }
-
+- (void)more:(HJIndexButton *)button {
+    if (self.moreBlock) {
+        self.moreBlock(button.indexPath);
+    }
+}
 @end
