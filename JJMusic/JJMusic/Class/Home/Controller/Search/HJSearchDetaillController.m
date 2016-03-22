@@ -9,6 +9,8 @@
 #import "HJSearchDetaillController.h"
 #import "HJSearchDetailModel.h"
 #import "HJSearchHeaderView.h"
+#import "SingerModel.h"
+#import "HJSingerController.h"
 
 @interface HJSearchDetaillController ()<UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate>
 HJpropertyStrong(UISearchBar *searchBar);
@@ -62,7 +64,6 @@ HJpropertyStrong(HJSearchDetailModel *detailModel);
 - (void)loadDetailDataWithKey:(NSString *)key {
     [HttpHandleTool requestWithType:(HJNetworkTypeGET) URLString:kSearchDetail(key) params:nil showHUD:NO inView:nil cache:YES successBlock:^(id responseObject) {
         self.detailModel = [[HJSearchDetailModel alloc] initWithDictionary:responseObject error:nil];
-        XHJLog(@"%@", responseObject);
         [self.tableView reloadData];
     } failedBlock:^(NSError *error) {
         
@@ -378,7 +379,69 @@ HJpropertyStrong(HJSearchDetailModel *detailModel);
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (self.detailModel != nil) {
-        
+        NSInteger i = (self.detailModel.song_list.count != 0) + (self.detailModel.album_list.count != 0) + (self.detailModel.artist_list.count != 0);
+        switch (i) {
+            case 0:
+            {
+                return ;
+            }
+                break;
+            case 1:
+            {
+                if (self.detailModel.song_list.count != 0) {
+                }
+                if (self.detailModel.album_list.count != 0) {
+                }
+                if (self.detailModel.artist_list.count != 0) {
+                    [self gotoSingerVCWithIndexPath:indexPath];
+                }
+            }
+                break;
+            case 2:
+            {
+                if (self.detailModel.song_list.count == 0) {
+                    if (indexPath.section == 0) {
+
+                    } else if (indexPath.section == 1) {
+                        [self gotoSingerVCWithIndexPath:indexPath];
+                    }
+                }
+                if (self.detailModel.album_list.count == 0) {
+                    if (indexPath.section == 0) {
+
+                    } else if (indexPath.section == 1) {
+                        [self gotoSingerVCWithIndexPath:indexPath];
+                    }
+                }
+                if (self.detailModel.artist_list.count == 0) {
+                    if (indexPath.section == 0) {
+
+                    } else if (indexPath.section == 1) {
+
+                    }
+                }
+            }
+                break;
+            case 3:
+            {
+                if (indexPath.section == 0) {
+                    Song_list *list = self.detailModel.song_list[indexPath.row];
+                    XHJLog(@"%@", list);
+                } else if (indexPath.section == 1) {
+
+                } else if (indexPath.section == 2){
+                    [self gotoSingerVCWithIndexPath:indexPath];
+                }
+            }
+                break;
+        }
     }
+}
+- (void)gotoSingerVCWithIndexPath:(NSIndexPath *)indexPath {
+    Artist_list *list = self.detailModel.artist_list[indexPath.row];
+    SingerModel *model =  [[SingerModel alloc] initWithString:[list toJSONString] error:nil];
+    HJSingerController *singerVC = [[HJSingerController alloc] init];
+    singerVC.singer = model;
+    [self.navigationController pushViewController:singerVC animated:YES];
 }
 @end

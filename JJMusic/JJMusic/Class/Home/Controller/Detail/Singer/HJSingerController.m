@@ -69,7 +69,7 @@ HJpropertyStrong(NSMutableArray *songList);
 }
 - (void)setSubView {
     self.title = self.singer.name;
-    [self.imageV sd_setImageWithURL:[NSURL URLWithString:_singer.avatar_big] placeholderImage:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+    [self.imageV sd_setImageWithURL:[NSURL URLWithString:_singer.avatar_big.length != 0 ? _singer.avatar_big :_singer.avatar_middle] placeholderImage:IMAGE(@"singer_holder") completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
         //从图片中获取主色调
         self.view.backgroundColor = [HJCommonTools colorPrimaryFromImage:image];
     }];

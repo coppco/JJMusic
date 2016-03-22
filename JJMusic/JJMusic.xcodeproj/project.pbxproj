@@ -884,7 +884,6 @@
 		CC65A79D1C5F38DE00E6C2AF /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				CCFD44C51C9FCE4D0030DF9D /* Model */,
 				CCFD44B71C9F97FD0030DF9D /* Search */,
 				CC581E591C9AAF9500E97360 /* Setting */,
 				CC4EC6841C96519200698936 /* Favorite */,
@@ -1002,6 +1001,7 @@
 		CCFD44B71C9F97FD0030DF9D /* Search */ = {
 			isa = PBXGroup;
 			children = (
+				CCFD44C51C9FCE4D0030DF9D /* Model */,
 				CCFD44B81C9F98270030DF9D /* HJSearchController.h */,
 				CCFD44B91C9F98270030DF9D /* HJSearchController.m */,
 				CCFD44C91C9FFAA10030DF9D /* HJSearchDetaillController.h */,
@@ -1021,8 +1021,7 @@
 				CC4B81E31CA0D133008E383A /* HJSearchDetailModel.h */,
 				CC4B81E41CA0D133008E383A /* HJSearchDetailModel.m */,
 			);
-			name = Model;
-			path = Search/Model;
+			path = Model;
 			sourceTree = "<group>";
 		};
 		CCFFF19D1C5B1668008A5A06 = {
