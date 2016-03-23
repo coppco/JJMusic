@@ -34,10 +34,8 @@
             NSString *song_id = [result stringForColumn:@"song_id"];
             NSString *song_author = [result stringForColumn:@"song_author"];
             NSString *song_path = [result stringForColumn:@"song_path"];
-            NSData *song_data = [result dataForColumn:@"song_data"];
-            HJSongModel *model = [[HJSongModel alloc] initWithData:song_data error:nil];
-            if (song_id.length != 0 && 0 != song_path.length && 0 != song_title.length && 0 != song_author.length && nil != song_data) {
-                NSDictionary *dic = @{@"song_title":song_title, @"song_id":song_id, @"song_path":song_path, @"song_author":song_author, @"song_data":model};
+            if (song_id.length != 0 && 0 != song_path.length && 0 != song_title.length && 0 != song_author.length) {
+                NSDictionary *dic = @{@"song_title":song_title, @"song_id":song_id, @"song_path":song_path, @"song_author":song_author};
                 [array addObject:dic];
             }
         }
@@ -55,7 +53,7 @@
  *
  *  @return 返回成功与否
  */
-+ (BOOL)addOneDownloadSongWithTitle:(NSString * _Nonnull)title song_id:(NSString * _Nonnull)songid author:(NSString * _Nonnull)author songModel:(HJSongModel * _Nonnull)model path:(NSString * _Nonnull)path {
++ (BOOL)addOneDownloadSongWithTitle:(NSString * _Nonnull)title song_id:(NSString * _Nonnull)songid author:(NSString * _Nonnull)author path:(NSString * _Nonnull)path {
     __block BOOL success = NO;
     FMDatabaseQueue *queue = [FMDBHandle sharedDatabaseQueue];
     [queue inDatabase:^(FMDatabase *db) {
@@ -66,8 +64,7 @@
         if (![db tableExists:DownloadTable]) {
             [FMDBCreateTable createDownloadTable];
         }
-        NSData *data = [model toJSONData];
-        success = [db executeUpdate:STRFORMAT(@"insert into %@ (song_title,song_id, song_author, song_data ,song_path) values(?,?,?,?,?)",DownloadTable), title, songid, author,data,path];
+        success = [db executeUpdate:STRFORMAT(@"insert into %@ (song_title,song_id, song_author ,song_path) values(?,?,?,?)",DownloadTable), title, songid, author,path];
     }];
     return success;
 }
@@ -119,10 +116,8 @@
             NSString *song_id = [result stringForColumn:@"song_id"];
             NSString *song_author = [result stringForColumn:@"song_author"];
             NSString *song_path = [result stringForColumn:@"song_path"];
-            NSData *song_data = [result dataForColumn:@"song_data"];
-            HJSongModel *model = [[HJSongModel alloc] initWithData:song_data error:nil];
-            if (0 != song_id.length && 0 != song_path.length && 0 != song_title.length && 0 != song_author.length && nil != song_data) {
-                dict = @{@"song_title":song_title, @"song_id":song_id, @"song_path":song_path, @"song_author":song_author, @"song_data":model}.mutableCopy;
+            if (0 != song_id.length && 0 != song_path.length && 0 != song_title.length && 0 != song_author.length) {
+                dict = @{@"song_title":song_title, @"song_id":song_id, @"song_path":song_path, @"song_author":song_author}.mutableCopy;
             }
         }
         [result close];

@@ -24,7 +24,7 @@
  *
  *  @return 返回成功与否
  */
-+ (BOOL)addOneDownloadSongWithTitle:(NSString * _Nonnull)title song_id:(NSString * _Nonnull)songid author:(NSString *_Nonnull)author songModel:(HJSongModel * _Nonnull)model path:(NSString * _Nonnull)path;
++ (BOOL)addOneDownloadSongWithTitle:(NSString * _Nonnull)title song_id:(NSString * _Nonnull)songid author:(NSString *_Nonnull)author path:(NSString * _Nonnull)path;
 /**
  *  删除一条下载的歌曲
  *

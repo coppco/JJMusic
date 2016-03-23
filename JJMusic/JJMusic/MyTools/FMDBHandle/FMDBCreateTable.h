@@ -40,4 +40,10 @@
  *  @return 返回成功与否
  */
 + (BOOL)createHostorySearchTable;
+/**
+ *  创建播放器的model数据库表
+ *
+ *  @return 
+ */
++ (BOOL)createAVPlayerModelTable;
 @end

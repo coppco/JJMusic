@@ -34,7 +34,6 @@
 @end
 
 @interface HJMusicTool : NSObject
-@property (nonatomic, strong, readonly)id model;
 HJpropertyStrong(id <HJMusicToolDelegate>delegate);  //代理
 /**
  *  获取播放器,单例类
@@ -47,7 +46,7 @@ HJpropertyStrong(id <HJMusicToolDelegate>delegate);  //代理
  *
  *  @param url 音乐地址
  */
-- (void)playWithURL:(NSString *)url model:(id)model;
+- (void)playWithURL:(NSString *)url model:(HJSongModel *)model;
 /**
  *  暂停或者播放
  */

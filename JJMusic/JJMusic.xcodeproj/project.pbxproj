@@ -36,6 +36,7 @@
 		CC4B81E51CA0D133008E383A /* HJSearchDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CC4B81E41CA0D133008E383A /* HJSearchDetailModel.m */; };
 		CC4B81E91CA0DFBB008E383A /* HJSearchHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC4B81E81CA0DFBB008E383A /* HJSearchHeaderView.xib */; };
 		CC4B81EC1CA0E113008E383A /* HJSearchHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC4B81EB1CA0E113008E383A /* HJSearchHeaderView.m */; };
+		CC4B81EF1CA1448E008E383A /* HJPlayerModelDB.m in Sources */ = {isa = PBXBuildFile; fileRef = CC4B81EE1CA1448E008E383A /* HJPlayerModelDB.m */; };
 		CC4BFEC81C73FE2A0093F89F /* RecommendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CC4BFEC71C73FE2A0093F89F /* RecommendCell.m */; };
 		CC4BFECD1C7406F50093F89F /* HJButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CC4BFECC1C7406F50093F89F /* HJButton.m */; };
 		CC4BFED11C746B1A0093F89F /* DiyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CC4BFED01C746B1A0093F89F /* DiyModel.m */; };
@@ -214,6 +215,8 @@
 		CC4B81E81CA0DFBB008E383A /* HJSearchHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HJSearchHeaderView.xib; sourceTree = "<group>"; };
 		CC4B81EA1CA0E113008E383A /* HJSearchHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJSearchHeaderView.h; sourceTree = "<group>"; };
 		CC4B81EB1CA0E113008E383A /* HJSearchHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJSearchHeaderView.m; sourceTree = "<group>"; };
+		CC4B81ED1CA1448E008E383A /* HJPlayerModelDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJPlayerModelDB.h; sourceTree = "<group>"; };
+		CC4B81EE1CA1448E008E383A /* HJPlayerModelDB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJPlayerModelDB.m; sourceTree = "<group>"; };
 		CC4BFEC61C73FE2A0093F89F /* RecommendCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecommendCell.h; sourceTree = "<group>"; };
 		CC4BFEC71C73FE2A0093F89F /* RecommendCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecommendCell.m; sourceTree = "<group>"; };
 		CC4BFECB1C7406F50093F89F /* HJButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJButton.h; sourceTree = "<group>"; };
@@ -1151,6 +1154,8 @@
 				CC4EC6951C980FC600698936 /* HJDownloadDB.m */,
 				CCFD44BF1C9FC4130030DF9D /* HJHostorySearchDB.h */,
 				CCFD44C01C9FC4130030DF9D /* HJHostorySearchDB.m */,
+				CC4B81ED1CA1448E008E383A /* HJPlayerModelDB.h */,
+				CC4B81EE1CA1448E008E383A /* HJPlayerModelDB.m */,
 			);
 			path = FMDBHandle;
 			sourceTree = "<group>";
@@ -1496,6 +1501,7 @@
 				CC6189881C5B55F000D72270 /* MASConstraint.m in Sources */,
 				CCBAD97A1C7EACA6003FE160 /* UIView+HJFrame.m in Sources */,
 				CC61115D1C758F2C00747FD1 /* SingerModel.m in Sources */,
+				CC4B81EF1CA1448E008E383A /* HJPlayerModelDB.m in Sources */,
 				CCFFF2011C5B346A008A5A06 /* RegionModel.m in Sources */,
 				CC43B6971C896B370018AC8A /* NSDictionary+ZXPUnicode.m in Sources */,
 				CC4D35E51C8422B50076BB85 /* HJMusicTool.m in Sources */,

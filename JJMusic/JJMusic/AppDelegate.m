@@ -12,9 +12,10 @@
 #import "LockViewController.h"
 #import "LockModel.h"
 #import <RongIMKit/RongIMKit.h> //融云
-#import <AVFoundation/AVFoundation.h>
+#import <AVFoundation/AVFoundation.h>  //后台播放
 #import "HJLastMusicDB.h"  //数据库
 #import "HJListDetailModel.h" //model
+#import "HJMusicTool.h"
 @interface AppDelegate ()<RCIMUserInfoDataSource>
 
 @end
@@ -36,14 +37,21 @@
     
     UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(pan:)];
     [_playerB addGestureRecognizer:pan];
-    //后台播放
-    AVAudioSession *Session = [AVAudioSession sharedInstance];
-    [Session setActive:YES error:nil];
-    [Session setCategory:AVAudioSessionCategoryPlayback error:nil];
+   //设置后台播放
+    [self backGroundPlay];
     XHJLog(@"%@", pathDocuments());
 //    [self shareThirdParty];  //三方注册
     [self enterApp];
      return YES;
+}
+- (void)backGroundPlay{
+    //后台播放
+    AVAudioSession *Session = [AVAudioSession sharedInstance];
+//    [Session setCategory:AVAudioSessionCategoryPlayback error:nil];
+    [Session setCategory:AVAudioSessionCategoryPlayback withOptions:AVAudioSessionCategoryOptionAllowBluetooth error:nil];
+    [Session setActive:YES error:nil];
+    //AudioSessionInitialize用于控制打断 ，后面会说    
+
 }
 - (void)playerViewAppear:(UIButton *)button {
     [self.window bringSubviewToFront:self.playerView];
@@ -61,16 +69,7 @@
                 _playerView.songID = array[0];
                 NSArray *array1 = [NSKeyedUnarchiver unarchiveObjectWithData:array[1]];
                 //获取最后播放的音乐
-                
-                //排行榜
-                if ([array1[0] respondsToSelector:NSSelectorFromString(@"del_status")]) {
-                    _playerView.content = [HotListModel arrayOfModelsFromDictionaries:array1].mutableCopy;
-                } else if ([array1[0] respondsToSelector:NSSelectorFromString(@"songinfo")]){
-                    //歌单
-                    _playerView.content = [HJSongModel arrayOfModelsFromDictionaries:array1].mutableCopy;
-                } else if ([array1[0] respondsToSelector:NSSelectorFromString(@"songinfo")]) {
-                    _playerView.content = [ListSongModel arrayOfModelsFromDictionaries:array1].mutableCopy;
-                }
+                _playerView.content = array1;
             } else {
                 UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"你还没有选择歌曲,是否试听推荐歌曲?" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
                 [alertView show];
@@ -149,6 +148,8 @@
 - (void)applicationDidEnterBackground:(UIApplication *)application {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    [application beginReceivingRemoteControlEvents];
+    [self becomeFirstResponder];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
@@ -156,6 +157,8 @@
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
+    [[UIApplication sharedApplication] endReceivingRemoteControlEvents];
+    [self resignFirstResponder];
     if ([LockModel getPassword].length != 0) {
         [self showLockViewController:LockViewTypeCheck];
     }
@@ -170,5 +173,37 @@
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
-
+//remote控制
+- (BOOL)canBecomeFirstResponder {
+    return YES;
+}
+- (void)remoteControlReceivedWithEvent:(UIEvent *)event {
+    /*   subtype
+     // available in iPhone OS 3.0
+     UIEventSubtypeNone                              = 0,
+     
+     // for UIEventTypeMotion, available in iPhone OS 3.0
+     UIEventSubtypeMotionShake                       = 1,
+     
+     // for UIEventTypeRemoteControl, available in iOS 4.0
+     UIEventSubtypeRemoteControlPlay                 = 100,
+     UIEventSubtypeRemoteControlPause                = 101,
+     UIEventSubtypeRemoteControlStop                 = 102,
+     UIEventSubtypeRemoteControlTogglePlayPause      = 103,
+     UIEventSubtypeRemoteControlNextTrack            = 104,
+     UIEventSubtypeRemoteControlPreviousTrack        = 105,
+     UIEventSubtypeRemoteControlBeginSeekingBackward = 106,
+     UIEventSubtypeRemoteControlEndSeekingBackward   = 107,
+     UIEventSubtypeRemoteControlBeginSeekingForward  = 108,
+     UIEventSubtypeRemoteControlEndSeekingForward    = 109,
+     */
+    
+    if (event.subtype == UIEventSubtypeRemoteControlPause || event.subtype == UIEventSubtypeRemoteControlPlay) {
+        [[HJMusicTool sharedMusicPlayer] playOrPause];
+    } else if (event.subtype == UIEventSubtypeRemoteControlNextTrack) {
+        [self.playerView nextSong];
+    } else if (event.subtype == UIEventSubtypeRemoteControlPreviousTrack) {
+        [self.playerView previousSong];
+    }
+}
 @end

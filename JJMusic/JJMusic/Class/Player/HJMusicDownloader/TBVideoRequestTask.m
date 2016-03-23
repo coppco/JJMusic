@@ -48,7 +48,8 @@
     return self;
 }
 - (NSString *)tempPath {
-    NSString *string = pathCachesFilePathName(@"music", STRFORMAT(@"%@-%@.mp3", [[[HJMusicTool sharedMusicPlayer].model songinfo] title], [[[HJMusicTool sharedMusicPlayer].model songinfo] song_id]));
+//    NSString *string = pathCachesFilePathName(@"music", STRFORMAT(@"%@-%@.mp3", [[[HJMusicTool sharedMusicPlayer].model songinfo] title], [[[HJMusicTool sharedMusicPlayer].model songinfo] song_id]));
+    NSString *string;
     if ([[NSFileManager defaultManager] fileExistsAtPath:string]) {
         [[NSFileManager defaultManager] removeItemAtPath:string error:nil];
         [[NSFileManager defaultManager] createFileAtPath:string contents:nil attributes:nil];

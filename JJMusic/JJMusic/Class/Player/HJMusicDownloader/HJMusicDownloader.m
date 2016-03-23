@@ -14,13 +14,15 @@
 @interface HJMusicLoader () <AVAssetResourceLoaderDelegate>
 HJpropertyCopy(NSString *tempPath);  //音乐本地地址
 HJpropertyStrong(NSFileHandle *fileHandle);  //写数据
+HJpropertyStrong(HJSongModel *model);
 @end
 
 @implementation HJMusicLoader
-- (instancetype)init {
+- (instancetype)initWithModel:(HJSongModel *)model {
     self = [super init];
     if (self) {
-        _tempPath = pathCachesFilePathName(@"music", STRFORMAT(@"%@_%@.mp3", [[[HJMusicTool sharedMusicPlayer].model songinfo] title], [[[HJMusicTool sharedMusicPlayer].model songinfo] song_id]));
+        _model = model;
+        _tempPath = pathCachesFilePathName(@"music", STRFORMAT(@"%@_%@.mp3", model.songinfo.title, model.songinfo.song_id));
         if ([[NSFileManager defaultManager] fileExistsAtPath:_tempPath]) {
             [[NSFileManager defaultManager] removeItemAtPath:_tempPath error:nil];
             [[NSFileManager defaultManager] createFileAtPath:_tempPath contents:nil attributes:nil];
@@ -45,19 +47,19 @@ HJpropertyStrong(NSFileHandle *fileHandle);  //写数据
    
         [self processPendingRequests:responseObject loadingRequest:loadingRequest];
     } failedBlock:^(NSError *error) {
-        NSLog(@"失败");
+        XHJLog(@"下载失败");
     }];
 }
 #pragma mark - block回调 步骤5⃣️
 - (void)processPendingRequests:(id)responseObject loadingRequest:(AVAssetResourceLoadingRequest *)loadingRequest{
     AVAssetResourceLoadingDataRequest *dataRequest = loadingRequest.dataRequest;
     //写到文件
-    XHJLog(@"写文件");
+    XHJLog(@"缓存成功,开始写到沙盒");
     [_fileHandle seekToEndOfFile];
     [_fileHandle writeData:responseObject];
     [_fileHandle closeFile];
     //写入数据库
-    [HJDownloadDB addOneDownloadSongWithTitle:getApp().playerView.songModel.songinfo.title song_id:getApp().playerView.songModel.songinfo.song_id author:getApp().playerView.songModel.songinfo.author songModel:getApp().playerView.songModel path:_tempPath];
+    [HJDownloadDB addOneDownloadSongWithTitle:_model.songinfo.title song_id:_model.songinfo.song_id author:_model.songinfo.author path:_tempPath];
     //给request提供数据,从返回的数据取
     //回主线程
     dispatch_async(dispatch_get_main_queue(), ^{

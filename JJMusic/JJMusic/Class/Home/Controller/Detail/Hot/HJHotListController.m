@@ -12,6 +12,7 @@
 
 @interface HJHotListController ()
 HJpropertyStrong(HJHotListDetailMoel *model);
+HJpropertyStrong(NSMutableArray *song_idArray);
 @end
 
 @implementation HJHotListController
@@ -48,6 +49,10 @@ HJpropertyStrong(HJHotListDetailMoel *model);
             [self.navigationController setNavigationBarHidden:YES animated:NO];
             [self initTableView];
             [self setSubView];
+            self.song_idArray = [NSMutableArray array];
+            for (HotListModel *model11 in self.model.song_list) {
+                [self.song_idArray addObject:model11.song_id];
+            }
         } else {
             [self.navigationController setNavigationBarHidden:NO animated:NO];
             self.errorView = [[ErrorTipsView alloc] initWithFrame:self.view.bounds title:@"提示" subTitle:@"没有找到数据" image:@"NoData" btnTitle:@"返回" btnClick:^(id object) {
@@ -91,9 +96,8 @@ HJpropertyStrong(HJHotListDetailMoel *model);
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [getApp() playerViewAppear:nil];
-    getApp().playerView.isFavoritePlayer = NO;
     getApp().playerView.songID = [self.model.song_list[indexPath.row] song_id];
-    getApp().playerView.content = self.model.song_list;
+    getApp().playerView.content = self.song_idArray;
 }
 /*
 #pragma mark - Navigation

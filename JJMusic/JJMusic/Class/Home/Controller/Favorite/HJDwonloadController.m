@@ -80,7 +80,7 @@ HJpropertyStrong(ErrorTipsView *errorView);
     cell.detailTextLabel.text = dict[@"song_author"];
     cell.detailTextLabel.textColor = [UIColor yellowColor];
     cell.imageView.layer.cornerRadius = 5;
-    [cell.imageView sd_setImageWithURL:[NSURL URLWithString:((HJSongModel *)dict[@"song_data"]).songinfo.artist_500_500] placeholderImage:IMAGE(@"placeHold")];
+//    [cell.imageView sd_setImageWithURL:[NSURL URLWithString:((HJSongModel *)dict[@"song_data"]).songinfo.artist_500_500] placeholderImage:IMAGE(@"placeHold")];
     return cell;
 }
 //实现编辑
@@ -110,12 +110,11 @@ HJpropertyStrong(ErrorTipsView *errorView);
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];//取消选中
     [getApp() playerViewAppear:nil];
-    getApp().playerView.isFavoritePlayer = YES;
     NSDictionary *dict = self.array[indexPath.row];
-    getApp().playerView.songModel = dict[@"song_data"];
+    getApp().playerView.songID = dict[@"song_id"];
     NSMutableArray *arrayM = [NSMutableArray array];
     for (NSDictionary *dic in self.array) {
-        [arrayM addObject:dic[@"song_data"]];
+        [arrayM addObject:dic[@"song_id"]];
     }
     getApp().playerView.content = arrayM;
 }

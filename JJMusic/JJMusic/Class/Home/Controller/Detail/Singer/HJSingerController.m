@@ -106,9 +106,12 @@ HJpropertyStrong(NSMutableArray *songList);
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [getApp() playerViewAppear:nil];
-    getApp().playerView.isFavoritePlayer = NO;
     getApp().playerView.songID = [self.songList[indexPath.row] song_id];
-    getApp().playerView.content = self.songList;
+    NSMutableArray *arrayM = [NSMutableArray array];
+    for (HotListModel *model in self.songList) {
+        [arrayM addObject:model.song_id];
+    }
+    getApp().playerView.content = arrayM;
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -13,7 +13,7 @@
 #import "HJLastMusicDB.h"  //数据库
 #import <UIImageView+WebCache.h>
 #import "HJDownloadDB.h" //下载数据库
-
+#import "HJPlayerModelDB.h"  //播放器model数据库
 @interface HJPlayerView ()<UIScrollViewDelegate, HJMusicToolDelegate>
 HJpropertyStrong(UIButton *backButton);  //隐藏按钮
 HJpropertyStrong(UIImageView *backImageV);  //背景图片
@@ -23,7 +23,6 @@ HJpropertyStrong(UIButton *changeB);  //切换音质
 HJpropertyStrong(UIScrollView *scrollView);  //滚动视图
 HJpropertyStrong(UIPageControl *pageControll);//分页控制
 HJpropertyStrong(HJPlayerBottomView *)bottomView;  //按钮滑块等
-
 
 //scrollView添加的内容
 HJpropertyStrong(UIImageView *imageV);  //第一页
@@ -70,8 +69,7 @@ HJpropertyStrong(UIView *listView);//
     //标题
     self.titleL = [[UILabel alloc] init];
     self.titleL.textColor = [UIColor whiteColor];
-//    self.titleL.text = @"爱你的365天";
-//    [self.titleL sizeToFit];
+
     [topView addSubview:self.titleL];
     [self.titleL mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(self.backButton).offset(-3);
@@ -96,8 +94,7 @@ HJpropertyStrong(UIView *listView);//
     //歌手
     self.autherL = [[UILabel alloc] init];
     self.autherL.textColor = [UIColor whiteColor];
-//    self.autherL.text = @"Hans Zimmer";
-//    [self.autherL sizeToFit];
+
     [topView addSubview:_autherL];
     [self.autherL mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(self.changeB);
@@ -207,14 +204,15 @@ HJpropertyStrong(UIView *listView);//
     [Dic setObject:[NSNumber numberWithFloat:CMTimeGetSeconds(playerItem.currentTime)] forKey:MPNowPlayingInfoPropertyElapsedPlaybackTime];
     //总时间
     [Dic setObject:[NSNumber numberWithDouble:CMTimeGetSeconds(playerItem.duration)] forKey:MPMediaItemPropertyPlaybackDuration];
+    //标题
     [Dic setObject:_songModel.songinfo.title forKey:MPMediaItemPropertyTitle];
+    //专辑名称
+    [Dic setObject:_songModel.songinfo.album_title forKey:MPMediaItemPropertyAlbumTitle];
     //设置艺术家
     [Dic setObject:_songModel.songinfo.author forKey:MPMediaItemPropertyArtist];
-//    if (_model.songinfo.artist_1000_1000.length != 0) {
         //设置图片
-        MPMediaItemArtwork *mpMediaItemAreWork = [[MPMediaItemArtwork alloc] initWithImage:IMAGE(@"player_record")];
-        [Dic setObject:mpMediaItemAreWork forKey:MPMediaItemPropertyArtwork];
-//    }
+    MPMediaItemArtwork *mpMediaItemAreWork = [[MPMediaItemArtwork alloc] initWithImage:_imageV.image];
+    [Dic setObject:mpMediaItemAreWork forKey:MPMediaItemPropertyArtwork];
     [[MPNowPlayingInfoCenter defaultCenter] setNowPlayingInfo:Dic];
 }
 /**
@@ -269,30 +267,18 @@ HJpropertyStrong(UIView *listView);//
             return;
         }
         NSInteger i = arc4random() % self.content.count;
-        if (self.isFavoritePlayer) {
-            self.songModel = self.content[i];
-        }else {
-            self.songID = [self.content[i] song_id];
-        }
+        self.songID = self.content[i];
     } else {
         //顺序
         [self.content enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-//            if ([[obj song_id] isEqualToString:self.songID]) {
+            if ([obj isEqualToString:self.songID]) {
                 if (idx < self.content.count -1) {
-                    if (self.isFavoritePlayer) {
-                        self.songModel = self.content[idx + 1];
-                    } else {
-                        self.songID = [self.content[idx+1] song_id];
-                    }
+                    self.songID = self.content[idx + 1];
                 } else {
-                    if (self.isFavoritePlayer) {
-                        self.songModel = self.content[0];
-                    }else {
-                        self.songID = [self.content[0] song_id];
-                    }
+                    self.songID = self.content[0];
                 }
                 *stop = YES;
-//            }
+            }
         }];
     };
 }
@@ -313,30 +299,18 @@ HJpropertyStrong(UIView *listView);//
             return;
         }
         NSInteger i = arc4random() % self.content.count;
-        if (self.isFavoritePlayer) {
-            self.songModel = self.content[i];
-        } else {
-            self.songID = [self.content[i] song_id];
-        }
+        self.songID = self.content[i];
     } else {
         //顺序
         [self.content enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-//            if ([[obj song_id] isEqualToString:self.songID]) {
+            if ([obj isEqualToString:self.songID]) {
                 if (idx == 0) {
-                    if (self.isFavoritePlayer) {
-                        self.songModel = [self.content lastObject];
-                    } else {
-                        self.songID = [[self.content lastObject] song_id];
-                    }
+                    self.songID = [self.content lastObject];
                 } else {
-                    if (self.isFavoritePlayer) {
-                        self.songModel = self.content [idx - 1];
-                    } else {
-                        self.songID = [self.content[idx - 1] song_id];
-                    }
+                   self.songID = self.content[idx - 1];
                 }
                 *stop = YES;
-//            }
+            }
         }];
     };
 }
@@ -345,17 +319,7 @@ HJpropertyStrong(UIView *listView);//
 - (void)setContent:(NSArray *)content {
     if (_content != content) {
         _content = content;
-        //区分类型
-        NSArray *array;
-        if ([content[0] isKindOfClass:[ListSongModel class]]) {
-            array = [ListSongModel arrayOfDictionariesFromModels:content];
-        } else if ([content[0] isKindOfClass:[HotListModel class]]  ){
-            array = [HotListModel arrayOfDictionariesFromModels:content];
-        } else if ([content[0] isKindOfClass:[HJSongModel class]]) {
-            array = [HJSongModel arrayOfDictionariesFromModels:content];
-        }
-        
-        NSData *data = [NSKeyedArchiver archivedDataWithRootObject:array];
+        NSData *data = [NSKeyedArchiver archivedDataWithRootObject:content];
         if (data) {
             //写到数据库
             [HJLastMusicDB updateContent:data];
@@ -382,7 +346,7 @@ HJpropertyStrong(UIView *listView);//
 //获取model
 - (void)loadSongInfoWithSongID:(NSString *)songid {
     //这里添加先从数据库取 没取到才网络请求
-    HJSongModel *model = [[HJDownloadDB getDownloadSongWithSong_id:songid] valueForKey:@"song_data"];
+    HJSongModel *model = [HJPlayerModelDB getOneModelWithSong_id:songid];
     if (model) {
         self.songModel = model;
         return;
@@ -391,6 +355,10 @@ HJpropertyStrong(UIView *listView);//
         HJSongModel *model = [[HJSongModel alloc] initWithDictionary:responseObject error:nil];
         if (model) {
             self.songModel = model;
+            //添加到数据库
+            if (![HJPlayerModelDB ishasAddWithSong_id:self.songModel.songinfo.song_id]) {
+                [HJPlayerModelDB addOneModel:model];
+            }
         }
     } failedBlock:^(NSError *error) {
         XHJLog(@"网络请求失败");

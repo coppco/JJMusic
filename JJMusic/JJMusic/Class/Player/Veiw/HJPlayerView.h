@@ -12,13 +12,12 @@
 #import "HJHotListDetailMoel.h"
 @interface HJPlayerView : UIView
 @property (nonatomic, strong)HJSongModel *songModel;
-HJpropertyAssign(BOOL isFavoritePlayer);  //是否在播放收藏音乐
 /**
  *  更换songID  实现播放
  */
 HJpropertyCopy(NSString *songID);
 /**
- *  存放歌曲ID的数组
+ *  存放歌曲ID的数组,修改后只存放song_id的字符串
  */
 HJpropertyStrong(NSArray *content);
 /**

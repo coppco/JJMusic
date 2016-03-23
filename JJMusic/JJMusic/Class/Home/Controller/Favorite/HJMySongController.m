@@ -110,8 +110,13 @@ HJpropertyStrong(ErrorTipsView *errorView);  //显示提示视图
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];//取消选中
      [getApp() playerViewAppear:nil];
-    getApp().playerView.isFavoritePlayer = YES;
-    getApp().playerView.songModel = self.array[indexPath.row];
-    getApp().playerView.content = self.array;
+    HJSongModel *model = self.array[indexPath.row];
+    getApp().playerView.songID = model.songinfo.song_id;
+    
+    NSMutableArray *arrayM = [NSMutableArray array];
+    for (HJSongModel *modd  in self.array) {
+        [arrayM addObject:modd.songinfo.song_id];
+    }
+    getApp().playerView.content = arrayM;
 }
 @end

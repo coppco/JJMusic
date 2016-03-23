@@ -9,7 +9,7 @@
 #import "HJMusicTool.h"
 #import "TBloaderURLConnection.h"  //下载类
 #import "HJMusicDownloader.h"
-
+#import "HJSongModel.h"
 
 @interface HJMusicTool ()
 HJpropertyStrong(AVPlayer *player);  //播放器
@@ -20,6 +20,7 @@ HJpropertyAssign(BOOL isPause); //暂停
 HJpropertyAssign(BOOL isPlaying);   //是否正在播放
 HJpropertyStrong(TBloaderURLConnection *downloader);
 HJpropertyStrong(HJMusicLoader *loader);
+HJpropertyStrong(HJSongModel *model);
 @end
 
 @implementation HJMusicTool
@@ -34,7 +35,7 @@ static HJMusicTool *musicTool = nil;
     });
     return musicTool;
 }
-- (void)playWithURL:(NSString *)url model:(id)model{
+- (void)playWithURL:(NSString *)url model:(HJSongModel *)model{
     _model = model;
     [self.player pause]; //暂停
     [self cleanPlayer];  //清空播放器监听属性
@@ -45,15 +46,17 @@ static HJMusicTool *musicTool = nil;
     
     //本地文件或者iOS7.0前直接播放
     if (__IOS_VERSION < 7.0 || ![url hasPrefix:@"http"]) {
+        XHJLog(@"本地播放");
         self.musicAsset = [AVURLAsset URLAssetWithURL:[NSURL fileURLWithPath:url] options:nil];
         self.playerItem = [AVPlayerItem playerItemWithAsset:_musicAsset];
     } else {
+        XHJLog(@"网络播放");
         //ios7以上采用resourceLoader给播放器补充数据,需要把http换成streaming(流)
         
 //        self.downloader = [[TBloaderURLConnection alloc] init];
 //        NSURL *playURL = [self.downloader getSchemeWithURL:[NSURL URLWithString:url] scheme:@"streaming"];
 
-        self.loader = [[HJMusicLoader alloc] init];
+        self.loader = [[HJMusicLoader alloc] initWithModel:model];
         NSURL *playURL = [self.loader getSchemeWithURL:[NSURL URLWithString:url] scheme:@"streaming"];
         
         self.musicAsset = [AVURLAsset URLAssetWithURL:playURL options:nil];
@@ -117,7 +120,24 @@ static HJMusicTool *musicTool = nil;
     if (_delegate && [_delegate respondsToSelector:@selector(AVPlayerCanPlay:)]) {
         [_delegate AVPlayerCanPlay:playerItem];
     }
-    [_player play];  //开始播放
+
+    //网络音乐申请后台播放
+    UIBackgroundTaskIdentifier bgTask = 0;
+    if ([UIApplication sharedApplication].applicationState == UIApplicationStateBackground) {
+        XHJLog(@"后台播放");
+         [_player play];  //开始播放
+        UIBackgroundTaskIdentifier newTask = [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:^{
+            
+        }];
+        if (bgTask != UIBackgroundTaskInvalid) {
+            [[UIApplication sharedApplication] endBackgroundTask:bgTask];
+        }
+        bgTask = newTask;
+    } else {
+        XHJLog(@"前台播放");
+         [_player play];  //开始播放
+    }
+    
     WeakSelf(weak);
     //AVPlayer添加观察者,更新
     _playbackTimeObserver = [_player addPeriodicTimeObserverForInterval:CMTimeMake(1, 1) queue:dispatch_get_main_queue() usingBlock:^(CMTime time) {

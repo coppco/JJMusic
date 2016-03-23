@@ -14,7 +14,7 @@
 #import "HJSongModel.h"  //歌曲信息
 #import "HJFavoriteListDB.h"  //数据库
 @interface HJListViewController ()<UITableViewDataSource, UITableViewDelegate>
-
+HJpropertyStrong(NSMutableArray *song_idArray);  //歌曲数组
 @end
 
 @implementation HJListViewController
@@ -48,6 +48,10 @@
         if (self.detailModel) {
             [self initTableView];
             [self setSubView];
+            self.song_idArray = [NSMutableArray array];
+            for (ListSongModel *modelll in self.detailModel.content) {
+                [self.song_idArray addObject:modelll.song_id];
+            }
         } else {
             
         }
@@ -126,8 +130,7 @@
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [getApp() playerViewAppear:nil];
-    getApp().playerView.isFavoritePlayer = NO;
     getApp().playerView.songID = [self.detailModel.content[indexPath.row] song_id];
-    getApp().playerView.content = self.detailModel.content;
+    getApp().playerView.content = self.song_idArray;
 }
 @end

@@ -10,7 +10,8 @@
  */
 #import <Foundation/Foundation.h>
 #import <AVFoundation/AVFoundation.h>
-
+@class HJSongModel;
 @interface HJMusicLoader : NSURLConnection<AVAssetResourceLoaderDelegate>
+- (instancetype)initWithModel:(HJSongModel *)model;
 - (NSURL *)getSchemeWithURL:(NSURL *)url scheme:(NSString *)scheme;
 @end
