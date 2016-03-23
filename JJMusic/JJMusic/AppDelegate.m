@@ -16,6 +16,7 @@
 #import "HJLastMusicDB.h"  //数据库
 #import "HJListDetailModel.h" //model
 #import "HJMusicTool.h"
+
 @interface AppDelegate ()<RCIMUserInfoDataSource>
 
 @end
@@ -157,8 +158,8 @@
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
-    [[UIApplication sharedApplication] endReceivingRemoteControlEvents];
-    [self resignFirstResponder];
+//    [[UIApplication sharedApplication] endReceivingRemoteControlEvents];
+//    [self resignFirstResponder];
     if ([LockModel getPassword].length != 0) {
         [self showLockViewController:LockViewTypeCheck];
     }
@@ -201,9 +202,14 @@
     if (event.subtype == UIEventSubtypeRemoteControlPause || event.subtype == UIEventSubtypeRemoteControlPlay) {
         [[HJMusicTool sharedMusicPlayer] playOrPause];
     } else if (event.subtype == UIEventSubtypeRemoteControlNextTrack) {
+        XHJLog(@"下一曲");
         [self.playerView nextSong];
     } else if (event.subtype == UIEventSubtypeRemoteControlPreviousTrack) {
+        XHJLog(@"上一曲");
         [self.playerView previousSong];
+    } else if (event.subtype == UIEventSubtypeMotionShake) {
+        XHJLog(@"摇晃");
+         [self.playerView nextSong];
     }
 }
 @end

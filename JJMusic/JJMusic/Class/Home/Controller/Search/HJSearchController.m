@@ -327,6 +327,7 @@ HJpropertyStrong(NSMutableArray *hostoryArray);  //历史搜索数据
         //搜索详情的东西
         HJSearchDetaillController *searchDetailVC = [[HJSearchDetaillController alloc] init];
         searchDetailVC.key = [self getTitleWithIndexPath:indexPath];
+        [HJHostorySearchDB addOneHostorySearchResultWithTitle:[self getTitleWithIndexPath:indexPath]];
         [self.navigationController pushViewController:searchDetailVC animated:YES];
     }
 }

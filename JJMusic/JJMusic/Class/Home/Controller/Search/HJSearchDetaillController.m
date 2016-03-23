@@ -426,7 +426,13 @@ HJpropertyStrong(HJSearchDetailModel *detailModel);
             {
                 if (indexPath.section == 0) {
                     Song_list *list = self.detailModel.song_list[indexPath.row];
-                    XHJLog(@"%@", list);
+                    getApp().playerView.songID = list.song_id;
+                    NSMutableArray *arrayM = [NSMutableArray array];
+                    for (Song_list *list1 in self.detailModel.song_list) {
+                        [arrayM addObject:list1.song_id];
+                    }
+                    getApp().playerView.content = arrayM;
+                    [getApp() playerViewAppear:nil];
                 } else if (indexPath.section == 1) {
 
                 } else if (indexPath.section == 2){

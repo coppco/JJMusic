@@ -1157,7 +1157,7 @@ NSString *pathCachesFilePathName(NSString *subPath, NSString *name)
 }
 #pragma mark - Appdelegate
 AppDelegate *getApp() {
-    return [UIApplication sharedApplication].delegate;
+    return (AppDelegate *)[UIApplication sharedApplication].delegate;
 }
 UIWindow *getAppWindow() {
     return [[UIApplication sharedApplication] keyWindow];
