@@ -62,8 +62,11 @@ HJpropertyStrong(CarouselView *carouselView);
     return 370;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return _recommend.module.count - 3;
+    return _recommend.module.count - 5;
 }
+//-  (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+//    return 1;
+//}
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *reuse = @"cell";
     RecommendCell *cell = [tableView dequeueReusableCellWithIdentifier:reuse];

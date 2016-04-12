@@ -10,7 +10,7 @@
 //#import "ViewController.h"//测试
 #import "HJFavoriteController.h" //收藏
 #import "LockViewController.h"  //手势锁
-#import <RongIMKit/RongIMKit.h>  //融云
+//#import <RongIMKit/RongIMKit.h>  //融云
 
 #import "TopTitleView.h"
 #import "RecommendView.h"  //推荐

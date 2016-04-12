@@ -92,6 +92,8 @@
 		CC65A7A21C5F38DE00E6C2AF /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC65A79F1C5F38DE00E6C2AF /* HomeViewController.m */; };
 		CC65A7A51C5F390C00E6C2AF /* TopTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC65A7A41C5F390C00E6C2AF /* TopTitleView.m */; };
 		CC75CE111C7DA13E007F7685 /* NSTimer+Block.m in Sources */ = {isa = PBXBuildFile; fileRef = CC75CE101C7DA13E007F7685 /* NSTimer+Block.m */; };
+		CC94E3831CAE6861001E1F40 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CC94E3821CAE6861001E1F40 /* Images.xcassets */; };
+		CC94E3851CAE6FFE001E1F40 /* 11.png in Resources */ = {isa = PBXBuildFile; fileRef = CC94E3841CAE6FFE001E1F40 /* 11.png */; };
 		CCA8987E1C5B6A7D0098F58B /* 1242*2208-1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CCA8986A1C5B6A7D0098F58B /* 1242*2208-1.jpg */; };
 		CCA8987F1C5B6A7D0098F58B /* 1242*2208-2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CCA8986B1C5B6A7D0098F58B /* 1242*2208-2.jpg */; };
 		CCA898801C5B6A7D0098F58B /* 1242*2208-3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CCA8986C1C5B6A7D0098F58B /* 1242*2208-3.jpg */; };
@@ -116,6 +118,14 @@
 		CCBAD97A1C7EACA6003FE160 /* UIView+HJFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = CCBAD9791C7EACA6003FE160 /* UIView+HJFrame.m */; };
 		CCBE531B1C9BA93A0060D082 /* KxMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = CCBE531A1C9BA93A0060D082 /* KxMenu.m */; };
 		CCBE531F1C9BBECD0060D082 /* HJPickView.m in Sources */ = {isa = PBXBuildFile; fileRef = CCBE531E1C9BBECD0060D082 /* HJPickView.m */; };
+		CCDEE0BA1CB3A4BE0097A272 /* libPushSDK-1.8.8.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CCDEE0B91CB3A4BE0097A272 /* libPushSDK-1.8.8.a */; };
+		CCDEE0BC1CB3A7580097A272 /* PushConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = CCDEE0BB1CB3A7580097A272 /* PushConfig.plist */; };
+		CCDEE0BE1CB3A8040097A272 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCDEE0BD1CB3A8040097A272 /* Security.framework */; };
+		CCDEE0C01CB3A8210097A272 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCDEE0BF1CB3A8210097A272 /* SystemConfiguration.framework */; };
+		CCDEE0C21CB3A82B0097A272 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCDEE0C11CB3A82B0097A272 /* CoreTelephony.framework */; };
+		CCDEE0C41CB3AC250097A272 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCDEE0C31CB3AC250097A272 /* CFNetwork.framework */; };
+		CCDEE0C61CB3AC360097A272 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCDEE0C51CB3AC360097A272 /* CoreFoundation.framework */; };
+		CCDEE0C81CB3AC500097A272 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCDEE0C71CB3AC500097A272 /* CoreGraphics.framework */; };
 		CCFD44B61C9F8AA70030DF9D /* HJIndexButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CCFD44B51C9F8AA70030DF9D /* HJIndexButton.m */; };
 		CCFD44BA1C9F98270030DF9D /* HJSearchController.m in Sources */ = {isa = PBXBuildFile; fileRef = CCFD44B91C9F98270030DF9D /* HJSearchController.m */; };
 		CCFD44C11C9FC4130030DF9D /* HJHostorySearchDB.m in Sources */ = {isa = PBXBuildFile; fileRef = CCFD44C01C9FC4130030DF9D /* HJHostorySearchDB.m */; };
@@ -326,6 +336,8 @@
 		CC65A7A41C5F390C00E6C2AF /* TopTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopTitleView.m; sourceTree = "<group>"; };
 		CC75CE0F1C7DA13E007F7685 /* NSTimer+Block.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTimer+Block.h"; sourceTree = "<group>"; };
 		CC75CE101C7DA13E007F7685 /* NSTimer+Block.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTimer+Block.m"; sourceTree = "<group>"; };
+		CC94E3821CAE6861001E1F40 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		CC94E3841CAE6FFE001E1F40 /* 11.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 11.png; sourceTree = "<group>"; };
 		CCA8986A1C5B6A7D0098F58B /* 1242*2208-1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "1242*2208-1.jpg"; sourceTree = "<group>"; };
 		CCA8986B1C5B6A7D0098F58B /* 1242*2208-2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "1242*2208-2.jpg"; sourceTree = "<group>"; };
 		CCA8986C1C5B6A7D0098F58B /* 1242*2208-3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "1242*2208-3.jpg"; sourceTree = "<group>"; };
@@ -354,6 +366,15 @@
 		CCBE531A1C9BA93A0060D082 /* KxMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KxMenu.m; sourceTree = "<group>"; };
 		CCBE531D1C9BBECD0060D082 /* HJPickView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJPickView.h; sourceTree = "<group>"; };
 		CCBE531E1C9BBECD0060D082 /* HJPickView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJPickView.m; sourceTree = "<group>"; };
+		CCDEE0B81CB3A4BE0097A272 /* APService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APService.h; sourceTree = "<group>"; };
+		CCDEE0B91CB3A4BE0097A272 /* libPushSDK-1.8.8.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libPushSDK-1.8.8.a"; sourceTree = "<group>"; };
+		CCDEE0BB1CB3A7580097A272 /* PushConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = PushConfig.plist; sourceTree = "<group>"; };
+		CCDEE0BD1CB3A8040097A272 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		CCDEE0BF1CB3A8210097A272 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		CCDEE0C11CB3A82B0097A272 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		CCDEE0C31CB3AC250097A272 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		CCDEE0C51CB3AC360097A272 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		CCDEE0C71CB3AC500097A272 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		CCFD44B41C9F8AA70030DF9D /* HJIndexButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJIndexButton.h; sourceTree = "<group>"; };
 		CCFD44B51C9F8AA70030DF9D /* HJIndexButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJIndexButton.m; sourceTree = "<group>"; };
 		CCFD44B81C9F98270030DF9D /* HJSearchController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJSearchController.h; sourceTree = "<group>"; };
@@ -404,7 +425,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CCDEE0C81CB3AC500097A272 /* CoreGraphics.framework in Frameworks */,
+				CCDEE0C61CB3AC360097A272 /* CoreFoundation.framework in Frameworks */,
+				CCDEE0C41CB3AC250097A272 /* CFNetwork.framework in Frameworks */,
+				CCDEE0C21CB3A82B0097A272 /* CoreTelephony.framework in Frameworks */,
+				CCDEE0C01CB3A8210097A272 /* SystemConfiguration.framework in Frameworks */,
 				CCFFF2071C5B36E1008A5A06 /* libz.tbd in Frameworks */,
+				CCDEE0BE1CB3A8040097A272 /* Security.framework in Frameworks */,
+				CCDEE0BA1CB3A4BE0097A272 /* libPushSDK-1.8.8.a in Frameworks */,
 				9746DCC703D0B360B94D89FD /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -429,6 +457,12 @@
 		34E3956B93D40E123545FD1C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CCDEE0C71CB3AC500097A272 /* CoreGraphics.framework */,
+				CCDEE0C51CB3AC360097A272 /* CoreFoundation.framework */,
+				CCDEE0C31CB3AC250097A272 /* CFNetwork.framework */,
+				CCDEE0C11CB3A82B0097A272 /* CoreTelephony.framework */,
+				CCDEE0BF1CB3A8210097A272 /* SystemConfiguration.framework */,
+				CCDEE0BD1CB3A8040097A272 /* Security.framework */,
 				CCFFF2061C5B36E1008A5A06 /* libz.tbd */,
 				146C9FB5452499ECF9DC6A8E /* libPods.a */,
 			);
@@ -978,6 +1012,7 @@
 		CCBE53171C9BA9120060D082 /* ThirdParty */ = {
 			isa = PBXGroup;
 			children = (
+				CCDEE0B71CB3A4BE0097A272 /* JPush */,
 				CCBE53181C9BA93A0060D082 /* KxMenu */,
 			);
 			path = ThirdParty;
@@ -999,6 +1034,15 @@
 				CCBE531E1C9BBECD0060D082 /* HJPickView.m */,
 			);
 			path = UIPickView;
+			sourceTree = "<group>";
+		};
+		CCDEE0B71CB3A4BE0097A272 /* JPush */ = {
+			isa = PBXGroup;
+			children = (
+				CCDEE0B81CB3A4BE0097A272 /* APService.h */,
+				CCDEE0B91CB3A4BE0097A272 /* libPushSDK-1.8.8.a */,
+			);
+			path = JPush;
 			sourceTree = "<group>";
 		};
 		CCFD44B71C9F97FD0030DF9D /* Search */ = {
@@ -1061,10 +1105,12 @@
 				CCFFF1B21C5B1668008A5A06 /* Main.storyboard */,
 				CCFFF1B51C5B1668008A5A06 /* Assets.xcassets */,
 				CCFFF1B71C5B1668008A5A06 /* LaunchScreen.storyboard */,
+				CC94E3841CAE6FFE001E1F40 /* 11.png */,
 				CCFFF1BA1C5B1668008A5A06 /* Info.plist */,
 				CCA898691C5B6A7D0098F58B /* guideImage */,
 				CCFFF1A91C5B1668008A5A06 /* Supporting Files */,
 				CCFFF2051C5B368A008A5A06 /* JJMusic.pch */,
+				CC94E3821CAE6861001E1F40 /* Images.xcassets */,
 			);
 			path = JJMusic;
 			sourceTree = "<group>";
@@ -1076,6 +1122,7 @@
 				CC581E091C9A540400E97360 /* aToz.plist */,
 				CCFFF1E91C5B31D1008A5A06 /* InfoPlist.strings */,
 				CCFFF1AA1C5B1668008A5A06 /* main.m */,
+				CCDEE0BB1CB3A7580097A272 /* PushConfig.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -1270,10 +1317,13 @@
 				TargetAttributes = {
 					CCFFF1A51C5B1668008A5A06 = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = 3Y92XXLNT8;
+						DevelopmentTeam = 5NMBANXMBJ;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 0;
 							};
 						};
 					};
@@ -1318,9 +1368,11 @@
 				CC581E021C9A50AC00E97360 /* HeaderView.xib in Resources */,
 				CCA898801C5B6A7D0098F58B /* 1242*2208-3.jpg in Resources */,
 				CC57BFF71C80598D00906326 /* HUDImage.bundle in Resources */,
+				CC94E3851CAE6FFE001E1F40 /* 11.png in Resources */,
 				CCFFF2001C5B346A008A5A06 /* region.db in Resources */,
 				CCA898831C5B6A7D0098F58B /* 320*480-2.jpg in Resources */,
 				CC581E0A1C9A540400E97360 /* aToz.plist in Resources */,
+				CC94E3831CAE6861001E1F40 /* Images.xcassets in Resources */,
 				CCFFF1B91C5B1668008A5A06 /* LaunchScreen.storyboard in Resources */,
 				CCA8987E1C5B6A7D0098F58B /* 1242*2208-1.jpg in Resources */,
 				CCA898891C5B6A7D0098F58B /* 640*1136-4.jpg in Resources */,
@@ -1340,6 +1392,7 @@
 				CCA8988D1C5B6A7D0098F58B /* 640*960-4.jpg in Resources */,
 				CCA898881C5B6A7D0098F58B /* 640*1136-3.jpg in Resources */,
 				CCA8988E1C5B6A7D0098F58B /* 750*1334-1.jpg in Resources */,
+				CCDEE0BC1CB3A7580097A272 /* PushConfig.plist in Resources */,
 				CCFFF1B61C5B1668008A5A06 /* Assets.xcassets in Resources */,
 				CC4D35D61C83ECBC0076BB85 /* error_msg_t.png in Resources */,
 				CCA898841C5B6A7D0098F58B /* 320*480-3.jpg in Resources */,
@@ -1582,7 +1635,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: keji hei (5NMBANXMBJ)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: keji hei (5NMBANXMBJ)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1626,7 +1680,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: keji hei (5NMBANXMBJ)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: keji hei (5NMBANXMBJ)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -1652,13 +1707,31 @@
 			baseConfigurationReference = 8DA7407E49608E128A874C11 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: keji hei (5NMBANXMBJ)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: keji hei (5NMBANXMBJ)";
 				GCC_PREFIX_HEADER = "$(SRCROOT)/JJMusic/JJMusic.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/AFNetworking\"",
+					"\"${PODS_ROOT}/Headers/Public/FMDB\"",
+					"\"${PODS_ROOT}/Headers/Public/JSONModel\"",
+					"\"${PODS_ROOT}/Headers/Public/MBProgressHUD\"",
+					"\"${PODS_ROOT}/Headers/Public/MJRefresh\"",
+					"\"${PODS_ROOT}/Headers/Public/SDWebImage\"",
+					"\"$(SRCROOT)/JJMusic/MyTools/ThirdParty/JPush\"",
+				);
 				INFOPLIST_FILE = JJMusic/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.coppco.JJMusic111;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/JJMusic/MyTools/ThirdParty/JPush\"",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = JJMusic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1667,13 +1740,31 @@
 			baseConfigurationReference = 52A6DE65D160A8567AE7309D /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: keji hei (5NMBANXMBJ)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: keji hei (5NMBANXMBJ)";
 				GCC_PREFIX_HEADER = "$(SRCROOT)/JJMusic/JJMusic.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/AFNetworking\"",
+					"\"${PODS_ROOT}/Headers/Public/FMDB\"",
+					"\"${PODS_ROOT}/Headers/Public/JSONModel\"",
+					"\"${PODS_ROOT}/Headers/Public/MBProgressHUD\"",
+					"\"${PODS_ROOT}/Headers/Public/MJRefresh\"",
+					"\"${PODS_ROOT}/Headers/Public/SDWebImage\"",
+					"\"$(SRCROOT)/JJMusic/MyTools/ThirdParty/JPush\"",
+				);
 				INFOPLIST_FILE = JJMusic/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.coppco.JJMusic111;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/JJMusic/MyTools/ThirdParty/JPush\"",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = JJMusic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

@@ -16,10 +16,10 @@
     NSString *path = pathCachesFilePathName(@"networkRequest", STRFORMAT(@"%@.xxoo", [HJCommonTools returnAStringWithEncryptType:(EncryptTypeMD5) forString:url]));
     id data = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
     
-    if (cache && data != nil) {
-        successBlock(data);
-        return;
-    }
+//    if (cache && data != nil) {
+//        successBlock(data);
+//        return;
+//    }
     //去除url中的空格
     url = [url stringByReplacingOccurrencesOfString:@" " withString:@""];
     url = [url stringByReplacingOccurrencesOfString:@"\\" withString:@""];
