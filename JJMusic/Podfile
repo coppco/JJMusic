@@ -1,0 +1,7 @@
+platform :ios, ‘8.0’
+
+target “JJMusic” do
+pod 'MJRefresh', '~> 3.1.12'  #下拉刷新
+pod 'JPush', '~> 2.1.9'  #JPush
+pod 'FMDB', '~> 2.6.2' #FMDB 数据库操作
+end
