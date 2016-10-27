@@ -7,68 +7,64 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		CCFFF1AB1C5B1668008A5A06 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CCFFF1AA1C5B1668008A5A06 /* main.m */; };
-		CCFFF1AE1C5B1668008A5A06 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CCFFF1AD1C5B1668008A5A06 /* AppDelegate.m */; };
-		CCFFF1B11C5B1668008A5A06 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CCFFF1B01C5B1668008A5A06 /* ViewController.m */; };
-		CCFFF1B41C5B1668008A5A06 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CCFFF1B21C5B1668008A5A06 /* Main.storyboard */; };
-		CCFFF1B61C5B1668008A5A06 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CCFFF1B51C5B1668008A5A06 /* Assets.xcassets */; };
-		CCFFF1B91C5B1668008A5A06 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CCFFF1B71C5B1668008A5A06 /* LaunchScreen.storyboard */; };
-		CCFFF1C41C5B1668008A5A06 /* JJMusicTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CCFFF1C31C5B1668008A5A06 /* JJMusicTests.m */; };
-		CCFFF1CF1C5B1668008A5A06 /* JJMusicUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = CCFFF1CE1C5B1668008A5A06 /* JJMusicUITests.m */; };
+		CC5531E91DC18891002296A3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5531E81DC18891002296A3 /* AppDelegate.swift */; };
+		CC5531EB1DC18891002296A3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5531EA1DC18891002296A3 /* ViewController.swift */; };
+		CC5531EE1DC18892002296A3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC5531EC1DC18892002296A3 /* Main.storyboard */; };
+		CC5531F01DC18892002296A3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CC5531EF1DC18892002296A3 /* Assets.xcassets */; };
+		CC5531F31DC18892002296A3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC5531F11DC18892002296A3 /* LaunchScreen.storyboard */; };
+		CC5531FE1DC18892002296A3 /* JJMusicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5531FD1DC18892002296A3 /* JJMusicTests.swift */; };
+		CC5532091DC18892002296A3 /* JJMusicUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5532081DC18892002296A3 /* JJMusicUITests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		CCFFF1C01C5B1668008A5A06 /* PBXContainerItemProxy */ = {
+		CC5531FA1DC18892002296A3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = CCFFF19E1C5B1668008A5A06 /* Project object */;
+			containerPortal = CC5531DD1DC18891002296A3 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = CCFFF1A51C5B1668008A5A06;
+			remoteGlobalIDString = CC5531E41DC18891002296A3;
 			remoteInfo = JJMusic;
 		};
-		CCFFF1CB1C5B1668008A5A06 /* PBXContainerItemProxy */ = {
+		CC5532051DC18892002296A3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = CCFFF19E1C5B1668008A5A06 /* Project object */;
+			containerPortal = CC5531DD1DC18891002296A3 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = CCFFF1A51C5B1668008A5A06;
+			remoteGlobalIDString = CC5531E41DC18891002296A3;
 			remoteInfo = JJMusic;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		CCFFF1A61C5B1668008A5A06 /* JJMusic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JJMusic.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		CCFFF1AA1C5B1668008A5A06 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		CCFFF1AC1C5B1668008A5A06 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		CCFFF1AD1C5B1668008A5A06 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		CCFFF1AF1C5B1668008A5A06 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		CCFFF1B01C5B1668008A5A06 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		CCFFF1B31C5B1668008A5A06 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		CCFFF1B51C5B1668008A5A06 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		CCFFF1B81C5B1668008A5A06 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		CCFFF1BA1C5B1668008A5A06 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CCFFF1BF1C5B1668008A5A06 /* JJMusicTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JJMusicTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		CCFFF1C31C5B1668008A5A06 /* JJMusicTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JJMusicTests.m; sourceTree = "<group>"; };
-		CCFFF1C51C5B1668008A5A06 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CCFFF1CA1C5B1668008A5A06 /* JJMusicUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JJMusicUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		CCFFF1CE1C5B1668008A5A06 /* JJMusicUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JJMusicUITests.m; sourceTree = "<group>"; };
-		CCFFF1D01C5B1668008A5A06 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CC5531E51DC18891002296A3 /* JJMusic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JJMusic.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CC5531E81DC18891002296A3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		CC5531EA1DC18891002296A3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		CC5531ED1DC18892002296A3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		CC5531EF1DC18892002296A3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CC5531F21DC18892002296A3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		CC5531F41DC18892002296A3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CC5531F91DC18892002296A3 /* JJMusicTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JJMusicTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CC5531FD1DC18892002296A3 /* JJMusicTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JJMusicTests.swift; sourceTree = "<group>"; };
+		CC5531FF1DC18892002296A3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CC5532041DC18892002296A3 /* JJMusicUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JJMusicUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CC5532081DC18892002296A3 /* JJMusicUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JJMusicUITests.swift; sourceTree = "<group>"; };
+		CC55320A1DC18892002296A3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		CCFFF1A31C5B1668008A5A06 /* Frameworks */ = {
+		CC5531E21DC18891002296A3 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CCFFF1BC1C5B1668008A5A06 /* Frameworks */ = {
+		CC5531F61DC18892002296A3 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CCFFF1C71C5B1668008A5A06 /* Frameworks */ = {
+		CC5532011DC18892002296A3 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -78,64 +74,53 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		CCFFF19D1C5B1668008A5A06 = {
+		CC5531DC1DC18891002296A3 = {
 			isa = PBXGroup;
 			children = (
-				CCFFF1A81C5B1668008A5A06 /* JJMusic */,
-				CCFFF1C21C5B1668008A5A06 /* JJMusicTests */,
-				CCFFF1CD1C5B1668008A5A06 /* JJMusicUITests */,
-				CCFFF1A71C5B1668008A5A06 /* Products */,
+				CC5531E71DC18891002296A3 /* JJMusic */,
+				CC5531FC1DC18892002296A3 /* JJMusicTests */,
+				CC5532071DC18892002296A3 /* JJMusicUITests */,
+				CC5531E61DC18891002296A3 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		CCFFF1A71C5B1668008A5A06 /* Products */ = {
+		CC5531E61DC18891002296A3 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				CCFFF1A61C5B1668008A5A06 /* JJMusic.app */,
-				CCFFF1BF1C5B1668008A5A06 /* JJMusicTests.xctest */,
-				CCFFF1CA1C5B1668008A5A06 /* JJMusicUITests.xctest */,
+				CC5531E51DC18891002296A3 /* JJMusic.app */,
+				CC5531F91DC18892002296A3 /* JJMusicTests.xctest */,
+				CC5532041DC18892002296A3 /* JJMusicUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		CCFFF1A81C5B1668008A5A06 /* JJMusic */ = {
+		CC5531E71DC18891002296A3 /* JJMusic */ = {
 			isa = PBXGroup;
 			children = (
-				CCFFF1AC1C5B1668008A5A06 /* AppDelegate.h */,
-				CCFFF1AD1C5B1668008A5A06 /* AppDelegate.m */,
-				CCFFF1AF1C5B1668008A5A06 /* ViewController.h */,
-				CCFFF1B01C5B1668008A5A06 /* ViewController.m */,
-				CCFFF1B21C5B1668008A5A06 /* Main.storyboard */,
-				CCFFF1B51C5B1668008A5A06 /* Assets.xcassets */,
-				CCFFF1B71C5B1668008A5A06 /* LaunchScreen.storyboard */,
-				CCFFF1BA1C5B1668008A5A06 /* Info.plist */,
-				CCFFF1A91C5B1668008A5A06 /* Supporting Files */,
+				CC5531E81DC18891002296A3 /* AppDelegate.swift */,
+				CC5531EA1DC18891002296A3 /* ViewController.swift */,
+				CC5531EC1DC18892002296A3 /* Main.storyboard */,
+				CC5531EF1DC18892002296A3 /* Assets.xcassets */,
+				CC5531F11DC18892002296A3 /* LaunchScreen.storyboard */,
+				CC5531F41DC18892002296A3 /* Info.plist */,
 			);
 			path = JJMusic;
 			sourceTree = "<group>";
 		};
-		CCFFF1A91C5B1668008A5A06 /* Supporting Files */ = {
+		CC5531FC1DC18892002296A3 /* JJMusicTests */ = {
 			isa = PBXGroup;
 			children = (
-				CCFFF1AA1C5B1668008A5A06 /* main.m */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		CCFFF1C21C5B1668008A5A06 /* JJMusicTests */ = {
-			isa = PBXGroup;
-			children = (
-				CCFFF1C31C5B1668008A5A06 /* JJMusicTests.m */,
-				CCFFF1C51C5B1668008A5A06 /* Info.plist */,
+				CC5531FD1DC18892002296A3 /* JJMusicTests.swift */,
+				CC5531FF1DC18892002296A3 /* Info.plist */,
 			);
 			path = JJMusicTests;
 			sourceTree = "<group>";
 		};
-		CCFFF1CD1C5B1668008A5A06 /* JJMusicUITests */ = {
+		CC5532071DC18892002296A3 /* JJMusicUITests */ = {
 			isa = PBXGroup;
 			children = (
-				CCFFF1CE1C5B1668008A5A06 /* JJMusicUITests.m */,
-				CCFFF1D01C5B1668008A5A06 /* Info.plist */,
+				CC5532081DC18892002296A3 /* JJMusicUITests.swift */,
+				CC55320A1DC18892002296A3 /* Info.plist */,
 			);
 			path = JJMusicUITests;
 			sourceTree = "<group>";
@@ -143,13 +128,13 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		CCFFF1A51C5B1668008A5A06 /* JJMusic */ = {
+		CC5531E41DC18891002296A3 /* JJMusic */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CCFFF1D31C5B1668008A5A06 /* Build configuration list for PBXNativeTarget "JJMusic" */;
+			buildConfigurationList = CC55320D1DC18892002296A3 /* Build configuration list for PBXNativeTarget "JJMusic" */;
 			buildPhases = (
-				CCFFF1A21C5B1668008A5A06 /* Sources */,
-				CCFFF1A31C5B1668008A5A06 /* Frameworks */,
-				CCFFF1A41C5B1668008A5A06 /* Resources */,
+				CC5531E11DC18891002296A3 /* Sources */,
+				CC5531E21DC18891002296A3 /* Frameworks */,
+				CC5531E31DC18891002296A3 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -157,68 +142,75 @@
 			);
 			name = JJMusic;
 			productName = JJMusic;
-			productReference = CCFFF1A61C5B1668008A5A06 /* JJMusic.app */;
+			productReference = CC5531E51DC18891002296A3 /* JJMusic.app */;
 			productType = "com.apple.product-type.application";
 		};
-		CCFFF1BE1C5B1668008A5A06 /* JJMusicTests */ = {
+		CC5531F81DC18892002296A3 /* JJMusicTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CCFFF1D61C5B1668008A5A06 /* Build configuration list for PBXNativeTarget "JJMusicTests" */;
+			buildConfigurationList = CC5532101DC18892002296A3 /* Build configuration list for PBXNativeTarget "JJMusicTests" */;
 			buildPhases = (
-				CCFFF1BB1C5B1668008A5A06 /* Sources */,
-				CCFFF1BC1C5B1668008A5A06 /* Frameworks */,
-				CCFFF1BD1C5B1668008A5A06 /* Resources */,
+				CC5531F51DC18892002296A3 /* Sources */,
+				CC5531F61DC18892002296A3 /* Frameworks */,
+				CC5531F71DC18892002296A3 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				CCFFF1C11C5B1668008A5A06 /* PBXTargetDependency */,
+				CC5531FB1DC18892002296A3 /* PBXTargetDependency */,
 			);
 			name = JJMusicTests;
 			productName = JJMusicTests;
-			productReference = CCFFF1BF1C5B1668008A5A06 /* JJMusicTests.xctest */;
+			productReference = CC5531F91DC18892002296A3 /* JJMusicTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		CCFFF1C91C5B1668008A5A06 /* JJMusicUITests */ = {
+		CC5532031DC18892002296A3 /* JJMusicUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CCFFF1D91C5B1668008A5A06 /* Build configuration list for PBXNativeTarget "JJMusicUITests" */;
+			buildConfigurationList = CC5532131DC18892002296A3 /* Build configuration list for PBXNativeTarget "JJMusicUITests" */;
 			buildPhases = (
-				CCFFF1C61C5B1668008A5A06 /* Sources */,
-				CCFFF1C71C5B1668008A5A06 /* Frameworks */,
-				CCFFF1C81C5B1668008A5A06 /* Resources */,
+				CC5532001DC18892002296A3 /* Sources */,
+				CC5532011DC18892002296A3 /* Frameworks */,
+				CC5532021DC18892002296A3 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				CCFFF1CC1C5B1668008A5A06 /* PBXTargetDependency */,
+				CC5532061DC18892002296A3 /* PBXTargetDependency */,
 			);
 			name = JJMusicUITests;
 			productName = JJMusicUITests;
-			productReference = CCFFF1CA1C5B1668008A5A06 /* JJMusicUITests.xctest */;
+			productReference = CC5532041DC18892002296A3 /* JJMusicUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		CCFFF19E1C5B1668008A5A06 /* Project object */ = {
+		CC5531DD1DC18891002296A3 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0720;
+				LastSwiftUpdateCheck = 0800;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = XHJ;
 				TargetAttributes = {
-					CCFFF1A51C5B1668008A5A06 = {
-						CreatedOnToolsVersion = 7.2;
+					CC5531E41DC18891002296A3 = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = 3Y92XXLNT8;
+						ProvisioningStyle = Automatic;
 					};
-					CCFFF1BE1C5B1668008A5A06 = {
-						CreatedOnToolsVersion = 7.2;
-						TestTargetID = CCFFF1A51C5B1668008A5A06;
+					CC5531F81DC18892002296A3 = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = 3Y92XXLNT8;
+						ProvisioningStyle = Automatic;
+						TestTargetID = CC5531E41DC18891002296A3;
 					};
-					CCFFF1C91C5B1668008A5A06 = {
-						CreatedOnToolsVersion = 7.2;
-						TestTargetID = CCFFF1A51C5B1668008A5A06;
+					CC5532031DC18892002296A3 = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = 3Y92XXLNT8;
+						ProvisioningStyle = Automatic;
+						TestTargetID = CC5531E41DC18891002296A3;
 					};
 				};
 			};
-			buildConfigurationList = CCFFF1A11C5B1668008A5A06 /* Build configuration list for PBXProject "JJMusic" */;
+			buildConfigurationList = CC5531E01DC18891002296A3 /* Build configuration list for PBXProject "JJMusic" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -226,37 +218,37 @@
 				en,
 				Base,
 			);
-			mainGroup = CCFFF19D1C5B1668008A5A06;
-			productRefGroup = CCFFF1A71C5B1668008A5A06 /* Products */;
+			mainGroup = CC5531DC1DC18891002296A3;
+			productRefGroup = CC5531E61DC18891002296A3 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				CCFFF1A51C5B1668008A5A06 /* JJMusic */,
-				CCFFF1BE1C5B1668008A5A06 /* JJMusicTests */,
-				CCFFF1C91C5B1668008A5A06 /* JJMusicUITests */,
+				CC5531E41DC18891002296A3 /* JJMusic */,
+				CC5531F81DC18892002296A3 /* JJMusicTests */,
+				CC5532031DC18892002296A3 /* JJMusicUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		CCFFF1A41C5B1668008A5A06 /* Resources */ = {
+		CC5531E31DC18891002296A3 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CCFFF1B91C5B1668008A5A06 /* LaunchScreen.storyboard in Resources */,
-				CCFFF1B61C5B1668008A5A06 /* Assets.xcassets in Resources */,
-				CCFFF1B41C5B1668008A5A06 /* Main.storyboard in Resources */,
+				CC5531F31DC18892002296A3 /* LaunchScreen.storyboard in Resources */,
+				CC5531F01DC18892002296A3 /* Assets.xcassets in Resources */,
+				CC5531EE1DC18892002296A3 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CCFFF1BD1C5B1668008A5A06 /* Resources */ = {
+		CC5531F71DC18892002296A3 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CCFFF1C81C5B1668008A5A06 /* Resources */ = {
+		CC5532021DC18892002296A3 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -266,60 +258,59 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		CCFFF1A21C5B1668008A5A06 /* Sources */ = {
+		CC5531E11DC18891002296A3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CCFFF1B11C5B1668008A5A06 /* ViewController.m in Sources */,
-				CCFFF1AE1C5B1668008A5A06 /* AppDelegate.m in Sources */,
-				CCFFF1AB1C5B1668008A5A06 /* main.m in Sources */,
+				CC5531EB1DC18891002296A3 /* ViewController.swift in Sources */,
+				CC5531E91DC18891002296A3 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CCFFF1BB1C5B1668008A5A06 /* Sources */ = {
+		CC5531F51DC18892002296A3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CCFFF1C41C5B1668008A5A06 /* JJMusicTests.m in Sources */,
+				CC5531FE1DC18892002296A3 /* JJMusicTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CCFFF1C61C5B1668008A5A06 /* Sources */ = {
+		CC5532001DC18892002296A3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CCFFF1CF1C5B1668008A5A06 /* JJMusicUITests.m in Sources */,
+				CC5532091DC18892002296A3 /* JJMusicUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		CCFFF1C11C5B1668008A5A06 /* PBXTargetDependency */ = {
+		CC5531FB1DC18892002296A3 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = CCFFF1A51C5B1668008A5A06 /* JJMusic */;
-			targetProxy = CCFFF1C01C5B1668008A5A06 /* PBXContainerItemProxy */;
+			target = CC5531E41DC18891002296A3 /* JJMusic */;
+			targetProxy = CC5531FA1DC18892002296A3 /* PBXContainerItemProxy */;
 		};
-		CCFFF1CC1C5B1668008A5A06 /* PBXTargetDependency */ = {
+		CC5532061DC18892002296A3 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = CCFFF1A51C5B1668008A5A06 /* JJMusic */;
-			targetProxy = CCFFF1CB1C5B1668008A5A06 /* PBXContainerItemProxy */;
+			target = CC5531E41DC18891002296A3 /* JJMusic */;
+			targetProxy = CC5532051DC18892002296A3 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		CCFFF1B21C5B1668008A5A06 /* Main.storyboard */ = {
+		CC5531EC1DC18892002296A3 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				CCFFF1B31C5B1668008A5A06 /* Base */,
+				CC5531ED1DC18892002296A3 /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		CCFFF1B71C5B1668008A5A06 /* LaunchScreen.storyboard */ = {
+		CC5531F11DC18892002296A3 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				CCFFF1B81C5B1668008A5A06 /* Base */,
+				CC5531F21DC18892002296A3 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -327,10 +318,11 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		CCFFF1D11C5B1668008A5A06 /* Debug */ = {
+		CC55320B1DC18892002296A3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -338,10 +330,13 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -363,18 +358,21 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		CCFFF1D21C5B1668008A5A06 /* Release */ = {
+		CC55320C1DC18892002296A3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -382,10 +380,13 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -401,121 +402,136 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
-		CCFFF1D41C5B1668008A5A06 /* Debug */ = {
+		CC55320E1DC18892002296A3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 3Y92XXLNT8;
 				INFOPLIST_FILE = JJMusic/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.coppco.JJMusic;
+				PRODUCT_BUNDLE_IDENTIFIER = cn.coppco.JJMusic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
-		CCFFF1D51C5B1668008A5A06 /* Release */ = {
+		CC55320F1DC18892002296A3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 3Y92XXLNT8;
 				INFOPLIST_FILE = JJMusic/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.coppco.JJMusic;
+				PRODUCT_BUNDLE_IDENTIFIER = cn.coppco.JJMusic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
-		CCFFF1D71C5B1668008A5A06 /* Debug */ = {
+		CC5532111DC18892002296A3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 3Y92XXLNT8;
 				INFOPLIST_FILE = JJMusicTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.coppco.JJMusicTests;
+				PRODUCT_BUNDLE_IDENTIFIER = cn.coppco.JJMusicTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/JJMusic.app/JJMusic";
 			};
 			name = Debug;
 		};
-		CCFFF1D81C5B1668008A5A06 /* Release */ = {
+		CC5532121DC18892002296A3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 3Y92XXLNT8;
 				INFOPLIST_FILE = JJMusicTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.coppco.JJMusicTests;
+				PRODUCT_BUNDLE_IDENTIFIER = cn.coppco.JJMusicTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/JJMusic.app/JJMusic";
 			};
 			name = Release;
 		};
-		CCFFF1DA1C5B1668008A5A06 /* Debug */ = {
+		CC5532141DC18892002296A3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = 3Y92XXLNT8;
 				INFOPLIST_FILE = JJMusicUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.coppco.JJMusicUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = cn.coppco.JJMusicUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = JJMusic;
-				USES_XCTRUNNER = YES;
 			};
 			name = Debug;
 		};
-		CCFFF1DB1C5B1668008A5A06 /* Release */ = {
+		CC5532151DC18892002296A3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = 3Y92XXLNT8;
 				INFOPLIST_FILE = JJMusicUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.coppco.JJMusicUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = cn.coppco.JJMusicUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = JJMusic;
-				USES_XCTRUNNER = YES;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		CCFFF1A11C5B1668008A5A06 /* Build configuration list for PBXProject "JJMusic" */ = {
+		CC5531E01DC18891002296A3 /* Build configuration list for PBXProject "JJMusic" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				CCFFF1D11C5B1668008A5A06 /* Debug */,
-				CCFFF1D21C5B1668008A5A06 /* Release */,
+				CC55320B1DC18892002296A3 /* Debug */,
+				CC55320C1DC18892002296A3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CCFFF1D31C5B1668008A5A06 /* Build configuration list for PBXNativeTarget "JJMusic" */ = {
+		CC55320D1DC18892002296A3 /* Build configuration list for PBXNativeTarget "JJMusic" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				CCFFF1D41C5B1668008A5A06 /* Debug */,
-				CCFFF1D51C5B1668008A5A06 /* Release */,
+				CC55320E1DC18892002296A3 /* Debug */,
+				CC55320F1DC18892002296A3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
-		CCFFF1D61C5B1668008A5A06 /* Build configuration list for PBXNativeTarget "JJMusicTests" */ = {
+		CC5532101DC18892002296A3 /* Build configuration list for PBXNativeTarget "JJMusicTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				CCFFF1D71C5B1668008A5A06 /* Debug */,
-				CCFFF1D81C5B1668008A5A06 /* Release */,
+				CC5532111DC18892002296A3 /* Debug */,
+				CC5532121DC18892002296A3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
-		CCFFF1D91C5B1668008A5A06 /* Build configuration list for PBXNativeTarget "JJMusicUITests" */ = {
+		CC5532131DC18892002296A3 /* Build configuration list for PBXNativeTarget "JJMusicUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				CCFFF1DA1C5B1668008A5A06 /* Debug */,
-				CCFFF1DB1C5B1668008A5A06 /* Release */,
+				CC5532141DC18892002296A3 /* Debug */,
+				CC5532151DC18892002296A3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = CCFFF19E1C5B1668008A5A06 /* Project object */;
+	rootObject = CC5531DD1DC18891002296A3 /* Project object */;
 }

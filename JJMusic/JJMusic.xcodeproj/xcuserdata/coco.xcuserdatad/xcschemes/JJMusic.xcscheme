@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0720"
+   LastUpgradeVersion = "0800"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "CCFFF1A51C5B1668008A5A06"
+               BlueprintIdentifier = "CC5531E41DC18891002296A3"
                BuildableName = "JJMusic.app"
                BlueprintName = "JJMusic"
                ReferencedContainer = "container:JJMusic.xcodeproj">
@@ -32,7 +32,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "CCFFF1BE1C5B1668008A5A06"
+               BlueprintIdentifier = "CC5531F81DC18892002296A3"
                BuildableName = "JJMusicTests.xctest"
                BlueprintName = "JJMusicTests"
                ReferencedContainer = "container:JJMusic.xcodeproj">
@@ -42,7 +42,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "CCFFF1C91C5B1668008A5A06"
+               BlueprintIdentifier = "CC5532031DC18892002296A3"
                BuildableName = "JJMusicUITests.xctest"
                BlueprintName = "JJMusicUITests"
                ReferencedContainer = "container:JJMusic.xcodeproj">
@@ -52,7 +52,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "CCFFF1A51C5B1668008A5A06"
+            BlueprintIdentifier = "CC5531E41DC18891002296A3"
             BuildableName = "JJMusic.app"
             BlueprintName = "JJMusic"
             ReferencedContainer = "container:JJMusic.xcodeproj">
@@ -75,7 +75,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "CCFFF1A51C5B1668008A5A06"
+            BlueprintIdentifier = "CC5531E41DC18891002296A3"
             BuildableName = "JJMusic.app"
             BlueprintName = "JJMusic"
             ReferencedContainer = "container:JJMusic.xcodeproj">
@@ -94,7 +94,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "CCFFF1A51C5B1668008A5A06"
+            BlueprintIdentifier = "CC5531E41DC18891002296A3"
             BuildableName = "JJMusic.app"
             BlueprintName = "JJMusic"
             ReferencedContainer = "container:JJMusic.xcodeproj">
