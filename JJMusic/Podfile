@@ -4,4 +4,6 @@ target “JJMusic” do
 pod 'MJRefresh', '~> 3.1.12'  #下拉刷新
 pod 'JPush', '~> 2.1.9'  #JPush
 pod 'FMDB', '~> 2.6.2' #FMDB 数据库操作
+#pod 'UITableView+FDTemplateLayoutCell', '~> 1.2' #cell高度自适应
+#pod 'Kingfisher', '~> 3.1.4'
 end

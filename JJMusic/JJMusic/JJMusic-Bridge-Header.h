@@ -11,3 +11,4 @@
 #import <FMDB.h>
 #import <JPUSHService.h>
 #import <MJRefresh.h>
+#import "UITableView+FDTemplateLayoutCell.h"
