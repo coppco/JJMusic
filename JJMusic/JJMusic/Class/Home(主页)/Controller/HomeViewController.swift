@@ -47,8 +47,14 @@ class HomeViewController: UIViewController {
     }()
 
     /**我的*/
-    private lazy var myMusicV: My_HomeController = {
+    private lazy var myLocalV: My_HomeController = {
         let object = My_HomeController()
+        return object
+    }()
+
+    /**音乐*/
+    private lazy var myMusicV: Music_HomeController = {
+        let object = Music_HomeController()
         return object
     }()
 

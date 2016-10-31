@@ -8,6 +8,8 @@
 
 import Foundation
 
+let navigationColor = UIColor.colorWithHexString(hex: "0x83419b")
+
 /// 浅文字颜色
 let lightTextColor = UIColor.lightGray
 

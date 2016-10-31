@@ -12,6 +12,10 @@
 		CC2FDCE61DC6E9AB00B4624A /* MyHomeListHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2FDCE51DC6E9AB00B4624A /* MyHomeListHeaderView.swift */; };
 		CC2FDCE81DC6F05100B4624A /* MyHomeCollectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2FDCE71DC6F05100B4624A /* MyHomeCollectionHeaderView.swift */; };
 		CC2FDCEA1DC7160300B4624A /* MyHomeFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2FDCE91DC7160300B4624A /* MyHomeFooterView.swift */; };
+		CC2FDCEC1DC71C0400B4624A /* Music_HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2FDCEB1DC71C0400B4624A /* Music_HomeController.swift */; };
+		CC2FDCEE1DC71CC800B4624A /* TopTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2FDCED1DC71CC800B4624A /* TopTitleView.swift */; };
+		CC2FDCF01DC720DE00B4624A /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2FDCEF1DC720DE00B4624A /* HTTPMethod.swift */; };
+		CC2FDCF21DC7346000B4624A /* HJWheelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2FDCF11DC7346000B4624A /* HJWheelView.swift */; };
 		CC414DF21DC2F96A009F8B52 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC414DF11DC2F96A009F8B52 /* HomeViewController.swift */; };
 		CC414DF41DC2F991009F8B52 /* HomeNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC414DF31DC2F991009F8B52 /* HomeNavigationView.swift */; };
 		CC414DF61DC31F6D009F8B52 /* My_HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC414DF51DC31F6D009F8B52 /* My_HomeController.swift */; };
@@ -150,6 +154,10 @@
 		CC2FDCE51DC6E9AB00B4624A /* MyHomeListHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyHomeListHeaderView.swift; sourceTree = "<group>"; };
 		CC2FDCE71DC6F05100B4624A /* MyHomeCollectionHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyHomeCollectionHeaderView.swift; sourceTree = "<group>"; };
 		CC2FDCE91DC7160300B4624A /* MyHomeFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyHomeFooterView.swift; sourceTree = "<group>"; };
+		CC2FDCEB1DC71C0400B4624A /* Music_HomeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Music_HomeController.swift; sourceTree = "<group>"; };
+		CC2FDCED1DC71CC800B4624A /* TopTitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopTitleView.swift; sourceTree = "<group>"; };
+		CC2FDCEF1DC720DE00B4624A /* HTTPMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
+		CC2FDCF11DC7346000B4624A /* HJWheelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HJWheelView.swift; sourceTree = "<group>"; };
 		CC414DF11DC2F96A009F8B52 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		CC414DF31DC2F991009F8B52 /* HomeNavigationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeNavigationView.swift; sourceTree = "<group>"; };
 		CC414DF51DC31F6D009F8B52 /* My_HomeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = My_HomeController.swift; sourceTree = "<group>"; };
@@ -543,6 +551,7 @@
 		CCAAE3B61DC1F798000E5C29 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				CC2FDCEB1DC71C0400B4624A /* Music_HomeController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -557,6 +566,8 @@
 		CCAAE3B81DC1F798000E5C29 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				CC2FDCED1DC71CC800B4624A /* TopTitleView.swift */,
+				CC2FDCF11DC7346000B4624A /* HJWheelView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -645,6 +656,7 @@
 			isa = PBXGroup;
 			children = (
 				CCAAE3AF1DC1F517000E5C29 /* AppDefines.swift */,
+				CC2FDCEF1DC720DE00B4624A /* HTTPMethod.swift */,
 				CCAAE3B11DC1F798000E5C29 /* Home(主页) */,
 				CCAAE3B51DC1F798000E5C29 /* Music(音乐) */,
 				CCAAE3B91DC1F798000E5C29 /* My(我的) */,
@@ -656,8 +668,8 @@
 		CCD838E71DC1EA2300A44D16 /* Category */ = {
 			isa = PBXGroup;
 			children = (
-				CCD838E81DC1EA2300A44D16 /* Date */,
 				CCD838EA1DC1EA2300A44D16 /* Define */,
+				CCD838E81DC1EA2300A44D16 /* Date */,
 				CCD838ED1DC1EA2300A44D16 /* Device */,
 				CCD838EF1DC1EA2300A44D16 /* NSNumber */,
 				CCD838F11DC1EA2300A44D16 /* NSObject */,
@@ -1032,6 +1044,7 @@
 				CCD8390B1DC1EA2300A44D16 /* UIScrollView+HJExtension.swift in Sources */,
 				CC5531EB1DC18891002296A3 /* ViewController.swift in Sources */,
 				CC5531E91DC18891002296A3 /* AppDelegate.swift in Sources */,
+				CC2FDCEC1DC71C0400B4624A /* Music_HomeController.swift in Sources */,
 				CCAAE38B1DC1F449000E5C29 /* ConstraintLayoutSupportDSL.swift in Sources */,
 				CCD839161DC1EB7E00A44D16 /* RefreshHeader.swift in Sources */,
 				CCAAE36F1DC1F449000E5C29 /* Response.swift in Sources */,
@@ -1049,9 +1062,11 @@
 				CCD839021DC1EA2300A44D16 /* Defines.swift in Sources */,
 				CC414E261DC34EBD009F8B52 /* ImageCache.swift in Sources */,
 				CCAAE39D1DC1F449000E5C29 /* LayoutConstraintItem.swift in Sources */,
+				CC2FDCEE1DC71CC800B4624A /* TopTitleView.swift in Sources */,
 				CCAAE37E1DC1F449000E5C29 /* Constraint.swift in Sources */,
 				CC2FDCEA1DC7160300B4624A /* MyHomeFooterView.swift in Sources */,
 				CC414E251DC34EBD009F8B52 /* Image.swift in Sources */,
+				CC2FDCF01DC720DE00B4624A /* HTTPMethod.swift in Sources */,
 				CC414DF41DC2F991009F8B52 /* HomeNavigationView.swift in Sources */,
 				CCAAE3B01DC1F517000E5C29 /* AppDefines.swift in Sources */,
 				CCAAE3681DC1F449000E5C29 /* Alamofire.swift in Sources */,
@@ -1072,6 +1087,7 @@
 				CCAAE39C1DC1F449000E5C29 /* LayoutConstraint.swift in Sources */,
 				CCAAE3761DC1F449000E5C29 /* Timeline.swift in Sources */,
 				CCD839071DC1EA2300A44D16 /* String+HJExtension.swift in Sources */,
+				CC2FDCF21DC7346000B4624A /* HJWheelView.swift in Sources */,
 				CCAAE3701DC1F449000E5C29 /* ResponseSerialization.swift in Sources */,
 				CCAAE3971DC1F449000E5C29 /* ConstraintView+Extensions.swift in Sources */,
 				CCAAE3771DC1F449000E5C29 /* Validation.swift in Sources */,
