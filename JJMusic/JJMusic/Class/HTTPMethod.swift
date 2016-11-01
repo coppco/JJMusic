@@ -25,7 +25,7 @@ struct HTTP {
     /// 获取音乐-榜单
     static let getList = baseURL + "baidu.ting.billboard.billCategory&format=json&from=ios&kflag=2&channel=(null)&cuid=appstore&from=ios&version=" + musicVersion
     
-    /// K歌曲顶部图片
+    /// K歌-顶部图片
     static let KSongTopImage = baseURL + "baidu.ting.active.showList&channel=(null)&cuid=appstore&from=ios&version=" + musicVersion
     
     /// K歌-大家都在唱歌

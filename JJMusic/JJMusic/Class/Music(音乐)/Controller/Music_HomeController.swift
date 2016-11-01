@@ -18,6 +18,8 @@ class Music_HomeController: UIViewController {
     private func configUI() {
         self.view.addSubview(backgroundImageV)
         self.view.addSubview(topView)
+        self.view.addSubview(recommendV.view)
+        self.addChildViewController(recommendV)
         
         backgroundImageV.snp.makeConstraints { (make) in
             make.top.left.right.equalTo(self.view)
@@ -28,6 +30,12 @@ class Music_HomeController: UIViewController {
             make.top.equalTo(self.backgroundImageV.snp.bottom)
             make.left.right.equalTo(self.backgroundImageV)
             make.height.equalTo(44)
+        }
+        
+        recommendV.view.snp.makeConstraints { (make) in
+            make.top.equalTo(topView.snp.bottom)
+            make.left.right.equalTo(self.view)
+            make.bottom.equalTo(self.view.snp.bottom).offset(-44)
         }
     }
     
@@ -50,4 +58,11 @@ class Music_HomeController: UIViewController {
         return object
     }()
 
+    /**推荐*/
+    private lazy var recommendV: RecommendController = {
+        let object = RecommendController()
+        return object
+    }()
+
+    
 }

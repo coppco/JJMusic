@@ -4,7 +4,7 @@
 //
 //  Created by coco on 16/10/21.
 //  Copyright © 2016年 XHJ. All rights reserved.
-//
+//  顶部标题view
 
 import UIKit
 

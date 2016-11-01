@@ -38,7 +38,7 @@ class AppBottomView: UIView {
         self.addSubview(progressV)
         
         iconImageV.snp.makeConstraints { (make) in
-            make.height.width.equalTo(44)
+            make.height.width.equalTo(42)
             make.left.top.equalTo(self)
             make.bottom.equalTo(self.snp.bottom).offset(-2)
         }
