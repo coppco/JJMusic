@@ -8,7 +8,7 @@
 
 import UIKit
 
-private let durtion: TimeInterval = 2
+private let duration: TimeInterval = 3.0
 private let WheelView_Reuse_Identifier = "WheelView_Reuse_Identifier"
 class HJWheelView: UIView {
     
@@ -26,11 +26,12 @@ class HJWheelView: UIView {
     /// 初始化方法
     ///
     /// - parameter pictureArray:  图片地址数组
-    /// - parameter didSelectItem: 选择item执行的闭包
     /// - parameter isLoop:        是否轮播,默认true
+    /// - parameter duration:        轮播图默认时间
+    /// - parameter didSelectItem: 选择item执行的闭包
     ///
     /// - returns: 返回对象
-    init(pictureArray: [String], didSelectItem: didSelectClosure?, isLoop: Bool = true) {
+    init(pictureArray: [String], isLoop: Bool = true, duration: TimeInterval = duration, didSelectItem: didSelectClosure?) {
         //前面添加一张过渡图片(最后一张图片)
         var temp = [String]()
         temp.append(contentsOf: pictureArray)
@@ -78,7 +79,7 @@ class HJWheelView: UIView {
     }
     
     fileprivate func startTimer() {
-        self.timer = Timer(timeInterval: durtion, target: self, selector: #selector(HJWheelView.timer(sender:)), userInfo: nil, repeats: true)
+        self.timer = Timer(timeInterval: duration, target: self, selector: #selector(HJWheelView.timer(sender:)), userInfo: nil, repeats: true)
         RunLoop.current.add(self.timer, forMode: RunLoopMode.commonModes)
     }
     
@@ -117,7 +118,7 @@ class HJWheelView: UIView {
 
     /**定时器*/
     fileprivate lazy var timer: Timer = {
-        let object = Timer(timeInterval: durtion, target: self, selector: #selector(HJWheelView.timer(sender:)), userInfo: nil, repeats: true)
+        let object = Timer(timeInterval: duration, target: self, selector: #selector(HJWheelView.timer(sender:)), userInfo: nil, repeats: true)
         return object
     }()
     
@@ -147,7 +148,11 @@ class HJWheelView: UIView {
 
 // MARK: - UICollectionViewDelegate
 extension HJWheelView: UICollectionViewDelegate {
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let closure = self.didSelectItem {
+            closure(collectionView, indexPath)
+        }
+    }
 }
 
 // MARK: - UICollectionViewDataSource
