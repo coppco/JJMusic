@@ -20,6 +20,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = MyNavigationController(rootViewController: HomeViewController())
         window?.makeKeyAndVisible()
         window?.addSubview(playBottomView)
+        //设置这个 然后图片渲染模式为alwaysTemplate, 那么之控件的颜色都是这个颜色
+        window?.tintColor = navigationColor
         playBottomView.snp.makeConstraints { (make) in
             make.right.left.bottom.equalTo(window!)
         }

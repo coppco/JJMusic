@@ -12,12 +12,25 @@ private let duration: TimeInterval = 3.0
 private let WheelView_Reuse_Identifier = "WheelView_Reuse_Identifier"
 class HJWheelView: UIView {
     
-    typealias didSelectClosure = (UICollectionView, IndexPath) -> Void
+    typealias didSelectClosure = (UICollectionView, Int) -> Void
     /// 图片地址数组
-    fileprivate var pictureArray: [String] = [String]()
+    var pictureArray: [String] = [String]() {
+        didSet {
+            if let last = pictureArray.last {
+                pictureArray.insert(last, at: 0)
+            }
+            self.pageControl.numberOfPages = self.pictureArray.count - 1
+            self.pageControl.currentPage = 0
+            if self.isLoop {
+                self.timer.invalidate()
+                self.startTimer()
+            }
+            self.collectionView.reloadData()
+        }
+    }
     
     /// 选中item执行的闭包
-    fileprivate var didSelectItem: didSelectClosure?
+    var didSelectItem: didSelectClosure?
 
     /// 是否轮播
     fileprivate var isLoop: Bool = true
@@ -47,10 +60,12 @@ class HJWheelView: UIView {
     
     private override init(frame: CGRect) {
         super.init(frame: CGRect.zero)
+        configUI()
     }
     
     private init() {
         super.init(frame: CGRect.zero)
+        configUI()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -72,8 +87,10 @@ class HJWheelView: UIView {
         }
         
         pageControl.snp.makeConstraints { (make) in
-            make.left.right.bottom.equalTo(self).inset(UIEdgeInsetsMake(0, 0, 0, 0))
-            make.height.equalTo(30)
+            make.bottom.equalTo(self)
+            make.centerX.equalTo(self)
+            make.left.right.equalTo(self).inset(UIEdgeInsetsMake(0, 30, 0, 30))
+            make.height.equalTo(20)
         }
         
     }
@@ -112,6 +129,7 @@ class HJWheelView: UIView {
         object.currentPage = 0
         object.currentPageIndicatorImage = UIImage(named: "currentPageControl@2x")
         object.pageIndicatorImage = UIImage(named: "otherPageControl@2x")
+        object.isUserInteractionEnabled = false
         object.addTarget(self, action: #selector(HJWheelView.pageDidChange(sender:)), for: UIControlEvents.valueChanged)
         return object
     }()
@@ -150,7 +168,13 @@ class HJWheelView: UIView {
 extension HJWheelView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let closure = self.didSelectItem {
-            closure(collectionView, indexPath)
+            var index = indexPath.item
+            if index == 0 {
+                index = self.pictureArray.count - 2
+            } else {
+                index = index - 1
+            }
+            closure(collectionView, index)
         }
     }
 }
@@ -201,21 +225,16 @@ extension HJWheelView: UIScrollViewDelegate {
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let page = (scrollView.contentOffset.x - scrollView.frame.width / 2) / scrollView.frame.width
+        let offset = scrollView.contentOffset
+        let page = (offset.x - scrollView.frame.width / 2) / scrollView.frame.width
         if page < 0 {
             self.pageControl.currentPage = self.pageControl.numberOfPages - 1
         } else {
             self.pageControl.currentPage = Int(page)
         }
-    }
-    
-
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        let offset = scrollView.contentOffset
-        let page = (offset.x - scrollView.frame.width / 2) / scrollView.frame.width
-        if page <= 0 {
+        if page < -0.5 {
             scrollView.setContentOffset(CGPoint.init(x: CGFloat(self.pictureArray.count - 1) * scrollView.frame.width, y: offset.y), animated: false)
-        } else if page > CGFloat(self.pictureArray.count) - 2 {
+        } else if page > CGFloat(self.pictureArray.count) - 1.5 {
             scrollView.setContentOffset(CGPoint.init(x: 0, y: offset.y), animated: false)
         }
     }

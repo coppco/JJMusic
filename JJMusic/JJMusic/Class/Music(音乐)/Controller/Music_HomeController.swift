@@ -8,6 +8,7 @@
 
 import UIKit
 
+private let kCollectionView_cell_identify = "kCollectionView_cell_identify"
 class Music_HomeController: UIViewController {
 
     override func viewDidLoad() {
@@ -18,8 +19,10 @@ class Music_HomeController: UIViewController {
     private func configUI() {
         self.view.addSubview(backgroundImageV)
         self.view.addSubview(topView)
-        self.view.addSubview(recommendV.view)
-        self.addChildViewController(recommendV)
+        self.view.addSubview(collectionView)
+        self.addChildViewController(recommendVC)
+        self.addChildViewController(playListVC)
+        self.addChildViewController(listVC)
         
         backgroundImageV.snp.makeConstraints { (make) in
             make.top.left.right.equalTo(self.view)
@@ -32,9 +35,9 @@ class Music_HomeController: UIViewController {
             make.height.equalTo(44)
         }
         
-        recommendV.view.snp.makeConstraints { (make) in
-            make.top.equalTo(topView.snp.bottom)
+        self.collectionView.snp.makeConstraints { (make) in
             make.left.right.equalTo(self.view)
+            make.top.equalTo(self.topView.snp.bottom)
             make.bottom.equalTo(self.view.snp.bottom).offset(-44)
         }
     }
@@ -51,18 +54,89 @@ class Music_HomeController: UIViewController {
     }()
 
     /**顶部标题栏*/
-    private lazy var topView: TopTitleView = {
-        let object = TopTitleView(titleArray: ["推荐", "歌单", "榜单", "K歌"], didClickedTitle: { (title, index) in
-            
+    fileprivate lazy var topView: TopTitleView = {
+        let object = TopTitleView(titleArray: ["推荐", "歌单", "榜单", "K歌"], isAddButton: false, didClickedTitle: {[weak self] (identify_string, index) in
+            self?.collectionView.setContentOffset(CGPoint.init(x: CGFloat(index) * kMainScreenWidth, y: 0), animated: false)
+            }, didClickedEdit: { 
+                
         })
         return object
     }()
 
     /**推荐*/
-    private lazy var recommendV: RecommendController = {
+    fileprivate lazy var recommendVC: RecommendController = {
         let object = RecommendController()
         return object
     }()
 
+    /// 歌单
+    fileprivate lazy var playListVC: PlayListController = {
+        let object = PlayListController()
+        return object
+    }()
     
+    /// 榜单
+    fileprivate lazy var listVC: ListCollectionVController = {
+        let object = ListCollectionVController()
+        return object
+    }()
+
+    
+    /// collectionView
+    fileprivate lazy var collectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.minimumLineSpacing = 0
+        layout.minimumInteritemSpacing = 0
+        layout.sectionInset = UIEdgeInsets.zero
+        layout.scrollDirection = .horizontal
+        layout.itemSize = CGSize(width: self.view.frame.width, height: self.view.frame.height - 44 - 44 - 64)
+        let object = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
+        object.register(UICollectionViewCell.self, forCellWithReuseIdentifier: kCollectionView_cell_identify)
+        object.backgroundColor = UIColor.white
+        object.isPagingEnabled = true
+        object.showsVerticalScrollIndicator = false
+        object.showsHorizontalScrollIndicator = false
+        object.delegate = self
+        object.dataSource = self
+        return object
+    }()
+}
+
+// MARK: - UICollectionViewDelegate
+extension Music_HomeController: UICollectionViewDelegate {
+}
+
+// MARK: - UICollectionViewDataSource
+extension Music_HomeController: UICollectionViewDataSource {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 4
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: kCollectionView_cell_identify, for: indexPath)
+        if indexPath.item == 0 {
+            cell.backgroundView = self.recommendVC.view
+        } else if indexPath.item == 1 {
+            cell.backgroundView = self.playListVC.view
+        } else if indexPath.item == 2 {
+            cell.backgroundView = self.listVC.view
+        }
+        if let backV = cell.backgroundView {
+            cell.bringSubview(toFront: backV)
+        }
+        return cell
+    }
+}
+
+// MARK: - UIScrollViewDelegate
+extension Music_HomeController: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let offset = scrollView.contentOffset
+        let page = (offset.x - scrollView.frame.width / 2) / scrollView.frame.width
+//        let page = scrollView.contentOffset.x / scrollView.width
+        self.topView.shouldScrollToCurrentLocation(index: Int(ceil(page)))
+    }
 }

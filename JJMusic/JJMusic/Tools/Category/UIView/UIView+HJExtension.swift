@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-// MARK: - Property
+// MARK: - Property属性
 extension UIView {
     /// x值
     var x: CGFloat {
@@ -139,7 +139,7 @@ extension UIView {
 }
 
 
-// MARK: - Function
+// MARK: - Function函数
 extension UIView {
     
     /// 视图快照
@@ -189,4 +189,66 @@ extension UIView {
         self.layer.rasterizationScale = UIScreen.main.scale
     }
 
+    /**只有设置了autoLayout的才可以*/
+    func hj_autoLayoutSize(width: CGFloat) -> CGSize {
+            let widthFenceConstraint = NSLayoutConstraint(item: self, attribute: NSLayoutAttribute.width, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1.0, constant: width)
+            self.addConstraint(widthFenceConstraint)
+            let size = self.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
+        self.removeConstraint(widthFenceConstraint)
+            return size
+    }
+}
+
+// MARK: - Animation动画
+extension UIView {
+    enum AnimationType {
+        case big, small
+    }
+    
+    /// 摇动
+    ///
+    /// - parameter duration: 动画持续时间
+    func animation_shaked(duration: TimeInterval = 0.8) {
+        let layer = self.layer
+        let point = layer.position
+        let left = CGPoint(x: point.x - 10, y: point.y)
+        let right = CGPoint(x: point.x + 10, y: point.y)
+        
+        let animation = CABasicAnimation(keyPath: "position")
+        animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+        animation.fromValue = left
+        animation.toValue = right
+        animation.autoreverses = true //平滑结束
+        animation.duration = duration
+        animation.repeatCount = 3
+        animation.isRemovedOnCompletion = true
+        layer.add(animation, forKey: nil)
+    }
+    
+    /// 放大或者缩小一个视图
+    ///
+    /// - parameter animationType: 放大或者缩小
+    /// - parameter isRotate:      是否旋转
+    func animation_zoomed(animationType: AnimationType, isRotate: Bool = false, duration: TimeInterval = 0.5) {
+        if isRotate {
+            self.transform = self.transform.rotated(by: CGFloat(M_1_PI))
+        }
+        //缩放
+        let scale = CABasicAnimation(keyPath: "transform.scale")
+        if animationType == .big {
+            scale.fromValue = NSNumber(value: 1.0)
+            scale.toValue = NSNumber(value: 2.0)
+        } else if animationType == .small {
+            scale.fromValue = NSNumber(value: 1.0)
+            scale.toValue = NSNumber(value: 0.0)
+        }
+        //透明度
+        let opacity = CABasicAnimation(keyPath: "opacity")
+        opacity.fromValue = NSNumber(value: 1.0)
+        opacity.toValue = NSNumber(value: 0.0)
+        //组动画
+        let group = CAAnimationGroup()
+        group.animations = [scale, opacity]
+        group.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+    }
 }

@@ -10,9 +10,9 @@ import Foundation
 import UIKit
 
 /*
- OS_ACTIVITY_MODE disable   
- -D DEBUG
- 添加桥接文件header   #import <CommonCrypto/CommonHMAC.h>
+ OS_ACTIVITY_MODE disable   Xcode8取消打印
+ -D DEBUG   Swift 添加一个DEBUG宏
+ 加密:添加桥接文件header   #import <CommonCrypto/CommonHMAC.h>
  */
 
 /// 全局代理
@@ -129,28 +129,6 @@ func appVersion() -> String {
 /// - returns: 返回一个字符串
 func appBuildVersion() -> String {
     return Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as! String
-}
-
-
-//判断数组是否为空
-public func ArrayIsNull(_ array:[AnyObject]?) ->Bool{
-    if array?.count == 0 || array == nil {
-        return true
-    }
-    return false
-}
-
-
-//将时间戳转化为日期/时间
-public func TransToTimeStamp(time:NSNumber?,format:String) -> String{
-    let timeStampString = time
-    let _interval = timeStampString?.doubleValue
-    let dateForm = NSDate.init(timeIntervalSince1970: _interval!)
-    let dateFormatter = DateFormatter()
-    dateFormatter.timeStyle = .short
-    dateFormatter.dateFormat = format
-    let currentStr = dateFormatter.string(from: dateForm as Date)
-    return currentStr
 }
 
 

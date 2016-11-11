@@ -20,6 +20,7 @@ class MyHomeTCell: UITableViewCell {
             if let arrow = cellData?.rightIcomName {
                 self.arrowImageV.image = UIImage(named: arrow)
             }
+            
         }
     }
     
@@ -106,7 +107,6 @@ class MyHomeTCell: UITableViewCell {
     /**图标*/
     private lazy var iconImageV: UIImageView = {
         let object = UIImageView(image: #imageLiteral(resourceName: "ic_mymusic_guss"))
-        object.backgroundColor = UIColor.colorWithHexString(hex: "0x83419b")
         return object
     }()
     
@@ -140,4 +140,9 @@ class MyHomeTCell: UITableViewCell {
         object.backgroundColor = UIColor.colorWithRGB(r: 239, g: 239, b: 239)
         return object
     }()
+    
+    //渲染颜色变化的时候, 设置图片的背景颜色
+    override func tintColorDidChange() {
+        self.iconImageV.backgroundColor = self.tintColor
+    }
 }

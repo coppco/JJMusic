@@ -426,7 +426,7 @@ extension Kingfisher where Base: Image {
     ///
     /// - returns: An image with blur effect applied.
     ///
-    /// - Note: This method only works for CG-based image.
+    /// - Note: This method only works for CG-based imacge.
     public func blurred(withRadius radius: CGFloat) -> Image {
         #if os(watchOS)
             return base

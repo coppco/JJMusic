@@ -67,7 +67,8 @@ public protocol HandyJSON: Property {
 }
 
 public extension HandyJSON {
-    public mutating func mapping(mapper: HelpingMapper) {}
+    public mutating func mapping(mapper: HelpingMapper) {
+    }
 }
 
 protocol BasePropertyProtocol: HandyJSON {
@@ -177,7 +178,6 @@ extension Property {
             }
 
             var key = label
-
             if let converter = mapper.getNameAndConverter(key: mutablePointer.hashValue) {
                 // if specific key is set, replace the label
                 if let specifyKey = converter.0 {
@@ -186,7 +186,8 @@ extension Property {
 
                 // if specific converter is set, use it the assign value to the property
                 if let specifyConverter = converter.1 {
-                    if let ocValue = (dict[key] as? NSObject)?.toStringForcedly() {
+                    
+                    if let ocValue = (dict.value(forKeyPath: key) as? NSObject)?.toStringForcedly() {
                         specifyConverter(ocValue)
                     }
 
@@ -196,7 +197,7 @@ extension Property {
                 }
             }
 
-            guard let value = dict[key] as? NSObject else {
+            guard let value = dict.value(forKeyPath: key) as? NSObject else {
                 mutablePointer = mutablePointer.advanced(by: size)
                 currentOffset += size
                 return

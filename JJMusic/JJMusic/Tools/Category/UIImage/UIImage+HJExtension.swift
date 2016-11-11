@@ -96,9 +96,29 @@ extension UIImage {
         let newRef = imageRef.cropping(to: smallBounds)
         UIGraphicsBeginImageContext(smallBounds.size)
         let context = UIGraphicsGetCurrentContext()
-        context?.draw(newRef!, in: CGRect(origin: CGPoint(x: 0, y: 0), size: smallSize)    )
+        context?.draw(newRef!, in: CGRect(origin: CGPoint(x: 0, y: 0), size: smallSize))
         let smallImage = UIImage(cgImage: newRef!)
         UIGraphicsEndImageContext()
         return smallImage
     }
+    
+//    //改变图片颜色
+//    func tintColor(<#parameters#>) -> <#return type#> {
+//        <#function body#>
+//    }
+//    - (UIImage *)imageWithColor:(UIColor *)color
+//    {
+//    UIGraphicsBeginImageContextWithOptions(self.size, NO, self.scale);
+//    CGContextRefcontext = UIGraphicsGetCurrentContext();
+//    CGContextTranslateCTM(context, 0, self.size.height);
+//    CGContextScaleCTM(context, 1.0, -1.0);
+//    CGContextSetBlendMode(context, kCGBlendModeNormal);
+//    CGRect rect = CGRectMake(0, 0, self.size.width, self.size.height);
+//    CGContextClipToMask(context, rect, self.CGImage);
+//    [color setFill];
+//    CGContextFillRect(context, rect);
+//    UIImage*newImage = UIGraphicsGetImageFromCurrentImageContext();
+//    UIGraphicsEndImageContext();
+//    return newImage;
+//    }
 }

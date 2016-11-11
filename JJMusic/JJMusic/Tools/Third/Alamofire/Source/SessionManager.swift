@@ -47,7 +47,6 @@ open class SessionManager {
     /// directly for any ad hoc requests.
     open static let `default`: SessionManager = {
         let configuration = URLSessionConfiguration.default
-        configuration.timeoutIntervalForRequest = 20
         configuration.httpAdditionalHeaders = SessionManager.defaultHTTPHeaders
 
         return SessionManager(configuration: configuration)

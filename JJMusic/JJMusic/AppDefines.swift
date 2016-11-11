@@ -18,3 +18,16 @@ let normalTextColor = UIColor.black
 
 /// 线颜色
 let lightLineColor = UIColor.colorWithRGB(r: 244, g: 244, b: 244)
+
+
+/// 左右间距
+let itemLeftRight: CGFloat = 15
+
+/// 上下间距
+let topBottom: CGFloat = 10
+
+/// x轴间距
+let spacingX: CGFloat = 10
+
+/// y轴间距
+let spacingY: CGFloat = 10
