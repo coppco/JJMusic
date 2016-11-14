@@ -39,7 +39,7 @@ class Music_HomeController: UIViewController {
         self.collectionView.snp.makeConstraints { (make) in
             make.left.right.equalTo(self.view)
             make.top.equalTo(self.topView.snp.bottom)
-            make.bottom.equalTo(self.view.snp.bottom).offset(-44)
+            make.bottom.equalTo(self.view.snp.bottom)
         }
     }
     

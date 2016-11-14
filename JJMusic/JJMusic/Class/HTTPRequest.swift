@@ -90,7 +90,6 @@ class HTTPRequestModel<T: HandyJSON>: HTTPRequest {
         let dataRequest = request(URLString, method: method, parameters: parameters, encoding: encoding, headers: headers)
 
         dataRequest.responseJSON { (response) in
-            HHLog(response.request?.url?.absoluteString)
             switch response.result {
             case .success:
                 if let data = response.result.value {

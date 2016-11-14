@@ -17,17 +17,21 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // MARK: 
+        self.edgesForExtendedLayout = .init(rawValue: 0) //默认情况下,如果是导航栏从导航栏下面开始布局, 设置为0取消这个设置
+        self.view.addSubview(collectionView)
+        self.addChildViewController(myMusicV)
+        self.addChildViewController(myLocalV)
+        self.addChildViewController(trendsV)
+        collectionView.snp.makeConstraints { (make) in
+            make.top.left.right.equalTo(0)
+            make.bottom.equalTo(self.view.snp.bottom).offset(-44)
+        }
+        
         self.view.addSubview(navigationV)
         navigationV.snp.makeConstraints { (make) in
-            make.top.right.left.equalTo(self.view)
+            make.top.right.left.equalTo(self.collectionView)
         }
-        
-        self.view.addSubview(myMusicV.view)
-        self.addChildViewController(myMusicV)
-        myMusicV.view.snp.makeConstraints { (make) in
-            make.edges.equalTo(self.view)
-        }
-        
         self.view.bringSubview(toFront: navigationV)
     }
 
@@ -43,20 +47,77 @@ class HomeViewController: UIViewController {
     
     /**导航栏*/
     private lazy var navigationV: HomeNavigationView = {
-        return HomeNavigationView.shared
+        let object = HomeNavigationView.shared
+        object.didSelectedButton = {[weak self] index in
+            let offset = self?.collectionView.contentOffset
+            self?.collectionView.contentOffset = CGPoint(x: CGFloat(index) * kMainScreenWidth, y: offset?.y ?? 0)
+        }
+        return object
     }()
 
+    /// collectionView
+    fileprivate lazy var collectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.itemSize = CGSize(width: self.view.frame.width, height: self.view.frame.height - 44)
+        layout.minimumLineSpacing = 0
+        layout.minimumInteritemSpacing = 0
+        layout.sectionInset = .zero
+        layout.scrollDirection = .horizontal
+        let object = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
+        object.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
+        object.backgroundColor = UIColor.white
+        object.isPagingEnabled = true
+        object.delegate = self
+        object.dataSource = self
+        object.showsVerticalScrollIndicator = false
+        object.showsHorizontalScrollIndicator = false
+        return object
+    }()
+
+    
     /**我的*/
-    private lazy var myLocalV: My_HomeController = {
+    fileprivate lazy var myLocalV: My_HomeController = {
         let object = My_HomeController()
         return object
     }()
 
     /**音乐*/
-    private lazy var myMusicV: Music_HomeController = {
+    fileprivate lazy var myMusicV: Music_HomeController = {
         let object = Music_HomeController()
         return object
     }()
 
+    /// 动态
+    fileprivate lazy var trendsV: TrendsController = {
+        let object = TrendsController()
+        return object
+    }()
+
+}
+
+extension HomeViewController: UICollectionViewDataSource {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 3
+    }
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 1
+    }
     
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
+        if indexPath.section == 0 {
+            cell.backgroundView = self.myLocalV.view
+        } else if indexPath.section == 1{
+            cell.backgroundView = self.myMusicV.view
+        } else if indexPath.section == 2 {
+            cell.backgroundView = self.trendsV.view
+        }
+        if let backV = cell.backgroundView {
+            cell.bringSubview(toFront: backV)
+        }
+        return cell
+    }
+}
+
+extension HomeViewController: UICollectionViewDelegate {
 }

@@ -38,7 +38,8 @@ class My_HomeController: UIViewController {
         }
         
         tableView.snp.makeConstraints { (make) in
-            make.edges.equalTo(UIEdgeInsetsMake(64, 0, 44, 0))
+            make.top.equalTo(self.view.snp.top).offset(64)
+            make.left.right.bottom.equalTo(self.view)
         }
     }
     
@@ -69,7 +70,7 @@ class My_HomeController: UIViewController {
         object.sectionHeaderHeight = 0
         object.sectionFooterHeight = 0
         object.backgroundColor = UIColor.clear
-        object.contentInset = UIEdgeInsetsMake(150, 0, 0, 0)
+        object.contentInset = UIEdgeInsetsMake(60, 0, 0, 0)
         return object
     }()
 }

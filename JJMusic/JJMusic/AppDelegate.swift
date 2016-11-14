@@ -24,6 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.tintColor = navigationColor
         playBottomView.snp.makeConstraints { (make) in
             make.right.left.bottom.equalTo(window!)
+            make.height.equalTo(44)
         }
         return true
     }

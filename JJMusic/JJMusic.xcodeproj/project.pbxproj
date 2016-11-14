@@ -154,6 +154,7 @@
 		CCEE1A711DD95E74003C68B8 /* TopImageCCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEE1A701DD95E74003C68B8 /* TopImageCCell.swift */; };
 		CCEE1A731DD95FE4003C68B8 /* CategoryCCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEE1A721DD95FE4003C68B8 /* CategoryCCell.swift */; };
 		CCEE1A751DD96675003C68B8 /* MyKSongCCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEE1A741DD96675003C68B8 /* MyKSongCCell.swift */; };
+		CCEE1A771DD9AE7D003C68B8 /* TrendsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEE1A761DD9AE7D003C68B8 /* TrendsController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -336,6 +337,7 @@
 		CCEE1A701DD95E74003C68B8 /* TopImageCCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopImageCCell.swift; sourceTree = "<group>"; };
 		CCEE1A721DD95FE4003C68B8 /* CategoryCCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryCCell.swift; sourceTree = "<group>"; };
 		CCEE1A741DD96675003C68B8 /* MyKSongCCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyKSongCCell.swift; sourceTree = "<group>"; };
+		CCEE1A761DD9AE7D003C68B8 /* TrendsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrendsController.swift; sourceTree = "<group>"; };
 		DA90285DD8E6C5797D5B40E0 /* libPods-JJMusic.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JJMusic.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -897,6 +899,7 @@
 		CCAAE3BE1DC1F798000E5C29 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				CCEE1A761DD9AE7D003C68B8 /* TrendsController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1341,6 +1344,7 @@
 				CC2FDCE61DC6E9AB00B4624A /* MyHomeListHeaderView.swift in Sources */,
 				CC732AFA1DD2C2E100532979 /* Validation.swift in Sources */,
 				CC414E221DC34EBD009F8B52 /* Box.swift in Sources */,
+				CCEE1A771DD9AE7D003C68B8 /* TrendsController.swift in Sources */,
 				CC414E041DC339C3009F8B52 /* UITableView+FDIndexPathHeightCache.m in Sources */,
 				CC732AF91DD2C2E100532979 /* Timeline.swift in Sources */,
 				CC414E051DC339C3009F8B52 /* UITableView+FDKeyedHeightCache.m in Sources */,

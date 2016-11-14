@@ -50,8 +50,7 @@ class MyKSongCCell: UICollectionViewCell {
     /// imageV
     fileprivate lazy var imageV: UIImageView = {
         let object = UIImageView()
-        object.image = UIImage(named: "bt_k_k_normail")
-        object.backgroundColor = navigationColor
+        object.image = UIImage(named: "bt_more_ok_normal")
         return object
     }()
     
