@@ -9,7 +9,7 @@
 import UIKit
 
 private let reuseIdentifier = "Cell"
-
+private let reuseIdentifier_header = "reuseIdentifier_header"
 class ListCollectionVController: UICollectionViewController {
 
     init() {
@@ -33,14 +33,14 @@ class ListCollectionVController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.collectionView?.backgroundColor = UIColor.white
+        self.collectionView?.backgroundColor = UIColor.colorWithRGB(r: 246, g: 246, b: 246)
         getListData()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Register cell classes
         self.collectionView!.register(ListCCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-
+        self.collectionView!.register(UICollectionReusableView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: reuseIdentifier_header)
         // Do any additional setup after loading the view.
     }
     
@@ -74,6 +74,13 @@ class ListCollectionVController: UICollectionViewController {
         return cell
     }
 
+    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+            let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: reuseIdentifier_header, for: indexPath)
+            header.backgroundColor = UIColor.colorWithRGB(r: 246, g: 246, b: 246
+            )
+            return header
+    }
+    
     // MARK: UICollectionViewDelegate
 
     /*

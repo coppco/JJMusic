@@ -12,17 +12,17 @@ class ListCCell: UICollectionViewCell {
     
     var listVo: ListVo? {
         didSet {
-            if let icon = listVo?.pic_s444 {
+            if let icon = listVo?.pic_s192 {
                 self.imageV.kf.setImage(with: URL(string: icon))
             }
             if let listSong = listVo?.content {
                 for (index, item) in listSong.enumerated() {
                     if index == 0 {
-                        self.firstL.text = (item.title ?? "") + "  -  " + (item.author ?? "")
+                        self.firstL.text = (item.title ?? "") + " - " + (item.author ?? "")
                     } else if index == 1 {
-                        self.secondL.text = (item.title ?? "") + "  -  " + (item.author ?? "")
+                        self.secondL.text = (item.title ?? "") + " - " + (item.author ?? "")
                     } else if index == 2 {
-                        self.thirdL.text = (item.title ?? "") + "  -  " + (item.author ?? "")
+                        self.thirdL.text = (item.title ?? "") + " - " + (item.author ?? "")
                     } else {
                         break
                     }
@@ -45,7 +45,20 @@ class ListCCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    
+    /// 监听高亮
+    override var isHighlighted: Bool {
+        didSet {
+            if isHighlighted == true {
+                self.backgroundColor = UIColor.colorWithRGB(r: 246, g: 246, b: 246)
+            } else {
+                self.backgroundColor = UIColor.white
+            }
+        }
+    }
+    
     private func configUI() {
+        self.backgroundColor = .white
         self.contentView.addSubview(imageV)
         self.contentView.addSubview(firstL)
         self.contentView.addSubview(secondL)
@@ -87,14 +100,14 @@ class ListCCell: UICollectionViewCell {
     fileprivate lazy var firstL: UILabel = {
         let object = UILabel()
         object.textColor = UIColor.black
-        object.font = .systemFont(ofSize: 13)
+        object.font = .systemFont(ofSize: 12)
         return object
     }()
     /// secondL
     fileprivate lazy var secondL: UILabel = {
         let object = UILabel()
         object.textColor = UIColor.black
-        object.font = .systemFont(ofSize: 13)
+        object.font = .systemFont(ofSize: 12)
         return object
     }()
 
@@ -102,7 +115,7 @@ class ListCCell: UICollectionViewCell {
     fileprivate lazy var thirdL: UILabel = {
         let object = UILabel()
         object.textColor = UIColor.black
-        object.font = .systemFont(ofSize: 13)
+        object.font = .systemFont(ofSize: 12)
         return object
     }()
 

@@ -60,6 +60,7 @@
 		CC5531F31DC18892002296A3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC5531F11DC18892002296A3 /* LaunchScreen.storyboard */; };
 		CC5531FE1DC18892002296A3 /* JJMusicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5531FD1DC18892002296A3 /* JJMusicTests.swift */; };
 		CC5532091DC18892002296A3 /* JJMusicUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5532081DC18892002296A3 /* JJMusicUITests.swift */; };
+		CC6FB2C61DD5CB9D00F0285F /* KSongCollectionVController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6FB2C51DD5CB9D00F0285F /* KSongCollectionVController.swift */; };
 		CC732AEA1DD2C2E100532979 /* AFError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC732AD71DD2C2E100532979 /* AFError.swift */; };
 		CC732AEB1DD2C2E100532979 /* Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC732AD81DD2C2E100532979 /* Alamofire.swift */; };
 		CC732AEC1DD2C2E100532979 /* DispatchQueue+Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC732AD91DD2C2E100532979 /* DispatchQueue+Alamofire.swift */; };
@@ -149,6 +150,10 @@
 		CCE73AB31DD5A5AF004BB8A8 /* ListCollectionVController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE73AB21DD5A5AF004BB8A8 /* ListCollectionVController.swift */; };
 		CCE73AB51DD5AAB6004BB8A8 /* ListVo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE73AB41DD5AAB6004BB8A8 /* ListVo.swift */; };
 		CCE73AB71DD5B110004BB8A8 /* ListCCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE73AB61DD5B110004BB8A8 /* ListCCell.swift */; };
+		CCEE1A6F1DD946FB003C68B8 /* KSong.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEE1A6E1DD946FB003C68B8 /* KSong.swift */; };
+		CCEE1A711DD95E74003C68B8 /* TopImageCCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEE1A701DD95E74003C68B8 /* TopImageCCell.swift */; };
+		CCEE1A731DD95FE4003C68B8 /* CategoryCCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEE1A721DD95FE4003C68B8 /* CategoryCCell.swift */; };
+		CCEE1A751DD96675003C68B8 /* MyKSongCCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEE1A741DD96675003C68B8 /* MyKSongCCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -234,6 +239,7 @@
 		CC5532041DC18892002296A3 /* JJMusicUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JJMusicUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC5532081DC18892002296A3 /* JJMusicUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JJMusicUITests.swift; sourceTree = "<group>"; };
 		CC55320A1DC18892002296A3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CC6FB2C51DD5CB9D00F0285F /* KSongCollectionVController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KSongCollectionVController.swift; sourceTree = "<group>"; };
 		CC732AD71DD2C2E100532979 /* AFError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AFError.swift; sourceTree = "<group>"; };
 		CC732AD81DD2C2E100532979 /* Alamofire.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alamofire.swift; sourceTree = "<group>"; };
 		CC732AD91DD2C2E100532979 /* DispatchQueue+Alamofire.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+Alamofire.swift"; sourceTree = "<group>"; };
@@ -326,6 +332,10 @@
 		CCE73AB21DD5A5AF004BB8A8 /* ListCollectionVController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListCollectionVController.swift; sourceTree = "<group>"; };
 		CCE73AB41DD5AAB6004BB8A8 /* ListVo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListVo.swift; sourceTree = "<group>"; };
 		CCE73AB61DD5B110004BB8A8 /* ListCCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListCCell.swift; sourceTree = "<group>"; };
+		CCEE1A6E1DD946FB003C68B8 /* KSong.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KSong.swift; sourceTree = "<group>"; };
+		CCEE1A701DD95E74003C68B8 /* TopImageCCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopImageCCell.swift; sourceTree = "<group>"; };
+		CCEE1A721DD95FE4003C68B8 /* CategoryCCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryCCell.swift; sourceTree = "<group>"; };
+		CCEE1A741DD96675003C68B8 /* MyKSongCCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyKSongCCell.swift; sourceTree = "<group>"; };
 		DA90285DD8E6C5797D5B40E0 /* libPods-JJMusic.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JJMusic.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -396,6 +406,7 @@
 		CC2FDD0B1DC753A200B4624A /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				CC6FB2C51DD5CB9D00F0285F /* KSongCollectionVController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -403,6 +414,7 @@
 		CC2FDD0C1DC753A200B4624A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				CCEE1A6E1DD946FB003C68B8 /* KSong.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -410,6 +422,9 @@
 		CC2FDD0D1DC753A200B4624A /* View */ = {
 			isa = PBXGroup;
 			children = (
+				CCEE1A701DD95E74003C68B8 /* TopImageCCell.swift */,
+				CCEE1A741DD96675003C68B8 /* MyKSongCCell.swift */,
+				CCEE1A721DD95FE4003C68B8 /* CategoryCCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1291,6 +1306,7 @@
 				CC50154B1DD1C9C8003A8E71 /* Identify.swift in Sources */,
 				CCAAE3961DC1F449000E5C29 /* ConstraintRelation.swift in Sources */,
 				CC2FDCE41DC6D96600B4624A /* MyHomeIconHeaderView.swift in Sources */,
+				CCEE1A6F1DD946FB003C68B8 /* KSong.swift in Sources */,
 				CC414E271DC34EBD009F8B52 /* ImageDownloader.swift in Sources */,
 				CCD839081DC1EA2300A44D16 /* UIBarButtonItem+HJExtension.swift in Sources */,
 				CCAAE38D1DC1F449000E5C29 /* ConstraintMakerEditable.swift in Sources */,
@@ -1317,6 +1333,7 @@
 				CC2FDCEC1DC71C0400B4624A /* Music_HomeController.swift in Sources */,
 				CCAAE38B1DC1F449000E5C29 /* ConstraintLayoutSupportDSL.swift in Sources */,
 				CCD839161DC1EB7E00A44D16 /* RefreshHeader.swift in Sources */,
+				CCEE1A751DD96675003C68B8 /* MyKSongCCell.swift in Sources */,
 				CC2FDCF71DC7387000B4624A /* HJWheelView.swift in Sources */,
 				CCAAE38C1DC1F449000E5C29 /* ConstraintMaker.swift in Sources */,
 				CCAAE38E1DC1F449000E5C29 /* ConstraintMakerExtendable.swift in Sources */,
@@ -1359,6 +1376,7 @@
 				CCAAE3911DC1F449000E5C29 /* ConstraintMakerRelatable.swift in Sources */,
 				CCAAE39A1DC1F449000E5C29 /* Debugging.swift in Sources */,
 				CC732AEA1DD2C2E100532979 /* AFError.swift in Sources */,
+				CC6FB2C61DD5CB9D00F0285F /* KSongCollectionVController.swift in Sources */,
 				CC732B001DD2D0E700532979 /* BaseData.swift in Sources */,
 				CCAAE3C21DC1F7CB000E5C29 /* AppBottomView.swift in Sources */,
 				CCAAE39C1DC1F449000E5C29 /* LayoutConstraint.swift in Sources */,
@@ -1371,6 +1389,7 @@
 				CC50154C1DD1C9C8003A8E71 /* MangerView.swift in Sources */,
 				CC414E061DC339C3009F8B52 /* UITableView+FDTemplateLayoutCell.m in Sources */,
 				CCAAE3941DC1F449000E5C29 /* ConstraintPriorityTarget.swift in Sources */,
+				CCEE1A711DD95E74003C68B8 /* TopImageCCell.swift in Sources */,
 				CCD8390A1DC1EA2300A44D16 /* UIImage+HJExtension.swift in Sources */,
 				CC414E211DC34EBD009F8B52 /* AnimatedImageView.swift in Sources */,
 				CCAAE39E1DC1F449000E5C29 /* UILayoutSupport+Extensions.swift in Sources */,
@@ -1379,6 +1398,7 @@
 				CC414E2F1DC34EBD009F8B52 /* KingfisherOptionsInfo.swift in Sources */,
 				CCAAE3921DC1F449000E5C29 /* ConstraintMultiplierTarget.swift in Sources */,
 				CC732AEE1DD2C2E100532979 /* NetworkReachabilityManager.swift in Sources */,
+				CCEE1A731DD95FE4003C68B8 /* CategoryCCell.swift in Sources */,
 				CCAAE3981DC1F449000E5C29 /* ConstraintView.swift in Sources */,
 				CC414E2E1DC34EBD009F8B52 /* KingfisherManager.swift in Sources */,
 				CCD839011DC1EA2300A44D16 /* Date+HJExtension.swift in Sources */,
@@ -1571,6 +1591,7 @@
 			baseConfigurationReference = 080A427AD6854F6BB0D15106 /* Pods-JJMusic.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				DEVELOPMENT_TEAM = 3Y92XXLNT8;
 				INFOPLIST_FILE = JJMusic/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -1589,6 +1610,7 @@
 			baseConfigurationReference = A33AEA95FF50755F8D0E626A /* Pods-JJMusic.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				DEVELOPMENT_TEAM = 3Y92XXLNT8;
 				INFOPLIST_FILE = JJMusic/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;

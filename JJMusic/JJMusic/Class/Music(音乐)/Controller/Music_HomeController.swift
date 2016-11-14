@@ -23,6 +23,7 @@ class Music_HomeController: UIViewController {
         self.addChildViewController(recommendVC)
         self.addChildViewController(playListVC)
         self.addChildViewController(listVC)
+        self.addChildViewController(kSongVC)
         
         backgroundImageV.snp.makeConstraints { (make) in
             make.top.left.right.equalTo(self.view)
@@ -80,6 +81,13 @@ class Music_HomeController: UIViewController {
         let object = ListCollectionVController()
         return object
     }()
+    
+    /// k歌
+    fileprivate lazy var kSongVC: KSongCollectionVController = {
+        let object = KSongCollectionVController()
+        return object
+    }()
+
 
     
     /// collectionView
@@ -123,6 +131,8 @@ extension Music_HomeController: UICollectionViewDataSource {
             cell.backgroundView = self.playListVC.view
         } else if indexPath.item == 2 {
             cell.backgroundView = self.listVC.view
+        } else if indexPath.item == 3 {
+            cell.backgroundView = self.kSongVC.view
         }
         if let backV = cell.backgroundView {
             cell.bringSubview(toFront: backV)

@@ -41,6 +41,22 @@ class RecsongCCell: UICollectionViewCell {
             self.leftB.isUserInteractionEnabled = true
         }
     }
+    
+    // K歌
+    var kSongVo: KSongVo? {
+        didSet {
+            self.backgroundColor = UIColor.white
+            if let icon = kSongVo?.picture_300_300 {
+                self.imageV.kf.setImage(with: URL.init(string: icon))
+            }
+            self.titleL.text = (kSongVo?.song_title ?? "") + " - " + (kSongVo?.artist_name ?? "")
+            self.subTitleL.text = (kSongVo?.play_num ?? "0") + "人唱过"
+            self.leftB.setImage(UIImage.init(named: "bt_k_k_normail"), for: UIControlState.normal)
+            self.leftB.setImage(UIImage.init(named: "bt_k_k_press"), for: UIControlState.highlighted)
+            self.leftB.isUserInteractionEnabled = true
+        }
+    }
+    
     /// 监听高亮
     override var isHighlighted: Bool {
         didSet {

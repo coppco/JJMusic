@@ -347,7 +347,7 @@ extension RecommendController: UICollectionViewDataSource {
 }
     /// 表头表尾
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        if kind == UICollectionElementKindSectionHeader && indexPath.section != 0 && indexPath.section != 1{
+        if kind == UICollectionElementKindSectionHeader && indexPath.section != 0 && indexPath.section != 1 {
             let view = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: kCollectionView_header_identify, for: indexPath) as! MusicCHeaderView
             view.moduleVo = self.recommendData?.module?[indexPath.section]
             return view

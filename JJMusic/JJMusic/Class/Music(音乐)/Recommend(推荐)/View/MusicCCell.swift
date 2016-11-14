@@ -15,7 +15,7 @@ class MusicCCell: UICollectionViewCell {
         self.imageV.image = nil
         self.titleL.text = ""
         self.subTitleL.text = nil
-        self.subTitleL.isHidden = true
+        self.subTitleL.isHidden = false
         self.maskV.isHidden = true
     }
     
@@ -91,7 +91,7 @@ class MusicCCell: UICollectionViewCell {
             }
             self.titleL.text = diyInfo?.title
             self.subTitleL.isHidden = false
-            self.subTitleL.text = (diyInfo?.username == nil || diyInfo?.username?.characters.count == 0) ? "" : "By" + (diyInfo?.username)!
+            self.subTitleL.text = (diyInfo?.username == nil || diyInfo?.username?.characters.count == 0) ? "" : "By " + (diyInfo?.username)!
         }
     }
     
