@@ -25,18 +25,18 @@ class Music_HomeController: UIViewController {
         self.addChildViewController(listVC)
         self.addChildViewController(kSongVC)
         
-        backgroundImageV.snp.makeConstraints { (make) in
+        backgroundImageV.snp.makeConstraints {[unowned self] (make) in
             make.top.left.right.equalTo(self.view)
             make.height.equalTo(64)
         }
         
-        topView.snp.makeConstraints { (make) in
+        topView.snp.makeConstraints {[unowned self] (make) in
             make.top.equalTo(self.backgroundImageV.snp.bottom)
             make.left.right.equalTo(self.backgroundImageV)
             make.height.equalTo(44)
         }
         
-        self.collectionView.snp.makeConstraints { (make) in
+        self.collectionView.snp.makeConstraints {[unowned self] (make) in
             make.left.right.equalTo(self.view)
             make.top.equalTo(self.topView.snp.bottom)
             make.bottom.equalTo(self.view.snp.bottom)
@@ -97,7 +97,7 @@ class Music_HomeController: UIViewController {
         layout.minimumInteritemSpacing = 0
         layout.sectionInset = UIEdgeInsets.zero
         layout.scrollDirection = .horizontal
-        layout.itemSize = CGSize(width: self.view.frame.width, height: self.view.frame.height - 44 - 44 - 64)
+        layout.itemSize = CGSize(width: self.view.frame.width, height: self.view.frame.height - 44 - 64 - 44)
         let object = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
         object.register(UICollectionViewCell.self, forCellWithReuseIdentifier: kCollectionView_cell_identify)
         object.backgroundColor = UIColor.white
@@ -125,17 +125,21 @@ extension Music_HomeController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: kCollectionView_cell_identify, for: indexPath)
-        if indexPath.item == 0 {
-            cell.backgroundView = self.recommendVC.view
-        } else if indexPath.item == 1 {
-            cell.backgroundView = self.playListVC.view
-        } else if indexPath.item == 2 {
-            cell.backgroundView = self.listVC.view
-        } else if indexPath.item == 3 {
-            cell.backgroundView = self.kSongVC.view
+        for item in cell.contentView.subviews {
+            item.removeFromSuperview()
         }
-        if let backV = cell.backgroundView {
-            cell.bringSubview(toFront: backV)
+        if indexPath.item == 0 {
+            cell.contentView.addSubview(self.recommendVC.view)
+            self.recommendVC.view.frame = cell.bounds
+        } else if indexPath.item == 1 {
+            cell.contentView.addSubview(self.playListVC.view)
+            self.playListVC.view.frame = cell.bounds
+        } else if indexPath.item == 2 {
+            cell.contentView.addSubview(self.listVC.view)
+            self.listVC.view.frame = cell.bounds
+        } else if indexPath.item == 3 {
+            cell.contentView.addSubview(self.kSongVC.view)
+            self.kSongVC.view.frame = cell.bounds
         }
         return cell
     }

@@ -37,16 +37,18 @@ class RecommendController: UIViewController {
 
     private func configUI() {
         self.view.addSubview(collectionView)
-        collectionView.snp.makeConstraints { (make) in
+        collectionView.snp.makeConstraints {[unowned self] (make) in
             make.edges.equalTo(self.view)
         }
     }
     //获取推荐数据
     private func getRecommendData() {
+        self.show_LoadingHud()
         HTTPRequestModel<RecommendVo>.requestModel(type: .get, URLString: HTTPAddress.getRecommend, parameters: nil, success: {[weak self] (model) in
+            self?.hideAllHud()
             self?.recommendData = model
-            }) { (error) in
-
+            }) {[weak self] (error) in
+                self?.hideAllHud()
         }
     }
     /// collectionView
@@ -214,6 +216,21 @@ extension RecommendController: UICollectionViewDelegate {
         cell?.backgroundColor = UIColor.white
     }
  */
+    
+    //MARK: 选择item执行方法
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let recommend = self.recommendData else {
+            return
+        }
+        guard let item = recommend.module?[indexPath.section] else{
+            return
+        }
+        guard item.key != nil else {
+            return
+        }
+        
+        
+    }
 }
 
 // MARK: - UICollectionViewDataSource

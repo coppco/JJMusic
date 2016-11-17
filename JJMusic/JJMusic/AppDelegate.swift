@@ -13,7 +13,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var playBottomView: AppBottomView = AppBottomView.shared
-
+    
+    /// 监控网络状态
+    var manger: NetworkReachabilityManager? = {
+        let object = NetworkReachabilityManager(host: "http://www.baidu.com")
+        return object
+    }()
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.backgroundColor = UIColor.white
@@ -22,10 +28,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.addSubview(playBottomView)
         //设置这个 然后图片渲染模式为alwaysTemplate, 那么之控件的颜色都是这个颜色
         window?.tintColor = navigationColor
-        playBottomView.snp.makeConstraints { (make) in
-            make.right.left.bottom.equalTo(window!)
+        playBottomView.snp.makeConstraints {[unowned self] (make) in
+            make.right.left.bottom.equalTo(self.window!)
             make.height.equalTo(44)
         }
+        self.manger?.listener = { status in
+            print(status)
+            switch status {
+            case .notReachable:  //无网络状态
+                PromptView.show(message: "网络似乎已经断开, 请检测网络")
+                break
+            case .unknown:  //未知
+                PromptView.show(message: "未知网络,请检查网络状态")
+                break
+            case .reachable(NetworkReachabilityManager.ConnectionType.ethernetOrWiFi):  //WIFI
+                PromptView.show(message: "当前网络状态为WIFI")
+                break
+            case .reachable(NetworkReachabilityManager.ConnectionType.wwan): //2G/3G/4G
+                PromptView.show(imageName: "bt_home_login_normal", message: "当前网络状态是2G/3G/4G")
+                break
+            }
+        }
+        self.manger?.startListening()
         return true
     }
 
@@ -50,7 +74,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
+    
+    func applicationDidReceiveMemoryWarning(_ application: UIApplication) {
+        ImageCache.default.clearMemoryCache()
+        PromptView.show(message: "收到内存警告了")
+    }
 
+    
 
 }
 

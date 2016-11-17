@@ -42,7 +42,7 @@ class FocusCCell: UICollectionViewCell {
     
     private func configUI() {
         self.contentView.addSubview(focusView)
-        focusView.snp.makeConstraints { (make) in
+        focusView.snp.makeConstraints {[unowned self] (make) in
             make.edges.equalTo(self.contentView)
         }
     }

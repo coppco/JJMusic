@@ -35,7 +35,7 @@ class TopImageCCell: UICollectionViewCell {
     
     private func configUI() {
         self.contentView.addSubview(imageV)
-        imageV.snp.makeConstraints { (make) in
+        imageV.snp.makeConstraints {[unowned self] (make) in
             make.edges.equalTo(self.contentView)
         }
     }

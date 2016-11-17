@@ -41,12 +41,12 @@ class MusicCHeaderView: UICollectionReusableView {
             make.size.equalTo(CGSize(width: 15, height: 15))
             make.bottom.top.equalTo(UIEdgeInsetsMake(topBottom, 0, topBottom, 0))
         }
-        titleL.snp.makeConstraints { (make) in
-            make.centerY.equalTo(iconImageV)
-            make.left.equalTo(iconImageV.snp.right).offset(10)
+        titleL.snp.makeConstraints {[unowned self] (make) in
+            make.centerY.equalTo(self.iconImageV)
+            make.left.equalTo(self.iconImageV.snp.right).offset(10)
         }
-        moreB.snp.makeConstraints { (make) in
-            make.centerY.equalTo(iconImageV)
+        moreB.snp.makeConstraints {[unowned self] (make) in
+            make.centerY.equalTo(self.iconImageV)
             make.right.equalTo(self.snp.right).offset(-itemLeftRight)
         }
     }

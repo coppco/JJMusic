@@ -38,12 +38,12 @@ class EntryCCell: UICollectionViewCell {
     private func configUI() {
         self.contentView.addSubview(imageV)
         self.contentView.addSubview(titleL)
-        imageV.snp.makeConstraints { (make) in
+        imageV.snp.makeConstraints {[unowned self] (make) in
             make.size.equalTo(self.contentView.snp.width).multipliedBy(0.5)
             make.centerX.equalTo(self.contentView)
             make.centerY.equalTo(self.contentView).multipliedBy(0.8)
         }
-        titleL.snp.makeConstraints { (make) in
+        titleL.snp.makeConstraints {[unowned self] (make) in
             make.centerX.equalTo(self.contentView)
             make.left.right.equalTo(self.contentView)
             make.bottom.equalTo(self.contentView).offset(-10)

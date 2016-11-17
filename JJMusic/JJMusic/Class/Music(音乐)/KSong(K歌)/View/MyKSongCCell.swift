@@ -22,7 +22,6 @@ class MyKSongCCell: UICollectionViewCell {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-        configUI()
     }
     
     private func configUI() {
@@ -31,18 +30,18 @@ class MyKSongCCell: UICollectionViewCell {
         self.contentView.addSubview(titleL)
         self.contentView.addSubview(leftImageV)
         
-        self.imageV.snp.makeConstraints { (make) in
+        self.imageV.snp.makeConstraints {[unowned self] (make) in
             make.top.left.bottom.equalTo(UIEdgeInsetsMake(10, itemLeftRight, 10, 0))
-            make.width.equalTo(imageV.snp.height)
+            make.width.equalTo(self.imageV.snp.height)
         }
         
-        titleL.snp.makeConstraints { (make) in
-            make.centerY.equalTo(imageV)
-            make.left.equalTo(imageV.snp.right).offset(spacingX)
+        titleL.snp.makeConstraints {[unowned self] (make) in
+            make.centerY.equalTo(self.imageV)
+            make.left.equalTo(self.imageV.snp.right).offset(spacingX)
         }
         
-        leftImageV.snp.makeConstraints { (make) in
-            make.centerY.equalTo(imageV)
+        leftImageV.snp.makeConstraints {[unowned self] (make) in
+            make.centerY.equalTo(self.imageV)
             make.right.equalTo(self.contentView.snp.right).offset(-itemLeftRight)
         }
     }

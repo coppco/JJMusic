@@ -88,25 +88,25 @@ class RecsongCCell: UICollectionViewCell {
         self.contentView.addSubview(subTitleL)
         self.contentView.addSubview(leftB)
         
-        imageV.snp.makeConstraints { (make) in
+        imageV.snp.makeConstraints {[unowned self] (make) in
             make.left.top.bottom.equalTo(UIEdgeInsetsMake(5, itemLeftRight, 5, 0))
-            make.height.equalTo(imageV.snp.width)
+            make.height.equalTo(self.imageV.snp.width)
         }
-        leftB.snp.makeConstraints { (make) in
-            make.centerY.equalTo(imageV)
+        leftB.snp.makeConstraints {[unowned self] (make) in
+            make.centerY.equalTo(self.imageV)
             make.right.equalTo(self.contentView.snp.right).offset(-itemLeftRight)
-            make.size.equalTo(imageV.snp.size).multipliedBy(0.8)
+            make.size.equalTo(self.imageV.snp.size).multipliedBy(0.8)
         }
-        titleL.snp.makeConstraints { (make) in
-            make.top.equalTo(imageV.snp.top)
-            make.height.equalTo(subTitleL.snp.height)
-            make.left.equalTo(imageV.snp.right).offset(spacingX)
-            make.right.equalTo(leftB.snp.left).offset(-spacingX)
+        titleL.snp.makeConstraints {[unowned self] (make) in
+            make.top.equalTo(self.imageV.snp.top)
+            make.height.equalTo(self.subTitleL.snp.height)
+            make.left.equalTo(self.imageV.snp.right).offset(spacingX)
+            make.right.equalTo(self.leftB.snp.left).offset(-spacingX)
         }
-        subTitleL.snp.makeConstraints { (make) in
-            make.bottom.equalTo(imageV.snp.bottom)
-            make.top.equalTo(titleL.snp.bottom)
-            make.left.right.equalTo(titleL)
+        subTitleL.snp.makeConstraints {[unowned self] (make) in
+            make.bottom.equalTo(self.imageV.snp.bottom)
+            make.top.equalTo(self.titleL.snp.bottom)
+            make.left.right.equalTo(self.titleL)
         }
     }
     

@@ -64,28 +64,28 @@ class ListCCell: UICollectionViewCell {
         self.contentView.addSubview(secondL)
         self.contentView.addSubview(thirdL)
         
-        imageV.snp.makeConstraints { (make) in
+        imageV.snp.makeConstraints {[unowned self] (make) in
             make.top.bottom.left.equalTo(UIEdgeInsetsMake(topBottom, itemLeftRight, topBottom, 0))
-            make.width.equalTo(imageV.snp.height)
+            make.width.equalTo(self.imageV.snp.height)
         }
         
-        firstL.snp.makeConstraints { (make) in
-            make.top.equalTo(imageV.snp.top)
-            make.height.equalTo(secondL)
-            make.height.equalTo(thirdL)
-            make.left.equalTo(imageV.snp.right).offset(itemLeftRight)
+        firstL.snp.makeConstraints {[unowned self] (make) in
+            make.top.equalTo(self.imageV.snp.top)
+            make.height.equalTo(self.secondL)
+            make.height.equalTo(self.thirdL)
+            make.left.equalTo(self.imageV.snp.right).offset(itemLeftRight)
             make.right.equalTo(self.contentView.snp.right).offset(-itemLeftRight)
         }
         
-        secondL.snp.makeConstraints { (make) in
-            make.left.right.equalTo(firstL)
-            make.top.equalTo(firstL.snp.bottom)
+        secondL.snp.makeConstraints {[unowned self] (make) in
+            make.left.right.equalTo(self.firstL)
+            make.top.equalTo(self.firstL.snp.bottom)
         }
         
-        thirdL.snp.makeConstraints { (make) in
-            make.top.equalTo(secondL.snp.bottom)
-            make.left.right.equalTo(secondL)
-            make.bottom.equalTo(imageV.snp.bottom)
+        thirdL.snp.makeConstraints {[unowned self] (make) in
+            make.top.equalTo(self.secondL.snp.bottom)
+            make.left.right.equalTo(self.secondL)
+            make.bottom.equalTo(self.imageV.snp.bottom)
         }
         
     }

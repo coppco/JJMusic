@@ -78,7 +78,7 @@ class HJWheelView: UIView {
         self.pageControl.numberOfPages = self.pictureArray.count - 1
         
         
-        collectionView.snp.makeConstraints { (make) in
+        collectionView.snp.makeConstraints {[unowned self] (make) in
             make.edges.equalTo(self)
         }
         //添加进入common运行循环,防止拖动的时候不轮播
@@ -86,7 +86,7 @@ class HJWheelView: UIView {
             RunLoop.current.add(self.timer, forMode: RunLoopMode.commonModes)
         }
         
-        pageControl.snp.makeConstraints { (make) in
+        pageControl.snp.makeConstraints {[unowned self] (make) in
             make.bottom.equalTo(self)
             make.centerX.equalTo(self)
             make.left.right.equalTo(self).inset(UIEdgeInsetsMake(0, 30, 0, 30))
@@ -186,7 +186,7 @@ extension HJWheelView: UICollectionViewDataSource {
         let string = self.pictureArray[indexPath.item]
         if let imageV =  cell.backgroundView as? UIImageView {
             if string.hasPrefix("http") {
-                imageV.kf.setImage(with: URL(string: string), placeholder: UIImage(named: "homepage_focus_default"), options: nil, progressBlock: nil, completionHandler: nil)
+                imageV.kf.setImage(with: URL(string: string), placeholder: UIImage(named: "homepage_focus_default"), options: [.transition(ImageTransition.fade(1))], progressBlock: nil, completionHandler: nil)
             } else {
                 imageV.image = UIImage(named: string)
             }

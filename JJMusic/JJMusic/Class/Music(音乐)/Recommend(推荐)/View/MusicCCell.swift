@@ -86,7 +86,7 @@ class MusicCCell: UICollectionViewCell {
     /// 歌单里面的Cell
     var diyInfo: DiyInfoVo? {
         didSet {
-            if let icon = diyInfo?.list_pic {
+            if let icon = diyInfo?.list_pic_small {
                 self.imageV.kf.setImage(with: URL.init(string: icon))
             }
             self.titleL.text = diyInfo?.title
@@ -120,24 +120,24 @@ class MusicCCell: UICollectionViewCell {
         self.contentView.addSubview(titleL)
         self.contentView.addSubview(subTitleL)
         
-        imageV.snp.makeConstraints { (make) in
+        imageV.snp.makeConstraints {[unowned self] (make) in
             make.top.left.right.equalTo(self.contentView)
             make.height.equalTo(self.contentView.snp.width)
         }
-        playB.snp.makeConstraints { (make) in
-            make.bottom.right.equalTo(imageV)
+        playB.snp.makeConstraints {[unowned self] (make) in
+            make.bottom.right.equalTo(self.imageV)
             make.size.equalTo(CGSize(width: 30, height: 30))
         }
-        maskV.snp.makeConstraints { (make) in
-            make.edges.equalTo(imageV)
+        maskV.snp.makeConstraints {[unowned self] (make) in
+            make.edges.equalTo(self.imageV)
         }
-        titleL.snp.makeConstraints { (make) in
+        titleL.snp.makeConstraints {[unowned self] (make) in
             make.left.right.equalTo(self.contentView)
-            make.top.equalTo(imageV.snp.bottom).offset(spacingY)
+            make.top.equalTo(self.imageV.snp.bottom).offset(spacingY)
         }
-        subTitleL.snp.makeConstraints { (make) in
-            make.left.right.equalTo(titleL)
-            make.top.equalTo(titleL.snp.bottom)
+        subTitleL.snp.makeConstraints {[unowned self] (make) in
+            make.left.right.equalTo(self.titleL)
+            make.top.equalTo(self.titleL.snp.bottom)
         }
     }
     

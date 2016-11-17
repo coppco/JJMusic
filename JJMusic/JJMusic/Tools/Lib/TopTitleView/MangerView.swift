@@ -78,7 +78,7 @@ class MangerView: UIView {
         self.addSubview(scrollView)
         scrollView.addSubview(topL)
         scrollView.addSubview(bottomL)
-        topL.snp.makeConstraints { (make) in
+        topL.snp.makeConstraints {[unowned self] (make) in
             make.top.equalTo(10)
             make.left.right.equalTo(self).inset(UIEdgeInsetsMake(0, 10, 0, 10))
         }
@@ -91,9 +91,9 @@ class MangerView: UIView {
         //分页 (count + maxColumns - 1) / maxColumns
         let topPage = ceil(Double(self.selectedTypeArray?.count ?? 0) / Double(buttonNumberOfRow))
 
-        bottomL.snp.makeConstraints { (make) in
+        bottomL.snp.makeConstraints {[unowned self] (make) in
             make.left.right.equalTo(self).inset(UIEdgeInsetsMake(0, 10, 0, 10))
-            make.top.equalTo(topL.snp.bottom).offset(spaceY + CGFloat(topPage) * (btnHeight + spaceY))
+            make.top.equalTo(self.topL.snp.bottom).offset(spaceY + CGFloat(topPage) * (btnHeight + spaceY))
         }
         
         if let selected = self.unSelectedTypeArray {
@@ -103,9 +103,9 @@ class MangerView: UIView {
         }
         
         let bottomPage = ceil(Double(self.unSelectedTypeArray?.count ?? 0) / Double(buttonNumberOfRow))
-        scrollView.snp.makeConstraints { (make) in
+        scrollView.snp.makeConstraints {[unowned self] (make) in
             make.edges.equalTo(self)
-            make.right.equalTo(bottomL.snp.right)
+            make.right.equalTo(self.bottomL.snp.right)
             make.bottom.equalTo(self.bottomL).offset(bottomPage * Double(btnHeight + spaceX))
         }
     }

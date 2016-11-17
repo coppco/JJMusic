@@ -48,11 +48,12 @@ class KSongCollectionVController: UICollectionViewController, UICollectionViewDe
 
     private func getKSongData() {
         let group = DispatchGroup()
+        self.show_LoadingHud()
         self.getMyKSongData(group: group)
         self.getTopImageData(group: group)
         self.getEveryontData(group: group)
-        
-        group.notify(queue: DispatchQueue.main) { 
+        group.notify(queue: DispatchQueue.main) {
+            self.hideAllHud()
             if self.cateroty != nil && self.topImage != nil && self.everyoneSong != nil {
                 //刷新界面
                 self.collectionView?.reloadData()
@@ -85,9 +86,9 @@ class KSongCollectionVController: UICollectionViewController, UICollectionViewDe
     //大家都在唱
     private func getEveryontData(group: DispatchGroup) {
         group.enter()
-        HTTPRequestModel<KSongEveryoneVo>.requestModel(type: .get, URLString: HTTPAddress.KSongEveryone, parameters: nil, success: { (object) in
+        HTTPRequestModel<KSongEveryoneVo>.requestModel(type: .get, URLString: HTTPAddress.KSongEveryone, parameters: nil, success: {[weak self] (object) in
             group.leave()
-            self.everyoneSong = object
+            self?.everyoneSong = object
         }) { (error) in
             group.leave()
         }

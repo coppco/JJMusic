@@ -12,13 +12,20 @@ class HomeNavigationView: UIView {
     /// 单例
     static let shared: HomeNavigationView = HomeNavigationView.init()
     
+    func shouldMoveTo(index: Int) {
+        if let oldB = self.selectedB, let newB = self.viewWithTag(index + 7770) as? UIButton, oldB != newB {
+            oldB.setTitleColor(UIColor.gray, for: UIControlState.normal)
+            newB.setTitleColor(UIColor.white, for: UIControlState.normal)
+            self.selectedB = newB
+        }
+    }
+    
     var didSelectedButton: ((Int) -> Void)?
     
     private override init(frame: CGRect) {
         super.init(frame: frame)
         configUI()
     }
-    
     private init() {
         super.init(frame: CGRect.zero)
         configUI()
@@ -36,18 +43,17 @@ class HomeNavigationView: UIView {
         self.addSubview(bottomL)
         self.addSubview(scrollView)
         
-        moreB.snp.makeConstraints { (make) in
-            make.top.equalTo(self.snp.top).offset(20)
+        moreB.snp.makeConstraints {[unowned self] (make) in
             make.bottom.left.equalTo(self)
-            make.height.equalTo(44)
+            make.top.equalTo(self.snp.top).offset(20)
             make.width.equalTo(70)
         }
         
-        searchB.snp.makeConstraints { (make) in
-            make.top.bottom.width.equalTo(moreB)
+        searchB.snp.makeConstraints {[unowned self] (make) in
+            make.bottom.width.top.equalTo(self.moreB)
             make.right.equalTo(self)
         }
-        bottomL.snp.makeConstraints { (make) in
+        bottomL.snp.makeConstraints {[unowned self] (make) in
             make.left.right.bottom.equalTo(self)
             make.height.equalTo(0.3)
         }
@@ -73,7 +79,7 @@ class HomeNavigationView: UIView {
             button.tag = 7770 + index
             scrollView.addSubview(button)
             button.snp.makeConstraints({ (make) in
-                make.left.bottom.top.equalTo(width * CGFloat(index))
+                make.left.equalTo(width * CGFloat(index))
                 make.width.equalTo(width)
                 make.bottom.equalTo(self.snp.bottom)
                 make.bottom.equalTo(scrollView.snp.bottom)
@@ -88,7 +94,7 @@ class HomeNavigationView: UIView {
                 }
             })
         }
-        scrollView.snp.makeConstraints { (make) in
+        scrollView.snp.makeConstraints {[unowned self] (make) in
             make.top.equalTo(self.snp.top).offset(20)
             make.bottom.equalTo(self.snp.bottom)
             make.left.equalTo(self.snp.left).offset(80)
@@ -116,6 +122,7 @@ class HomeNavigationView: UIView {
         let object = UIButton(type: UIButtonType.custom)
         object.setImage(#imageLiteral(resourceName: "bt_home_more_normal"), for: UIControlState.normal)
         object.setImage(#imageLiteral(resourceName: "bt_home_more_press"), for: UIControlState.highlighted)
+        object.addTarget(self, action: #selector(HomeNavigationView.didClickMoreOrSearch(sender:)), for: UIControlEvents.touchUpInside)
         return object
     }()
     
@@ -124,9 +131,18 @@ class HomeNavigationView: UIView {
         let object = UIButton(type: UIButtonType.custom)
         object.setImage(#imageLiteral(resourceName: "bt_home_search1_normal"), for: UIControlState.normal)
         object.setImage(#imageLiteral(resourceName: "bt_home_search1_press"), for: UIControlState.highlighted)
+        object.addTarget(self, action: #selector(HomeNavigationView.didClickMoreOrSearch(sender:)), for: UIControlEvents.touchUpInside)
         return object
     }()
 
+    @objc private func didClickMoreOrSearch(sender: UIButton) {
+        if sender == self.searchB {
+            PromptView.show(message: "网络似乎已经断开")
+        } else {
+            PromptView.show(imageName: "bt_home_login_normal", message: "当前网络状态是2G/3G/4G")
+        }
+    }
+    
     /**线*/
     private lazy var bottomL: UIView = {
         let object = UIView()
@@ -142,6 +158,8 @@ class HomeNavigationView: UIView {
     ///
     fileprivate lazy var scrollView: UIScrollView = {
         let object = UIScrollView()
+        object.showsVerticalScrollIndicator = false
+        object.showsHorizontalScrollIndicator = false
         return object
     }()
 }

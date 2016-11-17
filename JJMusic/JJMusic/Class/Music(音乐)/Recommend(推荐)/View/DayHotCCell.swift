@@ -46,20 +46,20 @@ class DayHotCCell: UICollectionViewCell {
         self.contentView.addSubview(titleL)
         self.contentView.addSubview(subTitleL)
         
-        imageV.snp.makeConstraints { (make) in
+        imageV.snp.makeConstraints {[unowned self] (make) in
             make.top.left.bottom.equalTo(UIEdgeInsetsMake(topBottom, itemLeftRight, topBottom, 0))
-            make.width.equalTo(imageV.snp.height)
+            make.width.equalTo(self.imageV.snp.height)
         }
-        titleL.snp.makeConstraints { (make) in
-            make.top.equalTo(imageV.snp.top)
-            make.height.equalTo(subTitleL)
-            make.left.equalTo(imageV.snp.right).offset(itemLeftRight * 2)
+        titleL.snp.makeConstraints {[unowned self] (make) in
+            make.top.equalTo(self.imageV.snp.top)
+            make.height.equalTo(self.subTitleL)
+            make.left.equalTo(self.imageV.snp.right).offset(itemLeftRight * 2)
             make.right.equalTo(self.contentView.snp.right).offset(-itemLeftRight * 2)
         }
-        subTitleL.snp.makeConstraints { (make) in
-            make.left.right.equalTo(titleL)
-            make.bottom.equalTo(imageV.snp.bottom)
-            make.top.equalTo(titleL.snp.bottom)
+        subTitleL.snp.makeConstraints {[unowned self] (make) in
+            make.left.right.equalTo(self.titleL)
+            make.bottom.equalTo(self.imageV.snp.bottom)
+            make.top.equalTo(self.titleL.snp.bottom)
         }
     }
     

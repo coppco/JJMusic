@@ -46,10 +46,12 @@ class ListCollectionVController: UICollectionViewController {
     
     
     private func getListData() {
-        HTTPRequestModel<ListArray>.requestModel(type: .get, URLString: HTTPAddress.getList, parameters: nil, success: { (object) in
-            self.listArray = object
-            }) { (error) in
-                
+        self.show_LoadingHud()
+        HTTPRequestModel<ListArray>.requestModel(type: .get, URLString: HTTPAddress.getList, parameters: nil, success: {[weak self] (object) in
+            self?.hideAllHud()
+            self?.listArray = object
+            }) {[weak self] (error) in
+                self?.hideAllHud()
         }
     }
 

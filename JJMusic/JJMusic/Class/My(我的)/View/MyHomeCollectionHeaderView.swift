@@ -30,43 +30,42 @@ class MyHomeCollectionHeaderView: UITableViewHeaderFooterView {
         self.contentView.addSubview(bottomL)
         
         
-        myCollectionL.snp.makeConstraints { (make) in
+        myCollectionL.snp.makeConstraints {[unowned self] (make) in
             make.top.equalTo(self.contentView.snp.top).offset(10)
-            make.bottom.equalTo(self.contentView.snp.bottom).offset(-10)
+            make.bottom.equalTo(self.contentView.snp.bottom).offset(-10).priority(750)
             make.left.equalTo(self.contentView.snp.left).offset(15)
-            make.height.equalTo(24)
         }
         
-        singerB.snp.makeConstraints { (make) in
-            make.centerY.equalTo(myCollectionL)
+        singerB.snp.makeConstraints {[unowned self] (make) in
+            make.centerY.equalTo(self.myCollectionL)
             make.right.equalTo(self.contentView.snp.right).offset(-15)
             make.width.equalTo(40)
         }
         
-        line1.snp.makeConstraints { (make) in
-            make.top.bottom.equalTo(singerB)
+        line1.snp.makeConstraints {[unowned self] (make) in
+            make.top.bottom.equalTo(self.singerB)
             make.width.equalTo(0.3)
-            make.right.equalTo(singerB.snp.left)
+            make.right.equalTo(self.singerB.snp.left)
         }
         
-        albumB.snp.makeConstraints { (make) in
-            make.centerY.equalTo(myCollectionL)
+        albumB.snp.makeConstraints {[unowned self] (make) in
+            make.centerY.equalTo(self.myCollectionL)
             make.right.equalTo(self.line1.snp.left)
             make.width.equalTo(40)
         }
         
-        line2.snp.makeConstraints { (make) in
-            make.top.bottom.equalTo(singerB)
+        line2.snp.makeConstraints {[unowned self] (make) in
+            make.top.bottom.equalTo(self.singerB)
             make.width.equalTo(0.3)
-            make.right.equalTo(albumB.snp.left)
+            make.right.equalTo(self.albumB.snp.left)
         }
         
-        playListB.snp.makeConstraints { (make) in
-            make.centerY.equalTo(myCollectionL)
+        playListB.snp.makeConstraints {[unowned self] (make) in
+            make.centerY.equalTo(self.myCollectionL)
             make.right.equalTo(self.line2.snp.left)
             make.width.equalTo(40)
         }
-        bottomL.snp.makeConstraints { (make) in
+        bottomL.snp.makeConstraints {[unowned self] (make) in
             make.left.right.bottom.equalTo(self)
             make.height.equalTo(0.3)
         }

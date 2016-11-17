@@ -53,15 +53,15 @@ class CategoryCCell: UICollectionViewCell {
         self.backgroundColor = UIColor.white
         self.contentView.addSubview(imageV)
         self.contentView.addSubview(titleL)
-        imageV.snp.makeConstraints { (make) in
+        imageV.snp.makeConstraints {[unowned self] (make) in
             make.centerX.equalTo(self.contentView)
             make.width.equalTo(self.contentView.snp.width).multipliedBy(0.6)
             make.top.equalTo(self.contentView.snp.top).offset(spacingY)
-            make.height.equalTo(imageV.snp.width)
+            make.height.equalTo(self.imageV.snp.width)
         }
-        titleL.snp.makeConstraints { (make) in
+        titleL.snp.makeConstraints {[unowned self] (make) in
             make.left.right.equalTo(self.contentView)
-            make.top.equalTo(imageV.snp.bottom).offset(spacingY)
+            make.top.equalTo(self.imageV.snp.bottom).offset(spacingY)
             make.bottom.equalTo(self.contentView.snp.bottom).offset(-spacingY)
         }
     }

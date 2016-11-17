@@ -50,6 +50,10 @@
 		CC414E331DC34EBD009F8B52 /* String+MD5.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC414E1E1DC34EBD009F8B52 /* String+MD5.swift */; };
 		CC414E341DC34EBD009F8B52 /* ThreadHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC414E1F1DC34EBD009F8B52 /* ThreadHelper.swift */; };
 		CC414E351DC34EBD009F8B52 /* UIButton+Kingfisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC414E201DC34EBD009F8B52 /* UIButton+Kingfisher.swift */; };
+		CC4F74E61DDD58BD00A7FB59 /* MBProgressHUD+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4F74E41DDD58BD00A7FB59 /* MBProgressHUD+Extension.swift */; };
+		CC4F74E71DDD58BD00A7FB59 /* MBProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CC4F74E51DDD58BD00A7FB59 /* MBProgressHUD.bundle */; };
+		CC4F74E91DDD5FBC00A7FB59 /* PromptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4F74E81DDD5FBC00A7FB59 /* PromptView.swift */; };
+		CC4F74EB1DDDB21300A7FB59 /* PromptController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4F74EA1DDDB21300A7FB59 /* PromptController.swift */; };
 		CC50154B1DD1C9C8003A8E71 /* Identify.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5015481DD1C9C8003A8E71 /* Identify.swift */; };
 		CC50154C1DD1C9C8003A8E71 /* MangerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5015491DD1C9C8003A8E71 /* MangerView.swift */; };
 		CC50154D1DD1C9C8003A8E71 /* TopTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC50154A1DD1C9C8003A8E71 /* TopTitleView.swift */; };
@@ -155,6 +159,7 @@
 		CCEE1A731DD95FE4003C68B8 /* CategoryCCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEE1A721DD95FE4003C68B8 /* CategoryCCell.swift */; };
 		CCEE1A751DD96675003C68B8 /* MyKSongCCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEE1A741DD96675003C68B8 /* MyKSongCCell.swift */; };
 		CCEE1A771DD9AE7D003C68B8 /* TrendsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEE1A761DD9AE7D003C68B8 /* TrendsController.swift */; };
+		CCEE1A791DDA974A003C68B8 /* LocalMusicController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEE1A781DDA974A003C68B8 /* LocalMusicController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -224,6 +229,10 @@
 		CC414E1E1DC34EBD009F8B52 /* String+MD5.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+MD5.swift"; sourceTree = "<group>"; };
 		CC414E1F1DC34EBD009F8B52 /* ThreadHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThreadHelper.swift; sourceTree = "<group>"; };
 		CC414E201DC34EBD009F8B52 /* UIButton+Kingfisher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Kingfisher.swift"; sourceTree = "<group>"; };
+		CC4F74E41DDD58BD00A7FB59 /* MBProgressHUD+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MBProgressHUD+Extension.swift"; sourceTree = "<group>"; };
+		CC4F74E51DDD58BD00A7FB59 /* MBProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MBProgressHUD.bundle; sourceTree = "<group>"; };
+		CC4F74E81DDD5FBC00A7FB59 /* PromptView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PromptView.swift; sourceTree = "<group>"; };
+		CC4F74EA1DDDB21300A7FB59 /* PromptController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PromptController.swift; sourceTree = "<group>"; };
 		CC5015481DD1C9C8003A8E71 /* Identify.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Identify.swift; sourceTree = "<group>"; };
 		CC5015491DD1C9C8003A8E71 /* MangerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MangerView.swift; sourceTree = "<group>"; };
 		CC50154A1DD1C9C8003A8E71 /* TopTitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopTitleView.swift; sourceTree = "<group>"; };
@@ -338,6 +347,7 @@
 		CCEE1A721DD95FE4003C68B8 /* CategoryCCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryCCell.swift; sourceTree = "<group>"; };
 		CCEE1A741DD96675003C68B8 /* MyKSongCCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyKSongCCell.swift; sourceTree = "<group>"; };
 		CCEE1A761DD9AE7D003C68B8 /* TrendsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrendsController.swift; sourceTree = "<group>"; };
+		CCEE1A781DDA974A003C68B8 /* LocalMusicController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalMusicController.swift; sourceTree = "<group>"; };
 		DA90285DD8E6C5797D5B40E0 /* libPods-JJMusic.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JJMusic.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -580,6 +590,17 @@
 				CC414E201DC34EBD009F8B52 /* UIButton+Kingfisher.swift */,
 			);
 			path = Kingfisher;
+			sourceTree = "<group>";
+		};
+		CC4F74E31DDD58BD00A7FB59 /* HUD */ = {
+			isa = PBXGroup;
+			children = (
+				CC4F74E51DDD58BD00A7FB59 /* MBProgressHUD.bundle */,
+				CC4F74E41DDD58BD00A7FB59 /* MBProgressHUD+Extension.swift */,
+				CC4F74E81DDD5FBC00A7FB59 /* PromptView.swift */,
+				CC4F74EA1DDDB21300A7FB59 /* PromptController.swift */,
+			);
+			path = HUD;
 			sourceTree = "<group>";
 		};
 		CC5531DC1DC18891002296A3 = {
@@ -862,6 +883,7 @@
 			children = (
 				CC414DF71DC31FF0009F8B52 /* night.gif */,
 				CC414DF51DC31F6D009F8B52 /* My_HomeController.swift */,
+				CCEE1A781DDA974A003C68B8 /* LocalMusicController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1062,6 +1084,7 @@
 		CCD8390E1DC1EB7E00A44D16 /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				CC4F74E31DDD58BD00A7FB59 /* HUD */,
 				CC732B051DD316C500532979 /* TopBottomButton */,
 				CC2FDCF31DC7387000B4624A /* HJWheelView */,
 				CC2FDCF51DC7387000B4624A /* TopTitleView */,
@@ -1227,6 +1250,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CC2FDCFB1DC742A000B4624A /* otherPageControl@2x.png in Resources */,
+				CC4F74E71DDD58BD00A7FB59 /* MBProgressHUD.bundle in Resources */,
 				CC5531F31DC18892002296A3 /* LaunchScreen.storyboard in Resources */,
 				CC5531F01DC18892002296A3 /* Assets.xcassets in Resources */,
 				CC2FDCFC1DC742A000B4624A /* currentPageControl@2x.png in Resources */,
@@ -1309,6 +1333,7 @@
 				CC50154B1DD1C9C8003A8E71 /* Identify.swift in Sources */,
 				CCAAE3961DC1F449000E5C29 /* ConstraintRelation.swift in Sources */,
 				CC2FDCE41DC6D96600B4624A /* MyHomeIconHeaderView.swift in Sources */,
+				CC4F74E91DDD5FBC00A7FB59 /* PromptView.swift in Sources */,
 				CCEE1A6F1DD946FB003C68B8 /* KSong.swift in Sources */,
 				CC414E271DC34EBD009F8B52 /* ImageDownloader.swift in Sources */,
 				CCD839081DC1EA2300A44D16 /* UIBarButtonItem+HJExtension.swift in Sources */,
@@ -1355,6 +1380,7 @@
 				CCE73AB31DD5A5AF004BB8A8 /* ListCollectionVController.swift in Sources */,
 				CC414E321DC34EBD009F8B52 /* Resource.swift in Sources */,
 				CCD839021DC1EA2300A44D16 /* Defines.swift in Sources */,
+				CCEE1A791DDA974A003C68B8 /* LocalMusicController.swift in Sources */,
 				CCE73AA51DD44591004BB8A8 /* FocusCCell.swift in Sources */,
 				CC414E261DC34EBD009F8B52 /* ImageCache.swift in Sources */,
 				CCAAE39D1DC1F449000E5C29 /* LayoutConstraintItem.swift in Sources */,
@@ -1397,6 +1423,7 @@
 				CCD8390A1DC1EA2300A44D16 /* UIImage+HJExtension.swift in Sources */,
 				CC414E211DC34EBD009F8B52 /* AnimatedImageView.swift in Sources */,
 				CCAAE39E1DC1F449000E5C29 /* UILayoutSupport+Extensions.swift in Sources */,
+				CC4F74E61DDD58BD00A7FB59 /* MBProgressHUD+Extension.swift in Sources */,
 				CCD839051DC1EA2300A44D16 /* NSNumber+HJExtension.swift in Sources */,
 				CC414E231DC34EBD009F8B52 /* CacheSerializer.swift in Sources */,
 				CC414E2F1DC34EBD009F8B52 /* KingfisherOptionsInfo.swift in Sources */,
@@ -1415,6 +1442,7 @@
 				CC414E2A1DC34EBD009F8B52 /* ImageTransition.swift in Sources */,
 				CC414DF21DC2F96A009F8B52 /* HomeViewController.swift in Sources */,
 				CC414E2B1DC34EBD009F8B52 /* ImageView+Kingfisher.swift in Sources */,
+				CC4F74EB1DDDB21300A7FB59 /* PromptController.swift in Sources */,
 				CCE73AA91DD490FB004BB8A8 /* AdvertCCell.swift in Sources */,
 				CCAAE3841DC1F449000E5C29 /* ConstraintInsets.swift in Sources */,
 				CC414E341DC34EBD009F8B52 /* ThreadHelper.swift in Sources */,

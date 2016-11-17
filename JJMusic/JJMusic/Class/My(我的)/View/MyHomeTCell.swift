@@ -10,6 +10,15 @@ import UIKit
 
 class MyHomeTCell: UITableViewCell {
 
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        self.iconImageV.snp.removeConstraints()
+        self.titleL.snp.removeConstraints()
+        self.totalL.snp.removeConstraints()
+        self.arrowImageV.snp.removeConstraints()
+        self.bottomL.snp.removeConstraints()
+    }
+    
     var cellData: My_Home_Cell_Data? {
         didSet {
             self.titleL.text = cellData?.title
@@ -20,7 +29,36 @@ class MyHomeTCell: UITableViewCell {
             if let arrow = cellData?.rightIcomName {
                 self.arrowImageV.image = UIImage(named: arrow)
             }
+            iconImageV.snp.makeConstraints {[unowned self] (make) in
+                make.top.equalTo(self.contentView.snp.top).offset(10)
+                make.bottom.equalTo(self.contentView.snp.bottom).offset(-10)
+                make.left.equalTo(self.contentView.snp.left).offset(15)
+                make.width.height.equalTo(48)
+            }
             
+            titleL.snp.makeConstraints {[unowned self] (make) in
+                make.top.equalTo(self.iconImageV)
+                make.left.height.width.equalTo(self.totalL)
+                make.left.equalTo(self.iconImageV.snp.right).offset(20)
+                make.right.equalTo(self.arrowImageV.snp.left).offset(-10)
+            }
+            totalL.snp.makeConstraints {[unowned self] (make) in
+                make.top.equalTo(self.titleL.snp.bottom)
+                make.bottom.equalTo(self.iconImageV.snp.bottom)
+            }
+            
+            arrowImageV.snp.makeConstraints {[unowned self] (make) in
+                make.centerY.equalTo(self.iconImageV)
+                make.right.equalTo(self.contentView.snp.right).offset(-20)
+                make.width.equalTo(40)
+                make.height.equalTo(self.iconImageV)
+            }
+            
+            bottomL.snp.makeConstraints {[unowned self] (make) in
+                make.left.right.bottom.equalTo(self.contentView)
+                make.height.equalTo(0.3)
+            }
+
         }
     }
     
@@ -41,36 +79,6 @@ class MyHomeTCell: UITableViewCell {
         self.contentView.addSubview(totalL)
         self.contentView.addSubview(arrowImageV)
         self.contentView.addSubview(bottomL)
-        
-        iconImageV.snp.makeConstraints { (make) in
-            make.top.equalTo(self.contentView.snp.top).offset(10)
-            make.bottom.equalTo(self.contentView.snp.bottom).offset(-10)
-            make.left.equalTo(self.contentView.snp.left).offset(15)
-            make.width.height.equalTo(48)
-        }
-        
-        titleL.snp.makeConstraints { (make) in
-            make.top.equalTo(iconImageV)
-            make.left.height.width.equalTo(totalL)
-            make.left.equalTo(iconImageV.snp.right).offset(20)
-            make.right.equalTo(arrowImageV.snp.left).offset(-10)
-        }
-        totalL.snp.makeConstraints { (make) in
-            make.top.equalTo(titleL.snp.bottom)
-            make.bottom.equalTo(iconImageV.snp.bottom)
-        }
-        
-        arrowImageV.snp.makeConstraints { (make) in
-            make.centerY.equalTo(iconImageV)
-            make.right.equalTo(contentView.snp.right).offset(-20)
-            make.width.equalTo(40)
-            make.height.equalTo(iconImageV)
-        }
-        
-        bottomL.snp.makeConstraints { (make) in
-            make.left.right.bottom.equalTo(self.contentView)
-            make.height.equalTo(0.3)
-        }
     }
     
     override func awakeFromNib() {

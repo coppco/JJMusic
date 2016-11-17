@@ -178,10 +178,10 @@ class TopTitleView: UIView {
                         })
                         tempB = button
                         if index == self.titleArray.count - 1 {
-                            scrollView.snp.remakeConstraints { (make) in
+                            scrollView.snp.remakeConstraints {[unowned self] (make) in
                                 if self.isAddButton {
                                     make.left.top.bottom.equalTo(self)
-                                    make.right.equalTo(editB.snp.left)
+                                    make.right.equalTo(self.editB.snp.left)
                                 } else {
                                     make.edges.equalTo(self)
                                 }
@@ -198,7 +198,7 @@ class TopTitleView: UIView {
                 tempB.transform = .identity
                 tempB.transform = tempB.transform.scaledBy(x: 1.1, y: 1.1)
                 selectedButton = tempB
-                underLineV.snp.remakeConstraints { (make) in
+                underLineV.snp.remakeConstraints {[unowned self] (make) in
                     make.bottom.equalTo(self)
                     make.height.equalTo(1.5)
                     make.centerX.equalTo(tempB.snp.centerX)
@@ -260,7 +260,7 @@ class TopTitleView: UIView {
     private func configUI() {
         createButton()
         scrollView.addSubview(bottomLine)
-        bottomLine.snp.makeConstraints { (make) in
+        bottomLine.snp.makeConstraints {[unowned self] (make) in
             make.left.right.bottom.equalTo(self)
             make.height.equalTo(1)
         }
@@ -344,15 +344,15 @@ class TopTitleView: UIView {
                 make.centerY.right.equalTo(self)
                 make.width.height.equalTo(editButtonWidth)
             })
-            scrollView.snp.makeConstraints { (make) in
+            scrollView.snp.makeConstraints {[unowned self] (make) in
                 make.left.top.bottom.equalTo(self)
-                make.right.equalTo(editB.snp.left)
+                make.right.equalTo(self.editB.snp.left)
                 if let temp = tempB {
                     make.right.equalTo(temp.snp.right)
                 }
             }
         } else {
-            scrollView.snp.makeConstraints { (make) in
+            scrollView.snp.makeConstraints {[unowned self] (make) in
                 make.edges.equalTo(self)
                 if let temp = tempB {
                     make.right.equalTo(temp.snp.right)
@@ -426,7 +426,7 @@ class TopTitleView: UIView {
     }
     
     private func animations(oldButton: UIButton, newButton: UIButton) {
-        underLineV.snp.remakeConstraints { (make) in
+        underLineV.snp.remakeConstraints {[unowned self] (make) in
             make.bottom.equalTo(self.snp.bottom)
             make.height.equalTo(3)
             make.centerX.equalTo(newButton.snp.centerX)

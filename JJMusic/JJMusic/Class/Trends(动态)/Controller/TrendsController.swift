@@ -14,7 +14,7 @@ class TrendsController: UIViewController {
         super.viewDidLoad()
 
         self.view.addSubview(backgroundImageV)
-        backgroundImageV.snp.makeConstraints { (make) in
+        backgroundImageV.snp.makeConstraints {[unowned self] (make) in
             make.top.left.right.equalTo(self.view)
             make.height.equalTo(64)
         }

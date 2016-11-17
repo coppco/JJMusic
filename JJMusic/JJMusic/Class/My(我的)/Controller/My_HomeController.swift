@@ -32,12 +32,12 @@ class My_HomeController: UIViewController {
         self.view.addSubview(backgroundImageV)
         self.view.addSubview(tableView)
         
-        backgroundImageV.snp.makeConstraints { (make) in
+        backgroundImageV.snp.makeConstraints {[unowned self] (make) in
             make.top.left.right.equalTo(self.view)
-            make.height.equalTo(backgroundImageV.snp.width)
+            make.height.equalTo(self.backgroundImageV.snp.width)
         }
         
-        tableView.snp.makeConstraints { (make) in
+        tableView.snp.makeConstraints {[unowned self] (make) in
             make.top.equalTo(self.view.snp.top).offset(64)
             make.left.right.bottom.equalTo(self.view)
         }
@@ -70,7 +70,7 @@ class My_HomeController: UIViewController {
         object.sectionHeaderHeight = 0
         object.sectionFooterHeight = 0
         object.backgroundColor = UIColor.clear
-        object.contentInset = UIEdgeInsetsMake(60, 0, 0, 0)
+        object.contentInset = UIEdgeInsetsMake(80, 0, 0, 0)
         return object
     }()
 }
@@ -86,6 +86,8 @@ extension My_HomeController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        let vc = LocalMusicController()
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -115,6 +117,7 @@ extension My_HomeController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: HomeController_Cell_ReuseIdentifier) as! MyHomeTCell
+        
         cell.cellData = self.dataArray[indexPath.section][indexPath.row]
         return cell
     }

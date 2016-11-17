@@ -37,41 +37,41 @@ class AppBottomView: UIView {
         self.addSubview(nextB)
         self.addSubview(progressV)
         
-        iconImageV.snp.makeConstraints { (make) in
+        iconImageV.snp.makeConstraints {[unowned self] (make) in
             make.height.width.equalTo(42)
             make.left.top.equalTo(self)
             make.bottom.equalTo(self.snp.bottom).offset(-2)
         }
-        topL.snp.makeConstraints { (make) in
+        topL.snp.makeConstraints {[unowned self] (make) in
             make.right.top.left.equalTo(self)
             make.height.equalTo(0.5)
         }
         
-        songNameL.snp.makeConstraints { (make) in
+        songNameL.snp.makeConstraints {[unowned self] (make) in
             make.top.equalTo(self.snp.top).offset(3)
-            make.height.left.right.equalTo(singerL)
-            make.left.equalTo(iconImageV.snp.right).offset(5)
-            make.right.equalTo(pauseB.snp.right).offset(-5)
+            make.height.left.right.equalTo(self.singerL)
+            make.left.equalTo(self.iconImageV.snp.right).offset(5)
+            make.right.equalTo(self.pauseB.snp.right).offset(-5)
         }
         
-        singerL.snp.makeConstraints { (make) in
-            make.bottom.equalTo(iconImageV.snp.bottom).offset(-3)
-            make.top.equalTo(songNameL.snp.bottom)
+        singerL.snp.makeConstraints {[unowned self] (make) in
+            make.bottom.equalTo(self.iconImageV.snp.bottom).offset(-3)
+            make.top.equalTo(self.songNameL.snp.bottom)
         }
         
-        nextB.snp.makeConstraints { (make) in
+        nextB.snp.makeConstraints {[unowned self] (make) in
             make.top.equalTo(self)
             make.right.equalTo(self.snp.right).offset(-15)
-            make.height.width.equalTo(iconImageV)
+            make.height.width.equalTo(self.iconImageV)
         }
-        pauseB.snp.makeConstraints { (make) in
-            make.top.width.height.equalTo(nextB)
-            make.right.equalTo(nextB.snp.left)
+        pauseB.snp.makeConstraints {[unowned self] (make) in
+            make.top.width.height.equalTo(self.nextB)
+            make.right.equalTo(self.nextB.snp.left)
         }
         
-        progressV.snp.makeConstraints { (make) in
+        progressV.snp.makeConstraints {[unowned self] (make) in
             make.left.right.equalTo(self)
-            make.top.equalTo(iconImageV.snp.bottom)
+            make.top.equalTo(self.iconImageV.snp.bottom)
             make.height.equalTo(2)
         }
     }

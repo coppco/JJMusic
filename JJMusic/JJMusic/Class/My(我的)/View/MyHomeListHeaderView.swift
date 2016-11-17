@@ -26,22 +26,21 @@ class MyHomeListHeaderView: UITableViewHeaderFooterView {
         self.contentView.addSubview(batchB)
         self.contentView.addSubview(bottomL)
         
-        playListL.snp.makeConstraints { (make) in
+        playListL.snp.makeConstraints {[unowned self] (make) in
             make.top.equalTo(self.contentView.snp.top).offset(10)
-            make.bottom.equalTo(self.contentView.snp.bottom).offset(-10)
+            make.bottom.equalTo(self.contentView.snp.bottom).offset(-10).priority(750)
             make.left.equalTo(self.contentView.snp.left).offset(15)
-            make.height.equalTo(24)
         }
-        batchB.snp.makeConstraints { (make) in
-            make.centerY.equalTo(playListL)
+        batchB.snp.makeConstraints {[unowned self] (make) in
+            make.centerY.equalTo(self.playListL)
             make.right.equalTo(self.contentView.snp.right).offset(-15)
         }
-        newPlayListB.snp.makeConstraints { (make) in
-            make.centerY.equalTo(playListL)
-            make.right.equalTo(batchB.snp.left).offset(-10)
+        newPlayListB.snp.makeConstraints {[unowned self] (make) in
+            make.centerY.equalTo(self.playListL)
+            make.right.equalTo(self.batchB.snp.left).offset(-10)
         }
         
-        bottomL.snp.makeConstraints { (make) in
+        bottomL.snp.makeConstraints {[unowned self] (make) in
             make.left.right.bottom.equalTo(self)
             make.height.equalTo(0.3)
         }

@@ -24,25 +24,25 @@ class MyHomeIconHeaderView: UITableViewHeaderFooterView {
         self.contentView.addSubview(nameL)
         self.contentView.addSubview(detailL)
         
-        iconImageV.snp.makeConstraints { (make) in
+        iconImageV.snp.makeConstraints {[unowned self] (make) in
             make.size.equalTo(CGSize(width: 32, height: 32))
             make.top.equalTo(self.contentView.snp.top).offset(10)
             make.bottom.equalTo(self.contentView.snp.bottom).offset(-10)
             make.left.equalTo(self.contentView.snp.left).offset(15)
         }
         
-        nameL.snp.makeConstraints { (make) in
-            make.top.equalTo(iconImageV.snp.top)
-            make.height.equalTo(detailL.snp.height)
+        nameL.snp.makeConstraints {[unowned self] (make) in
+            make.top.equalTo(self.iconImageV.snp.top)
+            make.height.equalTo(self.detailL.snp.height)
             make.right.equalTo(self.contentView.snp.right).offset(-10)
-            make.left.equalTo(iconImageV.snp.right).offset(10)
+            make.left.equalTo(self.iconImageV.snp.right).offset(10)
         }
         
-        detailL.snp.makeConstraints { (make) in
-            make.top.equalTo(nameL.snp.bottom)
+        detailL.snp.makeConstraints {[unowned self] (make) in
+            make.top.equalTo(self.nameL.snp.bottom)
             make.right.equalTo(self.contentView.snp.right).offset(-10)
-            make.left.equalTo(iconImageV.snp.right).offset(10)
-            make.bottom.equalTo(iconImageV.snp.bottom)
+            make.left.equalTo(self.iconImageV.snp.right).offset(10)
+            make.bottom.equalTo(self.iconImageV.snp.bottom)
         }
     }
     

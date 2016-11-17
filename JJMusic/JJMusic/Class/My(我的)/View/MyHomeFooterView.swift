@@ -26,17 +26,17 @@ class MyHomeFooterView: UITableViewHeaderFooterView {
         self.contentView.addSubview(imageV)
         self.contentView.addSubview(tipsL)
         
-        tipsL.snp.makeConstraints { (make) in
+        tipsL.snp.makeConstraints {[unowned self] (make) in
             make.centerX.equalTo(self.contentView).offset(20)
             make.height.equalTo(20)
             make.top.equalTo(self.contentView.snp.top).offset(15)
             make.bottom.equalTo(self.contentView.snp.bottom).offset(-15)
         }
         
-        imageV.snp.makeConstraints { (make) in
+        imageV.snp.makeConstraints {[unowned self] (make) in
             make.size.equalTo(CGSize(width: 20, height: 14))
-            make.centerY.equalTo(tipsL)
-            make.right.equalTo(tipsL.snp.left).offset(-5)
+            make.centerY.equalTo(self.tipsL)
+            make.right.equalTo(self.tipsL.snp.left).offset(-5)
         }
     }
     

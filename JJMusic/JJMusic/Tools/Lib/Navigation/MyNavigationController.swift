@@ -17,7 +17,7 @@ class MyNavigationController: UINavigationController, UIGestureRecognizerDelegat
     private class func configNavigationBar() {
         let navigationBar = UINavigationBar.appearance()
         navigationBar.isTranslucent = false
-        navigationBar.barTintColor = UIColor.colorWithRGB(r: 248, g: 73, b: 76)
+        navigationBar.barTintColor = navigationColor
         navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
     }
     
@@ -45,7 +45,7 @@ class MyNavigationController: UINavigationController, UIGestureRecognizerDelegat
     override func pushViewController(_ viewController: UIViewController, animated: Bool) {
         if self.viewControllers.count > 0 {
             viewController.hidesBottomBarWhenPushed = true
-            viewController.navigationItem.leftBarButtonItem = UIBarButtonItem.barButtonItem(title: nil, titleNormalColor: nil, titleHighlightedColor: nil, normalImage: "navigationButtonReturn", highlightedImage: "navigationButtonReturn", target: self, action: #selector(MyNavigationController.back), edg: UIEdgeInsets(top: 0, left: -15, bottom: 0, right: 0))
+            viewController.navigationItem.leftBarButtonItem = UIBarButtonItem.barButtonItem(title: nil, titleNormalColor: nil, titleHighlightedColor: nil, normalImage: "ic_recommend_back_normal", highlightedImage: "ic_recommend_back_press", target: self, action: #selector(MyNavigationController.back), edg: UIEdgeInsets(top: 0, left: -15, bottom: 0, right: 0))
         }
         super.pushViewController(viewController, animated: animated)
     }
@@ -67,4 +67,5 @@ class MyNavigationController: UINavigationController, UIGestureRecognizerDelegat
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
+    
 }

@@ -12,3 +12,4 @@
 #import <JPUSHService.h>
 #import <MJRefresh.h>
 #import "UITableView+FDTemplateLayoutCell.h"
+#import "MBProgressHUD.h"

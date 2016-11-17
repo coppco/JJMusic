@@ -37,11 +37,11 @@ class RefreshHeader: MJRefreshGifHeader {
     override func placeSubviews() {
         super.placeSubviews()
         
-        self.stateLabel.snp.makeConstraints { (make) in
+        self.stateLabel.snp.makeConstraints {[unowned self] (make) in
             make.left.equalTo(self.snp.centerX).offset(-15)
             make.centerY.equalTo(self)
         }
-        self.gifView.snp.makeConstraints { (make) in
+        self.gifView.snp.makeConstraints {[unowned self] (make) in
             make.right.equalTo(self.snp.centerX).offset(-30)
             make.centerY.equalTo(self)
         }

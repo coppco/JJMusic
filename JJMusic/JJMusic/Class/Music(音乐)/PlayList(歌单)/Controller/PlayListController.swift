@@ -31,16 +31,17 @@ class PlayListController: UIViewController {
     
     /// 获取歌单数据
     private func getPlayListData() {
+        self.show_LoadingHud()
         HTTPRequestModel<PlayListVo>.requestModel(type: .get, URLString: HTTPAddress.getPlayList, parameters: nil, success: {[weak self] (object) in
             self?.playList = object
-            }) { (error) in
-                
+            }) {[weak self] (error) in
+                self?.hideAllHud()
         }
     }
     
     private func configUI() {
         self.view.addSubview(collectionView)
-        collectionView.snp.makeConstraints { (make) in
+        collectionView.snp.makeConstraints {[unowned self] (make) in
             make.edges.equalTo(self.view)
         }
     }

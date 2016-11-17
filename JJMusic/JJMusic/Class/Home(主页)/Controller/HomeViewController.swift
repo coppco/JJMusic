@@ -11,8 +11,13 @@ import UIKit
 class HomeViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.setNavigationBarHidden(true, animated: false)
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
         super.viewWillAppear(animated)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(false, animated: animated)
+        super.viewWillDisappear(animated)
     }
     
     override func viewDidLoad() {
@@ -23,14 +28,15 @@ class HomeViewController: UIViewController {
         self.addChildViewController(myMusicV)
         self.addChildViewController(myLocalV)
         self.addChildViewController(trendsV)
-        collectionView.snp.makeConstraints { (make) in
+        collectionView.snp.makeConstraints {[unowned self] (make) in
             make.top.left.right.equalTo(0)
             make.bottom.equalTo(self.view.snp.bottom).offset(-44)
         }
         
         self.view.addSubview(navigationV)
-        navigationV.snp.makeConstraints { (make) in
+        navigationV.snp.makeConstraints {[unowned self] (make) in
             make.top.right.left.equalTo(self.collectionView)
+            make.height.equalTo(64)
         }
         self.view.bringSubview(toFront: navigationV)
     }
@@ -39,14 +45,10 @@ class HomeViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
-    }
-    
     //MARK: Private
     
     /**导航栏*/
-    private lazy var navigationV: HomeNavigationView = {
+    fileprivate lazy var navigationV: HomeNavigationView = {
         let object = HomeNavigationView.shared
         object.didSelectedButton = {[weak self] index in
             let offset = self?.collectionView.contentOffset
@@ -92,6 +94,10 @@ class HomeViewController: UIViewController {
         let object = TrendsController()
         return object
     }()
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
 
 }
 
@@ -105,19 +111,32 @@ extension HomeViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
-        if indexPath.section == 0 {
-            cell.backgroundView = self.myLocalV.view
-        } else if indexPath.section == 1{
-            cell.backgroundView = self.myMusicV.view
-        } else if indexPath.section == 2 {
-            cell.backgroundView = self.trendsV.view
+        for view in cell.contentView.subviews {
+            view.removeFromSuperview()
         }
-        if let backV = cell.backgroundView {
-            cell.bringSubview(toFront: backV)
+        if indexPath.section == 0 {
+            cell.contentView.addSubview(self.myLocalV.view)
+            myLocalV.view.frame = cell.bounds
+        } else if indexPath.section == 1{
+            cell.contentView.addSubview(self.myMusicV.view)
+            myMusicV.view.frame = cell.bounds
+        } else if indexPath.section == 2 {
+            cell.contentView.addSubview(self.trendsV.view)
+            trendsV.view.frame = cell.bounds
         }
         return cell
     }
 }
 
+
+
 extension HomeViewController: UICollectionViewDelegate {
+}
+
+extension HomeViewController: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let offset = scrollView.contentOffset
+        let page = (offset.x - scrollView.frame.width / 2) / scrollView.frame.width
+        self.navigationV.shouldMoveTo(index: Int(ceil(page)))
+    }
 }
