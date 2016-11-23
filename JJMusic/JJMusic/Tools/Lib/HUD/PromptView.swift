@@ -4,7 +4,7 @@
 //
 //  Created by coco on 16/11/17.
 //  Copyright © 2016年 XHJ. All rights reserved.
-//
+//  在window上面显示提示view, 不影响操作
 
 import UIKit
 

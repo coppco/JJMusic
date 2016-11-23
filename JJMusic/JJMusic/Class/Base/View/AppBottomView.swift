@@ -29,6 +29,7 @@ class AppBottomView: UIView {
     }
     
     private func configUI() {
+        self.addGestureRecognizer(self.tapGesture)
         self.addSubview(topL)
         self.addSubview(iconImageV)
         self.addSubview(songNameL)
@@ -132,5 +133,16 @@ class AppBottomView: UIView {
         object.backgroundColor = UIColor.blue
         return object
     }()
+    
+    /// tap
+    fileprivate lazy var tapGesture: UITapGestureRecognizer = {
+        let object = UITapGestureRecognizer(target: self, action: #selector(AppBottomView.didTap(sender:)))
+
+        return object
+    }()
+
+    @objc private func didTap(sender: UITapGestureRecognizer) {
+        
+    }
 
 }

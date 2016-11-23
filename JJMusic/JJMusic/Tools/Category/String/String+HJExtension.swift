@@ -192,6 +192,11 @@ extension String {
         return string?.characters.count == 0 || string == nil
     }
     
+    func firstCharacter() -> String {
+        if self.characters.count == 0 { return "" }
+        return self.substring(to: self.index(after: self.startIndex))
+    }
+    
     /// 从CharacterSet里面替换字符串
     ///
     /// - parameter specialString: 需要过滤的字符串
@@ -301,8 +306,59 @@ extension String {
     var range: NSRange {
         return NSMakeRange(0, self.characters.count)
     }
+}
+
+// MARK: - 汉字处理
+extension String {
     
+    /// 字符串转拼音
+    ///
+    /// - parameter whiteSpaceAllow:    是否显示空格, 默认是
+    /// - parameter showPhoneticSymbol: 是否显示音标,默认是
+    ///
+    /// - returns: 返回处理后的字符串
+    /*
+     let kCFStringTransformStripCombiningMarks: CFString! //删除重音符号
+     let kCFStringTransformToLatin: CFString! //中文的拉丁字母
+     let kCFStringTransformFullwidthHalfwidth: CFString!//全角半宽
+     let kCFStringTransformLatinKatakana: CFString!//片假名拉丁字母
+     let kCFStringTransformLatinHiragana: CFString!//平假名拉丁字母
+     let kCFStringTransformHiraganaKatakana: CFString!//平假名片假名
+     let kCFStringTransformMandarinLatin: CFString!//普通话拉丁字母
+     let kCFStringTransformLatinHangul: CFString!//韩文的拉丁字母
+     let kCFStringTransformLatinArabic: CFString!//阿拉伯语拉丁字母
+     let kCFStringTransformLatinHebrew: CFString!//希伯来语拉丁字母
+     let kCFStringTransformLatinThai: CFString!//泰国拉丁字母
+     let kCFStringTransformLatinCyrillic: CFString!//西里尔拉丁字母
+     let kCFStringTransformLatinGreek: CFString!//希腊拉丁字母
+     let kCFStringTransformToXMLHex: CFString!//转换为XML十六进制字符
+     let kCFStringTransformToUnicodeName: CFString!//转换为Unicode的名称
+     @availability(iOS, introduced=2.0)
+     let kCFStringTransformStripDiacritics: CFString!//转换成不带音标的符号
+     */
+    func transformToPinYin(whiteSpaceAllow: Bool = true, showPhoneticSymbol: Bool = true) -> String {
+        if self.isEmpty { return self }
+        let temp = NSMutableString(string: self) as CFMutableString
+        if CFStringTransform(temp, nil, kCFStringTransformMandarinLatin, false) == true {
+            if showPhoneticSymbol == false {
+                CFStringTransform(temp, nil, kCFStringTransformStripDiacritics, false)
+            }
+            
+            if whiteSpaceAllow == false {
+                return (temp as String).replacingOccurrences(of: " ", with: "")
+            }
+            return temp as String
+        } else {
+            return self
+        }
+    }
     
-    
+    /// 是否包含中文
+    ///
+    /// - returns: true or false
+    func isContainChineseCharacters() -> Bool {
+        //^[\\u4e00-\\u9fa5]*$   从字符串开始文字到结束位置, 匹配中文任意次
+        return self.matchesRegex(pattern: "^[\\u4e00-\\u9fa5]*$", options: NSRegularExpression.Options.allowCommentsAndWhitespace)
+    }
 }
 

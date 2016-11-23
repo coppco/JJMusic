@@ -38,7 +38,7 @@ struct HTTPAddress {
     static let KSongMyK = baseURL + "baidu.ting.learn.category&from=ios&channel=(null)&cuid=appstore&from=ios&version=" + musicVersion
     
     /// 动态
-    static let dynamic = baseURL + "baidu.ting.ugcfriend.getList&channel=(null)&cuid=appstore&from=ios&version=" + musicVersion
+    static let dynamic = baseURL + "baidu.ting.ugcfriend.getList&channel=0e939898c11ad3b9b52e6fb5d50e009ad930a65b&cuid=appstore&from=ios&version=" + musicVersion
 }
 
 class HTTPRequest {
