@@ -117,8 +117,8 @@ extension My_HomeController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: HomeController_Cell_ReuseIdentifier) as! MyHomeTCell
-        
-        cell.cellData = self.dataArray[indexPath.section][indexPath.row]
+        let model = self.dataArray[indexPath.section][indexPath.row]
+        cell.cellData = model
         return cell
     }
     

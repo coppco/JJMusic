@@ -71,6 +71,7 @@ class HomeViewController: UIViewController {
         object.isPagingEnabled = true
         object.delegate = self
         object.dataSource = self
+        object.bounces = false
         object.showsVerticalScrollIndicator = false
         object.showsHorizontalScrollIndicator = false
         return object

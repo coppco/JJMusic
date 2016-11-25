@@ -112,7 +112,11 @@ class KSongCollectionVController: UICollectionViewController, UICollectionViewDe
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
         if section == 0 {
-            return self.topImage?.result?.count ?? 0
+            if self.topImage?.result == nil || self.topImage?.result?.count == 0 {
+                return 0
+            } else {
+                return 1
+            }
         } else if section == 1 {
             return 1
         } else if section == 2 {
@@ -154,7 +158,4 @@ class KSongCollectionVController: UICollectionViewController, UICollectionViewDe
         }
         return CGSize.zero
     }
-    
-    
-    
 }

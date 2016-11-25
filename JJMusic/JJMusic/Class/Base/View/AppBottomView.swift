@@ -11,7 +11,7 @@ import UIKit
 class AppBottomView: UIView {
 
     /// 单例
-    static let shared: AppBottomView = AppBottomView.init()
+    static let shared: AppBottomView = AppBottomView()
     
     private override init(frame: CGRect) {
         super.init(frame: frame)

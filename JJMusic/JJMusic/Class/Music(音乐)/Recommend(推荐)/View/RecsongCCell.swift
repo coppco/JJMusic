@@ -16,7 +16,7 @@ class RecsongCCell: UICollectionViewCell {
         self.titleL.text = nil
         self.subTitleL.text = nil
     }
-    
+    //专栏
     var mod_7: Mod_7Vo? {
         didSet {
             if let icon = mod_7?.pic {
@@ -28,7 +28,7 @@ class RecsongCCell: UICollectionViewCell {
             self.leftB.isUserInteractionEnabled = false
         }
     }
-    
+    //今日推荐歌曲
     var recsong: RecsongVo? {
         didSet {
             if let icon = recsong?.pic_premium {

@@ -44,7 +44,7 @@ class LocalMusicController: UIViewController {
         tableView.snp.makeConstraints { (make) in
             make.top.equalTo(topView.snp.bottom)
             make.left.equalTo(self.view)
-            make.right.equalTo(self.view.snp.right).offset(-10)
+            make.right.equalTo(self.view.snp.right)
             make.bottom.equalTo(self.view.snp.bottom).offset(-44)
         }
     }
@@ -262,6 +262,11 @@ extension LocalMusicController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 60
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let model = self.sortDic[self.sortKeys[indexPath.section]]?[indexPath.row]
+        PlayerTool.shared.playWithURL(urlString: model?.assetURL?.absoluteString ?? "")
+    }
 }
 
 // MARK: - UITableViewDataSource
@@ -290,8 +295,9 @@ extension LocalMusicController: UITableViewDataSource {
         return self.sortKeys
     }
     
+    /// 点击右侧索引时执行的方法
     func tableView(_ tableView: UITableView, sectionForSectionIndexTitle title: String, at index: Int) -> Int {
-        
+        IndexPopView.show(title: title, in: self.view)
         return index
     }
 }

@@ -225,10 +225,13 @@ extension RecommendController: UICollectionViewDelegate {
         guard let item = recommend.module?[indexPath.section] else{
             return
         }
-        guard item.key != nil else {
+        guard let key = item.key else {
             return
         }
         
+        if key == "recsong" {
+//            PlayerTool.shared.playWithURL(urlString: item.link_url)
+        }
         
     }
 }
