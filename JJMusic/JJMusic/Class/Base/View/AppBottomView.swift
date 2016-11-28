@@ -12,6 +12,18 @@ class AppBottomView: UIView {
 
     /// 单例
     static let shared: AppBottomView = AppBottomView()
+    //点击执行block
+    private let didTap: ((AppBottomView) -> Void)? = { bottomView in
+        appDelegate.window!.bringSubview(toFront: appDelegate.playerView)
+        appDelegate.playBottomView.isUserInteractionEnabled = false
+        appDelegate.playerView.isUserInteractionEnabled = false
+        UIView.animate(withDuration: animationDuration, animations: {
+            appDelegate.playerView.y = 0
+        }) { (falg) in
+            appDelegate.playBottomView.isUserInteractionEnabled = true
+            appDelegate.playerView.isUserInteractionEnabled = true
+        }
+    }
     
     private override init(frame: CGRect) {
         super.init(frame: frame)
@@ -142,7 +154,9 @@ class AppBottomView: UIView {
     }()
 
     @objc private func didTap(sender: UITapGestureRecognizer) {
-        
+        if let closure = self.didTap {
+            closure(self)
+        }
     }
 
 }

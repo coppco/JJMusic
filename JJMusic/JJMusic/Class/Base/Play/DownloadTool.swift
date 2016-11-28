@@ -29,6 +29,6 @@ extension DownloadTool: AVAssetResourceLoaderDelegate {
     }
     // 2️⃣
     fileprivate func dealLoadingRequese(request: AVAssetResourceLoadingRequest) {
-        let url = request.request.url
+        _ = request.request.url
     }
 }

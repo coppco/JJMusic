@@ -42,6 +42,8 @@
 		CC414E331DC34EBD009F8B52 /* String+MD5.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC414E1E1DC34EBD009F8B52 /* String+MD5.swift */; };
 		CC414E341DC34EBD009F8B52 /* ThreadHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC414E1F1DC34EBD009F8B52 /* ThreadHelper.swift */; };
 		CC414E351DC34EBD009F8B52 /* UIButton+Kingfisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC414E201DC34EBD009F8B52 /* UIButton+Kingfisher.swift */; };
+		CC4ACBE21DEBE336000F7920 /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4ACBE11DEBE336000F7920 /* PlayerView.swift */; };
+		CC4ACBE81DEC037A000F7920 /* PlayerBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4ACBE71DEC037A000F7920 /* PlayerBottomView.swift */; };
 		CC4F74E61DDD58BD00A7FB59 /* MBProgressHUD+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4F74E41DDD58BD00A7FB59 /* MBProgressHUD+Extension.swift */; };
 		CC4F74E71DDD58BD00A7FB59 /* MBProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CC4F74E51DDD58BD00A7FB59 /* MBProgressHUD.bundle */; };
 		CC4F74E91DDD5FBC00A7FB59 /* PromptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4F74E81DDD5FBC00A7FB59 /* PromptView.swift */; };
@@ -230,6 +232,8 @@
 		CC414E1E1DC34EBD009F8B52 /* String+MD5.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+MD5.swift"; sourceTree = "<group>"; };
 		CC414E1F1DC34EBD009F8B52 /* ThreadHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThreadHelper.swift; sourceTree = "<group>"; };
 		CC414E201DC34EBD009F8B52 /* UIButton+Kingfisher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Kingfisher.swift"; sourceTree = "<group>"; };
+		CC4ACBE11DEBE336000F7920 /* PlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
+		CC4ACBE71DEC037A000F7920 /* PlayerBottomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerBottomView.swift; sourceTree = "<group>"; };
 		CC4F74E41DDD58BD00A7FB59 /* MBProgressHUD+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MBProgressHUD+Extension.swift"; sourceTree = "<group>"; };
 		CC4F74E51DDD58BD00A7FB59 /* MBProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MBProgressHUD.bundle; sourceTree = "<group>"; };
 		CC4F74E81DDD5FBC00A7FB59 /* PromptView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PromptView.swift; sourceTree = "<group>"; };
@@ -836,6 +840,8 @@
 			children = (
 				CCAA26CB1DE2E96D00B79F40 /* PlayTool.swift */,
 				CCAA26CD1DE2FEA000B79F40 /* DownloadTool.swift */,
+				CC4ACBE11DEBE336000F7920 /* PlayerView.swift */,
+				CC4ACBE71DEC037A000F7920 /* PlayerBottomView.swift */,
 			);
 			path = Play;
 			sourceTree = "<group>";
@@ -1277,6 +1283,11 @@
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = 3Y92XXLNT8;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					CC5531F81DC18892002296A3 = {
 						CreatedOnToolsVersion = 8.0;
@@ -1424,6 +1435,7 @@
 				CC414E241DC34EBD009F8B52 /* Filter.swift in Sources */,
 				CCAAE3791DC1F449000E5C29 /* Extension.swift in Sources */,
 				CCD8390B1DC1EA2300A44D16 /* UIScrollView+HJExtension.swift in Sources */,
+				CC4ACBE21DEBE336000F7920 /* PlayerView.swift in Sources */,
 				CC732AF01DD2C2E100532979 /* ParameterEncoding.swift in Sources */,
 				CC732AF31DD2C2E100532979 /* ResponseSerialization.swift in Sources */,
 				CC732AF61DD2C2E100532979 /* SessionDelegate.swift in Sources */,
@@ -1489,6 +1501,7 @@
 				CCAAE3811DC1F449000E5C29 /* ConstraintConstantTarget.swift in Sources */,
 				CC4F74FD1DDE920300A7FB59 /* My_HomeController.swift in Sources */,
 				CC50154C1DD1C9C8003A8E71 /* MangerView.swift in Sources */,
+				CC4ACBE81DEC037A000F7920 /* PlayerBottomView.swift in Sources */,
 				CC414E061DC339C3009F8B52 /* UITableView+FDTemplateLayoutCell.m in Sources */,
 				CCAAE3941DC1F449000E5C29 /* ConstraintPriorityTarget.swift in Sources */,
 				CCEE1A711DD95E74003C68B8 /* TopImageCCell.swift in Sources */,

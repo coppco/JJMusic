@@ -7,13 +7,21 @@
 //
 
 import UIKit
+import AVFoundation
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var playBottomView: AppBottomView = AppBottomView.shared
-    
+    var playBottomView: AppBottomView = {
+        let object = AppBottomView.shared
+        return object
+    }()
+
+    internal lazy var playerView: PlayerView = {
+        return PlayerView.shared
+    }()
+
     /// 监控网络状态
     var manger: NetworkReachabilityManager? = {
         let object = NetworkReachabilityManager(host: "http://www.baidu.com")
@@ -32,6 +40,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             make.right.left.bottom.equalTo(self.window!)
             make.height.equalTo(44)
         }
+        self.playerView.frame = CGRect(x: 0, y: kMainScreenHeight, width: kMainScreenWidth, height: kMainScreenHeight)
+        window?.addSubview(self.playerView)
+        setBackPlay()
+        observeNetworking()
+        return true
+    }
+    /// 监听网络变化
+    private func observeNetworking() {
         self.manger?.listener = { status in
             print(status)
             switch status {
@@ -50,12 +66,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
         self.manger?.startListening()
-        return true
+    }
+    
+    /// 设置后台播放, 必须设置不然没声音
+    private func setBackPlay() {
+        //target ---> Capabilities ---> Background Models 勾选第一项
+        
+        let session = AVAudioSession.sharedInstance()
+        try? session.setCategory(AVAudioSessionCategoryPlayback, with: [AVAudioSessionCategoryOptions.allowBluetooth, AVAudioSessionCategoryOptions.mixWithOthers])
+        try? session.setActive(true)
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
+        //可以接受远程控制
+        UIApplication.shared.beginReceivingRemoteControlEvents()
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
@@ -69,6 +95,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        //取消远程控制
+        UIApplication.shared.endReceivingRemoteControlEvents()
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
@@ -80,7 +108,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         PromptView.show(message: "收到内存警告了")
     }
 
-    
+    override func remoteControlReceived(with event: UIEvent?) {
+        
+    }
 
 }
 

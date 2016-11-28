@@ -31,3 +31,6 @@ let spacingX: CGFloat = 10
 
 /// y轴间距
 let spacingY: CGFloat = 10
+
+//动画间隔
+let animationDuration = 0.35
