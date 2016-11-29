@@ -13,6 +13,11 @@ private let spacingV = 5
 
 class PlayerBottomView: UIView {
     
+    /// Swift3.0开始,以前的方法变为变量了
+    override class var layerClass: Swift.AnyClass {
+        return CAGradientLayer.self
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         configUI()
@@ -28,7 +33,15 @@ class PlayerBottomView: UIView {
     }
     
     private func configUI() {
-        self.backgroundColor = UIColor.randomColor()
+        var color = [CGColor]()
+        var location = [NSNumber]()
+        for i in 0..<10 {
+            color.append(navigationColor.withAlphaComponent(CGFloat(i) / 10.0).cgColor)
+            location.append(NSNumber(value: (Double(i) / 10.0)))
+        }
+        (self.layer as! CAGradientLayer).colors = color
+        (self.layer as! CAGradientLayer).locations = location
+        
         self.addSubview(downloadB)
         self.addSubview(infomationB)
         self.addSubview(favoriteB)
@@ -60,10 +73,12 @@ class PlayerBottomView: UIView {
         
         self.currentTimeL.snp.makeConstraints { (make) in
             make.left.equalTo(itemLeftRight)
+            make.size.equalTo(CGSize(width: 40, height: 20))
             make.centerY.equalTo(self.progressV)
         }
         self.totalTimeL.snp.makeConstraints { (make) in
             make.right.equalTo(-itemLeftRight)
+            make.size.equalTo(CGSize(width: 40, height: 20))
             make.centerY.equalTo(self.progressV)
         }
         
@@ -178,14 +193,60 @@ class PlayerBottomView: UIView {
         return object
     }()
 
+    //点击
+    fileprivate lazy var tap: UITapGestureRecognizer = {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(PlayerBottomView.tapSlider(sender:)))
+        return tap
+    }()
+    
     /// sliderV
     fileprivate lazy var sliderV: UISlider = {
         let object = UISlider()
         object.setThumbImage(#imageLiteral(resourceName: "player_slider").imageScaleToSize(size: CGSize(width: 20, height: 20)), for: UIControlState.normal)
         object.maximumTrackTintColor = UIColor.clear
         object.minimumTrackTintColor = self.tintColor
+        //滑动
+        object.addTarget(self, action: #selector(PlayerBottomView.sliderDidChanged(sender:)), for: UIControlEvents.valueChanged)
+        //拖动结束
+        object.addTarget(self, action: #selector(PlayerBottomView.sliderDragEnd(sender:)), for: UIControlEvents.touchUpInside)
+        //按下的时候
+        object.addTarget(self, action: #selector(PlayerBottomView.sliderTouchDown(sender:)), for: UIControlEvents.touchDown)
+        object.addGestureRecognizer(self.tap)
         return object
     }()
+    //MARK: 滑块方法
+    @objc private func sliderDidChanged(sender: UISlider) {
+        self.isDrag = true
+        let currentTime: TimeInterval = TimeInterval(sender.value)
+        if currentTime < 3600 {
+            self.currentTimeL.text = String(format: "%02li:%02li", lround(floor(currentTime / 60.0)),lround(floor(currentTime / 1.0)) % 60)
+        } else {
+            self.currentTimeL.text = String(format: "%02li:%02li", lround(floor(currentTime / 3600.0)),lround(floor(currentTime / 60.0)))
+        }
+        self.currentTimeL.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
+    }
+    @objc private func sliderDragEnd(sender: UISlider) {
+        PlayerTool.shared.seekToTime(second: CGFloat(sender.value)) {[weak self] in
+            self?.isDrag = false
+        }
+        self.playB.setImage(#imageLiteral(resourceName: "player_pause"), for: UIControlState.normal)
+        self.playB.isSelected = false
+        self.tap.isEnabled = true
+        self.currentTimeL.transform = CGAffineTransform.identity
+    }
+    @objc private func sliderTouchDown(sender: UISlider) {
+        self.tap.isEnabled = false
+    }
+    //点击事件
+    @objc private func tapSlider(sender: UITapGestureRecognizer) {
+        let location = sender.location(in: sender.view)
+        let value = Float(location.x / sender.view!.width) * (self.sliderV.maximumValue - self.sliderV.minimumValue)
+        PlayerTool.shared.seekToTime(second: CGFloat(value))
+        self.playB.setImage(#imageLiteral(resourceName: "player_pause"), for: UIControlState.normal)
+        self.playB.isSelected = false
+        self.sliderV.setValue(value, animated: true)
+        self.updateCurrentTime(currentTime: TimeInterval(value))
+    }
     
     /// totalTimeL
     fileprivate lazy var totalTimeL: UILabel = {
@@ -200,38 +261,91 @@ class PlayerBottomView: UIView {
     /// cycleB
     fileprivate lazy var cycleB: UIButton = {
         let object = UIButton()
-        object.setImage(#imageLiteral(resourceName: "player_Repeat3"), for: UIControlState.normal)
+        object.showsTouchWhenHighlighted = true
+        switch UserDefaults.standard.integer(forKey: PLAYER_REPEAT_KEY) {
+        case 1:
+            object.setImage(UIImage(named: "player_Repeat1"), for: UIControlState.normal)
+        case 2:
+            object.setImage(UIImage(named: "player_Repeat2"), for: UIControlState.normal)
+        case 4:
+            object.setImage(UIImage(named: "player_Repeat4"), for: UIControlState.normal)
+        default:
+            object.setImage(UIImage(named: "player_Repeat3"), for: UIControlState.normal)
+            UserDefaults.standard.set(3, forKey: PLAYER_REPEAT_KEY)
+            UserDefaults.standard.synchronize()
+        }
+        object.addTarget(self, action: #selector(PlayerBottomView.player_play(sender:)), for: UIControlEvents.touchUpInside)
         return object
     }()
 
     /// previousB
     fileprivate lazy var previousB: UIButton = {
         let object = UIButton()
+        object.showsTouchWhenHighlighted = true
         object.setImage(#imageLiteral(resourceName: "player_prevsong"), for: UIControlState.normal)
+        object.addTarget(self, action: #selector(PlayerBottomView.player_play(sender:)), for: UIControlEvents.touchUpInside)
         return object
     }()
     
     /// playB
     fileprivate lazy var playB: UIButton = {
         let object = UIButton()
+        object.showsTouchWhenHighlighted = true
         object.setImage(#imageLiteral(resourceName: "player_play"), for: UIControlState.normal)
-        object.setImage(#imageLiteral(resourceName: "player_pause"), for: UIControlState.selected)
+        object.addTarget(self, action: #selector(PlayerBottomView.player_play(sender:)), for: UIControlEvents.touchUpInside)
         return object
     }()
+    
+    //MARK:  播放方法
+    @objc private func player_play(sender: UIButton) {
+        if sender == self.playB {  //播放
+            if sender.isSelected {
+                sender.setImage(#imageLiteral(resourceName: "player_pause"), for: UIControlState.normal)
+            } else {
+                 sender.setImage(#imageLiteral(resourceName: "player_play"), for: UIControlState.normal)
+            }
+            sender.isSelected = !sender.isSelected
+            PlayerTool.shared.playOrPause()
+        } else if sender == self.nextB {  //下一曲
+            
+        } else if sender == self.previousB { //上一曲
+            
+        } else if sender == self.cycleB { //模式  3  4  1  2
+            var type = UserDefaults.standard.integer(forKey: PLAYER_REPEAT_KEY)
+            type += 1
+            if type >= 5 {
+                type = 1
+            } else if type <= 0 {
+                type = 3
+            }
+            UserDefaults.standard.set(type, forKey: PLAYER_REPEAT_KEY)
+            UserDefaults.standard.synchronize()
+            sender.setImage(UIImage(named: "player_Repeat\(type)"), for: UIControlState.normal)
+            PromptView.show(message: "播放模式: " + (type == 3 ? "顺序播放" : type == 4 ? "随机播放" : type == 1 ? "列表循环" : "单曲循环"))
+        } else if sender == self.playListB { //列表
+        }
+    }
     
     /// nextB
     fileprivate lazy var nextB: UIButton = {
         let object = UIButton()
+        object.showsTouchWhenHighlighted = true
         object.setImage(#imageLiteral(resourceName: "player_nextsong"), for: UIControlState.normal)
+        object.addTarget(self, action: #selector(PlayerBottomView.player_play(sender:)), for: UIControlEvents.touchUpInside)
         return object
     }()
     
     /// playListB
     fileprivate lazy var playListB: UIButton = {
         let object = UIButton()
+        object.showsTouchWhenHighlighted = true
         object.setImage(#imageLiteral(resourceName: "player_list"), for: UIControlState.normal)
+        object.addTarget(self, action: #selector(PlayerBottomView.player_play(sender:)), for: UIControlEvents.touchUpInside)
         return object
     }()
+    
+    ///记录滑块拖动状态
+    fileprivate var isDrag: Bool = false
 }
 
 // MARK: - Open API
@@ -239,6 +353,8 @@ extension PlayerBottomView {
     
     /// 更新总时间和滑块最大值
     func updateTotalTime(duration: TimeInterval) {
+        self.playB.setImage(#imageLiteral(resourceName: "player_pause"), for: UIControlState.normal)
+        self.playB.isSelected = false
         self.sliderV.minimumValue = 0
         self.sliderV.maximumValue = Float(duration)
         self.currentTimeL.text = "00:00"
@@ -250,6 +366,7 @@ extension PlayerBottomView {
     }
     /// 更新当前时间和滑块
     func updateCurrentTime(currentTime: TimeInterval) {
+        if self.isDrag || currentTime < 0 { return }
         if currentTime < 3600 {
             self.currentTimeL.text = String(format: "%02li:%02li", lround(floor(currentTime / 60.0)),lround(floor(currentTime / 1.0)) % 60)
         } else {

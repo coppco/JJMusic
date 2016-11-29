@@ -39,6 +39,12 @@ struct HTTPAddress {
     
     /// 动态
     static let dynamic = baseURL + "baidu.ting.ugcfriend.getList&channel=0e939898c11ad3b9b52e6fb5d50e009ad930a65b&cuid=appstore&from=ios&version=" + musicVersion
+    
+    //歌单详情
+    //歌单内容
+    static func detailOfList(listID: String) -> String {
+        return "http://tingapi.ting.baidu.com/v1/restserver/ting?method=baidu.ting.diy.gedanInfo&from=ios&listid=\(listID)&version=5.5.5&from=ios&channel=appstore&operator=0"
+    }
 }
 
 class HTTPRequest {

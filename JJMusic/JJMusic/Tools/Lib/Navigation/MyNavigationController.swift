@@ -25,7 +25,6 @@ class MyNavigationController: UINavigationController, UIGestureRecognizerDelegat
         super.viewDidLoad()
         //TODO: 解决自定义导航栏控制器右滑失效问题
         self.interactivePopGestureRecognizer?.delegate = self
-        
         #if DEBUG
             addPFS()
         #endif

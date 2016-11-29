@@ -34,35 +34,35 @@ class IndexPopView: UIView {
     
     class func show(title: String, in view: UIView) {
         if self.isShow == true {
-            self.cancelPreviousPerformRequests(withTarget: self)
-            self.shared.alpha = 1
-            self.shared.titelL.text = title
-            self.perform(#selector(IndexPopView.hide), with: nil, afterDelay: 1)
-        } else {
-            self.isShow = true
-            self.shared.removeFromSuperview()
-            self.shared.alpha = 1
-            self.shared.titelL.text = title
-            self.shared.titelL.sizeToFit()
-            if self.shared.titelL.size.width < 40 {
-                self.shared.titelL.size.width = 40
-            }
-            self.shared.size = CGSize(width: self.shared.titelL.size.width + 30, height: self.shared.titelL.size.height + 30)
-            self.shared.center = CGPoint(x: view.frame.width / 2, y: view.frame.height / 2)
-            self.shared.titelL.center = CGPoint(x: self.shared.size.width / 2, y: self.shared.size.height / 2)
-            view.addSubview(self.shared)
-            
-            self.perform(#selector(IndexPopView.hide), with: nil, afterDelay: 1)
+            self.cancelPreviousPerformRequests(withTarget: self, selector: #selector(IndexPopView.hide), object: nil)
         }
+        self.shared.titelL.text = title
+        self.shared.titelL.width = kMainScreenWidth - 60  //最大宽
+        self.shared.titelL.sizeToFit()
+        if self.shared.titelL.size.width < 40 {
+            self.shared.titelL.size.width = 40
+        }
+        self.shared.size = CGSize(width: self.shared.titelL.size.width + 30, height: self.shared.titelL.size.height + 30)
+        self.shared.center = CGPoint(x: view.frame.width / 2, y: view.frame.height / 2)
+        self.shared.titelL.center = CGPoint(x: self.shared.size.width / 2, y: self.shared.size.height / 2)
+        if self.shared.superview != view {
+            self.shared.reloadInputViews()
+            view.addSubview(self.shared)
+        }
+        self.shared.alpha = 1
+        self.isShow = true
+        self.perform(#selector(IndexPopView.hide), with: nil, afterDelay: 1)
+        
     }
     
     class func hide() {
         UIView.animate(withDuration: 0.5, animations: {
             self.shared.alpha = 0
-            }) { (flag) in
-                self.shared.alpha = 1
+        }) { (flag) in
+            if flag {
                 self.isShow = false
                 self.shared.removeFromSuperview()
+            }
         }
     }
     

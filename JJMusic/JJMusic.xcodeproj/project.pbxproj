@@ -171,6 +171,7 @@
 		CCEE1A731DD95FE4003C68B8 /* CategoryCCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEE1A721DD95FE4003C68B8 /* CategoryCCell.swift */; };
 		CCEE1A751DD96675003C68B8 /* MyKSongCCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEE1A741DD96675003C68B8 /* MyKSongCCell.swift */; };
 		CCEE1A771DD9AE7D003C68B8 /* TrendsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEE1A761DD9AE7D003C68B8 /* TrendsController.swift */; };
+		FE13DB891DED82140020D8D6 /* DetailOfListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE13DB881DED82140020D8D6 /* DetailOfListController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -371,6 +372,7 @@
 		CCEE1A741DD96675003C68B8 /* MyKSongCCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyKSongCCell.swift; sourceTree = "<group>"; };
 		CCEE1A761DD9AE7D003C68B8 /* TrendsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrendsController.swift; sourceTree = "<group>"; };
 		DA90285DD8E6C5797D5B40E0 /* libPods-JJMusic.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JJMusic.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FE13DB881DED82140020D8D6 /* DetailOfListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailOfListController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -511,6 +513,7 @@
 			isa = PBXGroup;
 			children = (
 				CCE73AAE1DD59145004BB8A8 /* PlayListController.swift */,
+				FE13DB881DED82140020D8D6 /* DetailOfListController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1371,7 +1374,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		4709101520CAF5AD0DB3FB49 /* [CP] Copy Pods Resources */ = {
@@ -1547,6 +1550,7 @@
 				CCAAE3901DC1F449000E5C29 /* ConstraintMakerPriortizable.swift in Sources */,
 				CCE73AB71DD5B110004BB8A8 /* ListCCell.swift in Sources */,
 				CC732B071DD316D700532979 /* TopBottomButton.swift in Sources */,
+				FE13DB891DED82140020D8D6 /* DetailOfListController.swift in Sources */,
 				CC4F75171DDED56800A7FB59 /* MyLocalMusicFooterView.swift in Sources */,
 				CC50154D1DD1C9C8003A8E71 /* TopTitleView.swift in Sources */,
 				CCD839061DC1EA2300A44D16 /* NSObect+HJExtension.swift in Sources */,

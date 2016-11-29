@@ -26,7 +26,7 @@ class PromptView: UIView {
     /// - parameter message:   消息
     class func show(imageName: String? = nil, message: String) {
         if PromptView.isShow == true {
-            return
+            self.cancelPreviousPerformRequests(withTarget: self, selector: #selector(PromptView.hidden), object: nil)
         }
         let object = self.shared
         object.titleL.text = message
@@ -56,22 +56,22 @@ class PromptView: UIView {
         }
         UIApplication.shared.keyWindow!.addSubview(object)
         object.alpha = 0
-        object.isHidden = false
         PromptView.isShow = true
-        
-        UIView.animate(withDuration: 0.25, animations: {
+        UIView.animate(withDuration: 0.25) {
             object.alpha = 1
-            }) { (flag) in
-                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1, execute: {
-                    UIView.animate(withDuration: 0.25, animations: {
-                        object.alpha = 0
-                        }, completion: { (flag) in
-                            PromptView.isShow = false
-                            object.isHidden = true
-                            object.removeFromSuperview()
-                    })
-                })
         }
+        self.perform(#selector(PromptView.hidden), with: nil, afterDelay: 1.25)
+    }
+    
+    @objc private class func hidden() {
+        UIView.animate(withDuration: 0.25, animations: {
+            PromptView.shared.alpha = 0
+            }, completion: { (flag) in
+                if flag {  //取消执行后flag为false
+                    PromptView.isShow = false
+                    PromptView.shared.removeFromSuperview()
+                }
+        })
     }
     
     private override init(frame: CGRect) {

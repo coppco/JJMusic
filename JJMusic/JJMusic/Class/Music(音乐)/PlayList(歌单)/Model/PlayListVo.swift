@@ -15,7 +15,7 @@ class PlayListVo: BaseData {
     var nums: Int?
     var diyInfo: [DiyInfoVo]?
 }
-
+//歌单
 class DiyInfoVo: HandyJSON {
     required init() {
         

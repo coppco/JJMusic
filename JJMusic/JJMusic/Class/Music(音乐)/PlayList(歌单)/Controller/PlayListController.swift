@@ -4,7 +4,7 @@
 //
 //  Created by coco on 16/11/11.
 //  Copyright © 2016年 XHJ. All rights reserved.
-//
+//  歌单
 
 import UIKit
 
@@ -71,7 +71,11 @@ class PlayListController: UIViewController {
 }
 
 extension PlayListController: UICollectionViewDelegate {
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let detailVC = DetailOfListController()
+        detailVC.diyInfoVo = self.playList?.diyInfo?[indexPath.item]
+        self.navigationController?.pushViewController(detailVC, animated: true)
+    }
 }
 
 extension PlayListController: UICollectionViewDataSource {

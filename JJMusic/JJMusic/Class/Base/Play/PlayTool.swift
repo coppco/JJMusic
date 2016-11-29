@@ -181,14 +181,23 @@ extension PlayerTool {
             self.player.pause()
         }
     }
-    /// 快进
-    func seekToTime(second: CGFloat) {
+    
+    /// 快进和倒退
+    ///
+    /// - parameter second:            秒数
+    /// - parameter completionHandler: 完成后的操作
+    func seekToTime(second: CGFloat, completionHandler: (() -> Void)? = nil) {
         if self.player == nil || self.playItem == nil {
             return
         }
         self.player.pause()
         self.player.seek(to: CMTime.init(seconds: Double(second), preferredTimescale: CMTimeScale(NSEC_PER_SEC))) {[weak self] (flag) in
-            self?.player.play()
+            if flag {
+                if let closure = completionHandler {
+                    closure()
+                }
+                self?.player.play()
+            }
         }
     }
 }

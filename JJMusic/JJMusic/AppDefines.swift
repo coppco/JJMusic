@@ -34,3 +34,6 @@ let spacingY: CGFloat = 10
 
 //动画间隔
 let animationDuration = 0.35
+
+//播放方式key
+let PLAYER_REPEAT_KEY = "PLAYER_REPEAT_KEY"

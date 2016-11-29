@@ -12,17 +12,13 @@ class AppBottomView: UIView {
 
     /// 单例
     static let shared: AppBottomView = AppBottomView()
-    //点击执行block
-    private let didTap: ((AppBottomView) -> Void)? = { bottomView in
-        appDelegate.window!.bringSubview(toFront: appDelegate.playerView)
-        appDelegate.playBottomView.isUserInteractionEnabled = false
-        appDelegate.playerView.isUserInteractionEnabled = false
-        UIView.animate(withDuration: animationDuration, animations: {
-            appDelegate.playerView.y = 0
-        }) { (falg) in
-            appDelegate.playBottomView.isUserInteractionEnabled = true
-            appDelegate.playerView.isUserInteractionEnabled = true
-        }
+    
+    //更新进度值
+    class func updateProgressValue(value: Float) {
+        if value.isNaN { return }
+        
+        //为0不作动画
+        self.shared.progressV.setProgress(value, animated: value != 0.0)
     }
     
     private override init(frame: CGRect) {
@@ -140,9 +136,10 @@ class AppBottomView: UIView {
     }()
     
     /**进度条*/
-    private lazy var progressV: UIView = {
-        let object = UIView()
-        object.backgroundColor = UIColor.blue
+    private lazy var progressV: UIProgressView = {
+        let object = UIProgressView()
+        object.progressTintColor = navigationColor
+        object.trackTintColor = UIColor.clear
         return object
     }()
     
@@ -154,9 +151,7 @@ class AppBottomView: UIView {
     }()
 
     @objc private func didTap(sender: UITapGestureRecognizer) {
-        if let closure = self.didTap {
-            closure(self)
-        }
+        PlayerView.shared.show()
     }
 
 }
