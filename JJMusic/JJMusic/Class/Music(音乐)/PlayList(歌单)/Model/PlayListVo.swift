@@ -18,7 +18,7 @@ class PlayListVo: BaseData {
 //歌单
 class DiyInfoVo: HandyJSON {
     required init() {
-        
+   
     }
     var listen_num: Int?  //1979
     var username: String?  //神奇君

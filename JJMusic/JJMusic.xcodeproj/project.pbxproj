@@ -172,6 +172,8 @@
 		CCEE1A751DD96675003C68B8 /* MyKSongCCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEE1A741DD96675003C68B8 /* MyKSongCCell.swift */; };
 		CCEE1A771DD9AE7D003C68B8 /* TrendsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEE1A761DD9AE7D003C68B8 /* TrendsController.swift */; };
 		FE13DB891DED82140020D8D6 /* DetailOfListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE13DB881DED82140020D8D6 /* DetailOfListController.swift */; };
+		FE43586F1DEDAB7500355748 /* ListDetailVo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE43586E1DEDAB7500355748 /* ListDetailVo.swift */; };
+		FE4358731DEDC1E300355748 /* DetailNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE4358721DEDC1E300355748 /* DetailNavigationView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -373,6 +375,8 @@
 		CCEE1A761DD9AE7D003C68B8 /* TrendsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrendsController.swift; sourceTree = "<group>"; };
 		DA90285DD8E6C5797D5B40E0 /* libPods-JJMusic.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JJMusic.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE13DB881DED82140020D8D6 /* DetailOfListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailOfListController.swift; sourceTree = "<group>"; };
+		FE43586E1DEDAB7500355748 /* ListDetailVo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListDetailVo.swift; sourceTree = "<group>"; };
+		FE4358721DEDC1E300355748 /* DetailNavigationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DetailNavigationView.swift; path = "JJMusic/Class/Music(音乐)/PlayList(歌单)/Model/DetailNavigationView.swift"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -522,6 +526,7 @@
 			isa = PBXGroup;
 			children = (
 				CCE73AB01DD59ACE004BB8A8 /* PlayListVo.swift */,
+				FE43586E1DEDAB7500355748 /* ListDetailVo.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -529,6 +534,7 @@
 		CC2FDD151DC753A200B4624A /* View */ = {
 			isa = PBXGroup;
 			children = (
+				FE4358721DEDC1E300355748 /* DetailNavigationView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1479,6 +1485,7 @@
 				CC2FDCF01DC720DE00B4624A /* HTTPRequest.swift in Sources */,
 				CC732AEB1DD2C2E100532979 /* Alamofire.swift in Sources */,
 				CC414DF41DC2F991009F8B52 /* HomeNavigationView.swift in Sources */,
+				FE43586F1DEDAB7500355748 /* ListDetailVo.swift in Sources */,
 				CCAAE3B01DC1F517000E5C29 /* AppDefines.swift in Sources */,
 				CC732AF81DD2C2E100532979 /* TaskDelegate.swift in Sources */,
 				CC4F75041DDE920300A7FB59 /* MyHomeListHeaderView.swift in Sources */,
@@ -1533,6 +1540,7 @@
 				CC4F75021DDE920300A7FB59 /* MyHomeFooterView.swift in Sources */,
 				CCAA26C91DE2CAEC00B79F40 /* PlayViewController.swift in Sources */,
 				CC414E2B1DC34EBD009F8B52 /* ImageView+Kingfisher.swift in Sources */,
+				FE4358731DEDC1E300355748 /* DetailNavigationView.swift in Sources */,
 				CCE73AA91DD490FB004BB8A8 /* AdvertCCell.swift in Sources */,
 				CC4F75131DDEA43600A7FB59 /* MyLocalMusicHeaderView.swift in Sources */,
 				CCAAE3841DC1F449000E5C29 /* ConstraintInsets.swift in Sources */,
