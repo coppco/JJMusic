@@ -45,6 +45,13 @@ struct HTTPAddress {
     static func detailOfList(listID: String) -> String {
         return "http://tingapi.ting.baidu.com/v1/restserver/ting?method=baidu.ting.diy.gedanInfo&from=ios&listid=\(listID)&version=5.5.5&from=ios&channel=appstore&operator=0"
     }
+    
+    //歌曲详情
+    static func songInfo(songId: String) -> String {
+        //e加密了不能使用了,  现在使用web接口
+        //return "http://tingapi.ting.baidu.com/v1/restserver/ting?from=qianqian&version=2.1.0&method=baidu.ting.song.getInfos&format=json&songid=\(songId)&ts=\(Date.currentTenTimeSamp())&e=JoN56kTXnnbEpd9MVczkYJCSx%2FE1mkLx%2BPMIkTcOEu4%3D&nw=2&ucf=1&res=1"
+        return "http://ting.baidu.com/data/music/links?songIds=\(songId)"
+    }
 }
 
 class HTTPRequest {

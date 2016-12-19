@@ -18,20 +18,33 @@ class DetailOfListController: UIViewController {
                     backImageV.kf.setImage(with: URL(string: icon))
                 }
                 self.tableView.reloadData()
+                HHLog(diyInfoVo?.list_id)
+                for item in listDetailVo!.content! {
+                    HHLog(item.song_id!)
+                }
             }
         }
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.setNavigationBarHidden(true, animated: false)
         super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        //去掉底部线
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        //是否透明
+        self.navigationController?.navigationBar.isTranslucent = true
     }
-    
+
     override func viewDidDisappear(_ animated: Bool) {
-        self.navigationController?.setNavigationBarHidden(false, animated: false)
+        self.navigationController?.navigationBar.setBackgroundImage(nil, for: UIBarMetrics.default)
+        self.navigationController?.navigationBar.shadowImage = nil
+        self.navigationController?.navigationBar.isTranslucent = false
         super.viewDidDisappear(animated)
     }
     override func viewDidLoad() {
+        //歌曲详情
+        //http://tingapi.ting.baidu.com/v1/restserver/ting?method=baidu.ting.song.getInfos&ts=1482144123&songid=8074547&nw=2&l2p=507.4&lpb=320000&ext=MP3&format=json&from=ios&usup=1&lebo=0&aac=0&ucf=4&vid=&res=1&e=QOGTjG2ETKMi9RMZ0z0G%2FDONjq9EczQwIxGmMPNxZ%2B0%3D&channel=(null)&cuid=appstore&from=ios&version=5.9.5
+        
         super.viewDidLoad()
         self.navigationItem.title = self.diyInfoVo?.title
         self.view.backgroundColor = UIColor.white
@@ -39,7 +52,9 @@ class DetailOfListController: UIViewController {
         guard let listid = self.diyInfoVo?.list_id else {
             return
         }
-        HTTPRequestModel<ListDetailVo>.requestModel(type: .get, URLString: HTTPAddress.detailOfList(listID: listid), parameters: nil, success: {[weak self] (object) in
+
+        
+        HTTPRequestModel<ListDetailVo>.requestModel(type: .post, URLString: HTTPAddress.detailOfList(listID: listid), parameters: nil, success: {[weak self] (object) in
             DispatchQueue.main.async {
                 self?.listDetailVo = object
             }
@@ -55,13 +70,13 @@ class DetailOfListController: UIViewController {
     }
     
     private func configUI() {
-        self.view.addSubview(navigationV)
+//        self.view.addSubview(navigationV)
         self.view.addSubview(backImageV)
         self.view.addSubview(tableView)
-        navigationV.snp.makeConstraints { (make) in
-            make.top.left.right.equalTo(self.view)
-            make.height.equalTo(64)
-        }
+//        navigationV.snp.makeConstraints { (make) in
+//            make.top.left.right.equalTo(self.view)
+//            make.height.equalTo(64)
+//        }
         backImageV.snp.makeConstraints { (make) in
             make.top.left.right.equalTo(self.view)
             make.height.equalTo(backImageV.snp.width)
@@ -105,7 +120,26 @@ class DetailOfListController: UIViewController {
 }
 
 extension DetailOfListController: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let data = self.listDetailVo?.content?[indexPath.row].song_id {
+            HTTPRequest.requestJSON(type: .get, URLString: HTTPAddress.songInfo(songId: data), parameters: nil, encoding: JSONEncoding.default, headers: nil, success: { (object) in
+                if let dic = object as? NSDictionary {
+                    if let data = dic["data"] as? NSDictionary {
+                        if let songList = data["songList"] as? NSArray {
+                            if let d = songList.firstObject as? NSDictionary {
+                                if let url = d["songLink"] as? String {
+                                    HHLog(url)
+                                    PlayerTool.shared.playWithURL(urlString: url)
+                                }
+                            }
+                        }
+                    }
+                }
+                }, failed: { (error) in
+                    HHLog(error)
+            })
+        }
+    }
 }
 
 extension DetailOfListController: UITableViewDataSource {

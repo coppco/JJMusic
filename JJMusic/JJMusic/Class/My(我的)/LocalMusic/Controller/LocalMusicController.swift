@@ -19,7 +19,14 @@ enum SortType: String {
 class LocalMusicController: UIViewController {
     //显示模式
     private var type: SortType = .all
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.isTranslucent = false
+    }
+    
     override func viewDidLoad() {
+        HHLog(self.navigationController?.navigationBar.isTranslucent)
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.white
         self.navigationItem.title = "本地音乐"
@@ -33,7 +40,7 @@ class LocalMusicController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+
     private func configUI() {
         self.view.addSubview(topView)
         self.view.addSubview(tableView)
